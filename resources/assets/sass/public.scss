@@ -1,0 +1,23 @@
+// Font-awesome
+@import 'node_modules/@fortawesome/fontawesome-free-webfonts/scss/fontawesome';
+@import 'node_modules/@fortawesome/fontawesome-free-webfonts/scss/fa-brands';
+@import 'node_modules/@fortawesome/fontawesome-free-webfonts/scss/fa-regular';
+@import 'node_modules/@fortawesome/fontawesome-free-webfonts/scss/fa-solid';
+
+// Open-Sans Font
+@import "node_modules/npm-font-open-sans/open-sans.scss";
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// Sweetalert
+@import "node_modules/sweetalert2/src/sweetalert2.scss";
+
+// Toastr
+@import url("vendor/toastr.min.css");
+
+// Fancyapps Images
+@import url("vendor/jquery.fancybox.min.css");
