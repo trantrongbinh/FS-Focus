@@ -1,16 +1,16 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg fixed-top" style="position: fixed; top: 0; right: 0; left: 0; z-index: 1030;">
     <div class="search-box">
         <button class="dismiss"><i class="fa fa-times"></i></button>
         <form id="searchForm" action="{{ url('search') }}" role="search" method="get">
             <input type="search" class="form-control"  data-action="grow" autocomplete="off" name="q" placeholder="{{ lang('Search') }}" required>
         </form>
     </div>
-    <div class="container-fluid ">
+    <div class="container">
         <div class="navbar-holder d-flex align-items-center justify-content-between">
             <div class="navbar-header">
                 <a href="{{ url('/') }}" class="navbar-brand">
-                    <div class="brand-text brand-big hidden-lg-down"><img src="/images/logo-blue.png" alt="Logo" class="img-fluid"></div>
-                    <div class="brand-text brand-small"><img src="/images/logo-icon-blue.png" alt="Logo" class="img-fluid"></div>
+                    <div class="brand-text brand-big hidden-lg-down"><img src="/images/logo-white.png" alt="Logo" class="img-fluid"></div>
+                    <div class="brand-text brand-small"><img src="/images/logo-icon.png" alt="Logo" class="img-fluid"></div>
                 </a>
                 <a href="#">
                     <form action="" class="form-lang" method="post">

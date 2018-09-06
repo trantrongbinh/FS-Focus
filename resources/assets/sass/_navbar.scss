@@ -165,13 +165,16 @@
 }
 
 nav.navbar {
+  background: linear-gradient(to left, #7b4397, #2196f3);
   padding-top: 5px;
   padding-bottom: 5px;
   position: relative;
+  color: #fff;
   border-radius: 0;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
   padding-left: 20px;
-  padding-right: 20px;
+  padding-right: 10px;
+  z-index: 9999;
 }
 
 nav.navbar .badge {

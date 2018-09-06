@@ -31,7 +31,7 @@
         <div id="app">
             @include('particals.navbar')
             
-            <div class="main" style="min-height: 500px;">
+            <div class="main" style="min-height: 700px; background: #f4f6f9; margin-top: 25px;">
                 @yield('content')
             </div>
 

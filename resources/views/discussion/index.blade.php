@@ -119,7 +119,7 @@
 
                 @forelse($discussions as $discussion)
                 <!-- Post-->
-                <div class="row d-flex post">
+                <div class="row d-flex post card">
                     <div class="text col-lg-12">
                         <div class="text-inner d-flex align-items-center">
                             <div class="content">

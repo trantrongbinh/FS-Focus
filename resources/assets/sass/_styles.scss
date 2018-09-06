@@ -1,4 +1,25 @@
+.add-question {
+    width: 90%;
+    border: 1px solid #ECECEC;
+    padding-bottom: 30px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin-left: 0 !important;
+}
+
+.description {
+    padding: 10px;
+}
+
 // GENERAL
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1260px;
+  }
+}
+.clear{
+    margin-bottom: 10px;
+}
 .text-bold {
     font-weight: 700;
 }
@@ -67,9 +88,10 @@ h1:hover a {
     z-index: 9999;
 }
 .widget {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     padding: 20px;
     border: 1px solid #eee;
+    background: #fff;
 }
 .widget header {
     margin-bottom: 20px;
@@ -572,7 +594,7 @@ div[class*="-btn"] {
 
 @media (max-width: 767px) {
     .post {
-        margin-bottom: 40px;
+        margin-bottom: 10px;
     }
     .post:last-of-type {
         margin-bottom: 0;
@@ -584,7 +606,7 @@ main.posts-listing {
     padding-right: 0;
 }
 main.posts-listing .post {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 main.posts-listing .post-footer {
     font-size: 0.8em;
