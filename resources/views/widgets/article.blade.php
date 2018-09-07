@@ -14,12 +14,21 @@
                         </ul>
                         <div class="clear"></div>
                         <div  class="row">
-                            <div class="col-2 text-right">
-                                <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" style="height: 40px; width: 40px;">
-                            </div>
-                           <div class="col-10">
-                               <span class="add-question"><a href="#" data-toggle="modal" data-target="#questionModal"><span class="description"><strong> What is your question?</strong></span></a></span>
-                           </div>
+                            @if (Auth::guest())
+                                 <div class="col-2 text-right">
+                                    <img src="/images/default.png" alt="..." class="img-fluid rounded-circle" data-toggle="tooltip" data-placement="bottom" title="Avatar" style="height: 40px; width: 40px;">
+                                </div>
+                               <div class="col-10">
+                                   <span class="add-question"><a href="{{ url('login') }}" data-toggle="modal" data-target="#questionModal"><span class="description"><strong> What is your question?</strong></span></a></span>
+                               </div>
+                            @else
+                                 <div class="col-2 text-right">
+                                    <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" style="height: 40px; width: 40px;">
+                                </div>
+                               <div class="col-10">
+                                   <span class="add-question"><a href="#" data-toggle="modal" data-target="#questionModal"><span class="description"><strong> What is your question?</strong></span></a></span>
+                               </div>
+                            @endif
                         </div>
                     </div>
                     <div class="clear"></div>
