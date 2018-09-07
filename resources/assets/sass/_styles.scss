@@ -1,16 +1,3 @@
-.add-question {
-    width: 90%;
-    border: 1px solid #ECECEC;
-    padding-bottom: 30px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    margin-left: 0 !important;
-}
-
-.description {
-    padding: 10px;
-}
-
 // GENERAL
 @media (min-width: 1200px) {
   .container {
@@ -28,6 +15,9 @@
 }
 body {
     overflow-x: hidden;
+    position: relative;
+    background: #EDF3FC; 
+    min-height: 100vh;
 }
 strong {
     font-weight: 700;
@@ -62,6 +52,7 @@ button {
 }
 main, aside {
     padding: 50px 0 100px;
+    margin-top: 25px;
 }
 h1 a {
     margin-left: 10px;

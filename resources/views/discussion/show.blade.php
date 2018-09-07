@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="discuss-show container">
-        <div class="row" style="margin-bottom: 100px;">
+        <main class="row">
             <div class="post blog-post col-lg-9">
                 <div class="container">
                     <div class="post-single">
@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 @endsection
 

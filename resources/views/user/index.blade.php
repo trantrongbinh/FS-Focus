@@ -2,8 +2,8 @@
 
 @section('content')
     @include('user.particals.info')
-    <div class="container" style="margin-bottom: 50px;">
-        <div class="row">
+    <div class="container">
+        <main class="row">
             <div class="col-md-6">
                 <div class="card card-default">
                     <div class="card-header">{{ lang('Recent Discussions') }}</div>
@@ -20,6 +20,6 @@
 
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 @endsection

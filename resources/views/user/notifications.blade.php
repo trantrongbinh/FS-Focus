@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container notifications" style="min-height: 500px;">
-        <div class="row">
+    <div class="container notifications">
+        <main class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="card">
                     <div class="card-header">
@@ -27,6 +27,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 @endsection

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" style="margin-top: 40px;">
-    <div class="row">
+<div class="container">
+    <main class="row">
         <div class="col-md-8 offset-md-2">
             <div class="card card-info">
                 <div class="card-header">{{ lang('Reset Password') }}</div>
@@ -65,6 +65,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </div>
 @endsection

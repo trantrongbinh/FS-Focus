@@ -47,7 +47,7 @@
 @section('content')
 
 <div class="container">
-    <div class="row justify-content-center" style="margin: 40px 0 100px 0;">
+    <main class="row justify-content-center">
         <div class="col-md-4">
             <div class="card" style="background: #F9F9F9;">
                 <div class="panel">
@@ -128,7 +128,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </div>
 @endsection
 

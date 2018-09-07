@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container setting" style="margin-top: 50px; margin-bottom: 100px;">
-        <div class="row">
+    <div class="container setting">
+        <main class="row">
             <div class="col-md-4">
                 @include('setting.particals.sidebar')
             </div>
@@ -31,6 +31,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 @endsection

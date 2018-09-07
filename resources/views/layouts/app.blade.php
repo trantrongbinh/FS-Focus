@@ -29,14 +29,18 @@
     </head>
     <body>
         <div id="app">
+
             @include('particals.navbar')
-            
-            <div class="main" style="min-height: 700px; background: #f4f6f9; margin-top: 25px;">
+
+            <div class="main">
+
                 @yield('content')
+                
             </div>
 
-            @include('particals.footer')
         </div>
+        
+        @include('particals.footer')
 
         <!-- Scripts -->
         <script src="{{ mix('js/home.js') }}"></script>
@@ -145,33 +149,6 @@
                 });
 
             });
-
-            // ------------------------------------------------------- //
-            // Extend window in fullscreen
-            // ------------------------------------------------------ //
-            function toggleFullScreen(elem) { 
-                if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
-                    if (elem.requestFullScreen) {
-                        elem.requestFullScreen();
-                    } else if (elem.mozRequestFullScreen) {
-                        elem.mozRequestFullScreen();
-                    } else if (elem.webkitRequestFullScreen) {
-                        elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-                    } else if (elem.msRequestFullscreen) {
-                        elem.msRequestFullscreen();
-                    }
-                } else {
-                    if (document.cancelFullScreen) {
-                        document.cancelFullScreen();
-                    } else if (document.mozCancelFullScreen) {
-                        document.mozCancelFullScreen();
-                    } else if (document.webkitCancelFullScreen) {
-                        document.webkitCancelFullScreen();
-                    } else if (document.msExitFullscreen) {
-                        document.msExitFullscreen();
-                    }
-                }
-            }
         </script>
     </body>
 </html>

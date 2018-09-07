@@ -21,14 +21,16 @@
                         {{ csrf_field() }}
                     </form>
                 </a>
-                <a href="{{ url('discussion') }}">Questions</a>
+                <a href="#">Contact</a>
             </div>
         </div>
         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-            <!-- Expand-->
-            <li class="nav-item d-flex align-items-center full_scr_exp"><a class="nav-link" href="#"><img src="images/expand.png" onclick="toggleFullScreen(document.body)" class="img-fluid" alt=""></a></li>
+            <!-- Write post-->
+            <li class="nav-item d-flex align-items-center"><a class="nav-link" href="#"><i class="fas fa-user-edit"></i></a></li>
+             <!-- questions-->
+            <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('discussion') }}"><i class="fas fa-question-circle"></i></a></li>
             <!-- Search-->
-            <li class="nav-item d-flex align-items-center"><a id="search" class="nav-link" href="#"><i class="fa fa-search"></i></a></li>
+            <li class="nav-item d-flex align-items-center"><a id="search" class="nav-link" href="#"><i class="fas fa-search"></i></a></li>
             <!-- Authentication Links -->
             @if (Auth::guest())
                 <!-- Log in-->

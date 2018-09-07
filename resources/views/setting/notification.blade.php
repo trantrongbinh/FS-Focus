@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container setting">
-        <div class="row">
+        <main class="row">
             <div class="col-md-4">
                 @include('setting.particals.sidebar')
             </div>
@@ -36,6 +36,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 @endsection

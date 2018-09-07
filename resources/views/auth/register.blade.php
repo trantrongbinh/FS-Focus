@@ -2,10 +2,6 @@
 
 @section('styles')
   <style>
-    .container{
-        margin: 30px auto;
-    }
-
     .panel {
         text-align: center;
         padding: 10px;
@@ -27,8 +23,8 @@
 
 @section('content')
 
-<div class="container" style="margin-top: 50px;">
-    <div class="row justify-content-center">
+<div class="container">
+    <main class="row justify-content-center">
         <div class="col-md-5">
             <div class="card" style="background: #F9F9F9;">
                  <div class="panel">
@@ -96,6 +92,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </div>
 @endsection

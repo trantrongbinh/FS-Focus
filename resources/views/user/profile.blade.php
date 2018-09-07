@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container profile" style="padding: 50px 100px;">
-    <div class="row">
+<div class="container profile">
+    <main class="row">
         <div class="col-md-2 offset-md-1">
             <avatar src="{{ $user->avatar }}"></avatar>
         </div>
@@ -36,12 +36,6 @@
                             <input type="text" class="form-control" id="Website" name="website" value="{{ $user->website }}">
                         </div>
                     </div>
-                   <!--  <div class="form-group row">
-                        <label for="Weibo" class="col-md-3 col-form-label">Name</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" id="Weibo" name="weibo_name" value="{{ $user->weibo_name }}">
-                        </div>
-                    </div> -->
                     <div class="form-group row">
                         <label for="Weibo" class="col-md-3 col-form-label">FaceBook</label>
                         <div class="col-md-9">
@@ -69,6 +63,6 @@
                 </fieldset>
             </form>
         </div>
-    </div>
+    </main>
 </div>
 @endsection

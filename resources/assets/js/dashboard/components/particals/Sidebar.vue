@@ -62,7 +62,7 @@
 .sidebar-nav {
   position: absolute;
   top: 0;
-  width: 250px;
+  width: 255px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -129,16 +129,21 @@
   display: block;
   text-decoration: none;
   color: #999999;
+  background: #4d5e6f;
 }
 
 .sidebar-nav li a:hover {
   text-decoration: none;
-  color: #fff;
+  color: #000;
   background: rgba(255,255,255,0.2);
 }
 
 .sidebar-nav li .active {
   color: #fff !important;
+}
+
+.sidebar-nav li .active:hover {
+  color: #000 !important;
 }
 
 .sidebar-nav li a i {
@@ -169,7 +174,6 @@
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-  color: #fff;
   background: none;
 }
 </style>

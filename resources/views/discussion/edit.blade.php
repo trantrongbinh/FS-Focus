@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="dicussion row">
+        <main class="dicussion row">
             <div class="col-md-9 offset-md-1">
                 <form class="form" action="{{ url('discussion', ['id' => $discussion->id]) }}" method="POST">
                     {{ method_field('PUT') }}
@@ -60,7 +60,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </main>
     </div>
 @endsection
 

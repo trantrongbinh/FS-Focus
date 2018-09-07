@@ -13,21 +13,11 @@
                             <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab"> Questions</a></li>
                         </ul>
                         <div class="clear"></div>
-                        <div  class="row">
+                        <div class="" style="display: inline-block;">
                             @if (Auth::guest())
-                                 <div class="col-2 text-right">
-                                    <img src="/images/default.png" alt="..." class="img-fluid rounded-circle" data-toggle="tooltip" data-placement="bottom" title="Avatar" style="height: 40px; width: 40px;">
-                                </div>
-                               <div class="col-10">
-                                   <span class="add-question"><a href="{{ url('login') }}" data-toggle="modal" data-target="#questionModal"><span class="description"><strong> What is your question?</strong></span></a></span>
-                               </div>
+                                    <img src="/images/default.png" alt="..." class="img-fluid img-circle" data-toggle="tooltip" data-placement="bottom" title="Avatar" style="height: 50px; width: 50px; margin-left: 5px; margin-right: 10px; float: left;"><span class="add-question card" style="border: 2px solid #ECECEC; padding-bottom: 30px;  -moz-border-radius: 5px; -webkit-border-radius: 5px;"><a href="{{ url('login') }}" data-toggle="modal" data-target="#questionModal"><span class="description" style="padding: 10px;"><strong> What is your question?</strong></span></a></span>
                             @else
-                                 <div class="col-2 text-right">
-                                    <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" style="height: 40px; width: 40px;">
-                                </div>
-                               <div class="col-10">
-                                   <span class="add-question"><a href="#" data-toggle="modal" data-target="#questionModal"><span class="description"><strong> What is your question?</strong></span></a></span>
-                               </div>
+                                <img src="{{ Auth::user()->avatar }}" alt="..."  class="img-fluid rounded-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" style="height: 50px; width: 50px; margin-left: 5px; margin-right: 10px; float: left;"><span class="add-question card" style="border: 2px solid #ECECEC; padding-bottom: 30px;  -moz-border-radius: 5px; -webkit-border-radius: 5px;"><a href="{{ url('login') }}" data-toggle="modal" data-target="#questionModal"><span class="description" style="padding: 10px;"><strong> What is your question?</strong></span></a></span>
                             @endif
                         </div>
                     </div>
@@ -101,8 +91,8 @@
                                 {{ $articles->links('pagination.default') }}
                         </div>
                         <!-- /.tab-pane -->
-                        <div class="tab-pane" id="timeline">
-                            <div class="row">
+                        <div class="tab-pane card" id="timeline">
+                            <div class="row card-body">
                                 <!-- post -->
                                 <div class="post col-xl-6">
                                     <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid"></a></div>
@@ -216,10 +206,11 @@
                             </div>
                         </div>
                         <!-- /.tab-pane -->
-                        <div class="tab-pane" id="settings">
+                        <div class="tab-pane card-body" id="settings">
+                            <div style="margin-top: -20px; "></div>
                             <!-- Post-->
-                            <div class="row d-flex post">
-                                <div class="text col-lg-12">
+                            <div class="row  d-flex post card">
+                                <div class="text col-lg-12 card-body">
                                     <div class="text-inner d-flex align-items-center">
                                         <div class="content">
                                             <header class="post-header">
@@ -238,10 +229,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <!-- Post-->
-                            <div class="row d-flex post">
-                                <div class="text col-lg-12">
+                            <div class="row d-flex post card">
+                                <div class="text col-lg-12  card-body">
                                     <div class="text-inner d-flex align-items-center">
                                         <div class="content">
                                             <header class="post-header">
@@ -260,10 +250,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <!-- Post-->
-                            <div class="row d-flex post">
-                                <div class="text col-lg-12">
+                            <div class="row d-flex post card">
+                                <div class="text col-lg-12  card-body">
                                     <div class="text-inner d-flex align-items-center">
                                         <div class="content">
                                             <header class="post-header">
@@ -282,10 +271,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr>
                             <!-- Post-->
-                            <div class="row d-flex post">
-                                <div class="text col-lg-12">
+                            <div class="row d-flex post card">
+                                <div class="text col-lg-12  card-body">
                                     <div class="text-inner d-flex align-items-center">
                                         <div class="content">
                                             <header class="post-header">

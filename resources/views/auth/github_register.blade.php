@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <main class="row">
         <div class="col-md-6 offset-md-3" style="margin-top: 50px;">
             <div class="well">
                 <form class="form" role="form" method="POST" action="{{ url('auth/github/register') }}">
@@ -76,6 +76,6 @@
                 </form>
             </div>
         </div>
-    </div>
+    </main>
 </div>
 @endsection
