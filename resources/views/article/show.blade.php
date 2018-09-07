@@ -159,9 +159,9 @@
                     <br>
                     <!-- comment -->
                     @if(Auth::guest())
-                        <comment title="Post Comments" commentable-type="articles" commentable-id="{{ $article->id }}"></comment>
+                        <comment title="Post Comments" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}"></comment>
                     @else
-                        <comment title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" can-comment></comment>
+                        <comment title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" can-comment></comment>
                     @endif
                     </div>
                 </div>

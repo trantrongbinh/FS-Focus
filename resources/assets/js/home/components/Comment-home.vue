@@ -145,6 +145,7 @@
 				}).then((response) => {
 					response.data.data.forEach((data) => {
 						data.content_html = this.parse(data.content_raw)
+						
 						return data
 					})
 					this.comments = response.data.data
@@ -167,7 +168,6 @@
 			},
 			methods: {
 				loadMore(next_page_url){
-					console.log('loadmore')
 					console.log(next_page_url)
 					this.$http.get(next_page_url)
 					.then((response) => {

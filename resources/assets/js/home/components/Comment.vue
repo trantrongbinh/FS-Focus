@@ -21,17 +21,17 @@
 													<i class="fas fa-clock">
 													</i>
 													{{ comment.created_at }}
-													<span class="float-right operate">
-															<vote-button v-if="username != comment.username" :item="comment">
-															</vote-button>
-															<a href="javascript:;" @click="commentDelete(index, comment.id)" v-if="username == comment.username">
-																	<i class="fas fa-trash-alt">
-																	</i>
-															</a>
-															<a href="javascript:;" @click="reply(comment.username)">
-																	<i class="fas fa-share">
-																	</i>
-															</a>
+													<span class="float-right operate" style="font-size: 14px;">
+														<vote-button v-if="username != comment.username" :item="comment">
+														</vote-button>
+														<a href="javascript:;" @click="commentDelete(index, comment.id)" v-if="username == comment.username">
+																<i class="fas fa-trash-alt">
+																</i>
+														</a> &nbsp|&nbsp&nbsp
+														<a href="javascript:;" @click="reply(comment.username)">
+																<i class="fas fa-share">
+																</i>
+														</a>
 													</span>
 											</div>
 											<br>
@@ -39,6 +39,9 @@
 											</div>
 									</div>
 							</div>
+						   	<div  class="text-center" v-if = "commentNumber > 2" style="padding: 10px; font-size: 12px; margin-top: 10px;">
+					        	<a v-if="!isHidden" href="javascript:void(0)" @click="loadMore(next_page_url)">Load More ...</a>
+					        </div>
 							<form class="form mt-4" style="margin-top: 30px;" @submit.prevent="comment" v-if="canComment">
 									<div class="form-group row">
 											<label class="col-sm-2 col-form-label own-avatar">
@@ -112,6 +115,12 @@
 						return 0
 					}
 				},
+				commentNumber: {
+					type: String,
+					default(){
+						return 0
+					}
+				},
 				canComment: {
 					type: Boolean,
 					default () {
@@ -136,6 +145,8 @@
 					comments: [],
 					content: '',
 					isSubmiting: false,
+					next_page_url: '',
+					isHidden: false,
 					strategies: [{
 						match: /(^|\s):([a-z0-9+\-\_]*)$/,
 						search(term, callback) {
@@ -165,6 +176,7 @@
 						return data
 					})
 				this.comments = response.data.data
+				this.next_page_url = response.data.meta.pagination.links.next + '&commentable_type=' + this.commentableType
 			})
 
 			toastr.options = toastrConfig
@@ -174,6 +186,25 @@
 			}
 		},
 		methods: {
+			loadMore(next_page_url){
+				console.log('hello world')
+					console.log(next_page_url)
+					this.$http.get(next_page_url)
+					.then((response) => {
+						console.log(response.data.meta)
+						response.data.data.forEach((data) => {
+							data.content_html = this.parse(data.content_raw)
+							return data
+						})
+						this.comments.push(...response.data.data)
+              			this.next_page_url = response.data.meta.pagination.links.next + '&commentable_type=' + this.commentableType
+
+              			if(response.data.meta.pagination.current_page === response.data.meta.pagination.total_pages ){
+              				this.isHidden = true
+              			}
+					})
+				
+				},
 			comment() {
 				const data = {
 					content: this.content,

@@ -94,7 +94,7 @@ class ArticleRepository
     {
         $this->model = $this->checkAuthScope();
 
-        $article = $this->model->where('slug', $slug)->firstOrFail();
+        $article = $this->model->where('slug', $slug)->withCount('comments')->firstOrFail();
 
         $article->increment('view_count');
 
