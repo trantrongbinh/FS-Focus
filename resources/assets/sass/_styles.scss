@@ -4,6 +4,11 @@
     max-width: 1260px;
   }
 }
+@media only screen and (max-width: 970px) {
+    .left-box {
+        display: none;
+    }
+}
 .clear{
     margin-bottom: 10px;
 }

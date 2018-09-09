@@ -1,5 +1,5 @@
  <!-- Box Left-->
-<aside class="col-lg-3">
+<aside class="col-lg-3 left-box">
     <!-- Widget [Search Bar Widget]-->
     <div class="widget search">
         <header>

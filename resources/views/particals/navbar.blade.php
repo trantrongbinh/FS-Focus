@@ -26,7 +26,7 @@
         </div>
         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
             <!-- Write post-->
-            <li class="nav-item d-flex align-items-center"><a class="nav-link" href="#"><i class="fas fa-user-edit"></i></a></li>
+            <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('article/new') }}"><i class="fas fa-user-edit"></i></a></li>
              <!-- questions-->
             <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('discussion') }}"><i class="fas fa-question-circle"></i></a></li>
             <!-- Search-->
