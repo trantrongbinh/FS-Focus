@@ -233,8 +233,7 @@ export default {
 		  targetElement: document.querySelector('.CodeMirror')
 		},
 		request: {
-		  endpoint: '/api/file/\n' +
-		  '评论',
+		  endpoint: '/api/file/upload',
 		  inputName: 'image',
 		  customHeaders: {
 			'X-CSRF-TOKEN': window.Laravel.csrfToken,

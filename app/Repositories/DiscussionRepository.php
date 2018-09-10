@@ -66,7 +66,7 @@ class DiscussionRepository
     {
         $this->model = $this->checkAuthScope();
 
-        return $this->model->findOrFail($id);
+        return $this->model->withCount('comments')->findOrFail($id);
     }
 
     /**

@@ -44,16 +44,17 @@
                         @endif
                     </div>
                 </div>
+                 <!-- comment -->
                 @if(Auth::guest())
                     <comment commentable-type="discussions"
                              commentable-id="{{ $discussion->id }}"
-                             null-text=""></comment>
+                             null-text="" comment-number="{{ $discussion->comments_count }}"></comment>
                 @else
                     <comment username="{{ Auth::user()->name }}"
                              user-avatar="{{ Auth::user()->avatar }}"
                              commentable-type="discussions"
                              commentable-id="{{ $discussion->id }}"
-                             null-text=""
+                             null-text="" comment-number="{{ $discussion->comments_count }}"
                              can-comment></comment>
                 @endif
             </div>
