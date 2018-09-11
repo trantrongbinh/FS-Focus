@@ -21,7 +21,7 @@
 													<i class="fas fa-clock">
 													</i>
 													{{ comment.created_at }}
-													<span class="float-right operate" style="font-size: 14px;">
+													<span class="float-right operate" style="font-size: 12px;">
 														<vote-button v-if="username != comment.username" :item="comment">
 														</vote-button>
 														<a href="javascript:;" @click="commentDelete(index, comment.id)" v-if="username == comment.username">

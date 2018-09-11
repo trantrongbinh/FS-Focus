@@ -1,46 +1,51 @@
 <template>
 	<div class="card-footer card-comments">
-        <div class="card-comment" v-for="(comment, index) in comments">
-            <!-- User image -->
-            <div class="post-footer d-flex align-items-center">
-                <a :href="'/user/' + comment.username" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img :src="comment.avatar" alt="avatar" class="img-fluid img-circle img-sm"></div>
-                    <div class="title"><span>{{ comment.username }}</span></div>
-                </a>
-                <div class="date"><i class="far fa-clock"></i> {{ comment.created_at }}</div>
-                <div class="comments meta-last"><i class="far fa-comment-alt"></i>12</div>
-            </div>
-            <span class="float-right operate">
-				<a href="javascript:void(0)" class="float-right btn-tool" data-toggle="dropdown" v-if="username == comment.username"><i class="fas fa-ellipsis-h"></i></a>
-				<div class="dropdown-menu" style="width: 100px !important;">
-					<a class="dropdown-item" href="javascript:;" @click="reply(comment.username)">Edit</a>
-					<a class="dropdown-item" href="javascript:;" @click="commentDelete(index, comment.id)">Delete</a>
-				</div>
-			</span>
-			<span class="float-right btn-tool" v-if="username != comment.username" style="font-size: 12px;">
-				<vote-button :item="comment" ></vote-button> &nbsp|&nbsp&nbsp
-				<a href="javascript:;" @click="reply(comment.username)"><i class="fas fa-share"></i></a>
-			</span>
-            <!-- /.username -->
-            <div class="comment-body markdown"  v-html="comment.content_html">	
+		<div :class="contentWrapperClass">
+			<div :class="nullClass" v-if="comments.length == 0">
+					{{ nullText }}
 			</div>
-            <!-- /.comment-text -->
-        </div>
-        <!-- /.card-comment -->
-        <div  class="text-center" v-if = "commentNumber > 2" style="padding: 10px; font-size: 12px;">
-        	<a v-if="!isHidden" href="javascript:void(0)" @click="loadMore(next_page_url)">Load More ...</a>
-        </div>
-        <!-- form comment   -->            
-        <form class="submit-comment" style="margin-top: 30px;" @submit.prevent="comment" v-if="canComment">
-        	<a :href="'/user/' + username">
-            	<img class="img-fluid img-circle img-sm" :src="userAvatar" alt="Alt Text">
-            </a>
-            <div class="img-push">
-                <text-complete id="content" area-class="form-control" v-model="content" placeholder="Markdown" :rows="2" :strategies="strategies"></text-complete>
-            	<button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-outline-danger btn-sm" style="margin-left: 50px; padding-top: 2px; padding-bottom: 2px;">Send</button>
-            </div>
-        </form>
-        <!-- /.card-comment -->
+	        <div class="card-comment" v-for="(comment, index) in comments">
+	            <!-- User image -->
+	            <div class="post-footer d-flex align-items-center">
+	                <a :href="'/user/' + comment.username" class="author d-flex align-items-center flex-wrap">
+	                    <div class="avatar"><img :src="comment.avatar" alt="avatar" class="img-fluid img-circle img-sm"></div>
+	                    <div class="title"><span>{{ comment.username }}</span></div>
+	                </a>
+	                <div class="date"><i class="far fa-clock"></i> {{ comment.created_at }}</div>
+	                <div class="comments meta-last"><i class="far fa-comment-alt"></i>12</div>
+	            </div>
+	            <span class="float-right operate">
+					<a href="javascript:void(0)" class="float-right btn-tool" data-toggle="dropdown" v-if="username == comment.username"><i class="fas fa-ellipsis-h"></i></a>
+					<div class="dropdown-menu" style="width: 100px !important;">
+						<a class="dropdown-item" href="javascript:;" @click="reply(comment.username)">Edit</a>
+						<a class="dropdown-item" href="javascript:;" @click="commentDelete(index, comment.id)">Delete</a>
+					</div>
+				</span>
+				<span class="float-right btn-tool" v-if="username != comment.username" style="font-size: 12px;">
+					<vote-button :item="comment" ></vote-button> &nbsp|&nbsp&nbsp
+					<a href="javascript:;" @click="reply(comment.username)"><i class="fas fa-share"></i></a>
+				</span>
+	            <!-- /.username -->
+	            <div class="comment-body markdown"  v-html="comment.content_html">	
+				</div>
+	            <!-- /.comment-text -->
+	        </div>
+	        <!-- /.card-comment -->
+	        <div  class="text-center" v-if = "commentNumber > 2" style="padding: 10px; font-size: 12px;">
+	        	<a v-if="!isHidden" href="javascript:void(0)" @click="loadMore(next_page_url)">Load More ...</a>
+	        </div>
+	        <!-- form comment   -->            
+	        <form class="submit-comment" style="margin-top: 30px;" @submit.prevent="comment" v-if="canComment">
+	        	<a :href="'/user/' + username">
+	            	<img class="img-fluid img-circle img-sm" :src="userAvatar" alt="Alt Text">
+	            </a>
+	            <div class="img-push">
+	                <text-complete id="content" area-class="form-control" v-model="content" placeholder="Markdown" :rows="2" :strategies="strategies"></text-complete>
+	            	<button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-outline-danger btn-sm" style="margin-left: 50px; padding-top: 2px; padding-bottom: 2px;">Send</button>
+	            </div>
+	        </form>
+        	<!-- /.card-comment -->
+    	</div>
     </div>
     <!-- /.card-footer -->
 </template>
@@ -58,6 +63,12 @@
 		export default {
 			components: { VoteButton, TextComplete },
 			props: {
+				contentWrapperClass: {
+					type: String,
+					default () {
+						return 'col-md-12'
+					}
+				},
 				title: {
 					type: String,
 					default () {

@@ -33,7 +33,7 @@
                                             <div class="post-footer d-flex align-items-center">
                                                 <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
                                                     <div class="avatar"><img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}" class="img-fluid"></div>
-                                                    <div class="title"><span>John Doe</span></div>
+                                                    <div class="title"><span>{{ $article->user->name }}</span></div>
                                                 </a>
                                                 <div class="date"><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</div>
                                                 <div class="comments meta-last"><i class="far fa-comment-alt"></i>12</div>
@@ -48,12 +48,8 @@
                                             <span class="cinema">{{ $article->subtitle }}</span>
                                         </div>
                                         <div class="description">
-                                            {{ $article->meta_description }}
-                                            @if(strlen($article->content['raw'] ) < 2000)
-                                                <a href="javascript:void(0)"  id="read-more{{$article->id}}" onclick="readMore()">... more</a>
-                                            @else
-                                                <a href="{{ url($article->slug) }}">... more</a>
-                                            @endif
+                                            {{ $article->meta_description }}                                            
+                                            <a class="text-blue" href="{{ url($article->slug) }}">... more</a>
                                         </div>
                                         @if($article->page_image)
                                             <div class="row mb-3" style="margin-top: 10px;">
@@ -66,20 +62,20 @@
                                             </div>
                                         @endif
                                         <p>
-                                            <a href="#" class="link-black text-sm mr-2"><i class="fa fa-share mr-1"></i> Share</a>
-                                            <a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up mr-1"></i> Like</a>
+                                            <a href="#" class="link-black text-sm mr-2"><i class="far fa-star mr-1"></i> Rate (2)</a>
+                                            <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like (100)</a>
                                             <span class="float-right">
                                                   <a href="#" class="link-black text-sm">
-                                                    <i class="fa fa-comments-o mr-1"></i> Comments (5)
+                                                    <i class="far fa-comments mr-1"></i> Comments (5)
                                                 </a>
                                             </span>
                                         </p>
                                     </div>
                                     <!-- comment -->
                                     @if(Auth::guest())
-                                    <comment-home title="Post Comments" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}"></comment-home>
+                                    <comment-home title="Post Comments" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text=""></comment-home>
                                     @else
-                                    <comment-home title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" can-comment></comment-home>
+                                    <comment-home title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="" can-comment></comment-home>
                                     @endif
                                 </div>
                                 <!-- /.post -->
