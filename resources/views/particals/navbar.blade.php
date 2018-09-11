@@ -25,10 +25,15 @@
             </div>
         </div>
         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+            @if (Auth::guest())
             <!-- Write post-->
-            <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('article/new') }}"><i class="fas fa-user-edit"></i></a></li>
+            <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('login') }}" data-toggle="tooltip" title="Write an article"><i class="fas fa-user-edit"></i></a></li>
+            @else
+            <!-- Write post-->
+            <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('article/new') }}" data-toggle="tooltip" title="Write an article"><i class="fas fa-user-edit"></i></a></li>
+            @endif
              <!-- questions-->
-            <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('discussion') }}"><i class="fas fa-question-circle"></i></a></li>
+            <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('discussion') }}" data-toggle="tooltip" title="Discussion"><i class="fas fa-question-circle"></i></a></li>
             <!-- Search-->
             <li class="nav-item d-flex align-items-center"><a id="search" class="nav-link" href="#"><i class="fas fa-search"></i></a></li>
             <!-- Authentication Links -->

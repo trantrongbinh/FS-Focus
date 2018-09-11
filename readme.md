@@ -1,8 +1,8 @@
-## About Blog Q & A ##
+## About FS-Focus | FullStask Focus ##
 
 ### Purpose
 
-Blog Q & A is my project for the purpose of synthesizing, archiving, solving problems, knowledge of information technology. My goal for this blog is to help you guys as much as possible.
+FS-Focus is my project for the purpose of synthesizing, archiving, solving problems, knowledge of information technology. My goal for this blog is to help you guys as much as possible.
 
 ### Technology
 
@@ -21,7 +21,7 @@ Blog Q & A is my project for the purpose of synthesizing, archiving, solving pro
 
 ### About Me
 
-- trantrongbinh
+- trantrongbinh - developer
 	"Learning new languages and technologies is what I am passionate about."
 
 ## Installation

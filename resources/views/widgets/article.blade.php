@@ -6,18 +6,123 @@
         <main class="posts-listing col-lg-7">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card p-2">
-                        <ul class="nav nav-pills" style="margin: 0 auto;">
-                            <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab"> Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab"> Posts</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab"> Questions</a></li>
-                        </ul>
-                        <div class="clear"></div>
-                        <div class="" style="display: inline-block;">
+                    <div class="card">
+                        <div class="card-body">
                             @if (Auth::guest())
-                                    <img src="/images/default.png" alt="..." class="img-fluid img-circle" data-toggle="tooltip" data-placement="bottom" title="Avatar" style="height: 50px; width: 50px; margin-left: 5px; margin-right: 10px; float: left;"><span class="add-question card" style="border: 2px solid #ECECEC; padding-bottom: 30px;  -moz-border-radius: 5px; -webkit-border-radius: 5px;"><a href="{{ url('login') }}" data-toggle="modal" data-target="#questionModal"><span class="description" style="padding: 10px;"><strong> What is your question?</strong></span></a></span>
+                                <a rel="nofollow " href="{{ url('login') }}" class=" d-flex">
+                                    <div class="news-f-img"> <img src="/images/default.png" alt="User Image" class="img-fluid img-circle"  width="60"></div>
+                                    <div class="msg-body" style="margin-left: 30px;">
+                                        <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
+                                        <small>{{ lang('Discuss Subtitle') }}</small>
+                                    </div>
+                                </a>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-11">
+                                        <a href="{{ url('login') }}" class="btn btn-outline-secondary btn-sm" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a> &nbsp
+                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm"><i class="fas fa-question-circle"></i> Discussion</a>
+                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right"><i class="fas fa-edit"></i> Post</a>
+                                    </div>
+                                </div>
                             @else
-                                <img src="{{ Auth::user()->avatar }}" alt="..."  class="img-fluid rounded-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" style="height: 50px; width: 50px; margin-left: 5px; margin-right: 10px; float: left;"><span class="add-question card" style="border: 2px solid #ECECEC; padding-bottom: 30px;  -moz-border-radius: 5px; -webkit-border-radius: 5px;"><a href="{{ url('login') }}" data-toggle="modal" data-target="#questionModal"><span class="description" style="padding: 10px;"><strong> What is your question?</strong></span></a></span>
+                                <a rel="nofollow " href="javascript:;" class=" d-flex" data-toggle="modal" data-target="#postModal">
+                                    <div class="news-f-img"> <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60"></div>
+                                    <div class="msg-body" style="margin-left: 30px; ">
+                                        <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
+                                        <small>{{ lang('Discuss Subtitle') }}</small>
+                                    </div>
+                                </a>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-11">
+                                        <a href="{{ url('article/new') }}" class="btn btn-outline-secondary btn-sm" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a> &nbsp
+                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm"><i class="fas fa-question-circle"></i> Discussion</a>
+                                        <a href="javascript:;" class="btn btn-info btn-sm float-right" data-toggle="modal" data-target="#postModal"><i class="fas fa-edit"></i> Post</a>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="postModal">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="card card-info card-outline">
+                                                        <div class="card-header">
+                                                            <h3 class="card-title">
+                                                                <i class="fa fa-paper-plane"></i>
+                                                                <small>Thank for send your question !!!</small>
+                                                             </h3>
+                                                            <!-- tools box -->
+                                                            <div class="card-tools">
+                                                                <a class="float-right btn-tool close" href="javascript:;" data-dismiss="modal">&times;</a>
+                                                            </div>
+                                                            <!-- /. tools -->
+                                                        </div>
+                                                        <!-- /.card-header -->
+                                                        <form class="form" action="{{ url('discussion') }}" method="POST">
+                                                            {{ csrf_field() }}
+                                                            <div class="card-body">
+                                                                <div class="form-group row">
+                                                                    <label for="title" class="col-sm-2 col-form-label">{{ lang('Discuss Title') }}</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input type="text" id="title" name="title" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" value="{{ old('title') }}">
+
+                                                                        @if ($errors->has('title'))
+                                                                            <span class="invalid-feedback">
+                                                                                <strong>{{ $errors->first('title') }}</strong>
+                                                                            </span>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-2 col-form-label">{{ lang('Discuss Tag') }}</label>
+                                                                    <div class="col-sm-10">
+                                                                        <select class="form-control tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple="multiple" name="tags[]" style="width: 100%">
+                                                                            @foreach($tags as $tag)
+                                                                                <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                                                                            @endforeach
+                                                                        </select>
+
+                                                                        @if ($errors->has('tags'))
+                                                                            <span class="invalid-feedback d-block">
+                                                                                <strong>{{ $errors->first('tags') }}</strong>
+                                                                            </span>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="content" class="col-sm-2 col-form-label">{{ lang('Discuss Content') }}</label>
+                                                                    <div class="col-sm-10">
+                                                                        <textarea class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}" id="content" rows="7" name="content">{{ old('content') }}</textarea>
+
+                                                                        @if ($errors->has('content'))
+                                                                            <span class="invalid-feedback">
+                                                                                <strong>{{ $errors->first('content') }}</strong>
+                                                                            </span>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="content" class="col-sm-2 col-form-label"><i class="fas fa-user"></i></label>
+                                                                    <div class="col-sm-10">
+                                                                        <p class="text-sm mb-0"><span class="fa fa-hand-o-right"></span><b> How to quickly get a good answer:</b>
+                                                                        <i>Keep your question short and to the point. Check for grammar or spelling errors. Phrase it like a question</i></p>
+                                                                    </div>
+                                                                </div>                                                    
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-outline-primary btn-sm" onClick="this.form.submit(); this.disabled=true;">{{ lang('Create Discussion') }}</button>
+                                                                <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <!-- /.card -->
+                                                </div>
+                                                <!-- /.col-->
+                                            </div>
+                                            <!-- ./row -->
+                                        </div>
+                                    </div>
+                                </div>
                             @endif
                         </div>
                     </div>
@@ -85,209 +190,6 @@
                             </div>
                             <!-- Pagination -->
                                 {{ $articles->links('pagination.default') }}
-                        </div>
-                        <!-- /.tab-pane -->
-                        <div class="tab-pane card" id="timeline">
-                            <div class="row card-body">
-                                <!-- post -->
-                                <div class="post col-xl-6">
-                                    <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid"></a></div>
-                                    <div class="post-details">
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <div class="date meta-last">20 May | 2016</div>
-                                            <div class="category"><a href="#">Business</a></div>
-                                        </div>
-                                        <a href="post.html">
-                                            <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3>
-                                        </a>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                        <footer class="post-footer d-flex align-items-center">
-                                            <a href="#" class="author d-flex align-items-center flex-wrap">
-                                                <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
-                                                <div class="title"><span>John Doe</span></div>
-                                            </a>
-                                            <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                            <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                        </footer>
-                                    </div>
-                                </div>
-                                <!-- post -->
-                                <div class="post col-xl-6">
-                                    <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid"></a></div>
-                                    <div class="post-details">
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <div class="date meta-last">20 May | 2016</div>
-                                            <div class="category"><a href="#">Business</a></div>
-                                        </div>
-                                        <a href="post.html">
-                                            <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3>
-                                        </a>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                        <footer class="post-footer d-flex align-items-center">
-                                            <a href="#" class="author d-flex align-items-center flex-wrap">
-                                                <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
-                                                <div class="title"><span>John Doe</span></div>
-                                            </a>
-                                            <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                            <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                        </footer>
-                                    </div>
-                                </div>
-                                <!-- post -->
-                                <div class="post col-xl-6">
-                                    <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid"></a></div>
-                                    <div class="post-details">
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <div class="date meta-last">20 May | 2016</div>
-                                            <div class="category"><a href="#">Business</a></div>
-                                        </div>
-                                        <a href="post.html">
-                                            <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3>
-                                        </a>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                        <footer class="post-footer d-flex align-items-center">
-                                            <a href="#" class="author d-flex align-items-center flex-wrap">
-                                                <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
-                                                <div class="title"><span>John Doe</span></div>
-                                            </a>
-                                            <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                            <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                        </footer>
-                                    </div>
-                                </div>
-                                <!-- post -->
-                                <div class="post col-xl-6">
-                                    <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid"></a></div>
-                                    <div class="post-details">
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <div class="date meta-last">20 May | 2016</div>
-                                            <div class="category"><a href="#">Business</a></div>
-                                        </div>
-                                        <a href="post.html">
-                                            <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3>
-                                        </a>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                        <footer class="post-footer d-flex align-items-center">
-                                            <a href="#" class="author d-flex align-items-center flex-wrap">
-                                                <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
-                                                <div class="title"><span>John Doe</span></div>
-                                            </a>
-                                            <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                            <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                        </footer>
-                                    </div>
-                                </div>
-                                <!-- post -->
-                                <div class="post col-xl-6">
-                                    <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid"></a></div>
-                                    <div class="post-details">
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <div class="date meta-last">20 May | 2016</div>
-                                            <div class="category"><a href="#">Business</a></div>
-                                        </div>
-                                        <a href="post.html">
-                                            <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3>
-                                        </a>
-                                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                        <footer class="post-footer d-flex align-items-center">
-                                            <a href="#" class="author d-flex align-items-center flex-wrap">
-                                                <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
-                                                <div class="title"><span>John Doe</span></div>
-                                            </a>
-                                            <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                            <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                        </footer>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.tab-pane -->
-                        <div class="tab-pane card-body" id="settings">
-                            <div style="margin-top: -20px; "></div>
-                            <!-- Post-->
-                            <div class="row  d-flex post card">
-                                <div class="text col-lg-12 card-body">
-                                    <div class="text-inner d-flex align-items-center">
-                                        <div class="content">
-                                            <header class="post-header">
-                                                <div class="category"><a href="#">Business</a><a href="#">Technology</a></div>
-                                                <a href="post.html"><h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
-                                                <a href="#" class="float-right btn-tool"><i class="fas fa-ellipsis-h"></i></a>
-                                            </header>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                            <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                                                <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                                                <div class="title"><span>John Doe</span></div></a>
-                                                <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                                <div class="comments"><i class="icon-comment"></i>12</div>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Post-->
-                            <div class="row d-flex post card">
-                                <div class="text col-lg-12  card-body">
-                                    <div class="text-inner d-flex align-items-center">
-                                        <div class="content">
-                                            <header class="post-header">
-                                                <div class="category"><a href="#">Business</a><a href="#">Technology</a></div>
-                                                <a href="post.html"><h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
-                                                <a href="#" class="float-right btn-tool"><i class="fas fa-ellipsis-h"></i></a>
-                                            </header>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                            <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                                                <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                                                <div class="title"><span>John Doe</span></div></a>
-                                                <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                                <div class="comments"><i class="icon-comment"></i>12</div>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Post-->
-                            <div class="row d-flex post card">
-                                <div class="text col-lg-12  card-body">
-                                    <div class="text-inner d-flex align-items-center">
-                                        <div class="content">
-                                            <header class="post-header">
-                                                <div class="category"><a href="#">Business</a><a href="#">Technology</a></div>
-                                                <a href="post.html"><h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
-                                                <a href="#" class="float-right btn-tool"><i class="fas fa-ellipsis-h"></i></a>
-                                            </header>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                            <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                                                <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                                                <div class="title"><span>John Doe</span></div></a>
-                                                <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                                <div class="comments"><i class="icon-comment"></i>12</div>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Post-->
-                            <div class="row d-flex post card">
-                                <div class="text col-lg-12  card-body">
-                                    <div class="text-inner d-flex align-items-center">
-                                        <div class="content">
-                                            <header class="post-header">
-                                                <div class="category"><a href="#">Business</a><a href="#">Technology</a></div>
-                                                <a href="post.html"><h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
-                                                <a href="#" class="float-right btn-tool"><i class="fas fa-ellipsis-h"></i></a>
-                                            </header>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                            <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                                                <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                                                <div class="title"><span>John Doe</span></div></a>
-                                                <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                                <div class="comments"><i class="icon-comment"></i>12</div>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>       
                         </div>
                         <!-- /.tab-pane -->
                     </div>

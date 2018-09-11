@@ -29,7 +29,7 @@ Vue.component('comment', require('home/components/Comment.vue'));
 
 Vue.component('comment-home', require('home/components/Comment-home.vue'));
 
-Vue.component('form-create', require('home/components/FormCreateArticle.vue'));
+Vue.component('form-content', require('home/components/FormContent.vue'));
 
 Vue.component('parse', require('home/components/Parse.vue'));
 
