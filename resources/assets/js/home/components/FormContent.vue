@@ -31,7 +31,7 @@
 			<div class="form-group row">
 			  <label for="title" class="col-sm-1 col-form-label">{{ $t('form.content') }}</label>
 			  <div class="col-sm-11">
-				<textarea id="editor"></textarea>
+				<textarea id="editor" name="content"></textarea>
 			  </div>
 			</div>
 			<div class="form-group row">

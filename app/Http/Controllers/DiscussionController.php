@@ -45,9 +45,9 @@ class DiscussionController extends Controller
      */
     public function create()
     {
-        $tags = $this->tag->all();
+        // $tags = $this->tag->all();
 
-        return view('discussion.create', compact('tags'));
+        return view('discussion.create');
     }
 
     /**

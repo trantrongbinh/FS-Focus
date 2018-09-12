@@ -15,6 +15,11 @@
         <title>@yield('title', config('app.name'))</title>
 
         <link rel="stylesheet" href="{{ mix('css/home.css') }}">
+        <style type="text/css">
+            .select2 {
+                width:100%!important;
+            }
+        </style>
         <!-- Scripts -->
         <script>
             window.Language = '{{ config('app.locale') }}';
@@ -134,8 +139,42 @@
             <div class="container">
                 <main class="article row">
                     <div class="col-md-12">
-                        <form class="form" action="" method="POST">
+                        @if ($errors->has('title') || $errors->has('subtitle') || $errors->has('content'))
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Error!</strong> Check data again.
+                                <p>{{$$errors}}</p>
+                            </div>
+                        @endif
+                        <form class="form" action="{{ url('article/new') }}" method="POST">
                             {{ csrf_field() }}
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Category</label>
+                                        <div class="col-sm-10">
+                                            <select class="custom-select" name="category_id" >
+                                                <option selected>Choose One...</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class=" form-group row">
+                                        <label class="col-sm-1 col-form-label">Tag</label>
+                                        <div class="col-sm-11">
+                                            <select class="form-control tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple="multiple" name="tags[]" style="width: 100%">
+                                                @foreach($tags as $tag)
+                                                    <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <form-content></form-content>
                             <button type="submit" class="btn btn-info btn-sm float-right"> <b>Publish</b></button>
                         </form>
@@ -152,6 +191,10 @@
         <script>
             $(function () {
                 $("[data-toggle='tooltip']").tooltip();
+            });
+
+            $(document).ready(function() {
+                $('.select').select2();
             });
             
         </script>

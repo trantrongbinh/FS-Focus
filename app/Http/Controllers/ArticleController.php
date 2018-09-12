@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Repositories\TagRepository;
-use App\Repositories\CategoryRepository;
-use App\Http\Requests\ArticleRequest;
+use App\Http\Requests\ArticleHomeRequest;
 use App\Repositories\ArticleRepository;
 
 class ArticleController extends Controller
@@ -20,11 +17,9 @@ class ArticleController extends Controller
     protected $tag;
     protected $category;
 
-    public function __construct(ArticleRepository $article, CategoryRepository $category, TagRepository $tag)
+    public function __construct(ArticleRepository $article)
     {
         $this->article = $article;
-        $this->category = $category;
-        $this->tag = $tag;
     }
 
     /**
@@ -59,21 +54,30 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $categories = $this->category->all()->pluck('name', 'id');
-        $tags = $this->tag->all()->pluck('tag', 'id');
-
-        return view('article.create', compact('categories', 'tags'));
+        return view('article.create');
     }
 
     /**
      * Store a new article.
      *
-     * @param  DiscussionRequest $request
+     * @param  \App\Http\Requests\ArticleHomeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleHomeRequest $request)
     {
-        dd($request);
+        $data = array_merge($request->all(), [
+            'user_id'      => \Auth::id(),
+            'last_user_id' => \Auth::id()
+        ]);
+
+        $data['is_draft']    = isset($data['is_draft']);
+        $data['is_original'] = isset($data['is_original']);
+        $data['content'] = $data['content'];
+        $this->article->store($data);
+
+        $this->article->syncTag(json_decode($request->get('tags')));
+
+        return redirect()->to('article');
     }
 
 }
