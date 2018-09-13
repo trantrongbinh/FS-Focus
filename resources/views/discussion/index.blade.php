@@ -133,18 +133,18 @@
                             <!-- Post-->
                             <div class="row d-flex post card">
                                 <div class="text col-lg-12 card-body">
+                                    @if(Auth::check() && Auth::user()->id == $discussion->user->id)
+                                        <a href="javascript:;" class="float-right" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="{{ url("discussion/{$discussion->id}/edit") }}">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    @else
+                                        <a href="javascript:;" class="float-right">&times;</a>
+                                    @endif
                                     <div class="text-inner d-flex align-items-center">
                                         <div class="content">
                                             <header class="post-header">
-                                                @if(Auth::check() && Auth::user()->id == $discussion->user->id)
-                                                    <a href="javascript:;" class="float-right" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="{{ url("discussion/{$discussion->id}/edit") }}">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                    </div>
-                                                @else
-                                                    <a href="javascript:;" class="float-right">&times;</a>
-                                                @endif
                                                 <div class="category">
                                                     @if(count($discussion->tags))
                                                         @foreach($discussion->tags as $tag)
