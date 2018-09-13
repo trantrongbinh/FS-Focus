@@ -65,7 +65,7 @@ class DiscussionController extends Controller
         ]);
 
         $data['content'] = $data['content'];
-
+        
         $this->discussion->store($data);
 
         return redirect()->to('discussion');

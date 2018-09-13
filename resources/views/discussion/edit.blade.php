@@ -41,6 +41,12 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="meta_description" class="col-sm-2 col-form-label">Meta Description</label>
+                        <div class="col-sm-10">
+                            <textarea id="meta_description" name="meta_description" class="form-control">{{ $discussion->meta_description }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="content" class="col-sm-2 col-form-label">{{ lang('Discuss Content') }}</label>
                         <div class="col-sm-10">
                             <parse-textarea class="{{ $errors->has('content') ? ' is-invalid' : '' }}" content="{{ json_decode($discussion->content)->raw }}"></parse-textarea>

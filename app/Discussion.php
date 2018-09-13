@@ -27,6 +27,7 @@ class Discussion extends Model
         'user_id',
         'last_user_id',
         'title',
+        'meta_description',
         'content',
         'status'
     ];

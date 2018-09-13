@@ -67,17 +67,20 @@ class ArticleController extends Controller
     {
         $data = array_merge($request->all(), [
             'user_id'      => \Auth::id(),
-            'last_user_id' => \Auth::id()
+            'last_user_id' => \Auth::id(),
+            'published_at' => date('Y-m-d H:i:s'),
         ]);
+
+        //$time_now =  \Carbon\Carbon::now();
 
         $data['is_draft']    = isset($data['is_draft']);
         $data['is_original'] = isset($data['is_original']);
         $data['content'] = $data['content'];
         $this->article->store($data);
 
-        $this->article->syncTag(json_decode($request->get('tags')));
+        $this->article->syncTag( $data['tags']);
 
-        return redirect()->to('article');
+        return redirect()->to('/');
     }
 
 }

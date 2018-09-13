@@ -129,7 +129,7 @@
                     <div class="clear"></div>
                     <div class="tab-content">
                         <div class="active tab-pane" id="activity">
-                            <div id="list-article">
+                            <div id="featured-posts">
                                 @forelse($articles as $article)
                                 <!-- Post -->
                                 <div class="post card">
@@ -138,10 +138,10 @@
                                             <div class="post-footer d-flex align-items-center">
                                                 <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
                                                     <div class="avatar"><img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}" class="img-fluid"></div>
-                                                    <div class="title"><span>{{ $article->user->name }}</span></div>
+                                                    <div class="title"><span><b>{{ $article->user->name }}</b></span></div>
                                                 </a>
-                                                <div class="date"><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</div>
-                                                <div class="comments meta-last"><i class="far fa-comment-alt"></i>12</div>
+                                                <div class="date"><b><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</b></div>
+                                                <div class="comments meta-last"><b><i class="far fa-comment-alt"></i>{{ $article->comments_count }}</b></div>
                                             </div>
                                             <a href="#" class="float-right btn-tool"><i class="fas fa-ellipsis-h"></i></a>
                                         </div>
@@ -149,9 +149,11 @@
                                         <a href="{{ url($article->slug) }}" style="margin-top: 10px;">
                                             <h3 class="h4">{{ $article->title }}</h3>
                                         </a>
-                                        <div class="meta">
-                                            <span class="cinema">{{ $article->subtitle }}</span>
-                                        </div>
+                                        @if($article->subtitle)
+                                            <div class="meta">
+                                                <span class="cinema">{{ $article->subtitle }}</span>
+                                            </div>
+                                        @endif
                                         <div class="description">
                                             {{ $article->meta_description }}                                            
                                             <a class="text-blue" href="{{ url($article->slug) }}">... more</a>
@@ -171,7 +173,7 @@
                                             <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like (100)</a>
                                             <span class="float-right">
                                                   <a href="#" class="link-black text-sm">
-                                                    <i class="far fa-comments mr-1"></i> Comments (5)
+                                                    <i class="far fa-comments mr-1"></i> Comments ({{ $article->comments_count }})
                                                 </a>
                                             </span>
                                         </p>

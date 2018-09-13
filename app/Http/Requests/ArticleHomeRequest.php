@@ -26,9 +26,7 @@ class ArticleHomeRequest extends FormRequest
         return [
             'title'         => 'required|min:3',
             'tags'          => 'required',
-            'subtitle'      => 'required|min:3',
             'content'       => 'required',
-            'category_id'   => 'required',
         ];
     }
 }

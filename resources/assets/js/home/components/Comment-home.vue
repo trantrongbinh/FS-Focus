@@ -8,7 +8,7 @@
 	            <!-- User image -->
 	            <div class="post-footer d-flex align-items-center">
 	                <a :href="'/user/' + comment.username" class="author d-flex align-items-center flex-wrap">
-	                    <div class="avatar"><img :src="comment.avatar" alt="avatar" class="img-fluid img-circle img-sm"></div>
+	                    <div style="margin-right: 10px;"><img :src="comment.avatar" alt="avatar" class="img-fluid img-circle img-sm"></div>
 	                    <div class="title"><span>{{ comment.username }}</span></div>
 	                </a>
 	                <div class="date"><i class="far fa-clock"></i> {{ comment.created_at }}</div>
@@ -16,7 +16,7 @@
 	            </div>
 	            <span class="float-right operate">
 					<a href="javascript:void(0)" class="float-right btn-tool" data-toggle="dropdown" v-if="username == comment.username"><i class="fas fa-ellipsis-h"></i></a>
-					<div class="dropdown-menu" style="width: 100px !important;">
+					<div class="dropdown-menu">
 						<a class="dropdown-item" href="javascript:;" @click="reply(comment.username)">Edit</a>
 						<a class="dropdown-item" href="javascript:;" @click="commentDelete(index, comment.id)">Delete</a>
 					</div>
@@ -41,7 +41,7 @@
 	            </a>
 	            <div class="img-push">
 	                <text-complete id="content" area-class="form-control" v-model="content" placeholder="Markdown" :rows="2" :strategies="strategies"></text-complete>
-	            	<button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-outline-danger btn-sm" style="margin-left: 50px; padding-top: 2px; padding-bottom: 2px;">Send</button>
+	            	<button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-outline-info btn-sm" style="margin-left: 50px; padding-top: 2px; padding-bottom: 2px;">Send</button>
 	            </div>
 	        </form>
         	<!-- /.card-comment -->

@@ -139,13 +139,17 @@
             <div class="container">
                 <main class="article row">
                     <div class="col-md-12">
-                        @if ($errors->has('title') || $errors->has('subtitle') || $errors->has('content'))
-                            <div class="alert alert-danger alert-dismissible fade show">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Error!</strong> Check data again.
-                                <p>{{$$errors}}</p>
+                        <div class="form-group row">
+                            <label for="title" class="col-sm-1 col-form-label"></label>
+                            <div class="col-sm-11">
+                                <div class="alert alert-primary alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <p>Các thẻ có <code>*</code> là bắt buộc. Khi bạn lựa chọn <code>is Draft?</code> thi bai cua ban chi la ban nhap khi chua viet xong, mac dinh bai viet la ban chinh khi khong lua chon <code>is Draft?</code> va <code>Is Original?</code>. Ngoai ra bai viet co the kem theo anh chu de hoac khong!</p>
+                                    <p>Phan noi dung co the <code>keo tha</code> anh vao hoac <code>page link</code> anh vao form</p>
+                                    <p>Cam on ban da viet bai chia se cho cong dong, rat mong nhan duoc nhieu su chia se,  y kien, phan hoi tu ban. Chuc ban co mot ngay lam viec hieu qua !!!</p>
+                                </div>
                             </div>
-                        @endif
+                        </div>
                         <form class="form" action="{{ url('article/new') }}" method="POST">
                             {{ csrf_field() }}
                             <div class="form-group row">
@@ -154,7 +158,7 @@
                                         <label class="col-sm-2 col-form-label">Category</label>
                                         <div class="col-sm-10">
                                             <select class="custom-select" name="category_id" >
-                                                <option selected>Choose One...</option>
+                                                <option value={{null}}>No Category (You can select one Category or no)</option>
                                                 @foreach($categories as $category)
                                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                                 @endforeach
@@ -164,8 +168,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class=" form-group row">
-                                        <label class="col-sm-1 col-form-label">Tag</label>
-                                        <div class="col-sm-11">
+                                        <label class="col-sm-2 col-form-label">Tag <code style="font-size: 20px;">*</code></label>
+                                        <div class="col-sm-10">
+                                            @if ($errors->has('tags'))
+                                                <span class="invalid-feedback d-block">
+                                                    <strong>{{ $errors->first('tags') }}</strong>
+                                                </span>
+                                            @endif
                                             <select class="form-control tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple="multiple" name="tags[]" style="width: 100%">
                                                 @foreach($tags as $tag)
                                                     <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
@@ -175,9 +184,44 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="title" class="col-sm-1 col-form-label">Title <code style="font-size: 20px;">*</code></label>
+                                <div class="col-sm-11">
+                                    @if ($errors->has('title'))
+                                        <span class="invalid-feedback d-block">
+                                            <strong>{{ $errors->first('title') }}</strong>
+                                        </span>
+                                    @endif
+                                    <input type="text" id="title" name="title" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="subtitle" class="col-sm-1 col-form-label">Subtitle</label>
+                                <div class="col-sm-11">
+                                    <input type="text" id="subtitle" name="subtitle" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="title" class="col-sm-1 col-form-label"></label>
+                                <div class="col-sm-11">
+                                    @if ($errors->has('content'))
+                                        <div class="alert alert-danger alert-dismissible fade show">
+                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                            <strong>{{ $errors->first('content') }}</strong> Check content again.
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
                             <form-content></form-content>
+                            <div class="form-group row">
+                                <label for="meta_description" class="col-sm-1 col-form-label">Meta Description</label>
+                                <div class="col-sm-11">
+                                    <textarea id="meta_description" name="meta_description" class="form-control"></textarea>
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-info btn-sm float-right"> <b>Publish</b></button>
                         </form>
+                        <div style="margin-bottom: 200px;"></div>
                     </div>
                 </main>
             </div>

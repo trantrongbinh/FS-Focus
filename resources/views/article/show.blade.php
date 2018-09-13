@@ -10,39 +10,39 @@
                 <div class="post-single">
                     <div class="text-center">
                         <div class="post-meta justify-content-between">
-                            <div class="category"><a href="#">{{ $article->category->name }}</a></div>
+                            @if($article->category_id)<h4 class="h5"><i class="fas fa-link text-blue"></i> <a href="#"> {{ $article->category->name }}</a></h4>@endif
                         </div>
                         <h1>{{ $article->title }}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
-                        <h3 class="h4" style="color: #9F9F9F;">{{ $article->subtitle }}</h3>
-                        <div class="post-footer d-flex align-items-center flex-column flex-sm-row">
+                        <div class="post-footer d-flex align-items-center flex-column flex-sm-row" style="font-size: 12px;">
                             <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
                                 <div class="avatar"><img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}" class="img-fluid"></div>
-                                <div class="title"><span>J{{ $article->user->name or 'No Name' }}</span></div>
+                                <div class="title"><span><b>{{ $article->user->name or 'No Name' }}</b></span></div>
                             </a>
                             <div class="d-flex align-items-center flex-wrap">
-                                <div class="date"><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</div>
-                                <div class="views"><i class="far fa-eye"></i> 500</div>
-                                <div class="comments meta-last"><i class="far fa-comment-alt"></i>12</div>
+                                <div class="date"><b><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</b></div>
+                                <div class="views"><b><i class="far fa-eye"></i> {{ $article->view_count }}</b></div>
+                                <div class="comments meta-last"><b><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</b></div>
                             </div>
                         </div>
                     </div>
                     <br>
                     @if($article->page_image)
-                        <div class="post-thumbnail"><img src="{{ $article->page_image }}" alt="{{ $article->slug }}" class="img-fluid"></div>
+                        <div class="text-center"><img src="{{ $article->page_image }}" alt="{{ $article->slug }}" class="img-fluid"></div>
                     @endif
                     <div class="post-details">
-                        <div class="post-body">
+
+                        <div class="post-body" style="font-size: 18px;">
+                            <h4>{{ $article->subtitle }}</h4>
                             <p class="lead">{{ $article->meta_description }}</p>
                             <parse content="{{ $article->content['raw'] }}"></parse>
                         </div>
                         <br>
-                        @if($article->is_original)
+                       {{--  @if($article->is_original) --}}
                         <div class="publishing alert alert-dismissible alert-info">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             {!! config('blog.license') !!}
                         </div>
-                        @endif
-                        <br>
+                       {{--  @endif --}}
                         <div class="post-tags">
                             @if(count($article->tags))
                                 @foreach($article->tags as $tag)
@@ -61,6 +61,7 @@
                         </div>
                     </div>
                     @endif
+                    <br>
                     <!-- comment -->
                     @if(Auth::guest())
                         <comment title="Post Comments" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text=""></comment>

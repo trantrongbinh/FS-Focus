@@ -2,18 +2,6 @@
   <div class="row">
 	  	<div class="col-sm-12">
 			<div class="form-group row">
-			  <label for="title" class="col-sm-1 col-form-label">{{ $t('form.title') }}</label>
-			  <div class="col-sm-11">
-				<input type="text" id="title" name="title" v-model="article.title" class="form-control">
-			  </div>
-			</div>
-			<div class="form-group row">
-			  <label for="subtitle" class="col-sm-1 col-form-label">{{ $t('form.subtitle') }}</label>
-			  <div class="col-sm-11">
-				<input type="text" id="subtitle" name="subtitle" v-model="article.subtitle" class="form-control">
-			  </div>
-			</div>
-			<div class="form-group row">
 			  	<label for="page_image" class="col-sm-1 col-form-label">{{ $t('form.page_image') }}</label>
 			  	<div class="col-sm-7">
 					<input type="text" id="page_image" class="form-control" name="page_image" v-model="article.page_image" placeholder="ex: /uploads/default_avatar.png">
@@ -29,15 +17,9 @@
 			  	</div>
 			</div>
 			<div class="form-group row">
-			  <label for="title" class="col-sm-1 col-form-label">{{ $t('form.content') }}</label>
+			  <label for="title" class="col-sm-1 col-form-label">{{ $t('form.content') }} <code style="font-size: 20px;">*</code></label>
 			  <div class="col-sm-11">
 				<textarea id="editor" name="content"></textarea>
-			  </div>
-			</div>
-			<div class="form-group row">
-			  <label for="meta_description" class="col-sm-1 col-form-label">{{ $t('form.meta_description') }}</label>
-			  <div class="col-sm-11">
-				<textarea id="meta_description" name="meta_description" v-model="article.meta_description" class="form-control"></textarea>
 			  </div>
 			</div>
 			<div class="form-group row">

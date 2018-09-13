@@ -50,7 +50,7 @@
                                                                     {{ csrf_field() }}
                                                                     <div class="card-body">
                                                                         <div class="form-group row">
-                                                                            <label for="title" class="col-sm-2 col-form-label">{{ lang('Discuss Title') }}</label>
+                                                                            <label for="title" class="col-sm-2 col-form-label">{{ lang('Discuss Title') }} <code style="font-size: 20px;">*</code></label>
                                                                             <div class="col-sm-10">
                                                                                 <input type="text" id="title" name="title" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" value="{{ old('title') }}">
 
@@ -62,7 +62,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
-                                                                            <label class="col-sm-2 col-form-label">{{ lang('Discuss Tag') }}</label>
+                                                                            <label class="col-sm-2 col-form-label">{{ lang('Discuss Tag') }} <code style="font-size: 20px;">*</code></label>
                                                                             <div class="col-sm-10">
                                                                                 <select class="form-control tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple="multiple" name="tags[]" style="width: 100%">
                                                                                     @foreach($tags as $tag)
@@ -78,7 +78,13 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group row">
-                                                                            <label for="content" class="col-sm-2 col-form-label">{{ lang('Discuss Content') }}</label>
+                                                                            <label for="meta_description" class="col-sm-2 col-form-label">Meta Description</label>
+                                                                            <div class="col-sm-10">
+                                                                                <textarea id="meta_description" name="meta_description" class="form-control"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label for="content" class="col-sm-2 col-form-label">{{ lang('Discuss Content') }} <code style="font-size: 20px;">*</code></label>
                                                                             <div class="col-sm-10">
                                                                                 <textarea class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}" id="content" rows="7" name="content">{{ old('content') }}</textarea>
 
@@ -147,8 +153,8 @@
                                                     @endif
                                                 </div>
                                                 <a href="{{ url('discussion', ['id' => $discussion->id]) }}"><h3 class="h4">{{ $discussion->title }}</h3></a>
+                                                @if($discussion->meta_description)<p>{{ $discussion->meta_description}}</p>@endif
                                             </header>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
                                             <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                                                 <div class="avatar"><img src="{{ $discussion->user->avatar ?? config('blog.default_avatar') }}" alt="Avatar" class="img-fluid"></div>
                                                 <div class="title"><span> {{ $discussion->user->name or 'null' }} </span></div></a>
@@ -173,7 +179,6 @@
 
         </div>
     </div>
-
 @endsection
 
 @section('scripts')
@@ -181,4 +186,3 @@
     $('.select').select2();
 </script>
 @endsection
-
