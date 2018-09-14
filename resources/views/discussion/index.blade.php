@@ -21,14 +21,14 @@
                                             </div>
                                         </a>
                                     @else
-                                        <a rel="nofollow " href="javascript:;" class=" d-flex" data-toggle="modal" data-target="#questionModal">
+                                        <a rel="nofollow " href="javascript:;" class=" d-flex" data-toggle="modal" data-target="#myModal">
                                             <div class="news-f-img"> <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60"></div>
                                             <div class="msg-body" style="margin-left: 30px; ">
                                                 <h3 class="h5 msg-nav-h3">What is your question?</h3>
                                                 <small>{{ lang('Discuss Subtitle') }}</small>
                                             </div>
                                         </a>
-                                        <div class="modal fade" id="questionModal">
+                                        <div class="modal fade" id="myModal">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="row">

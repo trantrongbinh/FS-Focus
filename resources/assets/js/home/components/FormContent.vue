@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+	<div class="row">
 	  	<div class="col-sm-12">
 			<div class="form-group row">
 			  	<label for="page_image" class="col-sm-1 col-form-label">{{ $t('form.page_image') }}</label>
@@ -7,7 +7,7 @@
 					<input type="text" id="page_image" class="form-control" name="page_image" v-model="article.page_image" placeholder="ex: /uploads/default_avatar.png">
 			  	</div>
 			  	<div class="col-sm-4">
-					<img v-if="article.page_image != null && article.page_image != ''" :src="article.page_image" alt="Idist" width="35" height="35">
+					<img v-if="article.page_image != null && article.page_image != ''" :src="article.page_image" alt="FS-Focus" width="35" height="35">
 					<div class="cover-upload pull-right">
 				  		<a href="javascript:;" class="btn btn-success file">
 					  		<span>{{ $t('form.upload_file') }}</span>
@@ -47,7 +47,7 @@
 			  </div>
 			</div>
 	  	</div>
-  </div>
+	</div>
 </template>
 
 <script>
@@ -57,26 +57,32 @@ import FineUploader from 'fine-uploader/lib/traditional'
 import emojione from 'emojione'
 
 export default {
-  	props: {
+	props: {
 		article: {
-	  		type: Object,
-	  		default () {
+			type: Object,
+			default () {
 				return {
 		  			page_image: ''
 				}
-	  		}
+			}
+		},
+		url_image: {
+			type: String,
+			default () {
+				return ''
+			}
+		},
+		content: {
+			type: String,
+			default () {
+				return ''
+			}
 		}
-  	},
+	},
   	data() {
 		return {
-	  		simplemde: '',
-	  		content: '',
+	  		simplemde: ''
 		}
-  	},
-  	computed: {
-		mode() {
-	  		return this.article.id ? 'update' : 'create'
-		},
   	},
   	mounted() {
 		let t = this.$t
@@ -94,6 +100,8 @@ export default {
 	  		},
 		})
 
+		this.simplemde.value(this.content)
+		this.article.page_image = this.url_image
 		this.contentUploader()
   	},
   	methods: {

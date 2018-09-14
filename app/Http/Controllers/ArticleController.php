@@ -8,14 +8,10 @@ use App\Repositories\ArticleRepository;
 
 class ArticleController extends Controller
 {
-    protected $article;
-
     /**
-    * @var \App\Repositories\TagRepository
-    * @var  \App\Repositories\CategoryRepository
-    */
-    protected $tag;
-    protected $category;
+     * @var \App\Repositories\ArticleRepository
+     */
+    protected $article;
 
     public function __construct(ArticleRepository $article)
     {
@@ -81,6 +77,23 @@ class ArticleController extends Controller
         $this->article->syncTag( $data['tags']);
 
         return redirect()->to('/');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $article = $this->article->getById($id);
+
+        $this->authorize('update', $article);
+
+        $selectTags = $this->article->listTagsIdsForArticle($article);
+
+        return view('article.edit', compact('article', 'selectTags'));
     }
 
 }

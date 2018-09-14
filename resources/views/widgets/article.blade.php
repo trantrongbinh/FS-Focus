@@ -143,7 +143,15 @@
                                                 <div class="date"><b><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</b></div>
                                                 <div class="comments meta-last"><b><i class="far fa-comment-alt"></i>{{ $article->comments_count }}</b></div>
                                             </div>
-                                            <a href="#" class="float-right btn-tool"><i class="fas fa-ellipsis-h"></i></a>
+                                            @if(Auth::check() && Auth::user()->id == $article->user->id)
+                                                <a href="javascript:;" class="float-right  btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="{{ url("article/{$article->id}/edit") }}">Edit</a>
+                                                    <a class="dropdown-item" href="#">Delete</a>
+                                                </div>
+                                            @else
+                                                <a href="javascript:;" class="float-right btn-tool">&times;</a>
+                                            @endif
                                         </div>
                                         <!-- /.user-block -->
                                         <a href="{{ url($article->slug) }}" style="margin-top: 10px;">

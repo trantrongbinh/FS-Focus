@@ -146,6 +146,18 @@ class ArticleRepository
     }
 
     /**
+     * Get a list of tag ids that are associated with the given article.
+     *
+     * @param \App\Article $article
+     *
+     * @return array
+     */
+    public function listTagsIdsForArticle(Article $article)
+    {
+        return $article->tags->pluck('id')->toArray();
+    }
+
+    /**
      * Delete the draft article.
      *
      * @param int $id
