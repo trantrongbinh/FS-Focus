@@ -132,6 +132,17 @@ class Article extends Model
     }
 
     /**
+     * Get the unique slug.
+     *
+     * @return param $extra
+     */
+
+    public function getUniqueSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
      * Set the unique slug.
      *
      * @param $value

@@ -168,7 +168,7 @@
                                         </div>
                                         @if($article->page_image)
                                             <div class="row mb-3" style="margin-top: 10px;">
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-12 text-center">
                                                     <a href="{{ url($article->slug) }}">
                                                         <img class="img-fluid" alt="{{ $article->slug }}" src="{{ $article->page_image }}" data-holder-rendered="true">
                                                     </a>

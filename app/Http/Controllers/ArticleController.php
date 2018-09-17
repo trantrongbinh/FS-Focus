@@ -96,4 +96,28 @@ class ArticleController extends Controller
         return view('article.edit', compact('article', 'selectTags'));
     }
 
+    /**
+     * Update the article by id.
+     *
+     * @param  ArticleHomeRequest $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(ArticleHomeRequest $request, $id)
+    {
+        $article = $this->article->getById($id);
+
+        $this->authorize('update', $article);
+
+        $data = array_merge($request->all(), [
+            'last_user_id' => \Auth::id()
+        ]);
+
+        $data['content'] = $data['content'];
+
+        $this->article->update($id, $data);
+
+        return redirect()->to("{$this->article->getSlug()}");
+    }
+
 }

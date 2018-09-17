@@ -70,6 +70,16 @@ class ArticleRepository
     }
 
     /**
+     * Get the slug.
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->model->getUniqueSlug();
+    }
+
+    /**
      * Update the article record without draft scope.
      *
      * @param  int $id

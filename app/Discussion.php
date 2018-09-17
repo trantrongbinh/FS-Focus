@@ -75,6 +75,50 @@ class Discussion extends Model
     }
 
     /**
+     * Set the title and the readable slug.
+     *
+     * @param string $value
+     */
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+
+        if (!config('services.youdao.appKey') || !config('services.youdao.appSecret')) {
+            $this->setUniqueSlug($value, str_random(5));
+        } else {
+            $this->setUniqueSlug(translug($value), '');
+        }
+    }
+
+    /**
+     * Get the unique slug.
+     *
+     * @return param $extra
+     */
+
+    public function getUniqueSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set the unique slug.
+     *
+     * @param $value
+     * @param $extra
+     */
+    public function setUniqueSlug($value, $extra) {
+        $slug = str_slug($value.'-'.$extra);
+
+        if (static::whereSlug($slug)->exists()) {
+            $this->setUniqueSlug($slug, (int) $extra + 1);
+            return;
+        }
+
+        $this->attributes['slug'] = $slug;
+    }
+
+    /**
      * Set the content attribute.
      *
      * @param $value
