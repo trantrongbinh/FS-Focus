@@ -25,7 +25,7 @@
                         <div class="title"><strong>{{ $post->title }}</strong>
                             <div class="d-flex align-items-center">
                                 <div class="views"><i class="far fa-eye"></i></i> {{ $post->view_count }}</div>
-                                <div class="comments"><i class="far fa-comment-alt"></i> 12</div>
+                                <div class="comments"><i class="far fa-comment-alt"></i> {{ $post->comments_count }}</div>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
             <h3 class="h6">Categories</h3>
         </header>
         @foreach ($categories as $category)
-            <div class="item d-flex justify-content-between"><a href="{{ $category->path }}">{{ $category->name }}</a><span>12</span></div>
+            <div class="item d-flex justify-content-between" data-toggle="tooltip" data-placement="top" title="{{ $category->articles_count }} bài viết "><a href="{{ $category->path }}">{{ $category->name }}</a><span>{{ $category->articles_count }}</span></div>
         @endforeach
     </div>
     <!-- Widget [Tags Cloud Widget]-->

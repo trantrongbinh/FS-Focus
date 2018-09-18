@@ -45,15 +45,17 @@
                          <!-- comment -->
                         @if(Auth::guest())
                             <comment commentable-type="discussions"
-                                     commentable-id="{{ $discussion->id }}"
-                                     null-text="" comment-number="{{ $discussion->comments_count }}"></comment>
+                                commentable-id="{{ $discussion->id }}"
+                                null-text="" comment-number="{{ $discussion->comments_count }}">
+                            </comment>
                         @else
                             <comment username="{{ Auth::user()->name }}"
-                                     user-avatar="{{ Auth::user()->avatar }}"
-                                     commentable-type="discussions"
-                                     commentable-id="{{ $discussion->id }}"
-                                     null-text="" comment-number="{{ $discussion->comments_count }}"
-                                     can-comment></comment>
+                                user-avatar="{{ Auth::user()->avatar }}"
+                                commentable-type="discussions"
+                                commentable-id="{{ $discussion->id }}"
+                                null-text="" comment-number="{{ $discussion->comments_count }}"
+                                can-comment>
+                            </comment>
                         @endif
                     </div>
                     <!-- Box Left-->
