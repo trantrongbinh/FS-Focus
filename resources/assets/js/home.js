@@ -31,6 +31,8 @@ Vue.component('comment-home', require('home/components/Comment-home.vue'));
 
 Vue.component('form-content', require('home/components/FormContent.vue'));
 
+Vue.component('form-post', require('home/components/FormPost.vue'));
+
 Vue.component('parse', require('home/components/Parse.vue'));
 
 Vue.component('parse-textarea', require('home/components/Textarea.vue'));

@@ -39,7 +39,7 @@
             <h3 class="h6">Categories</h3>
         </header>
         @foreach ($categories as $category)
-            <div class="item d-flex justify-content-between" data-toggle="tooltip" data-placement="top" title="{{ $category->articles_count }} bài viết "><a href="{{ $category->path }}">{{ $category->name }}</a><span>{{ $category->articles_count }}</span></div>
+            <div class="item d-flex justify-content-between" data-toggle="tooltip" data-placement="top" title="{{ $category->articles_count }} bài viết "><a href="{{ url('category', ['name' => $category->name]) }}">{{ $category->name }}</a><span>{{ $category->articles_count }}</span></div>
         @endforeach
     </div>
     <!-- Widget [Tags Cloud Widget]-->

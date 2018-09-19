@@ -28,7 +28,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'is_admin', 'avatar', 'password', 'confirm_code',
-        'nickname', 'real_name', 'weibo_name', 'weibo_link', 'email_notify_enabled',
+        'nickname', 'real_name', 'facebook_name', 'facebook_link', 'email_notify_enabled',
         'github_id', 'github_name', 'github_url', 'website', 'description', 'status'
     ];
 

@@ -25,7 +25,7 @@
                                     </div>
                                 </div>
                             @else
-                                <a rel="nofollow " href="javascript:;" class=" d-flex" data-toggle="modal" data-target="#postModal">
+                                <a rel="nofollow " href="javascript:;" class="d-flex button-post">
                                     <div class="news-f-img"> <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60"></div>
                                     <div class="msg-body" style="margin-left: 30px; ">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
@@ -33,94 +33,28 @@
                                     </div>
                                 </a>
                                 <div class="row">
+                                    <div class="col-md-12 form-post hide" style="padding: 30px;">
+                                        <form class="form" action="{{ url('article/new') }}" method="POST">
+                                            {{ csrf_field() }}
+                                             <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    @if ($errors->has('title'))
+                                                        <span class="invalid-feedback d-block">
+                                                            <strong>{{ $errors->first('title') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                    <input type="text" id="title" name="title" class="form-control" placeholder="Title">
+                                                </div>
+                                            </div>
+                                            <form-post></form-post>
+                                            <button type="submit" class="btn btn-info btn-sm" style="margin: auto;"> <b>Publish</b></button>
+                                        </form>
+                                    </div>
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
                                         <a href="{{ url('article/new') }}" class="btn btn-outline-secondary btn-sm" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a> &nbsp
                                         <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm"><i class="fas fa-question-circle"></i> Discussion</a>
-                                        <a href="javascript:;" class="btn btn-info btn-sm float-right" data-toggle="modal" data-target="#postModal"><i class="fas fa-edit"></i> Post</a>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="postModal">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="card card-info card-outline">
-                                                        <div class="card-header">
-                                                            <h3 class="card-title">
-                                                                <i class="fa fa-paper-plane"></i>
-                                                                <small>Thank for send your question !!!</small>
-                                                             </h3>
-                                                            <!-- tools box -->
-                                                            <div class="card-tools">
-                                                                <a class="float-right btn-tool close" href="javascript:;" data-dismiss="modal">&times;</a>
-                                                            </div>
-                                                            <!-- /. tools -->
-                                                        </div>
-                                                        <!-- /.card-header -->
-                                                        <form class="form" action="{{ url('discussion') }}" method="POST">
-                                                            {{ csrf_field() }}
-                                                            <div class="card-body">
-                                                                <div class="form-group row">
-                                                                    <label for="title" class="col-sm-2 col-form-label">{{ lang('Discuss Title') }}</label>
-                                                                    <div class="col-sm-10">
-                                                                        <input type="text" id="title" name="title" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" value="{{ old('title') }}">
-
-                                                                        @if ($errors->has('title'))
-                                                                            <span class="invalid-feedback">
-                                                                                <strong>{{ $errors->first('title') }}</strong>
-                                                                            </span>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label class="col-sm-2 col-form-label">{{ lang('Discuss Tag') }}</label>
-                                                                    <div class="col-sm-10">
-                                                                        <select class="form-control tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple="multiple" name="tags[]" style="width: 100%">
-                                                                            @foreach($tags as $tag)
-                                                                                <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
-                                                                            @endforeach
-                                                                        </select>
-
-                                                                        @if ($errors->has('tags'))
-                                                                            <span class="invalid-feedback d-block">
-                                                                                <strong>{{ $errors->first('tags') }}</strong>
-                                                                            </span>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="content" class="col-sm-2 col-form-label">{{ lang('Discuss Content') }}</label>
-                                                                    <div class="col-sm-10">
-                                                                        <textarea class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}" id="content" rows="7" name="content">{{ old('content') }}</textarea>
-
-                                                                        @if ($errors->has('content'))
-                                                                            <span class="invalid-feedback">
-                                                                                <strong>{{ $errors->first('content') }}</strong>
-                                                                            </span>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="content" class="col-sm-2 col-form-label"><i class="fas fa-user"></i></label>
-                                                                    <div class="col-sm-10">
-                                                                        <p class="text-sm mb-0"><span class="fa fa-hand-o-right"></span><b> How to quickly get a good answer:</b>
-                                                                        <i>Keep your question short and to the point. Check for grammar or spelling errors. Phrase it like a question</i></p>
-                                                                    </div>
-                                                                </div>                                                    
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-outline-primary btn-sm" onClick="this.form.submit(); this.disabled=true;">{{ lang('Create Discussion') }}</button>
-                                                                <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <!-- /.card -->
-                                                </div>
-                                                <!-- /.col-->
-                                            </div>
-                                            <!-- ./row -->
-                                        </div>
+                                        <a href="javascript:;" class="btn btn-info btn-sm float-right button-post"><i class="fas fa-edit"></i> Post</a>
                                     </div>
                                 </div>
                             @endif
@@ -163,7 +97,7 @@
                                             </div>
                                         @endif
                                         <div class="description">
-                                            {{ $article->meta_description }}                                            
+                                            {{ $article->meta_description }}                                         
                                             <a class="text-blue" href="{{ url($article->slug) }}">... more</a>
                                         </div>
                                         @if($article->page_image)

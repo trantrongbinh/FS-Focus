@@ -59,7 +59,7 @@ class ArticleController extends Controller
      * @param  \App\Http\Requests\ArticleHomeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArticleHomeRequest $request)
+    public function store(Request $request)
     {
         $data = array_merge($request->all(), [
             'user_id'      => \Auth::id(),
@@ -71,10 +71,14 @@ class ArticleController extends Controller
 
         $data['is_draft']    = isset($data['is_draft']);
         $data['is_original'] = isset($data['is_original']);
+        $data['type'] = isset($data['type']);
         $data['content'] = $data['content'];
+        
         $this->article->store($data);
 
-        $this->article->syncTag( $data['tags']);
+        if($request->tags){
+            $this->article->syncTag( $data['tags']);
+        }
 
         return redirect()->to('/');
     }

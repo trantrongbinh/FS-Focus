@@ -37,9 +37,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="Weibo" class="col-md-3 col-form-label">FaceBook</label>
+                        <label for="Facebook" class="col-md-3 col-form-label">FaceBook</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" id="Weibo" name="weibo_link" value="{{ $user->weibo_link }}">
+                            <input type="text" class="form-control" id="facebook" name="facebook_link" value="{{ $user->facebook_link }}">
                         </div>
                     </div>
                     <div class="form-group row">

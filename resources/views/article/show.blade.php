@@ -14,7 +14,7 @@
         /* position: fixed;
         right: 0;
         bottom: 0; */
-        height: 700px;
+        height: 500px;
         line-height: 50px;
         margin-top: 250px;
         font-size: 20px;
