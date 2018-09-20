@@ -36,4 +36,8 @@ class MeController extends ApiController
         
         return $this->response->withNoContent();
     }
+
+    public function postClapArticle(Request $request, $type){
+        return $this->response->json('test');
+    }
 }

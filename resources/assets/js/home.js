@@ -39,6 +39,8 @@ Vue.component('parse-textarea', require('home/components/Textarea.vue'));
 
 Vue.component('avatar', require('home/components/AvatarUpload.vue'));
 
+Vue.component('clap', require('home/components/Clap.vue'));
+
 new Vue({
   i18n: i18n,
 }).$mount('#app');
