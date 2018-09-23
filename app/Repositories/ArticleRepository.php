@@ -178,4 +178,54 @@ class ArticleRepository
         return $this->getById($id)->delete();
     }
 
+    /**
+     * Toogle up vote and down vote by user.
+     *
+     * @param  int $id
+     * @param  boolean $isUpVote
+     *
+     * @return boolean
+     */
+    public function toggleVote($id, $isUpVote = true)
+    {
+        $user = auth()->user();
+
+        $article = $this->getById($id);
+
+        if($article == null) {
+            return false;
+        }
+
+        return $isUpVote
+                ? $this->upOrDownVote($user, $article)
+                : $this->upOrDownVote($user, $article, 'down');
+    }
+
+    /**
+     * Up vote or down vote item.
+     *
+     * @param  \App\User $user
+     * @param  \Illuminate\Database\Eloquent\Model $target
+     * @param  string $type
+     *
+     * @return boolean
+     */
+    public function upOrDownVote($user, $target, $type = 'up')
+    {
+        $hasVoted = $user->{'has' . ucfirst($type) . 'Voted'}($target);
+
+        if($hasVoted) {
+            $user->cancelVote($target);
+            return false;
+        }
+
+        if ($type == 'up') {
+            $target->user->notify(new GotVote($type . '_vote', $user, $target));
+        }
+
+        $user->{$type . 'Vote'}($target);
+
+        return true;
+    }
+
 }

@@ -4,16 +4,18 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Repositories\CommentRepository;
+use App\Repositories\ArticleRepository;
 
 class MeController extends ApiController
 {
-    protected $comment;
+    protected $comment, $article;
 
-    public function __construct(CommentRepository $comment)
+    public function __construct(CommentRepository $comment, ArticleRepository $article)
     {
         parent::__construct();
 
         $this->comment = $comment;
+        $this->article = $article;
     }
 
     /**
@@ -37,7 +39,22 @@ class MeController extends ApiController
         return $this->response->withNoContent();
     }
 
-    public function postClapArticle(Request $request, $type){
-        return $this->response->json('test');
+    /**
+     * post up vote the article by user.
+     * 
+     * @param Request $request
+     * @param string $type
+     * 
+     * @return mixed
+     */
+    public function postClapArticle(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required|exists:articles,id',
+        ]);
+
+        $this->article->toggleVote($request->id)
+
+        return $this->response->withNoContent();
     }
 }

@@ -49,7 +49,7 @@
         </header>
         <ul class="list-inline">
             @foreach ($tags as $tag)
-                <li class="list-inline-item"><a href="#" class="tag">{{ $tag->tag }}</a></li>
+                <li class="list-inline-item"><a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">{{ $tag->tag }}</a></li>
             @endforeach
         </ul>
     </div>

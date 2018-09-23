@@ -105,7 +105,7 @@
                     <div class="links">
                         <ul class="list-unstyled">
                             <li>
-                                <clap :item="{{ $article }}"></clap>
+                                <clap votable-id="{{ $article->id }}"></clap>
                             </li>
                             <li><a href="#"><i class="fab fa-facebook-square"></i></a></li> 
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li> 
