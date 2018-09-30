@@ -1,150 +1,136 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('styles')
-<style>
-    container{
-        margin: 20px auto;
-    }
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="{{ config('blog.meta.keywords') }}">
+    <meta name="description" content="{{ config('blog.meta.description') }}">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{ config('blog.default_icon') }}">
+    <title>@yield('title', config('app.name'))</title>
+    <link rel="stylesheet" href="{{ mix('css/home.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/themes/' . config('blog.color_theme') . '.css') }}">
+    <!-- Scripts -->
+    <script>
+    window.Language = '{{ config('
+    app.locale ') }}';
 
-    .panel {
-        text-align: center;
-        padding: 10px;
-    }
+    window.Laravel = <?php echo json_encode([
+                'csrfToken' => csrf_token(),
+            ]); ?>
+    </script>
+    @yield('styles')
+</head>
 
-    .panel h2 {
-        color: #444444;
-        font-size: 18px;
-        margin: 0 0 8px 0;
-    }
-
-    .panel p {
-        color: #777777;
-        font-size: 14px;
-        margin-bottom: 30px;
-        line-height: 24px;
-    }
-
-    .profile-img-card {
-        width: 96px;
-        height: 96px;
-        margin: 0 auto 10px;
-        display: block;
-        -moz-border-radius: 50%;
-        -webkit-border-radius: 50%;
-        border-radius: 50%;
-    }   
-
-    .profile-name-card {
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        margin: 10px 0 0;
-        min-height: 1em;
-    }
-</style>
-@endsection
-
-@section('content')
-
-<div class="container">
-    <main class="row justify-content-center">
-        <div class="col-md-4">
-            <div class="card" style="background: #F9F9F9;">
-                <div class="panel">
-                    <a href="/"><img src="/images/logo.png" alt="TTB Blogs"></a>
-                    <p>Please enter your email and password</p>
-                </div>
-                <img id="profile-img" class="profile-img-card" src="/images/ava.png" />
-                @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-                @endif @if (session('warning'))
-                <div class="alert alert-warning">
-                    {{ session('warning') }}
-                </div>
-                @endif
-                <div class="card-body">
-                    <form method="POST" action="{{ url('/login') }}" aria-label="{{ lang('Login') }}">
-                        {{ csrf_field() }}
-                        <div class="form-group row">
-                            <label for="email" class="col-md-1 col-form-label text-md-right"><span class="fa fa-envelope"></span></label>
-                            <div class="col-md-10">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{ lang('Input Email') }}" required autofocus> 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="password" class="col-md-1 col-form-label text-md-right"><span class="fa fa-lock "></span></label>
-                            <div class="col-md-10 pass_show" >
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ lang('Input Password') }}" required> 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span> 
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old( 'remember') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="remember">
-                                        {{ lang('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-outline-info">
-                                    {{ lang('Login') }}
-                                </button>
-                                <a class="btn btn-link text-right" href="{{ url('/password/reset') }}">
-                                {{ lang('Forgot Password') }}
-                            </a>
-                            </div>
-                            @if(config('services.github.client_id'))
-                            <div class="col-md-8 offset-md-4">
-                                <div class="strike">
-                                    <span>or</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-8 offset-md-4">
-                                    <a href="{{ url('/auth/github') }}" class="btn btn-primary form-control">
-                                        <i class="fab fa-github"></i> {{ lang('Login With Github') }}
-                                    </a>
-                                </div>
-                            </div>
-                            @endif
-                        </div>
-                    </form>
-                </div>
-            </div>
+<body>
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="/"><img src="/images/logo-blue.png" alt="Logo"></a>
         </div>
-    </main>
-</div>
-@endsection
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+                <form role="form" method="POST" action="{{ url('/login') }}">
+                    {{ csrf_field() }}
+                    <div class="form-group has-feedback">
+                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{ lang('Input Email') }}" required autofocus>
+                        @if ($errors->has('email'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                        <span class="fa fa-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ lang('Input Password') }}" required>
+                        @if ($errors->has('password'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
+                        <span class="fa fa-lock form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="checkbox icheck">
+                                <label>
+                                    <input type="checkbox" name="remember"> {{ lang('Remember Me') }}
+                                </label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">{{ lang('Login') }}</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+                <div class="social-auth-links text-center mb-3">
+                    <p>- OR -</p>
+                    <a href="#" class="btn btn-block btn-primary">
+                        <i class="fab fa-facebook-square"></i></i> Sign in using Facebook
+                    </a>
+                    <a href="#" class="btn btn-block btn-danger">
+                        <i class="fab fa-google-plus"></i> Sign in using Google+
+                    </a>
+                    @if(config('services.github.client_id'))
+                        <div class="col-md-10 offset-md-1">
+                            <div class="strike">
+                                <span>or</span>
+                            </div>
+                        </div>
 
-@section('scripts')
-<script>
-    $(document).ready(function() {
-        $('.pass_show').append('<span class="ptxt" style="font-size: 12px; font-weight: bold;"> Show</span>');
+                        <div class="form-group">
+                            <div class="col-md-10 offset-md-1">
+                                <a href="{{ url('/auth/github') }}" class="btn btn-primary form-control">
+                                    <i class="fab fa-github"></i> {{ lang('Login With Github') }}
+                                </a>
+                            </div>
+                        </div>
+                        @endif
+                </div>
+                <!-- /.social-auth-links -->
+                <p class="mb-1">
+                    <a href="{{ url('/password/reset') }}">{{ lang('Forgot Password') }}</a>
+                </p>
+                <p class="mb-0">
+                    <a href="{{ url('register') }}" class="text-center">Register a new membership</a>
+                </p>
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="{{ mix('js/home.js') }}"></script>
+    @yield('scripts')
+    <script>
+    $(function() {
+        $("[data-toggle='tooltip']").tooltip();
     });
+    </script>
+    @if(config('blog.google.open'))
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
+    ga('create', '{{ config('
+        blog.google.id ') }}', 'auto');
+    ga('send', 'pageview');
+    </script>
+    @endif
+</body>
 
-    $(document).on('click', '.pass_show .ptxt', function() {
-
-        $(this).text($(this).text() == " Show" ? " Hide" : " Show");
-
-        $(this).prev().attr('type', function(index, attr) { return attr == 'password' ? 'text' : 'password'; });
-
-    });
-</script>
-@endsection
+</html>

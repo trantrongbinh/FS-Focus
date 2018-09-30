@@ -1,97 +1,140 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('styles')
-  <style>
-    .panel {
-        text-align: center;
-        padding: 10px;
-    }
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="{{ config('blog.meta.keywords') }}">
+    <meta name="description" content="{{ config('blog.meta.description') }}">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{ config('blog.default_icon') }}">
+    <title>@yield('title', config('app.name'))</title>
+    <link rel="stylesheet" href="{{ mix('css/home.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/themes/' . config('blog.color_theme') . '.css') }}">
+    <!-- Scripts -->
+    <script>
+    window.Language = '{{ config('
+    app.locale ') }}';
 
-    .panel h2 {
-        color: #444444;
-        font-size: 18px;
-        margin: 0 0 8px 0;
-    }
+    window.Laravel = <?php echo json_encode([
+                'csrfToken' => csrf_token(),
+            ]); ?>
+    </script>
+    @yield('styles')
+</head>
 
-    .panel p {
-        color: #777777;
-        font-size: 14px;
-    }
-
-</style>
-@endsection
-
-@section('content')
-
-<div class="container">
-    <main class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="card" style="background: #F9F9F9;">
-                 <div class="panel">
-                    <a href="/"><img src="/images/logo.png" alt="TTB Blogs"></a>
-                    <p>Please enter your email and password</p>
-                </div>
-                <div class="card-body">
-                    <form method="POST" action="{{ url('/register') }}" aria-label="{{ lang('Register') }}">
-                        {{ csrf_field() }}
-                        <div class="form-group row">
-                           
-                            <div class="col-md-10  offset-md-1">
-                                <label for="name" class="control-label"><span class="fa fa-user"></span> {{ lang('Username') }}</label>
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="{{ lang('Input Name') }}" required autofocus> 
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span> 
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-10 offset-md-1">
-                                <label for="email" class="control-label"><span class="fa fa-envelope"></span> {{ lang('Email') }}</label>
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{ lang('Input Name') }}" required> 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span> 
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-10 offset-md-1">
-                                <label for="password" class="control-label"><span class="fa fa-lock "></span> {{ lang('Password') }}</label>
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ lang('Input Password') }}" required> 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span> 
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-10 offset-md-1">
-                                <label for="password-confirm" class="control-label"><span class="fa fa-lock "></span> {{ lang('Confirm Password') }}</label>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="{{ lang('Input Confirm Password') }}" required>
-                            </div>
-                        </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-info">
-                                    {{ lang('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                         <div class="form-group">
-                            <div class="col-md-8 offset-md-2 text-center">
-                                <a class="btn btn-link" href="{{ url('/login') }}">
-                                    {{ lang('Has Account') }}
+<body>
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="/"><img src="/images/logo-blue.png" alt="Logo"></a>
+        </div>
+         <div class="card">
+            <div class="card-body register-card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="social-auth-links text-center">
+                            <p>- With -</p>
+                                <a href="#" class="btn btn-block btn-primary">
+                                    <i class="fab fa-facebook-square"></i>
+                                    Sign in using Facebook
                                 </a>
-                            </div>
+                                <a href="#" class="btn btn-block btn-danger">
+                                    <i class="fab fa-google-plus"></i>
+                                    Sign in using Google+
+                                </a>
                         </div>
-                    </form>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="login-box-msg">Register a new membership</p>
+                        <form role="form" method="POST" action="{{ url('/register') }}">
+                            {{ csrf_field() }}
+                            <div class="form-group has-feedback">
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="{{ lang('Input Name') }}" required autofocus>
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                                <span class="fa fa-user form-control-feedback"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{ lang('Input Email') }}" required>
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                                <span class="fa fa-envelope form-control-feedback"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ lang('Input Password') }}" required>
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                                <span class="fa fa-lock form-control-feedback"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input id="password-confirm" type="password" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" placeholder="{{ lang('Input Confirm Password') }}" required>
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
+                                <span class="fa fa-lock form-control-feedback"></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="checkbox icheck">
+                                        <label>
+                                            <input type="checkbox"> I agree to the <a href="#">terms</a>
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-4">
+                                    <button type="submit" class="btn btn-primary btn-block btn-flat">{{ lang('Register') }}</button>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                        </form>
+                        <a href="{{ url('/login') }}" class="text-center">{{ lang('Has Account') }}</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
-</div>
-@endsection
+        <!-- /.card -->
+    </div>
+    <!-- Scripts -->
+    <script src="{{ mix('js/home.js') }}"></script>
+    @yield('scripts')
+    <script>
+    $(function() {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+    </script>
+    @if(config('blog.google.open'))
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '{{ config('
+        blog.google.id ') }}', 'auto');
+    ga('send', 'pageview');
+    </script>
+    @endif
+</body>
+
+</html>

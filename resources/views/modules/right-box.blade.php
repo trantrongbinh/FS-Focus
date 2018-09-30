@@ -67,10 +67,14 @@
             <h3 class="h6">Link</h3>
         </header>
         <ul class="list-unstyled">
-            <li><a href="#"><i class="fab fa-facebook-square"></i> Facebook</a></li> 
-            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li> 
-            <li><a href="#"><i class="fab fa-github"></i> Github</a></li> 
-            <li><a href="#"><i class="fab fa-stack-overflow"></i> Stack Overflow</a></li>
+            @if(config('blog.footer.facebook.open'))
+            <li><a href="{{ config('blog.footer.facebook.url') }}" target="_blank"><i class="fab fa-facebook-square"></i> Facebook</a></li>
+            @endif
+            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+            @if(config('blog.footer.github.open'))
+            <li><a href="{{ config('blog.footer.github.url') }}" target="_blank"><i class="fab fa-github"></i> Github</a></li>
+            @endif
+            <li><a href="#" target="_blank"><i class="fab fa-stack-overflow"></i> Stack Overflow</a></li>
         </ul>
     </div>
 </aside>

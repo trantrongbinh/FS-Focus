@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <p>&copy; 2018. All rights reserved. Your great site.</p>
+                    <p>{!! config('blog.footer.meta') !!}</p>
                 </div>
                 <div class="col-md-5 text-center">
                     <ul>
@@ -15,7 +15,7 @@
                     </ul>
                 </div>
                 <div class="col-md-3 text-right">
-                    <p>Build By <a href="https://bootstraptemple.com" class="text-white">TTB.</a>
+                    <p><a href="https://bootstraptemple.com" class="text-white">{!! config('blog.footer.author') !!}.</a>
                     </p>
                 </div>
             </div>
