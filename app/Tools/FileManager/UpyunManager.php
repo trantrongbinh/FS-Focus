@@ -9,7 +9,7 @@ class UpyunManager extends BaseManager
 {
     /**
      * Get all the files by the folder.
-     * 
+     *
      * @param  string $folder
      * @return array
      */
@@ -39,10 +39,10 @@ class UpyunManager extends BaseManager
         return [
             'name' => $file['basename'],
             'fullPath' => $path,
-            'webPath'  => $this->fileWebPath($path),
+            'webPath' => $this->fileWebPath($path),
             'mimeType' => $this->fileMimeType($path),
-            'size'     => $this->fileSize($path),
-            'type'     => $file['type'],
+            'size' => $this->fileSize($path),
+            'type' => $file['type'],
             'modified' => $this->fileModified($path)
         ];
     }
@@ -114,30 +114,30 @@ class UpyunManager extends BaseManager
      * Handle the file upload.
      *
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
-     * @param string                                              $dir
-     * @param string                                              $name
+     * @param string $dir
+     * @param string $name
      *
      * @return array|bool
      */
     public function store(UploadedFile $file, $dir = '', $name = '')
     {
         $hashName = empty($name)
-                    ? str_ireplace('.jpeg', '.jpg', $file->hashName())
-                    : $name;
+            ? str_ireplace('.jpeg', '.jpg', $file->hashName())
+            : $name;
 
         $mime = $file->getMimeType();
 
         $realPath = $this->disk->putFileAs($dir, $file, $hashName);
 
         return [
-                'success' => true,
-                'filename' => $hashName,
-                'original_name' => $file->getClientOriginalName(),
-                'mime' => $mime,
-                'size' => human_filesize($file->getClientSize()),
-                'real_path' => $realPath,
-                'relative_url' => $realPath,
-                'url' => $this->disk->getUrl($realPath),
+            'success' => true,
+            'filename' => $hashName,
+            'original_name' => $file->getClientOriginalName(),
+            'mime' => $mime,
+            'size' => human_filesize($file->getClientSize()),
+            'real_path' => $realPath,
+            'relative_url' => $realPath,
+            'url' => $this->disk->getUrl($realPath),
         ];
     }
 

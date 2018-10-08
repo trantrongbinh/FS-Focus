@@ -36,7 +36,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $username
+     * @param  int $username
      * @return \Illuminate\Http\Response
      */
     public function show($username)
@@ -140,8 +140,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -165,9 +165,9 @@ class UserController extends Controller
      */
     public function changePassword(Request $request)
     {
-        if (! Hash::check($request->get('old_password'), Auth::user()->password)) {
+        if (!Hash::check($request->get('old_password'), Auth::user()->password)) {
             return redirect()->back()
-                             ->withErrors(['old_password' => trans('passwords.check_old_password')]);
+                ->withErrors(['old_password' => trans('passwords.check_old_password')]);
         }
 
         Validator::make($request->all(), [
@@ -180,11 +180,11 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-	/**
-	 * Show the notifications for auth user
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+    /**
+     * Show the notifications for auth user
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function notifications()
     {
         if (!\Auth::id()) abort(404);
@@ -194,11 +194,11 @@ class UserController extends Controller
         return view('user.notifications', compact('user'));
     }
 
-	/**
-	 * Mark the auth user's notification as read
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+    /**
+     * Mark the auth user's notification as read
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function markAsRead()
     {
         if (!Auth::id()) abort(404);

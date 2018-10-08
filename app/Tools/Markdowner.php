@@ -36,8 +36,8 @@ class Markdowner
     public function convertMarkdownToHtml($markdown)
     {
         return $this->markdownConverter
-                    ->setBreaksEnabled(true)
-                    ->text($markdown);
+            ->setBreaksEnabled(true)
+            ->text($markdown);
     }
 
     /**

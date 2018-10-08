@@ -20,10 +20,10 @@ class MeController extends ApiController
 
     /**
      * post up vote the comment by user.
-     * 
+     *
      * @param Request $request
      * @param string $type
-     * 
+     *
      * @return mixed
      */
     public function postVoteComment(Request $request, $type)
@@ -35,16 +35,16 @@ class MeController extends ApiController
         ($type == 'up')
             ? $this->comment->toggleVote($request->id)
             : $this->comment->toggleVote($request->id, false);
-        
+
         return $this->response->withNoContent();
     }
 
     /**
      * post up vote the article by user.
-     * 
+     *
      * @param Request $request
      * @param string $type
-     * 
+     *
      * @return mixed
      */
     public function postClapArticle(Request $request)
@@ -53,7 +53,7 @@ class MeController extends ApiController
             'id' => 'required|exists:articles,id',
         ]);
 
-        $this->article->toggleVote($request->id)
+        $this->article->toggleVote($request->id);
 
         return $this->response->withNoContent();
     }

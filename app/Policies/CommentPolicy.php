@@ -13,8 +13,8 @@ class CommentPolicy
     /**
      * Determine whether the user can delete the comment.
      *
-     * @param  \App\User  $user
-     * @param  \App\Comment  $comment
+     * @param  \App\User $user
+     * @param  \App\Comment $comment
      * @return mixed
      */
     public function delete(User $user, Comment $comment)

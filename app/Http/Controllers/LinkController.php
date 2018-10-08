@@ -17,7 +17,7 @@ class LinkController extends Controller
 
     /**
      * Display the link resource.
-     * 
+     *
      * @return mix
      */
     public function index()

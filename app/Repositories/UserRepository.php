@@ -48,8 +48,8 @@ class UserRepository
     public function getByName($name)
     {
         return $this->model
-                    ->where('name', $name)
-                    ->first();
+            ->where('name', $name)
+            ->first();
     }
 
     /**
@@ -66,11 +66,11 @@ class UserRepository
         $keyword = $request->get('keyword');
 
         return $this->model->withoutGlobalScope(StatusScope::class)
-                    ->when($keyword, function ($query) use ($keyword) {
-                        $query->where('name', 'like', "%{$keyword}%");
-                    })
-                    ->orderBy($sortColumn, $sort)
-                    ->paginate($number);
+            ->when($keyword, function ($query) use ($keyword) {
+                $query->where('name', 'like', "%{$keyword}%");
+            })
+            ->orderBy($sortColumn, $sort)
+            ->paginate($number);
     }
 
     /**

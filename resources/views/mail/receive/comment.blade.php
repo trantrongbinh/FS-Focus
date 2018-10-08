@@ -1,14 +1,14 @@
 @component('mail::message')
-**{{ lang('Dear') }} {{ $username }}：**
+    **{{ lang('Dear') }} {{ $username }}：**
 
-{{ $message }}
+    {{ $message }}
 
-{{ $content }}
+    {{ $content }}
 
-@component('mail::button', ['url' => $url])
-{{ lang('View') }}
-@endcomponent
+    @component('mail::button', ['url' => $url])
+        {{ lang('View') }}
+    @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+    Thanks,<br>
+    {{ config('app.name') }}
 @endcomponent

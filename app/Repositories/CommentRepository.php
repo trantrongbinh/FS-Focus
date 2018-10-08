@@ -23,8 +23,8 @@ class CommentRepository
      *
      * @param  Request $request
      * @param  integer $number
-     * @param  string  $sort
-     * @param  string  $sortColumn
+     * @param  string $sort
+     * @param  string $sortColumn
      * @return collection
      */
     public function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
@@ -32,12 +32,12 @@ class CommentRepository
         $keyword = $request->get('keyword');
 
         return $this->model
-                    ->when($keyword, function ($query) use ($keyword) {
-                        $query->whereHas('user', function ($query) use ($keyword) {
-                            $query->where('name', 'like', "%{$keyword}%");
-                        });
-                    })
-                    ->orderBy($sortColumn, $sort)->paginate($number);
+            ->when($keyword, function ($query) use ($keyword) {
+                $query->whereHas('user', function ($query) use ($keyword) {
+                    $query->where('name', 'like', "%{$keyword}%");
+                });
+            })
+            ->orderBy($sortColumn, $sort)->paginate($number);
     }
 
     /**
@@ -88,8 +88,8 @@ class CommentRepository
     {
         $commentableType = $request->get('commentable_type');
         $comments = $this->model->where('commentable_id', $commentableId)
-                    ->where('commentable_type', $commentableType)
-                    ->paginate(2);
+            ->where('commentable_type', $commentableType)
+            ->paginate(2);
 
         return $comments;
     }
@@ -108,13 +108,13 @@ class CommentRepository
 
         $comment = $this->getById($id);
 
-        if($comment == null) {
+        if ($comment == null) {
             return false;
         }
 
         return $isUpVote
-                ? $this->upOrDownVote($user, $comment)
-                : $this->upOrDownVote($user, $comment, 'down');
+            ? $this->upOrDownVote($user, $comment)
+            : $this->upOrDownVote($user, $comment, 'down');
     }
 
     /**
@@ -130,7 +130,7 @@ class CommentRepository
     {
         $hasVoted = $user->{'has' . ucfirst($type) . 'Voted'}($target);
 
-        if($hasVoted) {
+        if ($hasVoted) {
             $user->cancelVote($target);
             return false;
         }

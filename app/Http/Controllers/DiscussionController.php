@@ -59,13 +59,13 @@ class DiscussionController extends Controller
     public function store(DiscussionRequest $request)
     {
         $data = array_merge($request->all(), [
-            'user_id'      => \Auth::id(),
+            'user_id' => \Auth::id(),
             'last_user_id' => \Auth::id(),
-            'status'       => true
+            'status' => true
         ]);
 
         $data['content'] = $data['content'];
-        
+
         $this->discussion->store($data);
 
         return redirect()->to('discussion');
@@ -74,7 +74,7 @@ class DiscussionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -87,7 +87,7 @@ class DiscussionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -107,7 +107,7 @@ class DiscussionController extends Controller
      * Update the discussion by id.
      *
      * @param  DiscussionRequest $request
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(DiscussionRequest $request, $id)

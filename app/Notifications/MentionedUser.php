@@ -29,7 +29,7 @@ class MentionedUser extends Notification implements ShouldQueue
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
      * @return array
      */
     public function via($notifiable)
@@ -40,7 +40,7 @@ class MentionedUser extends Notification implements ShouldQueue
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
@@ -51,28 +51,28 @@ class MentionedUser extends Notification implements ShouldQueue
 
         $message = lang('Mentioned Content', [
             'user' => $comment->user->name,
-            'title' => $comment->commentable->title ]);
+            'title' => $comment->commentable->title]);
 
         $url = ($comment->commentable_type == 'articles')
-                ? url('article', ['slug'=>$comment->commentable->slug])
-                : url('discussion', ['id' => $comment->commentable->id]);
+            ? url('article', ['slug' => $comment->commentable->slug])
+            : url('discussion', ['id' => $comment->commentable->id]);
 
         $data = [
             'username' => $notifiable->name,
-            'message'  => $message,
-            'content'  => json_decode($comment->content)->raw,
+            'message' => $message,
+            'content' => json_decode($comment->content)->raw,
             'url' => $url
         ];
 
         return (new MailMessage)
-                    ->subject(lang('Someone Mentioned', ['type' => strtolower($type), 'title' => $comment->commentable->title]))
-                    ->markdown('mail.mention.user', $data);
+            ->subject(lang('Someone Mentioned', ['type' => strtolower($type), 'title' => $comment->commentable->title]))
+            ->markdown('mail.mention.user', $data);
     }
 
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param  mixed $notifiable
      * @return array
      */
     public function toArray($notifiable)

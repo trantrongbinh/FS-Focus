@@ -31,7 +31,7 @@ class HomeController extends ApiController
     public function statistics()
     {
         $users = $this->user->getNumber();
-        $visitors = (int) $this->visitor->getAllClicks();
+        $visitors = (int)$this->visitor->getAllClicks();
         $articles = $this->article->getNumber();
         $comments = $this->comment->getNumber();
 

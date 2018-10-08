@@ -40,7 +40,7 @@ class Article extends Model
     ];
 
     protected $casts = [
-        'content'    =>    'array'
+        'content' => 'array'
     ];
 
     /**
@@ -149,11 +149,12 @@ class Article extends Model
      * @param $value
      * @param $extra
      */
-    public function setUniqueSlug($value, $extra) {
-        $slug = str_slug($value.'-'.$extra);
+    public function setUniqueSlug($value, $extra)
+    {
+        $slug = str_slug($value . '-' . $extra);
 
         if (static::whereSlug($slug)->exists()) {
-            $this->setUniqueSlug($slug, (int) $extra + 1);
+            $this->setUniqueSlug($slug, (int)$extra + 1);
             return;
         }
 
@@ -168,7 +169,7 @@ class Article extends Model
     public function setContentAttribute($value)
     {
         $data = [
-            'raw'  => $value,
+            'raw' => $value,
             'html' => (new Markdowner)->convertMarkdownToHtml($value)
         ];
 

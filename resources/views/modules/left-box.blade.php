@@ -1,4 +1,4 @@
- <!-- Box Left-->
+<!-- Box Left-->
 <aside class="col-lg-3 left-box">
     <!-- Widget [Search Bar Widget]-->
     <div class="widget search">
@@ -7,7 +7,8 @@
         </header>
         <form method="get" action="{{ url('search') }}" class="search-form">
             <div class="form-group">
-                <input type="search" placeholder="What are you looking for?"  class="form-control"  data-action="grow" autocomplete="off" name="q" required>
+                <input type="search" placeholder="What are you looking for?" class="form-control" data-action="grow"
+                       autocomplete="off" name="q" required>
                 <button type="submit" class="submit"><i class="fas fa-search"></i></button>
             </div>
         </form>
@@ -21,11 +22,13 @@
             @foreach ($hot_post as $post)
                 <a href="{{ url($post->slug) }}">
                     <div class="item d-flex align-items-center">
-                        <div class="image"><img alt="{{ $post->slug }}" src="{{ $post->page_image }}" class="img-fluid"></div>
+                        <div class="image"><img alt="{{ $post->slug }}" src="{{ $post->page_image }}" class="img-fluid">
+                        </div>
                         <div class="title"><strong>{{ $post->title }}</strong>
                             <div class="d-flex align-items-center">
                                 <div class="views"><i class="far fa-eye"></i></i> {{ $post->view_count }}</div>
-                                <div class="comments"><i class="far fa-comment-alt"></i> {{ $post->comments_count }}</div>
+                                <div class="comments"><i class="far fa-comment-alt"></i> {{ $post->comments_count }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -39,7 +42,10 @@
             <h3 class="h6">Categories</h3>
         </header>
         @foreach ($categories as $category)
-            <div class="item d-flex justify-content-between" data-toggle="tooltip" data-placement="top" title="{{ $category->articles_count }} bài viết "><a href="{{ url('category', ['name' => $category->name]) }}">{{ $category->name }}</a><span>{{ $category->articles_count }}</span></div>
+            <div class="item d-flex justify-content-between" data-toggle="tooltip" data-placement="top"
+                 title="{{ $category->articles_count }} bài viết "><a
+                        href="{{ url('category', ['name' => $category->name]) }}">{{ $category->name }}</a><span>{{ $category->articles_count }}</span>
+            </div>
         @endforeach
     </div>
     <!-- Widget [Tags Cloud Widget]-->
@@ -49,7 +55,8 @@
         </header>
         <ul class="list-inline">
             @foreach ($tags as $tag)
-                <li class="list-inline-item"><a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">{{ $tag->tag }}</a></li>
+                <li class="list-inline-item"><a href="{{ url('tag', ['tag' => $tag->tag]) }}"
+                                                class="tag">{{ $tag->tag }}</a></li>
             @endforeach
         </ul>
     </div>

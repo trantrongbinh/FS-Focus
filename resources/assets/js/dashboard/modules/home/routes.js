@@ -1,8 +1,8 @@
 export default [{
-  path: '/',
-  redirect: { name: 'dashboard.home' },
+    path: '/',
+    redirect: {name: 'dashboard.home'},
 }, {
-  name: 'dashboard.home',
-  path: 'home',
-  component: () => import('./Home'),
+    name: 'dashboard.home',
+    path: 'home',
+    component: () => import('./Home'),
 }]

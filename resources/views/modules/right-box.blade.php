@@ -18,7 +18,8 @@
             </a>
             <a href="#">
                 <div class="item d-flex align-items-center">
-                    <div class="image"><img class="img-fluid img-sm" src="img/small-thumbnail-2.jpg" alt="..." class="img-fluid"></div>
+                    <div class="image"><img class="img-fluid img-sm" src="img/small-thumbnail-2.jpg" alt="..."
+                                            class="img-fluid"></div>
                     <div class="title"><strong>Teach Hot</strong>
                         <div class="d-flex align-items-center">
                             <div class="views"><i class="icon-eye"></i> 500</div>
@@ -29,7 +30,8 @@
             </a>
             <a href="#">
                 <div class="item d-flex align-items-center">
-                    <div class="image"><img class="img-fluid img-sm" src="img/small-thumbnail-3.jpg" alt="..." class="img-fluid"></div>
+                    <div class="image"><img class="img-fluid img-sm" src="img/small-thumbnail-3.jpg" alt="..."
+                                            class="img-fluid"></div>
                     <div class="title"><strong>CTTN 4.0</strong>
                         <div class="d-flex align-items-center">
                             <div class="views"><i class="icon-eye"></i> 500</div>
@@ -49,7 +51,8 @@
             @foreach($users as $user)
                 <a href="/user/{{ $user->name }}">
                     <div class="item d-flex align-items-center">
-                        <div class="image"><img class="img-fluid img-circle img-sm" src="{{ $user->avatar }}" alt="User Image"></div>
+                        <div class="image"><img class="img-fluid img-circle img-sm" src="{{ $user->avatar }}"
+                                                alt="User Image"></div>
                         <div class="title"><strong>{{ $user->name }}</strong>
                             <div class="d-flex align-items-center">
                                 <div class="views"><i class="fas fa-user-plus"></i> 50</div>
@@ -68,11 +71,13 @@
         </header>
         <ul class="list-unstyled">
             @if(config('blog.footer.facebook.open'))
-            <li><a href="{{ config('blog.footer.facebook.url') }}" target="_blank"><i class="fab fa-facebook-square"></i> Facebook</a></li>
+                <li><a href="{{ config('blog.footer.facebook.url') }}" target="_blank"><i
+                                class="fab fa-facebook-square"></i> Facebook</a></li>
             @endif
             <li><a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
             @if(config('blog.footer.github.open'))
-            <li><a href="{{ config('blog.footer.github.url') }}" target="_blank"><i class="fab fa-github"></i> Github</a></li>
+                <li><a href="{{ config('blog.footer.github.url') }}" target="_blank"><i class="fab fa-github"></i>
+                        Github</a></li>
             @endif
             <li><a href="#" target="_blank"><i class="fab fa-stack-overflow"></i> Stack Overflow</a></li>
         </ul>

@@ -1,6 +1,6 @@
 <?php
 
-if (! function_exists('admin_url')) {
+if (!function_exists('admin_url')) {
     /**
      * Get admin url.
      *
@@ -13,7 +13,7 @@ if (! function_exists('admin_url')) {
     }
 }
 
-if(!function_exists('human_filesize')) {
+if (!function_exists('human_filesize')) {
     /**
      * Get a readable file size.
      *
@@ -21,40 +21,43 @@ if(!function_exists('human_filesize')) {
      * @param int $decimals
      * @return string
      */
-    function human_filesize($bytes, $decimals = 2) {
+    function human_filesize($bytes, $decimals = 2)
+    {
         $size = ['B', 'kB', 'MB', 'GB', 'TB', 'PB'];
 
-        $floor = floor((strlen($bytes)-1)/3);
+        $floor = floor((strlen($bytes) - 1) / 3);
 
-        return sprintf("%.{$decimals}f", $bytes/pow(1024, $floor)).@$size[$floor];
+        return sprintf("%.{$decimals}f", $bytes / pow(1024, $floor)) . @$size[$floor];
     }
 }
 
-if(!function_exists('isActive')) {
+if (!function_exists('isActive')) {
     /**
      * Determine the nav if it is the current route.
      *
      * @param string $nav
      * @return boolean
      */
-    function isActive($nav) {
+    function isActive($nav)
+    {
         return Route::currentRouteName() == $nav ? 'active' : '';
     }
 }
 
-if(!function_exists('translug')) {
+if (!function_exists('translug')) {
     /**
      * Translate the slug to english.
      *
      * @param string $slug
      * @return string
      */
-    function translug($slug) {
+    function translug($slug)
+    {
         return app('Translug')->translate($slug);
     }
 }
 
-if(!function_exists('lang')) {
+if (!function_exists('lang')) {
     /**
      * Trans for getting the language.
      *
@@ -64,6 +67,6 @@ if(!function_exists('lang')) {
      */
     function lang($text, $parameters = [])
     {
-        return trans('blog.'.$text, $parameters);
+        return trans('blog.' . $text, $parameters);
     }
 }

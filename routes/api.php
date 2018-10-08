@@ -15,7 +15,7 @@ Route::group([
         'edit' => 'api.article.edit',
         'update' => 'api.article.update',
         'destroy' => 'api.article.destroy',
-    ],'except' => ['create', 'show']]);
+    ], 'except' => ['create', 'show']]);
     Route::post('article/vote/{type}', 'MeController@postClapArticle')->middleware('auth:api');
 
     Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);

@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { apiUrl } from 'config/base'
+import {apiUrl} from 'config/base'
 
 /**
  * Create Axios
  */
 export const http = axios.create({
-  baseURL: apiUrl,
+    baseURL: apiUrl,
 })
 
 /**
@@ -14,32 +14,32 @@ export const http = axios.create({
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 http.defaults.headers.common = {
-  'X-CSRF-TOKEN': window.Laravel.csrfToken,
-  'X-Requested-With': 'XMLHttpRequest'
+    'X-CSRF-TOKEN': window.Laravel.csrfToken,
+    'X-Requested-With': 'XMLHttpRequest'
 };
 
 /**
  * Handle all error messages.
  */
-http.interceptors.response.use(function(response) {
-  return response;
-}, function(error) {
-  const { response } = error
+http.interceptors.response.use(function (response) {
+    return response;
+}, function (error) {
+    const {response} = error
 
-  if ([401].indexOf(response.status) >= 0) {
-    if (response.status == 401 && response.data.error.message != 'Unauthorized') {
-      return Promise.reject(response);
+    if ([401].indexOf(response.status) >= 0) {
+        if (response.status == 401 && response.data.error.message != 'Unauthorized') {
+            return Promise.reject(response);
+        }
+        window.location = '/login';
     }
-    window.location = '/login';
-  }
 
-  return Promise.reject(error);
+    return Promise.reject(error);
 });
 
 export default function install(Vue) {
-  Object.defineProperty(Vue.prototype, '$http', {
-    get() {
-      return http
-    },
-  })
+    Object.defineProperty(Vue.prototype, '$http', {
+        get() {
+            return http
+        },
+    })
 }

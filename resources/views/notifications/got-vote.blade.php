@@ -4,8 +4,8 @@ $user = App\User::find($notification->data['issuer_id']);
 
 $commentable_id = $notification->data['commentable_id'];
 
-if ($comment &&  $comment->commentable) {
-    switch($comment->commentable_type) {
+if ($comment && $comment->commentable) {
+    switch ($comment->commentable_type) {
         case 'articles':
             $article = App\Article::find($commentable_id);
             $url = url($article->slug);
@@ -17,17 +17,14 @@ if ($comment &&  $comment->commentable) {
     }
 }
 
-if($notification->data['vote_type'] == 'up_vote')
-{
-	$iconRead = 'fas fa-thumbs-up-alt';
-	$iconNotRead =  'fas fa-thumbs-up';
-	$action = lang('Likes'); // Likes your comment
-}
-else
-{
-	$iconRead = 'fas fa-thumbs-down-alt';
-	$iconNotRead =  'fas fa-thumbs-down';
-	$action = lang('Dislikes'); // Dislikes your comment
+if ($notification->data['vote_type'] == 'up_vote') {
+    $iconRead = 'fas fa-thumbs-up-alt';
+    $iconNotRead = 'fas fa-thumbs-up';
+    $action = lang('Likes'); // Likes your comment
+} else {
+    $iconRead = 'fas fa-thumbs-down-alt';
+    $iconNotRead = 'fas fa-thumbs-down';
+    $action = lang('Dislikes'); // Dislikes your comment
 }
 
 ?>

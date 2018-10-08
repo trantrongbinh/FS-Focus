@@ -1,12 +1,12 @@
 <?php
 
-if (! empty($greeting)) {
+if (!empty($greeting)) {
     echo $greeting, "\n\n";
 } else {
     echo $level == 'error' ? 'Whoops!' : 'Hello!', "\n\n";
 }
 
-if (! empty($introLines)) {
+if (!empty($introLines)) {
     echo implode("\n", $introLines), "\n\n";
 }
 
@@ -14,7 +14,7 @@ if (isset($actionText)) {
     echo "{$actionText}: {$actionUrl}", "\n\n";
 }
 
-if (! empty($outroLines)) {
+if (!empty($outroLines)) {
     echo implode("\n", $outroLines), "\n\n";
 }
 

@@ -56,28 +56,28 @@ class ArticleController extends Controller
     /**
      * Store a new article.
      *
-     * @param  \App\Http\Requests\ArticleHomeRequest  $request
+     * @param  \App\Http\Requests\ArticleHomeRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $data = array_merge($request->all(), [
-            'user_id'      => \Auth::id(),
+            'user_id' => \Auth::id(),
             'last_user_id' => \Auth::id(),
             'published_at' => date('Y-m-d H:i:s'),
         ]);
 
         //$time_now =  \Carbon\Carbon::now();
 
-        $data['is_draft']    = isset($data['is_draft']);
+        $data['is_draft'] = isset($data['is_draft']);
         $data['is_original'] = isset($data['is_original']);
         $data['type'] = isset($data['type']);
         $data['content'] = $data['content'];
-        
+
         $this->article->store($data);
 
-        if($request->tags){
-            $this->article->syncTag( $data['tags']);
+        if ($request->tags) {
+            $this->article->syncTag($data['tags']);
         }
 
         return redirect()->to('/');
@@ -86,7 +86,7 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -104,7 +104,7 @@ class ArticleController extends Controller
      * Update the article by id.
      *
      * @param  ArticleHomeRequest $request
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(ArticleHomeRequest $request, $id)

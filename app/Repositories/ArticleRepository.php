@@ -25,8 +25,8 @@ class ArticleRepository
      *
      * @param  Request $request
      * @param  integer $number
-     * @param  string  $sort
-     * @param  string  $sortColumn
+     * @param  string $sort
+     * @param  string $sortColumn
      * @return collection
      */
     public function pageWithRequest($request, $number = 10, $sort = 'desc', $sortColumn = 'created_at')
@@ -36,25 +36,25 @@ class ArticleRepository
         $keyword = $request->get('keyword');
 
         return $this->model
-                    ->when($keyword, function ($query) use ($keyword) {
-                        $query->where('title', 'like', "%{$keyword}%")
-                                    ->orWhere('subtitle', 'like', "%{$keyword}%");
-                    })
-                    ->orderBy($sortColumn, $sort)->paginate($number);
+            ->when($keyword, function ($query) use ($keyword) {
+                $query->where('title', 'like', "%{$keyword}%")
+                    ->orWhere('subtitle', 'like', "%{$keyword}%");
+            })
+            ->orderBy($sortColumn, $sort)->paginate($number);
     }
 
     /**
      * Get the page of articles without draft scope.
      *
      * @param  integer $number
-     * @param  string  $sort
-     * @param  string  $sortColumn
+     * @param  string $sort
+     * @param  string $sortColumn
      * @return collection
      */
     public function page($number = 10, $sort = 'desc', $sortColumn = 'created_at')
     {
         $this->model = $this->checkAuthScope();
-        
+
         return $this->model->with('user')->withCount('comments')->orderBy($sortColumn, $sort)->paginate($number);
     }
 
@@ -149,9 +149,9 @@ class ArticleRepository
         $key = trim($key);
 
         return $this->model
-                    ->where('title', 'like', "%{$key}%")
-                    ->orderBy('published_at', 'desc')
-                    ->paginate(7);
+            ->where('title', 'like', "%{$key}%")
+            ->orderBy('published_at', 'desc')
+            ->paginate(7);
 
     }
 
@@ -192,13 +192,13 @@ class ArticleRepository
 
         $article = $this->getById($id);
 
-        if($article == null) {
+        if ($article == null) {
             return false;
         }
 
         return $isUpVote
-                ? $this->upOrDownVote($user, $article)
-                : $this->upOrDownVote($user, $article, 'down');
+            ? $this->upOrDownVote($user, $article)
+            : $this->upOrDownVote($user, $article, 'down');
     }
 
     /**
@@ -214,7 +214,7 @@ class ArticleRepository
     {
         $hasVoted = $user->{'has' . ucfirst($type) . 'Voted'}($target);
 
-        if($hasVoted) {
+        if ($hasVoted) {
             $user->cancelVote($target);
             return false;
         }

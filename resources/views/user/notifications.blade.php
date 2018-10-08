@@ -11,7 +11,7 @@
                             {{ lang('New Notification') }}
                         </span>
                         <a class="btn btn-success btn-sm float-right mark-as-read" href="javascript:;"
-                            onclick="event.preventDefault();document.getElementById('mark-as-read').submit();">
+                           onclick="event.preventDefault();document.getElementById('mark-as-read').submit();">
                             {{ lang('Mark As Read') }}
                         </a>
                         <form id="mark-as-read" action="{{ url('user/notification') }}" method="POST">

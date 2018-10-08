@@ -4,7 +4,7 @@ $type = $notification->data['commentable_type'] === 'articles' ? lang('Article')
 $commentable_id = $notification->data['commentable_id'];
 
 if ($comment && $comment->commentable) {
-    switch($comment->commentable_type) {
+    switch ($comment->commentable_type) {
         case 'articles':
             $article = App\Article::find($commentable_id);
             $url = url($article->slug);
@@ -22,7 +22,8 @@ if ($comment && $comment->commentable) {
 
 <li :class="'{{ empty($notification->read_at) }}' ? 'bold' : ''">
     @if ($comment && $comment->commentable)
-        <a class="text-info" href="{{ url('user', ['username' => $comment->user->name]) }}">{{ $comment->user->name }}</a>
+        <a class="text-info"
+           href="{{ url('user', ['username' => $comment->user->name]) }}">{{ $comment->user->name }}</a>
         {{ lang('Mentioned') }} {{ lang('In') }}
         <a class="text-info" href="{{ $url }}">{{ $comment->commentable->title }}</a>
     @elseif ($comment && !$comment->commentable)

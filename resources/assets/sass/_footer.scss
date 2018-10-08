@@ -1,10 +1,10 @@
 footer.main-footer {
   background: #0e0e0e;
   color: #fff;
-  position: absolute; 
-  right: 0; 
-  bottom: 0; 
-  left: 0; 
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 footer.main-footer a {
@@ -36,22 +36,22 @@ footer.main-footer li {
 }
 
 #goTop {
-    display: none;
-    width: 40px;
-    height: 40px;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    line-height: 20px;
-    color: #fff;
-    font-size: 30px;
-    background: #3097d1;
+  display: none;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  line-height: 20px;
+  color: #fff;
+  font-size: 30px;
+  background: #3097d1;
 }
 
 #back-to-top a:hover {
-    background: #fff;
-    color: #3097d1;
-    border: 2px solid #3097d1;
+  background: #fff;
+  color: #3097d1;
+  border: 2px solid #3097d1;
 }
 
 /* Footer Media Query ------------------------------------- */

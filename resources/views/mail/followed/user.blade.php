@@ -1,10 +1,10 @@
 @component('mail::message')
-**{{ lang('Dear') }} {{ $username }}：**
+    **{{ lang('Dear') }} {{ $username }}：**
 
-{{ $message }}
+    {{ $message }}
 
-<a href="{{ $url }}" target="_blank">{{ lang('View') }}</a>
+    <a href="{{ $url }}" target="_blank">{{ lang('View') }}</a>
 
-Thanks,<br>
-{{ config('app.name') }}
+    Thanks,<br>
+    {{ config('app.name') }}
 @endcomponent

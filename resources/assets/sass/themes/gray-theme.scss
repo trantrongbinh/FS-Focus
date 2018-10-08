@@ -20,7 +20,7 @@ a {
   }
 }
 
-.navbar-nav>li>.dropdown-menu {
+.navbar-nav > li > .dropdown-menu {
   border: none;
 
   li a {
@@ -52,7 +52,7 @@ a {
   }
 }
 
-.navbar-nav>li>.dropdown-menu>li:focus, .navbar-nav>li>.dropdown-menu>li:hover {
+.navbar-nav > li > .dropdown-menu > li:focus, .navbar-nav > li > .dropdown-menu > li:hover {
   text-decoration: none;
   background-color: #6289ad;
 
@@ -80,15 +80,15 @@ a {
   background-color: transparent;
 
   &::placeholder {
-      color: #fff;
+    color: #fff;
   }
 
   &::-ms-input-placeholder {
-      color: #fff;
+    color: #fff;
   }
 
   &::-ms-input-placeholder {
-      color: #fff;
+    color: #fff;
   }
 }
 

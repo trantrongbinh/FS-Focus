@@ -19,8 +19,8 @@ Vue.use(httpPlugin);
 Vue.config.lang = window.Language;
 
 const i18n = new VueI18n({
-  locale: Vue.config.lang,
-  messages: locales
+    locale: Vue.config.lang,
+    messages: locales
 })
 
 // Vue.component('list-post', require('home/components/TabListPost.vue'))
@@ -42,5 +42,5 @@ Vue.component('avatar', require('home/components/AvatarUpload.vue'));
 Vue.component('clap', require('home/components/Clap.vue'));
 
 new Vue({
-  i18n: i18n,
+    i18n: i18n,
 }).$mount('#app');

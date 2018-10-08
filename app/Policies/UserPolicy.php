@@ -12,8 +12,8 @@ class UserPolicy
     /**
      * Determine whether the current user can update the user.
      *
-     * @param  \App\User  $currentUser
-     * @param  \App\User  $user
+     * @param  \App\User $currentUser
+     * @param  \App\User $user
      * @return mixed
      */
     public function update(User $currentUser, User $user)
@@ -24,8 +24,8 @@ class UserPolicy
     /**
      * Determine whether the current user can delete the user.
      *
-     * @param  \App\User  $currentUser
-     * @param  \App\User  $user
+     * @param  \App\User $currentUser
+     * @param  \App\User $user
      * @return mixed
      */
     public function delete(User $currentUser, User $user)

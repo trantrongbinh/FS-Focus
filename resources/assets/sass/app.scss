@@ -1,14 +1,10 @@
-
 // Public
 @import "public";
-
 //Simplemde
 @import url("vendor/simplemde.min.css");
-
 // Markdown
 @import "markdown";
 @import url("vendor/highlight.min.css");
-
 @import "form";
 @import "navbar";
 @import "ibox";
@@ -29,24 +25,30 @@ body {
 }
 
 .width-5-percent {
-    width: 5%;
+  width: 5%;
 }
+
 .width-10-percent {
-    width: 10%;
+  width: 10%;
 }
+
 .no-margin {
-    margin: 0 !important;
+  margin: 0 !important;
 }
+
 .multiselect__content {
-    z-index: 2;
+  z-index: 2;
 }
+
 .avatar {
-    width: 50px;
-    margin: 0 auto;
+  width: 50px;
+  margin: 0 auto;
 }
+
 .editor-toolbar.fullscreen {
-    z-index: 1000 !important;
+  z-index: 1000 !important;
 }
+
 .CodeMirror-fullscreen {
-    z-index: 1000 !important;
+  z-index: 1000 !important;
 }

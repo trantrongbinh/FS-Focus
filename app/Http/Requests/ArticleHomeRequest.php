@@ -24,9 +24,9 @@ class ArticleHomeRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'         => 'required|min:3',
-            'tags'          => 'required',
-            'content'       => 'required',
+            'title' => 'required|min:3',
+            'tags' => 'required',
+            'content' => 'required',
         ];
     }
 }

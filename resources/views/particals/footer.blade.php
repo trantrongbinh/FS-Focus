@@ -10,12 +10,14 @@
                         <li class="list-inline-item"><a href="#">About</a></li>
                         <li class="list-inline-item"><a href="#">Contact</a></li>
                         <li class="list-inline-item"><a href="#">How It Works</a></li>
-                        <li class="list-inline-item"><a href="#">FAQ</a></li><br>
+                        <li class="list-inline-item"><a href="#">FAQ</a></li>
+                        <br>
                         <li class="list-inline-item"><a href="#">Privacy &amp; Policy</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 text-right">
-                    <p><a href="https://bootstraptemple.com" class="text-white">{!! config('blog.footer.author') !!}.</a>
+                    <p><a href="https://bootstraptemple.com" class="text-white">{!! config('blog.footer.author') !!}
+                            .</a>
                     </p>
                 </div>
             </div>

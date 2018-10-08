@@ -14,7 +14,7 @@
                                 <li class="list-group-item">
                                     <div class="row">
                                         <div class="col-md-2">
-                                             <a href="{{ url('user', ['name' => $following->name]) }}">
+                                            <a href="{{ url('user', ['name' => $following->name]) }}">
                                                 <img class="aimg-circle img-fluid" src="{{ $following->avatar }}">
                                             </a>
                                         </div>
@@ -28,24 +28,25 @@
                                             <div class="comment-text">
                                                 We would like to congratulate John on his achievement...
                                             </div>
-                                            <a  href="javascript:void(0)" style="color: #fff;" 
-                                                class="btn btn-{{ Auth::user()->isFollowing($following->id) ? 'warning' : 'danger' }} btn-sm"
-                                                onclick="event.preventDefault();
+                                            <a href="javascript:void(0)" style="color: #fff;"
+                                               class="btn btn-{{ Auth::user()->isFollowing($following->id) ? 'warning' : 'danger' }} btn-sm"
+                                               onclick="event.preventDefault();
                                                          document.getElementById('follow-form').submit();">
                                                 {{ Auth::user()->isFollowing($following->id) ? lang('Following') : lang('Follow') }}
                                             </a>
-                                            <form id="follow-form" action="{{ url('user/follow', [$following->id]) }}" method="POST" style="display: none;">
+                                            <form id="follow-form" action="{{ url('user/follow', [$following->id]) }}"
+                                                  method="POST" style="display: none;">
                                                 {{ csrf_field() }}
                                             </form>
                                         </div>
                                     </div>
                                 </li>
-                                @empty
+                            @empty
                                 <li class="nothing">{{ lang('Nothing') }}</li>
                             @endforelse
                         </ul>
                     </div>
-                    
+
                 </div>
             </div>
         </main>

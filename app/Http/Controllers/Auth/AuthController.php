@@ -104,7 +104,7 @@ class AuthController extends Controller
      */
     public function create()
     {
-        if (! session()->has('oauthData')) {
+        if (!session()->has('oauthData')) {
             return redirect()->to('login');
         }
 
@@ -120,7 +120,7 @@ class AuthController extends Controller
      */
     public function store()
     {
-        if (! session()->has('oauthData')) {
+        if (!session()->has('oauthData')) {
             return redirect('login');
         }
 
@@ -144,7 +144,7 @@ class AuthController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)

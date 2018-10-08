@@ -59,7 +59,7 @@ class BaseManager
 
     /**
      * Get all the subfolders by folder.
-     * 
+     *
      * @param  string $folder
      * @return array
      */
@@ -75,7 +75,7 @@ class BaseManager
 
     /**
      * Get all the files by the folder.
-     * 
+     *
      * @param  string $folder
      * @return array
      */
@@ -118,8 +118,7 @@ class BaseManager
 
         $folders = explode('/', $folder); // eq: ['post_img', '2016', '10', '01']
         $build = '';
-        foreach ($folders as $folder)
-        {
+        foreach ($folders as $folder) {
             $build .= '/' . $folder;
             $crumbs[$build] = $folder;
         }
@@ -140,9 +139,9 @@ class BaseManager
         return [
             'name' => basename($path),
             'fullPath' => $path,
-            'webPath'  => $this->fileWebPath($path),
+            'webPath' => $this->fileWebPath($path),
             'mimeType' => $this->fileMimeType($path),
-            'size'     => $this->fileSize($path),
+            'size' => $this->fileSize($path),
             'modified' => $this->fileModified($path)
         ];
     }
@@ -227,36 +226,36 @@ class BaseManager
      * Handle the file upload.
      *
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
-     * @param string                                              $dir
-     * @param string                                              $name
+     * @param string $dir
+     * @param string $name
      *
      * @return array|bool
      */
     public function store(UploadedFile $file, $dir = '', $name = '')
     {
         $hashName = empty($name)
-                    ? str_ireplace('.jpeg', '.jpg', $file->hashName())
-                    : $name;
+            ? str_ireplace('.jpeg', '.jpg', $file->hashName())
+            : $name;
 
         $mime = $file->getMimeType();
 
         $realPath = $this->disk->putFileAs($dir, $file, $hashName);
 
         return [
-                'success' => true,
-                'filename' => $hashName,
-                'original_name' => $file->getClientOriginalName(),
-                'mime' => $mime,
-                'size' => human_filesize($file->getClientSize()),
-                'real_path' => $realPath,
-                'relative_url' => "uploads/$realPath",
-                'url' => asset("uploads/$realPath"),
+            'success' => true,
+            'filename' => $hashName,
+            'original_name' => $file->getClientOriginalName(),
+            'mime' => $mime,
+            'size' => human_filesize($file->getClientSize()),
+            'real_path' => $realPath,
+            'relative_url' => "uploads/$realPath",
+            'url' => asset("uploads/$realPath"),
         ];
     }
 
     /**
      * Determine whether the file exists
-     * 
+     *
      * @param  string $path
      * @return boolean
      */

@@ -16,7 +16,7 @@ class SettingController extends Controller
 
     /**
      * Display the current user setting list.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -26,7 +26,7 @@ class SettingController extends Controller
 
     /**
      * Display the notification page for setting.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function notification()
@@ -36,7 +36,7 @@ class SettingController extends Controller
 
     /**
      * Set the email notification.
-     * 
+     *
      * @param Request $request [description]
      * @return  Redirect
      */
@@ -53,7 +53,7 @@ class SettingController extends Controller
 
     /**
      * Display the bindings page.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function binding()

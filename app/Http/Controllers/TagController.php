@@ -17,7 +17,7 @@ class TagController extends Controller
 
     /**
      * Display the tag resource.
-     * 
+     *
      * @return mixed
      */
     public function index()
@@ -29,7 +29,7 @@ class TagController extends Controller
 
     /**
      * Display the articles and discussions by the tag.
-     * 
+     *
      * @param  string $tag
      * @return mixed
      */

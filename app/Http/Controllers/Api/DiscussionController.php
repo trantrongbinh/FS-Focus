@@ -30,14 +30,14 @@ class DiscussionController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\DiscussionRequest  $request
+     * @param  \App\Http\Requests\DiscussionRequest $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(DiscussionRequest $request)
     {
         $data = array_merge($request->all(), [
-            'user_id'      => \Auth::id(),
+            'user_id' => \Auth::id(),
             'last_user_id' => \Auth::id()
         ]);
 
@@ -68,7 +68,7 @@ class DiscussionController extends ApiController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -80,8 +80,8 @@ class DiscussionController extends ApiController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\DiscussionRequest  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\DiscussionRequest $request
+     * @param  int $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -101,7 +101,7 @@ class DiscussionController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)

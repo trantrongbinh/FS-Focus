@@ -6,7 +6,7 @@
             <div class="col-md-4">
                 @include('setting.particals.sidebar')
             </div>
-            
+
             <div class="col-md-8">
                 <div class="card card-default">
                     <div class="card-header">{{ lang('Notification Setting') }}</div>
@@ -20,7 +20,8 @@
                                 <div class="col-md-6">
                                     <div class="togglebutton mt-2">
                                         <label>
-                                            <input type="checkbox" name="email_notify_enabled" {{ Auth::user()->email_notify_enabled == 'yes' ? 'checked' : '' }}>
+                                            <input type="checkbox"
+                                                   name="email_notify_enabled" {{ Auth::user()->email_notify_enabled == 'yes' ? 'checked' : '' }}>
                                             <span class="toggle"></span>
                                         </label>
                                     </div>

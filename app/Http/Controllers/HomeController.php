@@ -17,7 +17,7 @@ class HomeController extends Controller
 
     /**
      * Display the dashboard page.
-     * 
+     *
      * @return mixed
      */
     public function dashboard()
@@ -27,7 +27,7 @@ class HomeController extends Controller
 
     /**
      * Search the article by keyword.
-     * 
+     *
      * @param  Request $request
      * @return mixed
      */

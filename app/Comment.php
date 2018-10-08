@@ -57,7 +57,7 @@ class Comment extends Model
     public function setContentAttribute($value)
     {
         $data = [
-            'raw'  => $value,
+            'raw' => $value,
             'html' => (new Markdowner)->convertMarkdownToHtml($value)
         ];
 

@@ -218,8 +218,6 @@ nav.navbar .menu-btn span {
   transition: all 0.3s cubic-bezier(0.81, -0.33, 0.345, 1.375);
 }
 
-
-
 nav.navbar .menu-btn.active span:first-of-type {
   transform: translateY(12px);
 }
@@ -228,11 +226,11 @@ nav.navbar .menu-btn.active span:last-of-type {
   transform: translateY(-12px);
 }
 
-nav.navbar .nav-item>a {
+nav.navbar .nav-item > a {
   position: relative;
 }
 
-nav.navbar .nav-item>a span {
+nav.navbar .nav-item > a span {
   position: absolute;
   top: 0;
   height: 23px;
@@ -242,7 +240,7 @@ nav.navbar .nav-item>a span {
   font-size: 0.6em;
 }
 
-nav.navbar .nav-item>a span.noti-numb-bg {
+nav.navbar .nav-item > a span.noti-numb-bg {
   height: 23px;
   width: 23px;
   line-height: 23px;
@@ -270,7 +268,7 @@ nav.navbar .nav-item>a span.noti-numb-bg {
   }
 }
 
-nav.navbar .nav-item>a.logout i {
+nav.navbar .nav-item > a.logout i {
   margin-left: 10px;
 }
 
@@ -397,7 +395,8 @@ nav.navbar .dropdown-menu h3.msg-nav-h3 {
 }
 
 @media (max-width: 1200px) {
-  nav.navbar {}
+  nav.navbar {
+  }
 
   nav.navbar .menu-btn {
     margin-right: 20px;
@@ -456,7 +455,7 @@ nav.navbar .dropdown-menu h3.msg-nav-h3 {
     width: 19px;
     height: 19px;
   }
-  nav.navbar .nav-item>a {
+  nav.navbar .nav-item > a {
     font-size: 13px;
   }
   nav.navbar .dropdown-menu {
