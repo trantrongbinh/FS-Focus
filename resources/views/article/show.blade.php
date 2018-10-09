@@ -51,17 +51,21 @@
                                                                      alt="{{ $article->user->name }}" class="img-fluid">
                                             </div>
                                             <div class="title">
-                                                <span><b>{{ $article->user->name or 'No Name' }}</b></span></div>
+                                                <span><b>{{ $article->user->name or 'No Name' }}</b></span>
+                                            </div>
                                         </a>
                                         <div class="d-flex align-items-center flex-wrap">
                                             <div class="date"><b><i
                                                             class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}
-                                                </b></div>
+                                                </b>
+                                            </div>
                                             <div class="views"><b><i class="far fa-eye"></i> {{ $article->view_count }}
-                                                </b></div>
+                                                </b>
+                                            </div>
                                             <div class="comments meta-last"><b><i
                                                             class="far fa-comment-alt"></i> {{ $article->comments_count }}
-                                                </b></div>
+                                                </b>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +112,7 @@
                                     <br><br>
                                     <!-- comment -->
                                     @if(Auth::guest())
-                                        <comment title="Post Comments" commentable-type="articles"
+                                        <comment title="You must be logged to add a comment !" commentable-type="articles"
                                                  commentable-id="{{ $article->id }}"
                                                  comment-number="{{ $article->comments_count }}" null-text=""></comment>
                                     @else

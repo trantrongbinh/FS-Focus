@@ -44,10 +44,8 @@
                 </a>
                 <div class="img-push">
                     <text-complete id="content" area-class="form-control" v-model="content" placeholder="Markdown"
-                                   :rows="2" :strategies="strategies"></text-complete>
-                    <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-outline-info btn-sm"
-                            style="margin-left: 50px; padding-top: 2px; padding-bottom: 2px;">Send
-                    </button>
+                                   :rows="3" :strategies="strategies" resize="none" autosize></text-complete>
+                    <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-primary btn-sm float-right send">Send</button>
                 </div>
             </form>
             <!-- /.card-comment -->
@@ -168,20 +166,6 @@
                 this.comments = response.data.data
                 this.next_page_url = response.data.meta.pagination.links.next + '&commentable_type=' + this.commentableType
             })
-
-            // var textarea = document.querySelector('textarea');
-            // textarea.addEventListener('keydown', autosize);
-
-            // function autosize(){
-            // 	var el = this
-            // 	setTimeout(function(){
-            // 		el.style.cssText = 'height:auto; padding:0'
-            // 		// for box-sizing other than "content-box" use:
-            // 		// el.style.cssText = '-moz-box-sizing:content-box';
-            // 		el.style.overflow = "hidden"
-            // 		el.style.cssText = 'height:' + el.scrollHeight + 'px'
-            // 	},0)
-            // }
         },
         methods: {
             loadMore(next_page_url) {
@@ -260,4 +244,5 @@
         max-width: 550px;
         margin-top: -40px;
     }
+  
 </style>

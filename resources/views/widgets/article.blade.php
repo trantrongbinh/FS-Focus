@@ -149,8 +149,17 @@
                                             </span>
                                             </p>
                                         </div>
+
+                                        <div class="inbox_msg__type">
+                                            <div class="inbox_msg__write">
+                                                <textarea class="textarea form-control inbox_msg__input textarea--autoHeight" placeholder="Enter text" rows="1"></textarea>
+                                                <button class="btn btn-primary btn-sm inbox_msg__btn" type="button">Send</button>
+                                            </div>
+                                        </div>
+
                                         <!-- comment -->
                                         @if(Auth::guest())
+                                            <a href="{{ url('login') }}" class="text-center">@lang('You must be logged to add a comment !')</a>
                                             <comment-home title="Post Comments" commentable-type="articles"
                                                           commentable-id="{{ $article->id }}"
                                                           comment-number="{{ $article->comments_count }}"
