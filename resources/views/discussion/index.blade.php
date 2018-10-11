@@ -6,7 +6,7 @@
 
             @include('modules.left-box')
 
-            <main class="posts-listing col-lg-7" style="margin-top: 5px;">
+            <main class="posts-listing col-lg-7">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-body">
@@ -16,7 +16,7 @@
                                         <a rel="nofollow " href="{{ url('login') }}" class=" d-flex">
                                             <div class="news-f-img"><img src="/images/default.png" alt="User Image"
                                                                          class="img-fluid img-circle" width="60"></div>
-                                            <div class="msg-body" style="margin-left: 30px; ">
+                                            <div class="msg-body">
                                                 <h3 class="h5 msg-nav-h3">What is your question?</h3>
                                                 <small>{{ lang('Discuss Subtitle') }}</small>
                                             </div>
@@ -28,18 +28,18 @@
                                                                          data-toggle="tooltip"
                                                                          title="{{ Auth::user()->nickname ?: Auth::user()->name }}"
                                                                          width="60"></div>
-                                            <div class="msg-body" style="margin-left: 30px; ">
+                                            <div class="msg-body">
                                                 <h3 class="h5 msg-nav-h3">What is your question?</h3>
                                                 <small>{{ lang('Discuss Subtitle') }}</small>
                                             </div>
                                         </a>
                                         <div class="row">
-                                            <div class="col-md-12 form-post hide" style="padding: 30px;">
+                                            <div class="col-md-12 form-post hide">
                                                 <form class="form" action="{{ url('discussion') }}" method="POST">
                                                     {{ csrf_field() }}
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
-                                                            <textarea class="textarea form-control{{ $errors->has('title') ? ' is-invalid' : '' }} box__input textarea--autoHeight" placeholder="Enter text" rows="1" id="title" name="title" style="overflow:hidden"  placeholder="Enter title">{{ old('title') }}</textarea>
+                                                            <textarea class="textarea form-control{{ $errors->has('title') ? ' is-invalid' : '' }} box__input textarea--autoHeight" placeholder="Enter text" rows="1" id="title" name="title"  placeholder="Enter title">{{ old('title') }}</textarea>
                                                             @if ($errors->has('title'))
                                                                 <span class="invalid-feedback">
                                                                     <strong>{{ $errors->first('title') }}</strong>
@@ -49,10 +49,9 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
-                                                            <select class="form-control tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}"
-                                                                    multiple="multiple"
-                                                                    name="tags[]"
-                                                                    style="width: 100%">
+                                                            <select class="form-control js-states tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}"
+                                                                    multiple="multiple" name="tags[]"
+                                                                    style="width: 100%" data-placeholder="Yours Placeholder">
                                                                 @foreach($tags as $tag)
                                                                     <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
                                                                 @endforeach
@@ -66,16 +65,15 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
-                                                            <textarea id="meta_description"
-                                                                      name="meta_description"
-                                                                      class="form-control"></textarea>
+                                                            <textarea class="textarea form-control box__input textarea--autoHeight" rows="2" id="meta_description"
+                                                                      name="meta_description"  placeholder="Enter title"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
                                                             <textarea
-                                                                    class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
-                                                                    id="content" rows="7"
+                                                                    class="box__input textarea--autoHeight form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
+                                                                    id="content" rows="4"
                                                                     name="content">{{ old('content') }}</textarea>
 
                                                             @if ($errors->has('content'))
@@ -85,147 +83,12 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    
-                                                    <div class="form-group row">
-                                                        <label for="title" class="col-sm-1 col-form-label">Title <code style="font-size: 20px;">*</code></label>
-                                                        <div class="col-sm-11">
-                                                            @if ($errors->has('title'))
-                                                                <span class="invalid-feedback d-block">
-                                                                            <strong>{{ $errors->first('title') }}</strong>
-                                                                        </span>
-                                                            @endif
-                                                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Enter text" rows="1" id="title" name="title"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <form-post></form-post>
-                                                    <button type="submit" class="btn btn-info btn-sm" style="margin: auto;"><b>Publish</b>
+                                                    <button type="submit" class="btn btn-info btn-sm"><b>Publish</b>
                                                     </button>
                                                     <button type="button" class="btn btn-danger btn-sm button-post-close">Close</button>
                                                 </form>
                                             </div>
                                         </div>
-                                     {{--    <div class="modal fade" id="myModal">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="card card-info card-outline">
-                                                                <div class="card-header">
-                                                                    <h3 class="card-title">
-                                                                        <i class="fa fa-paper-plane"></i>
-                                                                        <small>Thank for send your question !!!</small>
-                                                                    </h3>
-                                                                    <!-- tools box -->
-                                                                    <div class="card-tools">
-                                                                        <a class="float-right btn-tool close"
-                                                                           href="javascript:;" data-dismiss="modal">&times;</a>
-                                                                    </div>
-                                                                    <!-- /. tools -->
-                                                                </div>
-                                                                <!-- /.card-header -->
-                                                                <form class="form" action="{{ url('discussion') }}"
-                                                                      method="POST">
-                                                                    {{ csrf_field() }}
-                                                                    <div class="card-body">
-                                                                        <div class="form-group row">
-                                                                            <label for="title"
-                                                                                   class="col-sm-2 col-form-label">{{ lang('Discuss Title') }}
-                                                                                <code style="font-size: 20px;">*</code></label>
-                                                                            <div class="col-sm-10">
-                                                                                <input type="text" id="title"
-                                                                                       name="title"
-                                                                                       class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}"
-                                                                                       value="{{ old('title') }}">
-
-                                                                                @if ($errors->has('title'))
-                                                                                    <span class="invalid-feedback">
-                                                                                        <strong>{{ $errors->first('title') }}</strong>
-                                                                                    </span>
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <label class="col-sm-2 col-form-label">{{ lang('Discuss Tag') }}
-                                                                                <code style="font-size: 20px;">*</code></label>
-                                                                            <div class="col-sm-10">
-                                                                                <select class="form-control tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}"
-                                                                                        multiple="multiple"
-                                                                                        name="tags[]"
-                                                                                        style="width: 100%">
-                                                                                    @foreach($tags as $tag)
-                                                                                        <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
-                                                                                    @endforeach
-                                                                                </select>
-
-                                                                                @if ($errors->has('tags'))
-                                                                                    <span class="invalid-feedback d-block">
-                                                                                        <strong>{{ $errors->first('tags') }}</strong>
-                                                                                    </span>
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <label for="meta_description"
-                                                                                   class="col-sm-2 col-form-label">Meta
-                                                                                Description</label>
-                                                                            <div class="col-sm-10">
-                                                                                <textarea id="meta_description"
-                                                                                          name="meta_description"
-                                                                                          class="form-control"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <label for="content"
-                                                                                   class="col-sm-2 col-form-label">{{ lang('Discuss Content') }}
-                                                                                <code style="font-size: 20px;">*</code></label>
-                                                                            <div class="col-sm-10">
-                                                                                <textarea
-                                                                                        class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
-                                                                                        id="content" rows="7"
-                                                                                        name="content">{{ old('content') }}</textarea>
-
-                                                                                @if ($errors->has('content'))
-                                                                                    <span class="invalid-feedback">
-                                                                                        <strong>{{ $errors->first('content') }}</strong>
-                                                                                    </span>
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row">
-                                                                            <label for="content"
-                                                                                   class="col-sm-2 col-form-label"><i
-                                                                                        class="fas fa-user"></i></label>
-                                                                            <div class="col-sm-10">
-                                                                                <p class="text-sm mb-0"><span
-                                                                                            class="fa fa-hand-o-right"></span><b>
-                                                                                        How to quickly get a good
-                                                                                        answer:</b>
-                                                                                    <i>Keep your question short and to
-                                                                                        the point. Check for grammar or
-                                                                                        spelling errors. Phrase it like
-                                                                                        a question</i></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="submit"
-                                                                                class="btn btn-outline-primary btn-sm"
-                                                                                onClick="this.form.submit(); this.disabled=true;">{{ lang('Create Discussion') }}</button>
-                                                                        <button type="button"
-                                                                                class="btn btn-outline-danger btn-sm"
-                                                                                data-dismiss="modal">Close
-                                                                        </button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <!-- /.card -->
-                                                        </div>
-                                                        <!-- /.col-->
-                                                    </div>
-                                                    <!-- ./row -->
-                                                </div>
-                                            </div>
-                                        </div> --}}
                                     @endif
                                 </div>
                             </div>
@@ -307,6 +170,6 @@
 
 @section('scripts')
     <script type="text/javascript">
-        $('.select').select2();
+        $('.select').select2({ });
     </script>
 @endsection

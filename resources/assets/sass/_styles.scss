@@ -1,4 +1,11 @@
 // GENERAL
+.msg-body{
+    margin-left: 30px; 
+}
+
+textarea{
+    overflow: hidden !important;
+}
 .box__write {
     border-top: 1px solid #ebebeb;
     background-color: #f3f6fb;
@@ -637,9 +644,10 @@ div[class*="-btn"] {
 }
 
 main.posts-listing {
-  padding-top: 50px;
-  padding-left: 0;
-  padding-right: 0;
+    margin-top: 5px;
+    padding-top: 50px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 main.posts-listing .post {

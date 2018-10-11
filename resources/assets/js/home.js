@@ -4,10 +4,10 @@ window.Vue = require('vue');
 import VueI18n from 'vue-i18n';
 import locales from 'lang';
 import httpPlugin from 'plugins/http';
+import 'select2/dist/js/select2.min.js';
 
 require('bootstrap');
 require('social-share.js/dist/js/social-share.min.js');
-require('vendor/select2.min.js');
 require('vendor/jquery.fancybox.min.js');
 require('vendor/main.js');
 window.marked = require('marked');
