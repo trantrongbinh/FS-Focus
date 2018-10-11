@@ -218,6 +218,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        {{--  <div class="box__write">
+                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Enter text" rows="1"></textarea>
+                            <button class="btn btn-primary btn-sm" type="button">Send</button>
+                        </div> --}}
                         <label for="title" class="col-sm-1 col-form-label">Title <code style="font-size: 20px;">*</code></label>
                         <div class="col-sm-11">
                             @if ($errors->has('title'))
@@ -225,13 +229,13 @@
                                             <strong>{{ $errors->first('title') }}</strong>
                                         </span>
                             @endif
-                            <input type="text" id="title" name="title" class="form-control">
+                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Enter text" rows="1" id="title" name="title"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="subtitle" class="col-sm-1 col-form-label">Subtitle</label>
                         <div class="col-sm-11">
-                            <input type="text" id="subtitle" name="subtitle" class="form-control">
+                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Enter text" rows="1"  id="subtitle" name="subtitle" ></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -249,7 +253,7 @@
                     <div class="form-group row">
                         <label for="meta_description" class="col-sm-1 col-form-label">Meta Description</label>
                         <div class="col-sm-11">
-                            <textarea id="meta_description" name="meta_description" class="form-control"></textarea>
+                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Enter text" rows="3"  id="meta_description" name="meta_description"></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-info btn-sm float-right"><b>Publish</b></button>

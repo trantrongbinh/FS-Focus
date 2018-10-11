@@ -22,8 +22,7 @@
                                             </div>
                                         </a>
                                     @else
-                                        <a rel="nofollow " href="javascript:;" class=" d-flex" data-toggle="modal"
-                                           data-target="#myModal">
+                                        <a rel="nofollow " href="javascript:;" class="d-flex button-post">
                                             <div class="news-f-img"><img src="{{ Auth::user()->avatar }}"
                                                                          alt="User Image" class="img-fluid img-circle"
                                                                          data-toggle="tooltip"
@@ -34,7 +33,78 @@
                                                 <small>{{ lang('Discuss Subtitle') }}</small>
                                             </div>
                                         </a>
-                                        <div class="modal fade" id="myModal">
+                                        <div class="row">
+                                            <div class="col-md-12 form-post hide" style="padding: 30px;">
+                                                <form class="form" action="{{ url('discussion') }}" method="POST">
+                                                    {{ csrf_field() }}
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <textarea class="textarea form-control{{ $errors->has('title') ? ' is-invalid' : '' }} box__input textarea--autoHeight" placeholder="Enter text" rows="1" id="title" name="title" style="overflow:hidden"  placeholder="Enter title">{{ old('title') }}</textarea>
+                                                            @if ($errors->has('title'))
+                                                                <span class="invalid-feedback">
+                                                                    <strong>{{ $errors->first('title') }}</strong>
+                                                                </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <select class="form-control tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}"
+                                                                    multiple="multiple"
+                                                                    name="tags[]"
+                                                                    style="width: 100%">
+                                                                @foreach($tags as $tag)
+                                                                    <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @if ($errors->has('tags'))
+                                                                <span class="invalid-feedback d-block">
+                                                                    <strong>{{ $errors->first('tags') }}</strong>
+                                                                </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <textarea id="meta_description"
+                                                                      name="meta_description"
+                                                                      class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <textarea
+                                                                    class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
+                                                                    id="content" rows="7"
+                                                                    name="content">{{ old('content') }}</textarea>
+
+                                                            @if ($errors->has('content'))
+                                                                <span class="invalid-feedback">
+                                                                    <strong>{{ $errors->first('content') }}</strong>
+                                                                </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row">
+                                                        <label for="title" class="col-sm-1 col-form-label">Title <code style="font-size: 20px;">*</code></label>
+                                                        <div class="col-sm-11">
+                                                            @if ($errors->has('title'))
+                                                                <span class="invalid-feedback d-block">
+                                                                            <strong>{{ $errors->first('title') }}</strong>
+                                                                        </span>
+                                                            @endif
+                                                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Enter text" rows="1" id="title" name="title"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <form-post></form-post>
+                                                    <button type="submit" class="btn btn-info btn-sm" style="margin: auto;"><b>Publish</b>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-sm button-post-close">Close</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                     {{--    <div class="modal fade" id="myModal">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="row">
@@ -155,7 +225,7 @@
                                                     <!-- ./row -->
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     @endif
                                 </div>
                             </div>
