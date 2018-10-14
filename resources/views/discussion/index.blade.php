@@ -6,7 +6,7 @@
 
             @include('modules.left-box')
 
-            <main class="posts-listing col-lg-7">
+            <main class="posts-listing col-lg-7 question">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-body">
@@ -39,7 +39,7 @@
                                                     {{ csrf_field() }}
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
-                                                            <textarea class="textarea form-control{{ $errors->has('title') ? ' is-invalid' : '' }} box__input textarea--autoHeight" placeholder="Enter text" rows="1" id="title" name="title"  placeholder="Enter title">{{ old('title') }}</textarea>
+                                                            <textarea class="textarea form-control{{ $errors->has('title') ? ' is-invalid' : '' }} box__input textarea--autoHeight" rows="1" id="title" name="title"  placeholder="Enter title">{{ old('title') }}</textarea>
                                                             @if ($errors->has('title'))
                                                                 <span class="invalid-feedback">
                                                                     <strong>{{ $errors->first('title') }}</strong>
@@ -49,9 +49,10 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
-                                                            <select class="form-control js-states tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}"
+                                                            <select id="select" class="form-control js-states tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}"
                                                                     multiple="multiple" name="tags[]"
                                                                     style="width: 100%" data-placeholder="Yours Placeholder">
+                                                                    <option></option>
                                                                 @foreach($tags as $tag)
                                                                     <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
                                                                 @endforeach
@@ -65,8 +66,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
-                                                            <textarea class="textarea form-control box__input textarea--autoHeight" rows="2" id="meta_description"
-                                                                      name="meta_description"  placeholder="Enter title"></textarea>
+                                                            <textarea class="textarea form-control box__input textarea--autoHeight" rows="2" id="meta_description" name="meta_description"  placeholder="Enter description"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -74,7 +74,7 @@
                                                             <textarea
                                                                     class="box__input textarea--autoHeight form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
                                                                     id="content" rows="4"
-                                                                    name="content">{{ old('content') }}</textarea>
+                                                                    name="content" placeholder="Enter Content">{{ old('content') }}</textarea>
 
                                                             @if ($errors->has('content'))
                                                                 <span class="invalid-feedback">
@@ -170,6 +170,6 @@
 
 @section('scripts')
     <script type="text/javascript">
-        $('.select').select2({ });
+        $('.select').select2({});
     </script>
 @endsection

@@ -43,9 +43,8 @@
                     <img class="img-fluid img-circle img-sm" :src="userAvatar" alt="Alt Text">
                 </a>
                 <div class="img-push">
-                    <text-complete id="content" area-class="form-control" v-model="content" placeholder="Markdown"
-                                   :rows="3" :strategies="strategies" resize="none" autosize></text-complete>
-                    <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-primary btn-sm float-right send">Send</button>
+                    <text-complete id="content" area-class="form-control content" v-model="content" placeholder="Markdown" :rows="3" :strategies="strategies" resize="none" autosize></text-complete>
+                    <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-primary btn-sm send">Send</button>
                 </div>
             </form>
             <!-- /.card-comment -->
@@ -244,5 +243,19 @@
         max-width: 550px;
         margin-top: -40px;
     }
-  
+    .img-push{
+        position: relative;
+    }
+    .send{
+        margin-right: 0px;
+        top: 0;
+        position: absolute;
+        right: 0;
+    }
+
+    @media only screen and (max-width: 750px) {
+        #content {
+            width: 75%;
+        }
+    }
 </style>

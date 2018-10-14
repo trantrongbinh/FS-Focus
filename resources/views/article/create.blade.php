@@ -188,6 +188,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Category</label>
                                 <div class="col-sm-10">
+                                    <tags></tags>
                                     <select class="custom-select" name="category_id">
                                         <option value={{null}}>No Category (You can select one Category or no)</option>
                                         @foreach($categories as $category)
@@ -218,10 +219,6 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        {{--  <div class="box__write">
-                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Enter text" rows="1"></textarea>
-                            <button class="btn btn-primary btn-sm" type="button">Send</button>
-                        </div> --}}
                         <label for="title" class="col-sm-1 col-form-label">Title <code style="font-size: 20px;">*</code></label>
                         <div class="col-sm-11">
                             @if ($errors->has('title'))
@@ -270,14 +267,9 @@
 <script src="{{ mix('js/home.js') }}"></script>
 
 <script>
-    $(function () {
-        $("[data-toggle='tooltip']").tooltip();
-    });
-
     $(document).ready(function () {
         $('.select').select2();
     });
-
 </script>
 
 @if(config('blog.google.open'))
@@ -298,45 +290,5 @@
         ga('send', 'pageview');
     </script>
 @endif
-<script>
-    // back to top
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('#goTop').fadeIn();
-        } else {
-            $('#goTop').fadeOut();
-        }
-    });
-    $('#goTop').click(function () {
-        $("html, body").animate({scrollTop: 0}, 600);
-        return false;
-    });
-
-    $(document).ready(function () {
-
-        'use strict';
-
-        // ------------------------------------------------------- //
-        // Search Box
-        // ------------------------------------------------------ //
-        $('#search').on('click', function (e) {
-            e.preventDefault();
-            $('.search-box').fadeIn();
-        });
-        $('.dismiss').on('click', function () {
-            $('.search-box').fadeOut();
-        });
-
-        // ------------------------------------------------------- //
-        // Adding fade effect to dropdowns
-        // ------------------------------------------------------ //
-        $('.dropdown').on('show.bs.dropdown', function () {
-            $(this).find('.dropdown-menu').first().stop(true, true).fadeIn();
-        });
-        $('.dropdown').on('hide.bs.dropdown', function () {
-            $(this).find('.dropdown-menu').first().stop(true, true).fadeOut();
-        });
-    });
-</script>
 </body>
 </html>

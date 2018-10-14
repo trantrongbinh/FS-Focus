@@ -54,7 +54,7 @@
                             </a>
                         </label>
                         <div class="col-sm-10">
-                            <text-complete id="content" area-class="form-control" v-model="content"
+                            <text-complete id="content" area-class="form-control textarea--autoHeight" v-model="content"
                                            placeholder="Markdown" :rows="7" :strategies="strategies">
                             </text-complete>
                         </div>

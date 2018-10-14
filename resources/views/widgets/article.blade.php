@@ -20,13 +20,11 @@
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        <a href="{{ url('login') }}" class="btn btn-outline-secondary btn-sm"
+                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right"
                                            style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>
                                         &nbsp
-                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm"><i
+                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i
                                                     class="fas fa-question-circle"></i> Discussion</a>
-                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right"><i
-                                                    class="fas fa-edit"></i> Post</a>
                                     </div>
                                 </div>
                             @else
@@ -41,34 +39,13 @@
                                     </div>
                                 </a>
                                 <div class="row">
-                                    <div class="col-md-12 form-post hide" style="padding: 30px;">
-                                        <form class="form" action="{{ url('article/new') }}" method="POST">
-                                            {{ csrf_field() }}
-                                            <div class="form-group row">
-                                                <div class="col-sm-12">
-                                                    @if ($errors->has('title'))
-                                                        <span class="invalid-feedback d-block">
-                                                            <strong>{{ $errors->first('title') }}</strong>
-                                                        </span>
-                                                    @endif
-                                                    <input type="text" id="title" name="title" class="form-control"
-                                                           placeholder="Title">
-                                                </div>
-                                            </div>
-                                            <form-post></form-post>
-                                            <button type="submit" class="btn btn-info btn-sm" style="margin: auto;"><b>Publish</b>
-                                            </button>
-                                        </form>
-                                    </div>
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        <a href="{{ url('article/new') }}" class="btn btn-outline-secondary btn-sm"
+                                        <a href="{{ url('article/new') }}" class="btn btn-info btn-sm float-right"
                                            style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>
                                         &nbsp
-                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm"><i
+                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i
                                                     class="fas fa-question-circle"></i> Discussion</a>
-                                        <a href="javascript:;" class="btn btn-info btn-sm float-right button-post"><i
-                                                    class="fas fa-edit"></i> Post</a>
                                     </div>
                                 </div>
                             @endif

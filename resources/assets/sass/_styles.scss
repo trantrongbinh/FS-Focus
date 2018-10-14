@@ -644,10 +644,13 @@ div[class*="-btn"] {
 }
 
 main.posts-listing {
-    margin-top: 5px;
     padding-top: 50px;
     padding-left: 0;
     padding-right: 0;
+}
+
+main.question{
+    margin-top: 5px;
 }
 
 main.posts-listing .post {
