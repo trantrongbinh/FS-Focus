@@ -49,10 +49,7 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
-                                                            <select id="select" class="form-control js-states tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}"
-                                                                    multiple="multiple" name="tags[]"
-                                                                    style="width: 100%" data-placeholder="Yours Placeholder">
-                                                                    <option></option>
+                                                            <select class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }} select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" name="tags[]">
                                                                 @foreach($tags as $tag)
                                                                     <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
                                                                 @endforeach
@@ -168,8 +165,3 @@
     </div>
 @endsection
 
-@section('scripts')
-    <script type="text/javascript">
-        $('.select').select2({});
-    </script>
-@endsection

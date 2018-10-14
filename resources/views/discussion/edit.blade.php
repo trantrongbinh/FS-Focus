@@ -25,8 +25,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">{{ lang('Discuss Tag') }}</label>
                         <div class="col-sm-10">
-                            <select class="select{{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple="multiple"
-                                    name="tags[]" style="width: 100%">
+                            <select class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }} select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" name="tags[]">
                                 @foreach($tags as $tag)
                                     @if(in_array($tag->id, $selectTags))
                                         <option value="{{ $tag->id }}" selected>{{ $tag->tag }}</option>

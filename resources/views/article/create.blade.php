@@ -15,11 +15,6 @@
     <title>@yield('title', config('app.name'))</title>
 
     <link rel="stylesheet" href="{{ mix('css/home.css') }}">
-    <style type="text/css">
-        .select2 {
-            width: 100% !important;
-        }
-    </style>
     <!-- Scripts -->
     <script>
         window.Language = '{{ config('app.locale') }}';
@@ -208,8 +203,7 @@
                                                     <strong>{{ $errors->first('tags') }}</strong>
                                                 </span>
                                     @endif
-                                    <select class="form-control tags select{{ $errors->has('tags') ? ' is-invalid' : '' }}"
-                                            multiple="multiple" name="tags[]" style="width: 100%">
+                                    <select class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }} select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" name="tags[]">
                                         @foreach($tags as $tag)
                                             <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
                                         @endforeach
@@ -265,13 +259,6 @@
 
 <!-- Scripts -->
 <script src="{{ mix('js/home.js') }}"></script>
-
-<script>
-    $(document).ready(function () {
-        $('.select').select2();
-    });
-</script>
-
 @if(config('blog.google.open'))
     <script>
         (function (i, s, o, g, r, a, m) {
