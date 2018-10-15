@@ -1,4 +1,26 @@
 // GENERAL
+.create-discussion textarea{
+    border: none;
+    resize: none;
+}
+
+.create-discussion .select2-selection{
+    border: none !important;    
+}
+
+.create-discussion .q-item{
+    display: inline-flex;
+}
+
+.create-discussion .text-red{
+    color: #900;
+    margin-top: 8px;
+}
+
+.select2{
+    width: 100% !important;
+}
+
 .select2-search__field {
     width: 100% !important;
 }

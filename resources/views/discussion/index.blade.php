@@ -14,8 +14,9 @@
                                 <div class="card-body">
                                     @if (Auth::guest())
                                         <a rel="nofollow " href="{{ url('login') }}" class=" d-flex">
-                                            <div class="news-f-img"><img src="/images/default.png" alt="User Image"
-                                                                         class="img-fluid img-circle" width="60"></div>
+                                            <div class="news-f-img">
+                                                <img src="/images/default.png" alt="User Image" class="img-fluid img-circle" width="60">
+                                            </div>
                                             <div class="msg-body">
                                                 <h3 class="h5 msg-nav-h3">What is your question?</h3>
                                                 <small>{{ lang('Discuss Subtitle') }}</small>
@@ -23,23 +24,23 @@
                                         </a>
                                     @else
                                         <a rel="nofollow " href="javascript:;" class="d-flex button-post">
-                                            <div class="news-f-img"><img src="{{ Auth::user()->avatar }}"
-                                                                         alt="User Image" class="img-fluid img-circle"
-                                                                         data-toggle="tooltip"
-                                                                         title="{{ Auth::user()->nickname ?: Auth::user()->name }}"
-                                                                         width="60"></div>
+                                            <div class="news-f-img">
+                                                <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60"></div>
                                             <div class="msg-body">
                                                 <h3 class="h5 msg-nav-h3">What is your question?</h3>
                                                 <small>{{ lang('Discuss Subtitle') }}</small>
                                             </div>
                                         </a>
-                                        <div class="row">
+                                        <div class="row create-discussion">
                                             <div class="col-md-12 form-post hide">
+                                                <div class="clear"></div>
+                                                <strong>Bố cục chuẩn: </strong>
                                                 <form class="form" action="{{ url('discussion') }}" method="POST">
                                                     {{ csrf_field() }}
                                                     <div class="form-group row">
-                                                        <div class="col-sm-12">
-                                                            <textarea class="textarea form-control{{ $errors->has('title') ? ' is-invalid' : '' }} box__input textarea--autoHeight" rows="1" id="title" name="title"  placeholder="Enter title">{{ old('title') }}</textarea>
+                                                        <div class="col-sm-12 q-item">
+                                                            <span class="text-red">*</span>
+                                                            <textarea class="textarea form-control{{ $errors->has('title') ? ' is-invalid' : '' }} box__input textarea--autoHeight" rows="1" id="title" name="title"  placeholder="Title your post">{{ old('title') }}</textarea>
                                                             @if ($errors->has('title'))
                                                                 <span class="invalid-feedback">
                                                                     <strong>{{ $errors->first('title') }}</strong>
@@ -48,8 +49,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <div class="col-sm-12">
-                                                            <select class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }} select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" name="tags[]">
+                                                        <div class="col-sm-12 q-item">
+                                                            <span class="text-red">*</span>
+                                                            <select class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }} select2" multiple="multiple" data-placeholder=" Tag your post" style="width: 100%;" name="tags[]">
                                                                 @foreach($tags as $tag)
                                                                     <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
                                                                 @endforeach
@@ -63,16 +65,13 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
-                                                            <textarea class="textarea form-control box__input textarea--autoHeight" rows="2" id="meta_description" name="meta_description"  placeholder="Enter description"></textarea>
+                                                            <textarea class="textarea form-control box__input textarea--autoHeight" rows="1" id="meta_description" name="meta_description"  placeholder="Description cô đọng giúp bài viết hay hơn (không bắt buộc)"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <div class="col-sm-12">
-                                                            <textarea
-                                                                    class="box__input textarea--autoHeight form-control{{ $errors->has('content') ? ' is-invalid' : '' }}"
-                                                                    id="content" rows="4"
-                                                                    name="content" placeholder="Enter Content">{{ old('content') }}</textarea>
-
+                                                        <div class="col-sm-12 q-item">
+                                                            <span class="text-red">*</span>
+                                                            <textarea class="box__input textarea--autoHeight form-control{{ $errors->has('content') ? ' is-invalid' : '' }}" id="content" rows="2" name="content" placeholder="Write Conten here ....">{{ old('content') }}</textarea>
                                                             @if ($errors->has('content'))
                                                                 <span class="invalid-feedback">
                                                                     <strong>{{ $errors->first('content') }}</strong>
@@ -90,14 +89,12 @@
                                 </div>
                             </div>
                             <div class="clear"></div>
-
                             @if ($errors->has('title') || $errors->has('tags') || $errors->has('content'))
                                 <div class="alert alert-danger alert-dismissible fade show">
                                     <button type="button" class="close" data-dismiss="alert">&times;</button>
                                     <strong>Error!</strong> Check data again.
                                 </div>
                             @endif
-
                             @forelse($discussions as $discussion)
                             <!-- Post-->
                                 <div class="row d-flex post card">

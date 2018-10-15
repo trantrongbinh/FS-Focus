@@ -30,18 +30,15 @@
         <div class="search-box">
             <button class="dismiss"><i class="fa fa-times"></i></button>
             <form id="searchForm" action="{{ url('search') }}" role="search" method="get">
-                <input type="search" class="form-control" data-action="grow" autocomplete="off" name="q"
-                       placeholder="{{ lang('Search') }}" required>
+                <input type="search" class="form-control" data-action="grow" autocomplete="off" name="q" placeholder="{{ lang('Search') }}" required>
             </form>
         </div>
         <div class="container">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
                 <div class="navbar-header">
                     <a href="{{ url('/') }}" class="navbar-brand">
-                        <div class="brand-text brand-big hidden-lg-down"><img src="/images/logo-white.png" alt="Logo"
-                                                                              class="img-fluid"></div>
-                        <div class="brand-text brand-small"><img src="/images/logo-icon.png" alt="Logo"
-                                                                 class="img-fluid"></div>
+                        <div class="brand-text brand-big hidden-lg-down"><img src="/images/logo-white.png" alt="Logo" class="img-fluid"></div>
+                        <div class="brand-text brand-small"><img src="/images/logo-icon.png" alt="Logo" class="img-fluid"></div>
                     </a>
                     <a href="#">
                         <form action="" class="form-lang" method="post">
@@ -58,32 +55,21 @@
             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
             @if (Auth::guest())
                 <!-- Write post-->
-                    <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('login') }}"
-                                                                      data-toggle="tooltip" title="Write an article"><i
-                                    class="fas fa-user-edit"></i></a></li>
+                <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('login') }}" data-toggle="tooltip" title="Write an article"><i class="fas fa-user-edit"></i></a></li>
             @else
                 <!-- Write post-->
-                    <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('article/new') }}"
-                                                                      data-toggle="tooltip" title="Write an article"><i
-                                    class="fas fa-user-edit"></i></a></li>
+                <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('article/new') }}" data-toggle="tooltip" title="Write an article"><i class="fas fa-user-edit"></i></a></li>
             @endif
             <!-- questions-->
-                <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('discussion') }}"
-                                                                  data-toggle="tooltip" title="Discussion"><i
-                                class="fas fa-question-circle"></i></a></li>
-                <!-- Search-->
-                <li class="nav-item d-flex align-items-center"><a id="search" class="nav-link" href="#"><i
-                                class="fas fa-search"></i></a></li>
-                <!-- Authentication Links -->
+            <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('discussion') }}" data-toggle="tooltip" title="Discussion"><i class="fas fa-question-circle"></i></a></li>
+            <!-- Search-->
+            <li class="nav-item d-flex align-items-center"><a id="search" class="nav-link" href="#"><i class="fas fa-search"></i></a></li>
+            <!-- Authentication Links -->
             @if (Auth::guest())
                 <!-- Log in-->
-                    <li class="nav-item d-flex align-items-center"><a class="nav-link"
-                                                                      href="{{ url('login') }}"></i> {{ lang('Login') }}</a>
-                    </li>
-                    <!-- Sign up-->
-                    <li class="nav-item d-flex align-items-center"><a class="nav-link btn btn-info btn-sm text-white"
-                                                                      href="{{ url('register') }}">{{ lang('Register') }}</a>
-                    </li>
+                <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{{ url('login') }}"></i> {{ lang('Login') }}</a></li>
+                <!-- Sign up-->
+                <li class="nav-item d-flex align-items-center"><a class="nav-link btn btn-info btn-sm text-white" href="{{ url('register') }}">{{ lang('Register') }}</a></li>
             @else
                 <!-- Notifications-->
                     <li class="nav-item notification">
@@ -91,26 +77,22 @@
                             <i class="fa fa-bell"></i>
                             <span class="new" @if (Auth::user()->unreadNotifications->count() > 0)
                             style='display: block'
-                                    @endif >
-                                        <span class="noti-numb-bg"></span><span class="badge text-danger"><i
-                                            class="fas fa-circle"></i></span>
-                                    </span>
+                            @endif >
+                            <span class="noti-numb-bg"></span><span class="badge text-danger"><i class="fas fa-circle"></i></span></span>
                         </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="profile" class="nav-link logout" data-target="#" href="#" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle"
-                                 data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}"
-                                 style="height: 30px; width: 30px;">
+                            <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" style="height: 30px; width: 30px;">
                         </a>
                         <ul aria-labelledby="profile" class="dropdown-menu profile">
                             <li>
                                 <a rel="nofollow" href="{{ url('user', ['name' => Auth::user()->name]) }}"
                                    class="dropdown-item d-flex">
-                                    <div class="msg-profile avatar"><img src="{{ Auth::user()->avatar }}" alt="..."
-                                                                         class="img-fluid rounded-circle"
-                                                                         style="height: 50px; width: 50px;"></div>
+                                    <div class="msg-profile avatar">
+                                        <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" style="height: 50px; width: 50px;">
+                                    </div>
                                     <div class="msg-body">
                                         <h3 class="h5">{{ Auth::user()->name }}</h3>
                                         <span>{{ Auth::user()->email }}</span>
@@ -119,8 +101,7 @@
                                 <hr>
                             </li>
                             @if(Auth::user()->is_admin)
-                                <li><a href="{{ url('dashboard') }}"><i
-                                                class="fas fa-tachometer-alt"></i>{{ lang('Dashboard') }}</a></li>
+                                <li><a href="{{ url('dashboard') }}"><i class="fas fa-tachometer-alt"></i>{{ lang('Dashboard') }}</a></li>
                             @endif
                             <li>
                                 <a rel="nofollow" href="{{ url('user', ['name' => Auth::user()->name]) }}"
@@ -133,8 +114,7 @@
                             <li>
                                 <a rel="nofollow" href="{{ url('setting') }}" class="dropdown-item">
                                     <div class="notification">
-                                        <div class="notification-content"><i
-                                                    class="fa fa-cog"></i>{{ lang('Settings') }}</div>
+                                        <div class="notification-content"><i class="fa fa-cog"></i>{{ lang('Settings') }}</div>
                                     </div>
                                 </a>
                                 <hr>
@@ -159,10 +139,9 @@
     </nav>
     <div class="container">
         <main class="article row">
-            <div class="col-md-12">
+            <div class="col-md-10 offset-md-1">
                 <div class="form-group row">
-                    <label for="title" class="col-sm-1 col-form-label"></label>
-                    <div class="col-sm-11">
+                    <div class="col-sm-12">
                         <div class="alert alert-primary alert-dismissible fade show">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                             <p>Các thẻ có <code>*</code> là bắt buộc. Khi bạn lựa chọn <code>is Draft?</code> thi bai
@@ -181,11 +160,9 @@
                     <div class="form-group row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Category</label>
-                                <div class="col-sm-10">
-                                    <tags></tags>
-                                    <select class="custom-select" name="category_id">
-                                        <option value={{null}}>No Category (You can select one Category or no)</option>
+                                <div class="col-sm-12">
+                                    <select class="select2 js-states form-control" data-placeholder="You can select one Category or no" name="category_id">
+                                        <option></option>
                                         @foreach($categories as $category)
                                             <option value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
@@ -195,9 +172,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class=" form-group row">
-                                <label class="col-sm-2 col-form-label">Tag <code
-                                            style="font-size: 20px;">*</code></label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-12">
                                     @if ($errors->has('tags'))
                                         <span class="invalid-feedback d-block">
                                                     <strong>{{ $errors->first('tags') }}</strong>
@@ -213,8 +188,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="title" class="col-sm-1 col-form-label">Title <code style="font-size: 20px;">*</code></label>
-                        <div class="col-sm-11">
+                        <div class="col-sm-12">
                             @if ($errors->has('title'))
                                 <span class="invalid-feedback d-block">
                                             <strong>{{ $errors->first('title') }}</strong>
@@ -224,14 +198,12 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="subtitle" class="col-sm-1 col-form-label">Subtitle</label>
-                        <div class="col-sm-11">
+                        <div class="col-sm-12">
                             <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Enter text" rows="1"  id="subtitle" name="subtitle" ></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="title" class="col-sm-1 col-form-label"></label>
-                        <div class="col-sm-11">
+                        <div class="col-sm-12">
                             @if ($errors->has('content'))
                                 <div class="alert alert-danger alert-dismissible fade show">
                                     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -242,8 +214,7 @@
                     </div>
                     <form-content></form-content>
                     <div class="form-group row">
-                        <label for="meta_description" class="col-sm-1 col-form-label">Meta Description</label>
-                        <div class="col-sm-11">
+                        <div class="col-sm-12">
                             <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Enter text" rows="3"  id="meta_description" name="meta_description"></textarea>
                         </div>
                     </div>
