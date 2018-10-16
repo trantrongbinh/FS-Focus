@@ -15,14 +15,20 @@ $(document).ready(function () {
 
     'use strict';
 
-    $('.select2').select2()
+    $('.select2').select2({
+        maximumSelectionLength: 3
+    })
 
-    $(".button-post").click(function () {
-        $(".form-post").show(700);
+    $(".button-show").click(function () {
+        $(".optional").show(700);
     });
 
-    $(".button-post-close").click(function () {
-        $(".form-post").hide(700);
+    $(".button-hide").click(function () {
+        $(".optional").hide(700);
+    });
+
+    $(".button-toggle").click(function () {
+        $(".optional").toggle(700);
     });
 
     // ------------------------------------------------------- //
@@ -70,30 +76,3 @@ $(document).ready(function () {
     });
 
 });
-
-// ------------------------------------------------------- //
-// Extend window in fullscreen
-// ------------------------------------------------------ //
-// function toggleFullScreen(elem) {
-//     if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
-//         if (elem.requestFullScreen) {
-//             elem.requestFullScreen();
-//         } else if (elem.mozRequestFullScreen) {
-//             elem.mozRequestFullScreen();
-//         } else if (elem.webkitRequestFullScreen) {
-//             elem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-//         } else if (elem.msRequestFullscreen) {
-//             elem.msRequestFullscreen();
-//         }
-//     } else {
-//         if (document.cancelFullScreen) {
-//             document.cancelFullScreen();
-//         } else if (document.mozCancelFullScreen) {
-//             document.mozCancelFullScreen();
-//         } else if (document.webkitCancelFullScreen) {
-//             document.webkitCancelFullScreen();
-//         } else if (document.msExitFullscreen) {
-//             document.msExitFullscreen();
-//         }
-//     }
-// }

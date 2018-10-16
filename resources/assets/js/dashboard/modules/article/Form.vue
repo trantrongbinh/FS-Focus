@@ -5,8 +5,7 @@
                 <div class="form-group row">
                     <label class="col-sm-1 col-form-label">{{ $t('form.category') }}</label>
                     <div class="col-sm-11">
-                        <multiselect v-model="selected" :options="options" label="name"
-                                     :placeholder="$t('form.select_category')" track-by="name">
+                        <multiselect v-model="selected" :options="options" label="name" :placeholder="$t('form.select_category')" track-by="name">
                         </multiselect>
                     </div>
                 </div>

@@ -1,20 +1,37 @@
 // GENERAL
-.create-discussion textarea{
+.create-post textarea{
     border: none;
     resize: none;
 }
 
-.create-discussion .select2-selection{
-    border: none !important;    
-}
-
-.create-discussion .q-item{
+.create-post .q-item{
     display: inline-flex;
 }
 
-.create-discussion .text-red{
+.create-post .text-red{
     color: #900;
     margin-top: 8px;
+}
+
+//select2
+.single-select .select2-selection--single {
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    height: 40px;
+    padding-top: 7px;
+}
+
+.select2-selection__arrow{
+    display: none;
+}
+
+.select2-selection{
+    border: none !important;    
+}
+
+.select2-selection--multiple {
+    font-weight: 600;
 }
 
 .select2{
@@ -32,6 +49,7 @@
 textarea{
     overflow: hidden !important;
 }
+
 .box__write {
     border-top: 1px solid #ebebeb;
     background-color: #f3f6fb;

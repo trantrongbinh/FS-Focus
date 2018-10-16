@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group row">
+                <div class="col-md-12"><img v-if="page_image != null && page_image != ''" :src="page_image" alt="FS-Focus" width="40" height="40"></div>
                 <div class="col-sm-8">
                     <input type="text" id="page_image" class="form-control" name="page_image" placeholder="ex: /uploads/default_avatar.png">
                 </div>
                 <div class="col-sm-4">
-                    <img :src="page_image" alt="FS-Focus" width="40" height="40">
                     <div class="cover-upload pull-right">
                         <a href="javascript:;" class="btn btn-success file">
                             <span>{{ $t('form.upload_file') }}</span>
@@ -24,25 +24,15 @@
     import FineUploader from 'fine-uploader/lib/traditional'
 
     export default {
-        props: {
-            page_image: {
-                type: String,
-                default() {
-                    return ''
-                }
-            },
-            url_image: {
-                type: String,
-                default() {
-                    return ''
-                }
-            },
-            content: {
-                type: String,
-                default() {
-                    return ''
-                }
+        data: function () {
+            return {
+                page_image: '',
+                url_image: ''
             }
+        },
+        mounted() {
+            this.page_image = this.url_image
+            console.log(this.page_image)
         },
         methods: {
             coverUploader(event) {

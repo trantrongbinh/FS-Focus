@@ -24,7 +24,7 @@
         ]); ?>
     </script>
 </head>
-<body>
+<body style="background: none;">
 <div id="app">
     <nav class="navbar navbar-expand-lg">
         <div class="search-box">
@@ -139,28 +139,23 @@
     </nav>
     <div class="container">
         <main class="article row">
-            <div class="col-md-10 offset-md-1">
-                <div class="form-group row">
-                    <div class="col-sm-12">
-                        <div class="alert alert-primary alert-dismissible fade show">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <p>Các thẻ có <code>*</code> là bắt buộc. Khi bạn lựa chọn <code>is Draft?</code> thi bai
-                                cua ban chi la ban nhap khi chua viet xong, mac dinh bai viet la ban chinh khi khong lua
-                                chon <code>is Draft?</code> va <code>Is Original?</code>. Ngoai ra bai viet co the kem
-                                theo anh chu de hoac khong!</p>
-                            <p>Phan noi dung co the <code>keo tha</code> anh vao hoac <code>page link</code> anh vao
-                                form</p>
-                            <p>Cam on ban da viet bai chia se cho cong dong, rat mong nhan duoc nhieu su chia se, y
-                                kien, phan hoi tu ban. Chuc ban co mot ngay lam viec hieu qua !!!</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-10 offset-md-1 create-post">
                 <form class="form" action="{{ url('article/new') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group row">
+                        <div class="col-sm-12">
+                            <form-content></form-content>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 offset-md-4">
+                            <button type="button" class="btn btn-light btn-sm button-toggle">Show bố cục chuẩn</button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-12 single-select">
                                     <select class="select2 js-states form-control" data-placeholder="You can select one Category or no" name="category_id">
                                         <option></option>
                                         @foreach($categories as $category)
@@ -178,7 +173,7 @@
                                                     <strong>{{ $errors->first('tags') }}</strong>
                                                 </span>
                                     @endif
-                                    <select class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }} select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" name="tags[]">
+                                    <select class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }} select2" multiple="multiple" data-placeholder=" Tag your post" style="width: 100%;" name="tags[]">
                                         @foreach($tags as $tag)
                                             <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
                                         @endforeach
@@ -194,28 +189,17 @@
                                             <strong>{{ $errors->first('title') }}</strong>
                                         </span>
                             @endif
-                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Enter text" rows="1" id="title" name="title"></textarea>
+                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="TITLE YOUR POST" rows="1" id="title" name="title"></textarea>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row optional hide">
                         <div class="col-sm-12">
-                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Enter text" rows="1"  id="subtitle" name="subtitle" ></textarea>
+                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Lời mở đầu ..." rows="1"  id="subtitle" name="subtitle" ></textarea>
                         </div>
                     </div>
-                    <div class="form-group row">
+                     <div class="form-group row optional hide">
                         <div class="col-sm-12">
-                            @if ($errors->has('content'))
-                                <div class="alert alert-danger alert-dismissible fade show">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    <strong>{{ $errors->first('content') }}</strong> Check content again.
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                    <form-content></form-content>
-                    <div class="form-group row">
-                        <div class="col-sm-12">
-                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Enter text" rows="3"  id="meta_description" name="meta_description"></textarea>
+                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Mô tả bài viết giúp người đọc dễ dàng lắm bắt ..." rows="3"  id="meta_description" name="meta_description"></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-info btn-sm float-right"><b>Publish</b></button>

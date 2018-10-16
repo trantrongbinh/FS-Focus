@@ -23,7 +23,7 @@
                                             </div>
                                         </a>
                                     @else
-                                        <a rel="nofollow " href="javascript:;" class="d-flex button-post">
+                                        <a rel="nofollow " href="javascript:;" class="d-flex button-show">
                                             <div class="news-f-img">
                                                 <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60"></div>
                                             <div class="msg-body">
@@ -31,8 +31,8 @@
                                                 <small>{{ lang('Discuss Subtitle') }}</small>
                                             </div>
                                         </a>
-                                        <div class="row create-discussion">
-                                            <div class="col-md-12 form-post hide">
+                                        <div class="row create-post">
+                                            <div class="col-md-12 optional hide">
                                                 <div class="clear"></div>
                                                 <strong>Bố cục chuẩn: </strong>
                                                 <form class="form" action="{{ url('discussion') }}" method="POST">
@@ -81,7 +81,7 @@
                                                     </div>
                                                     <button type="submit" class="btn btn-info btn-sm"><b>Publish</b>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger btn-sm button-post-close">Close</button>
+                                                    <button type="button" class="btn btn-danger btn-sm button-hide">Close</button>
                                                 </form>
                                             </div>
                                         </div>
