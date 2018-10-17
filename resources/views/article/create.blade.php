@@ -144,18 +144,18 @@
                     {{ csrf_field() }}
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <form-content></form-content>
+                            <form-image></form-image>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-sm-4 offset-md-4">
+                        <div class="col-sm-4 offset-md-4 text-center">
                             <button type="button" class="btn btn-light btn-sm button-toggle">Show bố cục chuẩn</button>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <div class="col-sm-12 single-select">
+                                <div class="col-sm-6 offset-md-3 single-select">
                                     <select class="select2 js-states form-control" data-placeholder="You can select one Category or no" name="category_id">
                                         <option></option>
                                         @foreach($categories as $category)
@@ -167,7 +167,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class=" form-group row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-8 offset-md-2">
                                     @if ($errors->has('tags'))
                                         <span class="invalid-feedback d-block">
                                                     <strong>{{ $errors->first('tags') }}</strong>

@@ -2,12 +2,12 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group row">
-                <div class="col-md-12"><img v-if="page_image != null && page_image != ''" :src="page_image" alt="FS-Focus" width="40" height="40"></div>
-                <div class="col-sm-8">
-                    <input type="text" id="page_image" class="form-control" name="page_image" placeholder="ex: /uploads/default_avatar.png">
+                <div class="col-md-12 text-center"><img id="image-post" v-if="page_image != null && page_image != ''" :src="page_image" alt="FS-Focus"></div>
+                <div class="col-sm-10 offset-md-1 text-center">
+                    <input type="text" id="page_image" class="form-control" name="page_image" v-model="page_image" placeholder="Paste path file here - ex: /uploads/default_avatar.png">
                 </div>
-                <div class="col-sm-4">
-                    <div class="cover-upload pull-right">
+                <div class="col-sm-6  offset-md-3 text-center">
+                    <div class="cover-upload">
                         <a href="javascript:;" class="btn btn-success file">
                             <span>{{ $t('form.upload_file') }}</span>
                             <input type="file" @change="coverUploader">
@@ -27,12 +27,7 @@
         data: function () {
             return {
                 page_image: '',
-                url_image: ''
             }
-        },
-        mounted() {
-            this.page_image = this.url_image
-            console.log(this.page_image)
         },
         methods: {
             coverUploader(event) {
@@ -90,5 +85,17 @@
                 opacity: 0;
             }
         }
+    }
+
+    #page_image{
+        margin-top: 10px;
+        text-align: center;
+        border: none;
+    }
+
+    #image-post{
+        margin-top: -30px;
+        max-width: 1000px;
+        max-height: 450px;
     }
 </style>

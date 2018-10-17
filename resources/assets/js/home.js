@@ -30,7 +30,7 @@ Vue.component('comment', require('home/components/Comment.vue'));
 
 Vue.component('comment-home', require('home/components/Comment-Home.vue'));
 
-Vue.component('form-content', require('home/components/FormContent-Home.vue'));
+Vue.component('form-image', require('home/components/Form-Image.vue'));
 
 // Vue.component('form-post', require('home/components/FormPost.vue'));
 
