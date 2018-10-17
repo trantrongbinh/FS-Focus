@@ -24,15 +24,13 @@ const i18n = new VueI18n({
     messages: locales
 })
 
-// Vue.component('list-post', require('home/components/TabListPost.vue'))
-
 Vue.component('comment', require('home/components/Comment.vue'));
 
-Vue.component('comment-home', require('home/components/Comment-Home.vue'));
+Vue.component('comment-home', require('home/components/CommentHome.vue'));
 
-Vue.component('form-image', require('home/components/Form-Image.vue'));
+Vue.component('form-image', require('home/components/FormImage.vue'));
 
-// Vue.component('form-post', require('home/components/FormPost.vue'));
+Vue.component('form-content', require('home/components/FormContentPost.vue'));
 
 Vue.component('parse', require('home/components/Parse.vue'));
 

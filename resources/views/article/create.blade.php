@@ -202,6 +202,31 @@
                             <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Mô tả bài viết giúp người đọc dễ dàng lắm bắt ..." rows="3"  id="meta_description" name="meta_description"></textarea>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <form-content></form-content>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3 col-form-label">is_draft</div>
+                        <div class="col-sm-3">
+                            <div class="togglebutton" style="margin-top: 6px">
+                                <label>
+                                    <input type="checkbox" name="is_draft">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-form-label">is_original</div>
+                        <div class="col-sm-3">
+                            <div class="togglebutton" style="margin-top: 6px">
+                                <label>
+                                    <input type="checkbox" name="is_original">
+                                    <span class="toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-info btn-sm float-right"><b>Publish</b></button>
                 </form>
                 <div style="margin-bottom: 200px;"></div>
