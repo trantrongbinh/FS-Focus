@@ -1,4 +1,20 @@
 // GENERAL
+.editor-toolbar {
+    border: none;
+}
+
+.editor-preview-side {
+    border-top: none;
+}
+
+.CodeMirror {
+    border: none;
+}
+
+.CodeMirror .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word){
+    background: none;
+}
+
 .create-post textarea{
     border: none;
     resize: none;

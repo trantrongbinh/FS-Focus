@@ -61,7 +61,6 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         $data = array_merge($request->all(), [
             'user_id' => \Auth::id(),
             'last_user_id' => \Auth::id(),
