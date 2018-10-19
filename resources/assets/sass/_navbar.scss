@@ -36,6 +36,15 @@
   right: 0;
 }
 
+@media only screen and (max-width: 500px) {
+  .toggle-right {
+    margin-right: -20px;
+  }
+  .form-lang, .contact{
+    display: none;
+  }
+}
+
 #menu-close span {
   color: #000000;
   padding: 5px;

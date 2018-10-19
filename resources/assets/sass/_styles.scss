@@ -1,4 +1,10 @@
 // GENERAL
+.image-wrap {
+    max-height: 420px;
+    overflow: hidden; 
+    transition: max-width .5s ease-out;
+}
+
 .editor-toolbar {
     border: none;
 }

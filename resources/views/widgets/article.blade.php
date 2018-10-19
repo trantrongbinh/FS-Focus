@@ -10,8 +10,7 @@
                         <div class="card-body">
                             @if (Auth::guest())
                                 <a rel="nofollow " href="{{ url('login') }}" class=" d-flex">
-                                    <div class="news-f-img"><img src="/images/default.png" alt="User Image"
-                                                                 class="img-fluid img-circle" width="60"></div>
+                                    <div class="news-f-img"><img src="/images/default.png" alt="User Image" class="img-fluid img-circle" width="60"></div>
                                     <div class="msg-body" style="margin-left: 30px;">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
                                         <small>{{ lang('Discuss Subtitle') }}</small>
@@ -20,19 +19,13 @@
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right"
-                                           style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>
-                                        &nbsp
-                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i
-                                                    class="fas fa-question-circle"></i> Discussion</a>
+                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
+                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
                                     </div>
                                 </div>
                             @else
                                 <a rel="nofollow " href="javascript:;" class="d-flex button-post">
-                                    <div class="news-f-img"><img src="{{ Auth::user()->avatar }}" alt="User Image"
-                                                                 class="img-fluid img-circle" data-toggle="tooltip"
-                                                                 title="{{ Auth::user()->nickname ?: Auth::user()->name }}"
-                                                                 width="60"></div>
+                                    <div class="news-f-img"><img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60"></div>
                                     <div class="msg-body" style="margin-left: 30px; ">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
                                         <small>{{ lang('Discuss Subtitle') }}</small>
@@ -41,11 +34,8 @@
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        <a href="{{ url('article/new') }}" class="btn btn-info btn-sm float-right"
-                                           style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>
-                                        &nbsp
-                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i
-                                                    class="fas fa-question-circle"></i> Discussion</a>
+                                        <a href="{{ url('article/new') }}" class="btn btn-info btn-sm float-right" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
+                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
                                     </div>
                                 </div>
                             @endif
@@ -61,27 +51,17 @@
                                         <div class="card-body">
                                             <div class="user-block">
                                                 <div class="post-footer d-flex align-items-center">
-                                                    <a href="/user/{{ $article->user->name }}"
-                                                       class="author d-flex align-items-center flex-wrap">
-                                                        <div class="avatar"><img src="{{ $article->user->avatar }}"
-                                                                                 alt="{{ $article->user->name }}"
-                                                                                 class="img-fluid"></div>
-                                                        <div class="title">
-                                                            <span><b>{{ $article->user->name }}</b></span></div>
+                                                    <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
+                                                        <div class="avatar"><img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}" class="img-fluid"></div>
+                                                        <div class="title"><span><b>{{ $article->user->name }}</b></span></div>
                                                     </a>
-                                                    <div class="date"><b><i
-                                                                    class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}
-                                                        </b></div>
-                                                    <div class="comments meta-last"><b><i
-                                                                    class="far fa-comment-alt"></i>{{ $article->comments_count }}
-                                                        </b></div>
+                                                    <div class="date"><b><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</b></div>
+                                                    <div class="comments meta-last"><b><i class="far fa-comment-alt"></i>{{ $article->comments_count }}</b></div>
                                                 </div>
                                                 @if(Auth::check() && Auth::user()->id == $article->user->id)
-                                                    <a href="javascript:;" class="float-right  btn-tool"
-                                                       data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
+                                                    <a href="javascript:;" class="float-right  btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item"
-                                                           href="{{ url("article/{$article->id}/edit") }}">Edit</a>
+                                                        <a class="dropdown-item" href="{{ url("article/{$article->id}/edit") }}">Edit</a>
                                                         <a class="dropdown-item" href="#">Delete</a>
                                                     </div>
                                                 @else
@@ -103,27 +83,18 @@
                                             </div>
                                             @if($article->page_image)
                                                 <div class="row mb-3" style="margin-top: 10px;">
-                                                    <div class="col-sm-12 text-center">
+                                                    <div class="col-sm-12 text-center image-wrap">
                                                         <a href="{{ url($article->slug) }}">
-                                                            <img class="img-fluid" alt="{{ $article->slug }}"
-                                                                 src="{{ $article->page_image }}"
-                                                                 data-holder-rendered="true">
+                                                            <img class="img-fluid bg-image" alt="{{ $article->slug }}" src="{{ $article->page_image }}" data-holder-rendered="true">
                                                         </a>
                                                     </div>
                                                     <!-- /.col -->
                                                 </div>
                                             @endif
                                             <p>
-                                                <a href="#" class="link-black text-sm mr-2"><i
-                                                            class="far fa-star mr-1"></i> Rate (2)</a>
-                                                <a href="#" class="link-black text-sm"><i
-                                                            class="far fa-thumbs-up mr-1"></i> Like (100)</a>
-                                                <span class="float-right">
-                                                  <a href="#" class="link-black text-sm">
-                                                    <i class="far fa-comments mr-1"></i> Comments ({{ $article->comments_count }}
-                                                      )
-                                                </a>
-                                            </span>
+                                                <a href="#" class="link-black text-sm mr-2"><i class="far fa-star mr-1"></i> Rate (2)</a>
+                                                <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like (100)</a>
+                                                <span class="float-right"><a href="#" class="link-black text-sm"> <i class="far fa-comments mr-1"></i> Comments ({{ $article->comments_count }})</a></span>
                                             </p>
                                         </div>
 

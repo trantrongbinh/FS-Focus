@@ -32,7 +32,7 @@
                                             </div>
                                         </a>
                                         <div class="row create-post">
-                                            <div class="col-md-12 optional hide">
+                                            <div class="col-md-12 optional {{ $errors->isEmpty() ? 'hide' : ''}}">
                                                 <div class="clear"></div>
                                                 <strong>Bố cục chuẩn: </strong>
                                                 <form class="form" action="{{ url('discussion') }}" method="POST">
@@ -89,12 +89,6 @@
                                 </div>
                             </div>
                             <div class="clear"></div>
-                            @if ($errors->has('title') || $errors->has('tags') || $errors->has('content'))
-                                <div class="alert alert-danger alert-dismissible fade show">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    <strong>Error!</strong> Check data again.
-                                </div>
-                            @endif
                             @forelse($discussions as $discussion)
                             <!-- Post-->
                                 <div class="row d-flex post card">
