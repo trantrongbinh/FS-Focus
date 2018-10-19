@@ -6,6 +6,7 @@ use App\Repositories\UserRepository;
 use App\Repositories\VisitorRepository;
 use App\Repositories\ArticleRepository;
 use App\Repositories\CommentRepository;
+use Carbon\Carbon;
 
 class HomeController extends ApiController
 {
@@ -35,7 +36,12 @@ class HomeController extends ApiController
         $articles = $this->article->getNumber();
         $comments = $this->comment->getNumber();
 
-        $data = compact('users', 'visitors', 'articles', 'comments');
+        $new_users = $this->user->getNewNumberToday();
+        $views_article = $this->article->sum();
+        $new_articles = $this->article->getNewNumberToday();
+        $new_comments = $this->comment->getNewNumberToday();
+
+        $data = compact('users', 'visitors', 'articles', 'comments', 'new_users', 'views_article', 'new_articles', 'new_comments');
 
         return $this->response->json($data);
     }

@@ -25,5 +25,10 @@ export default {
     version: 'Version',
     extension: 'Extension',
     driver: 'Driver',
-    nothing: 'No Content'
+    nothing: 'No Content',
+    new: 'New',
+    new_user: 'New Users',
+    new_view: 'New Views',
+    new_article: 'New Articles',
+    new_comment: 'New Comments'
 }
