@@ -1,5 +1,6 @@
 <?php
-
+//Route test variables
+Route::get('/testt', 'Api\HomeController@statistics');
 // User Auth
 Auth::routes();
 Route::post('password/change', 'UserController@changePassword')->middleware('auth');

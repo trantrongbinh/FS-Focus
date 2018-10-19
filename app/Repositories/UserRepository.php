@@ -160,4 +160,5 @@ class UserRepository
     {
         return $this->getById($id)->delete();
     }
+
 }

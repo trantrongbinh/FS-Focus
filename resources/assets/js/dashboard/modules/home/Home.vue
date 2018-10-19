@@ -56,6 +56,52 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <span class="badge badge-success float-right">{{ $t('page.new') }}</span>
+                        <h5 class="no-margins">{{ $t('page.new_user') }}</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins"><i class="fas fa-users"></i>{{ statistics.new_users }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <span class="badge badge-success float-right">{{ $t('page.new') }}</span>
+                        <h5 class="no-margins">{{ $t('page.new_view') }}</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins"><i class="fas fa-eye"></i>{{ statistics.views_article }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <span class="badge badge-success float-right">{{ $t('page.new') }}</span>
+                        <h5 class="no-margins">{{ $t('page.new_article') }}</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins"><i class="fas fa-newspaper"></i>{{ statistics.new_articles }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <span class="badge badge-success float-right">{{ $t('page.new') }}</span>
+                        <h5 class="no-margins">{{ $t('page.new_comment') }}</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins"><i class="fas fa-comments"></i>{{ statistics.new_comments }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

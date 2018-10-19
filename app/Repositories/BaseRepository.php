@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use Carbon\Carbon;
+
 trait BaseRepository
 {
     /**
@@ -115,5 +117,15 @@ trait BaseRepository
         $model->save();
 
         return $model;
+    }
+
+    /**
+     * Get number of records
+     *
+     * @return array
+     */
+    public function getNewNumberToday()
+    {
+        return $this->model->where('created_at', '>', Carbon::today())->count();
     }
 }
