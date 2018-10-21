@@ -1,4 +1,15 @@
 // GENERAL
+.create-button{
+    padding-top: 10px; 
+    padding-bottom: 15px;
+    font-size: 14px;
+}
+
+.view-all-button{
+    padding-top: 10px; 
+    font-size: 14px;
+}
+
 .image-wrap {
     max-height: 420px;
     overflow: hidden; 
@@ -75,7 +86,7 @@ textarea{
     -ms-flex-pack: justify;
     justify-content: space-between;
     -ms-flex-align: start;
-    align-items: flex-start; 
+    align-items: flex-start;
 }
 
 .ibox__input {
@@ -83,7 +94,7 @@ textarea{
     margin-right: 20px;
     margin-bottom: 0;
     resize: none;
-    max-height: 175px; 
+    max-height: 175px;
 }
 
 .hide {

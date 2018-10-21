@@ -59,7 +59,7 @@ class ArticleController extends Controller
      * @param  \App\Http\Requests\ArticleHomeRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleHomeRequest $request)
     {
         $data = array_merge($request->all(), [
             'user_id' => \Auth::id(),
