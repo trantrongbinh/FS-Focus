@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Article;
 use App\Scopes\DraftScope;
+use Illuminate\Support\Facades\Session;
 
 class ArticleRepository
 {
@@ -105,8 +106,6 @@ class ArticleRepository
         $this->model = $this->checkAuthScope();
 
         $article = $this->model->where('slug', $slug)->withCount('comments')->firstOrFail();
-
-        $article->increment('view_count');
 
         $this->visitor->log($article->id);
 
@@ -231,6 +230,25 @@ class ArticleRepository
     public function sum()
     {
         return $this->model->sum('view_count');
+    }
+
+    /**
+     * [Count View]
+     * @param  [object] $article
+     * @return boolean
+     */
+    public function incrementNumberView($article)
+    {
+        $articleKey = 'article_' . $article->id;
+
+        if(!Session::has($articleKey)) {
+            $article->increment('view_count');
+            Session::put($articleKey, 1);
+
+            return true;
+        }
+
+        return false;
     }
 
 }

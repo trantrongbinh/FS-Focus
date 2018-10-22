@@ -101,17 +101,9 @@
                                         <!-- comment -->
                                         @if(Auth::guest())
                                             <a href="{{ url('login') }}" class="text-center">@lang('You must be logged to add a comment !')</a>
-                                            <comment-home title="Post Comments" commentable-type="articles"
-                                                          commentable-id="{{ $article->id }}"
-                                                          comment-number="{{ $article->comments_count }}"
-                                                          null-text=""></comment-home>
+                                            <comment-home title="Post Comments" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text=""></comment-home>
                                         @else
-                                            <comment-home title="Bình luận" username="{{ Auth::user()->name }}"
-                                                          user-avatar="{{ Auth::user()->avatar }}"
-                                                          commentable-type="articles"
-                                                          commentable-id="{{ $article->id }}"
-                                                          comment-number="{{ $article->comments_count }}" null-text=""
-                                                          can-comment></comment-home>
+                                            <comment-home title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="" can-comment></comment-home>
                                         @endif
                                     </div>
                                     <!-- /.post -->
