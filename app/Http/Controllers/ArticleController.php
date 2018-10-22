@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleHomeRequest;
 use App\Repositories\ArticleRepository;
+use Illuminate\Support\Facades\Session;
 
 class ArticleController extends Controller
 {
@@ -25,7 +26,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = $this->article->page(config('blog.article.number'), config('blog.article.sort'), config('blog.article.sortColumn'));
+        $articles = $this->article->page(
+            config('blog.article.number'), 
+            config('blog.article.sort'), 
+            config('blog.article.sortColumn')
+        );
 
         return view('article.index', compact('articles'));
     }
@@ -39,7 +44,8 @@ class ArticleController extends Controller
     public function show($slug)
     {
         $article = $this->article->getBySlug($slug);
-
+        $this->article->incrementNumberView($article);
+        
         return view('article.show', compact('article'));
     }
 
