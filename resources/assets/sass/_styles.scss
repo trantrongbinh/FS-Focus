@@ -1,4 +1,7 @@
 // GENERAL
+.text-sm{
+    font-size: 11px;
+}
 .create-button{
     padding-top: 10px; 
     padding-bottom: 15px;
@@ -728,7 +731,7 @@ main.posts-listing .post {
   margin-bottom: 10px;
 }
 
-main.posts-listing .post-footer {
+.posts-listing .post-footer {
   font-size: 0.8em;
 }
 

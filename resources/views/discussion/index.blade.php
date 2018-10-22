@@ -90,7 +90,7 @@
                             </div>
                             <div class="clear"></div>
                             @forelse($discussions as $discussion)
-                            <!-- Post-->
+                                <!-- Post-->
                                 <div class="row d-flex post card">
                                     <div class="text col-lg-12 card-body">
                                         @if(Auth::check() && Auth::user()->id == $discussion->user->id)
@@ -145,6 +145,7 @@
                             @endforelse
 
                             {{ $discussions->links('pagination.default') }}
+                            
                         </div>
                     </div>
                 </div>
