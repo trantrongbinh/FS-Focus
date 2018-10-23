@@ -49,7 +49,6 @@ class User extends Authenticatable
     public static function boot()
     {
         parent::boot();
-
         static::addGlobalScope(new StatusScope());
     }
 
@@ -74,6 +73,18 @@ class User extends Authenticatable
     }
 
     /**
+     * Many to Many relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class)
+            ->as('join')
+            ->withTimestamps();
+    }
+
+    /**
      * Get the avatar and return the default avatar if the avatar is null.
      *
      * @param string $value
@@ -92,6 +103,7 @@ class User extends Authenticatable
     public function routeNotificationForMail()
     {
         if (auth()->id() != $this->id && $this->email_notify_enabled == 'yes' && config('blog.mail_notification')) {
+
             return $this->email;
         }
     }
