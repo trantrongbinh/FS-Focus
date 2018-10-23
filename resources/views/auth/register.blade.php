@@ -26,7 +26,7 @@
 </head>
 
 <body>
-<div class="register-box">
+<div id="app" class="register-box">
     <div class="register-logo">
         <a href="/"><img src="/images/logo-blue.png" alt="Logo"></a>
     </div>

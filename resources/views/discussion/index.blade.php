@@ -79,8 +79,7 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    <button type="submit" class="btn btn-info btn-sm"><b>Publish</b>
-                                                    </button>
+                                                    <button type="submit" class="btn btn-info btn-sm"><b>Publish</b></button>
                                                     <button type="button" class="btn btn-danger btn-sm button-hide">Close</button>
                                                 </form>
                                             </div>
