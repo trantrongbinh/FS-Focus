@@ -13,6 +13,7 @@ require('vendor/main.js');
 window.marked = require('marked');
 window.hljs = require('vendor/highlight.min.js');
 window.toastr = require('toastr/build/toastr.min.js');
+window.voca  = require('voca');
 
 Vue.use(VueI18n);
 Vue.use(httpPlugin);
