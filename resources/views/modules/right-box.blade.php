@@ -58,16 +58,23 @@
                     </div>
                 </div>
             </a>
-            <div class="border-top text-center create-button">
-                <a href="#" class="text-danger button-toggle-team"><strong><i class="fas fa-users-cog"></i> Create Team</strong></a>
-            </div>
-            <div class="optional-team hide">
-                <form action="">
-                    <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Your Team" rows="1"></textarea>
-                    <div class="clear"></div>
-                    <a class="btn btn-outline-info btn-sm"> <i class="fas fa-check text-dark"></i></a>
-                </form>
-            </div>
+            @if (Auth::guest())
+                <div class="border-top text-center">
+                    <a href="{{ url('login') }}" class="text-danger create-button"><strong><i class="fas fa-users-cog"></i> Create Team</strong></a>
+                </div>
+            @else
+                <div class="border-top text-center">
+                    <a href="javascript:;" class="text-danger button-toggle-team create-button"><strong><i class="fas fa-users-cog"></i> Create Team</strong></a>
+                    <div class="optional-team  {{ $errors->isEmpty() ? 'hide' : ''}}">
+                        <form action="{{ url('team') }}" method="POST">
+                            {{ csrf_field() }}
+                            <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Your Team" rows="1" name="name"></textarea>
+                            <div class="clear"></div>
+                            <button type="submit" class="btn btn-outline-info btn-sm full-width"><i class="fas fa-check text-dark"></i></button>
+                        </form>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
     <!-- Widget [Categories Widget]-->

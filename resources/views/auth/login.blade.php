@@ -26,7 +26,7 @@
 </head>
 
 <body>
-<div class="login-box">
+<div id="app" class="login-box">
     <div class="login-logo">
         <a href="/"><img src="/images/logo-blue.png" alt="Logo"></a>
     </div>

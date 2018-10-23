@@ -19,6 +19,9 @@ Route::get('search', 'HomeController@search');
 // Discussion
 Route::resource('discussion', 'DiscussionController', ['except' => 'destroy']);
 
+// Team
+Route::resource('team', 'TeamController', ['except' => 'destroy']);
+
 // User
 Route::group(['prefix' => 'user'], function () {
     Route::get('/', 'UserController@index');
