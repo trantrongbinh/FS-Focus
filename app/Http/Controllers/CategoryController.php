@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 use App\Repositories\CategoryRepository;
 
 class CategoryController extends Controller
@@ -40,5 +40,23 @@ class CategoryController extends Controller
         $articles = $category->articles;
 
         return view('category.show', compact('category', 'articles'));
+    }
+
+    /**
+     * Store a newly created resource.
+     *
+     * @param  \App\Http\Requests\CategoryRequest $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function store(CategoryRequest $request)
+    {
+        $data = array_merge($request->all(), [
+            'user_id' =>  \Auth::id(),
+        ]);
+        
+        $category = $this->category->store($data);
+
+        return back()->with('category_id', $category->id);
     }
 }

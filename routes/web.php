@@ -56,6 +56,7 @@ Route::get('link', 'LinkController@index');
 
 // Category
 Route::group(['prefix' => 'category'], function () {
+    Route::post('create', 'CategoryController@store');
     Route::get('{category}', 'CategoryController@show');
     Route::get('/', 'CategoryController@index');
 });
