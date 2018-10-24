@@ -233,8 +233,8 @@ class ArticleRepository
     }
 
     /**
-     * [Count View]
-     * @param  [object] $article
+     * Count View
+     * @param  object $article
      * @return boolean
      */
     public function incrementNumberView($article)

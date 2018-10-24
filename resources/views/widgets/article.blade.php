@@ -72,14 +72,8 @@
                                             <a href="{{ url($article->slug) }}" style="margin-top: 10px;">
                                                 <h3 class="h4">{{ $article->title }}</h3>
                                             </a>
-                                            @if($article->subtitle)
-                                                <div class="meta">
-                                                    <span class="cinema">{{ $article->subtitle }}</span>
-                                                </div>
-                                            @endif
-                                            <div class="description">
-                                                {{ $article->meta_description }}
-                                                <a class="text-blue" href="{{ url($article->slug) }}">... more</a>
+                                            <div class="meta">
+                                                <span class="cinema"><strong>{{ $article->subtitle }}</strong></span> {{ $article->meta_description }}
                                             </div>
                                             @if($article->page_image)
                                                 <div class="row mb-3" style="margin-top: 10px;">
@@ -97,7 +91,6 @@
                                                 <span class="float-right"><a href="#" class="link-black text-sm"> <i class="far fa-comments mr-1"></i> Comments ({{ $article->comments_count }})</a></span>
                                             </p>
                                         </div>
-
                                         <!-- comment -->
                                         @if(Auth::guest())
                                             <a href="{{ url('login') }}" class="text-center">@lang('You must be logged to add a comment !')</a>
