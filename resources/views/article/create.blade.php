@@ -175,7 +175,7 @@
                                                 @if(!$categories['yourCategory']->isEmpty())
                                                     <optgroup label="Your Category">
                                                         @foreach($categories['yourCategory'] as $category)
-                                                            <option value="{{$category->id}}" @if(session('category_id') && session('category_id') == $category->id) selected @endif>{{$category->name}} - {{$category->id}} </option>
+                                                            <option value="{{$category->id}}" @if(session('category_id') && session('category_id') == $category->id) selected @endif>{{$category->name}}</option>
                                                        @endforeach
                                                     @endif
                                                 </optgroup>
