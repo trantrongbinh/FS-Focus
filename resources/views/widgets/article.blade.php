@@ -3,7 +3,7 @@
 
         @include('modules.left-box')
 
-        <main class="posts-listing col-lg-7">
+        <main class="posts-listing col-lg-7 border-frame">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -19,8 +19,8 @@
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
-                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
+                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
+                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm"><i class="fas fa-question-circle"></i> Discussion</a>
                                     </div>
                                 </div>
                             @else
@@ -34,8 +34,8 @@
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        <a href="{{ url('article/new') }}" class="btn btn-info btn-sm float-right" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
-                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
+                                        <a href="{{ url('article/new') }}" class="btn btn-info btn-sm" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
+                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm"><i class="fas fa-question-circle"></i> Discussion</a>
                                     </div>
                                 </div>
                             @endif
@@ -45,7 +45,29 @@
                     <div class="tab-content">
                         <div class="active tab-pane" id="activity">
                             <div id="featured-posts">
-                            @forelse($articles as $article)
+                                <div class="box-popup">
+                                    <img class="user-small-img" src="http://www.clker.com/cliparts/1/1/6/f/1355259240202822213Round%20Green%20Button.svg.med.png">
+                                    <span style="font-size: 16px;color: #fff;">
+                                        <strong>Welcome To The Website</strong>
+                                    </span>
+                                    <div class="user-ditels">
+                                        <div class="images" style="float: left; width: 70px; height: 70px;">
+                                            <img class="img-fluid" src="https://yt3.ggpht.com/a-/AN66SAy8MOVDMxgsHkINCUMrbVgFdJah9DjZv-67vw=s900-mo-c-c0xffffffff-rj-k-no" style="padding: 7px;">
+                                        </div>
+                                        <span class="user-full-ditels text-center">
+                                            <h3 class="h6">FS-Focus</h3>
+                                            <p><strong>Nothing is impossible!</strong></p>
+                                        </span>
+                                        <div class="social-icon">
+                                            <a href="#"><i class="fab fa-facebook-square" data-toggle="tooltip" data-placement="bottom" title="Facebook"></i></a>
+                                            <a href="#"><i class="fab fa-twitter" data-toggle="tooltip" data-placement="bottom" title="Twitter"></i></a>
+                                            <a href="#"><i class="fab fa-google-plus" data-toggle="tooltip" data-placement="bottom" title="Google Plus"></i></a>
+                                            <a href="#"><i class="fab fa-youtube" data-toggle="tooltip" data-placement="bottom" title="Youtube"></i></a>
+                                            <a href="#"><i class="fab fa-github" data-toggle="tooltip" data-placement="bottom" title="Github"></i></a>               
+                                        </div>
+                                    </div>
+                                </div>
+                                @forelse($articles as $article)
                                 <!-- Post -->
                                     <div class="post card">
                                         <div class="card-body">

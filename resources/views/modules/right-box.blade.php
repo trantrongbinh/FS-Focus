@@ -6,7 +6,7 @@
         </header>
         <div class="blog-posts">
             <a href="#">
-                <div class="item d-flex align-items-center">
+                <div class="item d-flex align-items-center popover__wrapper">
                     <div class="image">
                         <img class="img-fluid img-sm" src="img/user3-128x128.jpg" alt="User Image">
                     </div>
@@ -16,10 +16,13 @@
                             <div class="comments"><i class="fas fa-pencil-alt"></i> 12</div>
                         </div>
                     </div>
+                    <div class="push popover__content">
+                        <p class="popover__message">BKFA Team</p>
+                    </div>
                 </div>
             </a>
             <a href="#">
-                <div class="item d-flex align-items-center">
+                <div class="item d-flex align-items-center popover__wrapper">
                     <div class="image">
                         <img class="img-fluid img-sm" src="img/small-thumbnail-2.jpg" alt="..." class="img-fluid">
                     </div>
@@ -29,10 +32,13 @@
                             <div class="comments"><i class="icon-comment"></i>12</div>
                         </div>
                     </div>
+                    <div class="push popover__content">
+                        <p class="popover__message">Teach Hot</p>
+                    </div>
                 </div>
             </a>
             <a href="#">
-                <div class="item d-flex align-items-center">
+                <div class="item d-flex align-items-center popover__wrapper">
                     <div class="image">
                         <img class="img-fluid img-sm" src="img/small-thumbnail-3.jpg" alt="..." class="img-fluid">
                     </div>
@@ -41,6 +47,9 @@
                             <div class="views"><i class="icon-eye"></i> 500</div>
                             <div class="comments"><i class="icon-comment"></i>12</div>
                         </div>
+                    </div>
+                    <div class="push popover__content">
+                        <p class="popover__message">CTTN 4.0</p>
                     </div>
                 </div>
             </a>

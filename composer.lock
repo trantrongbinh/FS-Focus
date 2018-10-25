@@ -1113,16 +1113,16 @@
         },
         {
             "name": "jaybizzle/crawler-detect",
-            "version": "v1.2.71",
+            "version": "v1.2.72",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "bfb7d00c70d0ad59037bed7f08a2b6c10b1ed2ba"
+                "reference": "92805a35b1fc0fbce7fe390df96891ba10e4a12e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/bfb7d00c70d0ad59037bed7f08a2b6c10b1ed2ba",
-                "reference": "bfb7d00c70d0ad59037bed7f08a2b6c10b1ed2ba",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/92805a35b1fc0fbce7fe390df96891ba10e4a12e",
+                "reference": "92805a35b1fc0fbce7fe390df96891ba10e4a12e",
                 "shasum": ""
             },
             "require": {
@@ -1158,7 +1158,7 @@
                 "crawlerdetect",
                 "php crawler detect"
             ],
-            "time": "2018-10-16T18:51:19+00:00"
+            "time": "2018-10-23T19:00:40+00:00"
         },
         {
             "name": "jcc/laravel-vote",

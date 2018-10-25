@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleHomeRequest;
 use App\Repositories\ArticleRepository;
-use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class ArticleController extends Controller
 {
@@ -44,7 +44,8 @@ class ArticleController extends Controller
     public function show($slug)
     {
         $article = $this->article->getBySlug($slug);
-        $this->article->incrementNumberView($article);
+
+        $article->addViewWithExpiryDate(Carbon::now()->addMinute());
         
         return view('article.show', compact('article'));
     }
