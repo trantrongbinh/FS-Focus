@@ -1,7 +1,8 @@
 // GENERAL
 
 .border-frame{
-    margin-top: 30px;
+    margin-top: 77px;
+    margin-bottom: 100px;
     -webkit-box-shadow: 1px 4px 16px 3px rgba(199,197,199,1);
     -moz-box-shadow: 1px 4px 16px 3px rgba(199,197,199,1);
     box-shadow: 1px 4px 16px 3px rgba(199,197,199,1);
@@ -782,13 +783,7 @@ div[class*="-btn"] {
 }
 
 main.posts-listing {
-    padding-top: 50px;
-    padding-left: 0;
-    padding-right: 0;
-}
-
-main.question{
-    margin-top: 5px;
+    padding: 0 0 20px 0;
 }
 
 main.posts-listing .post {
