@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Article;
 use App\Scopes\DraftScope;
-use Illuminate\Support\Facades\Session;
 
 class ArticleRepository
 {
@@ -231,24 +230,4 @@ class ArticleRepository
     {
         return $this->model->sum('view_count');
     }
-
-    /**
-     * Count View
-     * @param  object $article
-     * @return boolean
-     */
-    public function incrementNumberView($article)
-    {
-        $articleKey = 'article_' . $article->id;
-
-        if(!Session::has($articleKey)) {
-            $article->increment('view_count');
-            Session::put($articleKey, 1);
-
-            return true;
-        }
-
-        return false;
-    }
-
 }
