@@ -55,7 +55,42 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item d-flex align-items-center"><a class="nav-link btn btn-info btn-sm text-white" href="#"><b>Create Your Category</b></a></li>
+                        <li class="nav-item d-flex align-items-center">
+                            <a class="nav-link btn btn-info btn-sm text-white" href="#" data-toggle="modal" data-target="#createCategoryModal"><b>Create Your Category</b></a>
+                            <div class="modal fade" id="createCategoryModal" style="color: #000" data-backdrop="false">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Create Your Category</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <form class="form" action="{{ url('category/create') }}" method="POST">
+                                                {{ csrf_field() }}
+                                                <div class="form-group row">
+                                                    <label for="name" class="col-sm-2 col-form-label">Your Category: </label>
+                                                    <div class="col-sm-10 q-item">
+                                                        <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"  type="text" value="" id="name" name="name" placeholder="Category your post">
+                                                        @if ($errors->has('name'))
+                                                            <span class="invalid-feedback">
+                                                                <strong>{{ $errors->first('name') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-info btn-sm"><b>Create</b>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-sm button-hide" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                         <li class="nav-item dropdown">
                             <a id="profile" class="nav-link logout" data-target="#" href="#" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
@@ -130,11 +165,32 @@
                                 <div class="col-md-6">
                                     <div class="form-group row">
                                         <div class="col-sm-6 offset-md-3 single-select">
+                                            @if ($errors->has('name'))
+                                                <span class="invalid-feedback">
+                                                    <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
+                                            @endif
                                             <select class="select2 js-states form-control" data-placeholder="You can select one Category or no" name="category_id">
                                                 <option></option>
-                                                @foreach($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                                @endforeach
+                                                @if(!$categories['yourCategory']->isEmpty())
+                                                    <optgroup label="Your Category">
+                                                        @foreach($categories['yourCategory'] as $category)
+                                                            <option value="{{$category->id}}" @if(session('category_id') && session('category_id') == $category->id) selected @endif>{{$category->name}} - {{$category->id}} </option>
+                                                       @endforeach
+                                                    @endif
+                                                </optgroup>
+                                                <optgroup label="Public">
+                                                    @foreach($categories['public'] as $category)
+                                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                                    @endforeach
+                                                </optgroup>
+                                                @if(!$categories['other']->isEmpty())
+                                                    <optgroup label="Other">
+                                                        @foreach($categories['other'] as $category)
+                                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                                        @endforeach
+                                                    </optgroup>
+                                                @endif
                                             </select>
                                         </div>
                                     </div>
@@ -213,6 +269,16 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/home.js') }}"></script>
+        <script>
+            $('#name').keyup(function () {
+                $('#slug').val(voca.slugify($(this).val()))
+            })
+        </script>
+        @if(!$errors->isEmpty())
+            <script>
+                $("#createCategoryModal").modal({ show : true });
+            </script>
+        @endif
         @if(config('blog.google.open'))
             <script>
                 (function (i, s, o, g, r, a, m) {

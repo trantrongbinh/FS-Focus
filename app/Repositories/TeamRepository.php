@@ -24,7 +24,7 @@ class TeamRepository
     {
         $team = $this->model->create($data);
 
-        dd($this->syncTeam($team, $syncData));
+        $this->syncTeam($team, $syncData);
 
         return $team;
     }

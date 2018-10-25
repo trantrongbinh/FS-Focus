@@ -15,6 +15,16 @@ class CategoryComposer
      */
     public function compose(View $view)
     {
-        $view->with('categories', Category::withCount('articles')->get());
+        $public = Category::withCount('articles')->whereNull('user_id')->get();
+        
+        if (\Auth::check()) {
+            $yourCategory = Category::withCount('articles')->where('user_id', \Auth::id())->get();
+            $other = Category::withCount('articles')->whereNotNull('user_id')->where('user_id', '!=', \Auth::id())->get();
+        } else {
+            $yourCategory = null;
+            $other = Category::withCount('articles')->whereNotNull('user_id')->get();
+        }
+
+        $view->with('categories', ['yourCategory' => $yourCategory, 'public' => $public, 'other' => $other]);
     }
 }

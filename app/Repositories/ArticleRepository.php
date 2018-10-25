@@ -230,5 +230,4 @@ class ArticleRepository
     {
         return $this->model->sum('view_count');
     }
-
 }
