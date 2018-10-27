@@ -42,10 +42,4 @@ return [
         'redirect' => env('GITHUB_REDIRECT'),
     ],
 
-    // Translation
-    'youdao' => [
-       'appKey' => env('YOUDAO_APP_KEY'),
-       'appSecret' => env('YOUDAO_APP_SECRET'),
-    ],
-
 ];
