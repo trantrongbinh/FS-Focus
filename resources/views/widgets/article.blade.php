@@ -19,14 +19,16 @@
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
-                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm"><i class="fas fa-question-circle"></i> Discussion</a>
+                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
+                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
                                     </div>
                                 </div>
                             @else
                                 <a rel="nofollow " href="javascript:;" class="d-flex button-post">
-                                    <div class="news-f-img"><img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60"></div>
-                                    <div class="msg-body" style="margin-left: 30px; ">
+                                    <div class="news-f-img">
+                                        <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60">
+                                    </div>
+                                    <div class="msg-body" style="margin-left: 30px;">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
                                         <small>{{ lang('Discuss Subtitle') }}</small>
                                     </div>
@@ -34,8 +36,8 @@
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        <a href="{{ url('article/new') }}" class="btn btn-info btn-sm" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
-                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm"><i class="fas fa-question-circle"></i> Discussion</a>
+                                        <a href="{{ url('article/new') }}" class="btn btn-info btn-sm float-right" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
+                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
                                     </div>
                                 </div>
                             @endif

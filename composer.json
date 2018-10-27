@@ -12,7 +12,6 @@
         "erusev/parsedown": "^1.6",
         "fideloper/proxy": "~4.0",
         "intervention/image": "^2.3",
-        "jcc/laravel-vote": "dev-master",
         "jellybool/flysystem-upyun": "dev-master",
         "jellybool/translug": "~2.0",
         "laravel/framework": "5.6.*",
@@ -22,6 +21,7 @@
         "laravel/tinker": "~1.0",
         "league/fractal": "^0.14.0",
         "league/html-to-markdown": "^4.2",
+        "overtrue/laravel-follow": "^1.1",
         "predis/predis": "^1.1",
         "yzalis/identicon": "^1.1"
     },
