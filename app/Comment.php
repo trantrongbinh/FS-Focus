@@ -3,13 +3,18 @@
 namespace App;
 
 use App\Tools\Markdowner;
-use Jcc\LaravelVote\CanBeVoted;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Overtrue\LaravelFollow\Traits\CanBeLiked;
+use Overtrue\LaravelFollow\Traits\CanBeFavorited;
+use Overtrue\LaravelFollow\Traits\CanBeBookmarked;
+use App\Traits\CanBeVoted;
+
 class Comment extends Model
 {
-    use SoftDeletes, CanBeVoted;
+    use SoftDeletes;
+    use CanBeLiked, CanBeFavorited, CanBeVoted, CanBeBookmarked;
 
     protected $vote = User::class;
 

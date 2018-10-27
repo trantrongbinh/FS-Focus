@@ -2,17 +2,23 @@
 
 namespace App;
 
-use Jcc\LaravelVote\Vote;
-use App\Traits\FollowTrait;
 use App\Scopes\StatusScope;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Overtrue\LaravelFollow\Traits\CanFollow;
+use Overtrue\LaravelFollow\Traits\CanLike;
+use Overtrue\LaravelFollow\Traits\CanFavorite;
+use Overtrue\LaravelFollow\Traits\CanSubscribe;
+use Overtrue\LaravelFollow\Traits\CanVote;
+use Overtrue\LaravelFollow\Traits\CanBookmark;
+
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, SoftDeletes, FollowTrait, Vote;
+    use HasApiTokens, Notifiable, SoftDeletes;
+    use CanFollow, CanBookmark, CanLike, CanFavorite, CanSubscribe, CanVote;
 
     /**
      * The attributes that should be mutated to dates.
