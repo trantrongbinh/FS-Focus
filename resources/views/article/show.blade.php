@@ -55,7 +55,7 @@
                                                 <b><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</b>
                                             </div>
                                             <div class="views">
-                                                <b><i class="far fa-eye"></i> {{ $article->view_count }}</b>
+                                                <b><i class="far fa-eye"></i> {{ $article->getViews() }}</b>
                                             </div>
                                             <div class="comments meta-last">
                                                 <b><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</b>
@@ -93,12 +93,7 @@
                                         </div>
                                         @if(config('blog.social_share.article_share'))
                                             <div class="float-right">
-                                                <div class="social-share"
-                                                     data-title="{{ $article->title }}"
-                                                     data-description="{{ $article->title }}"
-                                                     {{ config('blog.social_share.sites') ? "data-sites=" . config('blog.social_share.sites') : '' }}
-                                                     {{ config('blog.social_share.mobile_sites') ? "data-mobile-sites=" . config('blog.social_share.mobile_sites') : '' }}
-                                                     initialized>
+                                                <div class="social-share" data-title="{{ $article->title }}" data-description="{{ $article->title }}" {{ config('blog.social_share.sites') ? "data-sites=" . config('blog.social_share.sites') : '' }} {{ config('blog.social_share.mobile_sites') ? "data-mobile-sites=" . config('blog.social_share.mobile_sites') : '' }} initialized>
                                                 </div>
                                             </div>
                                         @endif
@@ -106,15 +101,11 @@
                                     <br><br>
                                     <!-- comment -->
                                     @if(Auth::guest())
-                                        <comment title="You must be logged to add a comment !" commentable-type="articles"
-                                                 commentable-id="{{ $article->id }}"
-                                                 comment-number="{{ $article->comments_count }}" null-text=""></comment>
+                                        <comment title="You must be logged to add a comment !" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="">
+                                        </comment>
                                     @else
-                                        <comment title="Bình luận" username="{{ Auth::user()->name }}"
-                                                 user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles"
-                                                 commentable-id="{{ $article->id }}"
-                                                 comment-number="{{ $article->comments_count }}" null-text=""
-                                                 can-comment></comment>
+                                        <comment title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="" can-comment>
+                                        </comment>
                                     @endif
                                 </div>
                             </div>

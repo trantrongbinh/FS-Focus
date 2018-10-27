@@ -3,7 +3,9 @@
 namespace App\Repositories;
 
 use App\Article;
+use App\View;
 use App\Scopes\DraftScope;
+use Carbon\Carbon;
 
 class ArticleRepository
 {
@@ -226,8 +228,20 @@ class ArticleRepository
         return true;
     }
 
-    public function sum()
+    public function countAllViews()
     {
-        return $this->model->sum('view_count');
+        $viewsArticles = View::where('viewable_type', 'articles')->count();
+
+        return $viewsArticles;
     }
+
+    public function countAllViewsToday()
+    {
+        $viewsArticlesToday = View::where('viewable_type', 'articles')
+            ->where('viewed_at', '>=', Carbon::today())
+            ->count();
+
+        return $viewsArticlesToday;
+    }
+
 }

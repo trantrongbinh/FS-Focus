@@ -45,18 +45,19 @@
                                                         class="text-blue" href="{{ url($article->slug) }}">... more</a>
                                             </p>
                                             <footer class="post-footer d-flex align-items-center"
-                                                    style="font-size: 0.8em;"><a href="#"
-                                                                                 class="author d-flex align-items-center flex-wrap">
-                                                    <div class="avatar img-sm"><img src="/img/avatar-1.jpg" alt="..."
-                                                                                    class="img-fluid"></div>
+                                                    style="font-size: 0.8em;"><a href="#" class="author d-flex align-items-center flex-wrap">
+                                                    <div class="avatar img-sm">
+                                                        <img src="/img/avatar-1.jpg" alt="..." class="img-fluid">
+                                                    </div>
                                                     <div class="title">
-                                                        <span><b> {{ $article->user->name or 'null' }} </b></span></div>
+                                                        <span>
+                                                            <b> {{ $article->user->name or 'null' }} </b>
+                                                        </span>
+                                                    </div>
                                                 </a>
-                                                <div class="date"><i
-                                                            class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}
+                                                <div class="date"><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}
                                                 </div>
-                                                <div class="comments"><i
-                                                            class="fas fa-eye"></i> {{ $article->view_count }}</div>
+                                                <div class="comments"><i class="fas fa-eye"></i> {{ $article->getViews() }}</div>
                                             </footer>
                                         </div>
                                     </div>
@@ -64,8 +65,7 @@
                                 <div class="image col-lg-4 text-right">
                                     @if($article->page_image)
                                         <a href="{{ url($article->slug) }}">
-                                            <img alt="{{ $article->slug }}" src="{{ $article->page_image }}"
-                                                 style="margin-right: 15px; margin-top: 10px;" class="img-fluid">
+                                            <img alt="{{ $article->slug }}" src="{{ $article->page_image }}" style="margin-right: 15px; margin-top: 10px;" class="img-fluid">
                                         </a>
                                     @endif
                                 </div>
@@ -87,16 +87,13 @@
                                 @foreach ($hot_post as $post)
                                     <a href="{{ url($post->slug) }}">
                                         <div class="item d-flex align-items-center">
-                                            <div class="image"><img alt="{{ $post->slug }}"
-                                                                    src="{{ $post->page_image }}" class="img-fluid">
+                                            <div class="image"><img alt="{{ $post->slug }}" src="{{ $post->page_image }}" class="img-fluid">
                                             </div>
                                             <div class="title"><strong>{{ $post->title }}</strong>
                                                 <div class="d-flex align-items-center">
-                                                    <div class="views"><i
-                                                                class="far fa-eye"></i></i> {{ $post->view_count }}
+                                                    <div class="views"><i class="far fa-eye"></i></i> {{ $post->view_count }}
                                                     </div>
-                                                    <div class="comments"><i
-                                                                class="far fa-comment-alt"></i> {{ $post->comments_count }}
+                                                    <div class="comments"><i class="far fa-comment-alt"></i> {{ $post->comments_count }}
                                                     </div>
                                                 </div>
                                             </div>
