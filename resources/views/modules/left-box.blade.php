@@ -12,7 +12,7 @@
             </div>
         </form>
     </div>
-    <!-- Widget [Latest Posts Widget]        -->
+    <!-- Widget [Latest Posts Widget]-->
     <div class="widget latest-posts">
         <header>
             <h3 class="h6">Hot Posts</h3>
@@ -25,7 +25,7 @@
                         <div class="title">
                             <strong>{{ $post->title }}</strong>
                             <div class="d-flex align-items-center">
-                                <div class="views"><i class="far fa-eye"></i></i> {{ $post->view_count }}</div>
+                                <div class="views"><i class="far fa-eye"></i></i> {{ $post->getViews() }}</div>
                                 <div class="comments"><i class="far fa-comment-alt"></i> {{ $post->comments_count }}</div>
                             </div>
                         </div>

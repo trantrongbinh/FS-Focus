@@ -17,8 +17,8 @@ class HotPostComposer
     {
         $view->with('hot_post', Article::select('slug', 'title', 'page_image', 'rate', 'view_count')
             ->withCount('comments')
+            ->orderByViewsCount()
             ->take(5)
-            ->orderBy('view_count', 'desc')
             ->get());
     }
 }

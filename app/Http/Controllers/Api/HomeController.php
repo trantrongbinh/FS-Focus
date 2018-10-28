@@ -32,15 +32,15 @@ class HomeController extends ApiController
     public function statistics()
     {
         $users = $this->user->getNumber();
-        $visitors = (int)$this->visitor->getAllClicks();
+        $visitors = $this->article->countAllViews();
         $articles = $this->article->getNumber();
         $comments = $this->comment->getNumber();
 
         $new_users = $this->user->getNewNumberToday();
-        $views_article = $this->article->sum();
+        $views_article = $this->article->countAllViewsToday();
         $new_articles = $this->article->getNewNumberToday();
         $new_comments = $this->comment->getNewNumberToday();
-
+        
         $data = compact('users', 'visitors', 'articles', 'comments', 'new_users', 'views_article', 'new_articles', 'new_comments');
 
         return $this->response->json($data);
