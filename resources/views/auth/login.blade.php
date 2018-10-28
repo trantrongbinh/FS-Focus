@@ -78,7 +78,7 @@
                 <a href="#" class="btn btn-block btn-primary">
                     <i class="fab fa-facebook-square"></i></i> Sign in using Facebook
                 </a>
-                <a href="#" class="btn btn-block btn-danger">
+                <a href="{{ url('/auth/google') }}" class="btn btn-block btn-danger">
                     <i class="fab fa-google-plus"></i> Sign in using Google+
                 </a>
                 @if(config('services.github.client_id'))
