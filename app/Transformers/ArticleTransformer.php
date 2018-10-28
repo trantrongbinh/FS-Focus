@@ -9,7 +9,8 @@ class ArticleTransformer extends TransformerAbstract
 {
     protected $availableIncludes  = [
         'tags',
-        'category'
+        'category',
+        'user'
     ];
 
     public function transform(Article $article)
@@ -28,6 +29,10 @@ class ArticleTransformer extends TransformerAbstract
             'visitors'          => $article->view_count,
             'published_at'      => $article->published_at->diffForHumans(),
             'published_time'    => $article->published_at->toDateTimeString(),
+            'is_voted'      => auth()->guard('api')->id() ? $comment->isVotedBy(auth()->guard('api')->id()) : false,
+            'is_up_voted'   => auth()->guard('api')->id() ? auth()->guard('api')->user()->hasUpVoted($comment) : false,
+            'is_down_voted' => auth()->guard('api')->id() ? auth()->guard('api')->user()->hasDownVoted($comment) : false,
+            'vote_count'    => $comment->countUpVoters(),
         ];
     }
 
@@ -54,6 +59,19 @@ class ArticleTransformer extends TransformerAbstract
     {
         if ($tags = $article->tags) {
             return $this->collection($tags, new TagTransformer);
+        }
+    }
+
+    /**
+     * Include User
+     *
+     * @param Article $article
+     * @return \League\Fractal\Resource\Collection
+     */
+    public function includeUser(Article $article)
+    {
+        if ($user = $article->user) {
+            return $this->item($user, new UserTransformer);
         }
     }
 }

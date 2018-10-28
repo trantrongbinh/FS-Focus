@@ -47,13 +47,15 @@ class MeController extends ApiController
      *
      * @return mixed
      */
-    public function postClapArticle(Request $request)
+    public function postClapArticle(Request $request, $type)
     {
         $this->validate($request, [
             'id' => 'required|exists:articles,id',
         ]);
 
-        $this->article->toggleVote($request->id);
+        ($type == 'up')
+            ? $this->article->toggleVote($request->id)
+            : $this->article->toggleVote($request->id, false);
 
         return $this->response->withNoContent();
     }

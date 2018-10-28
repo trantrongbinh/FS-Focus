@@ -42,5 +42,4 @@ class CommentTransformer extends TransformerAbstract
             return $this->item($user, new UserTransformer);
         }
     }
-
 }
