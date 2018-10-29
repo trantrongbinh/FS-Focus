@@ -100,4 +100,18 @@ class ArticleController extends ApiController
 
         return $this->response->withNoContent();
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function showVote(Request $request, $id)
+    {
+        $vote = $this->article->getVoteById($id, $request);
+
+        return $this->response->json($vote);
+    }
 }

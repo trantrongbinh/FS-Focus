@@ -106,14 +106,33 @@ class ArticleRepository
     {
         $this->model = $this->checkAuthScope();
         $article = $this->model->where('slug', $slug)->withCount('comments')->firstOrFail();
-        $article->is_voted = auth()->id() ? $article->isVotedBy(auth()->id()) : false;
-        $article->is_up_voted = auth()->id() ? auth()->user()->hasUpVoted($article) : false;
-        $article->is_down_voted = auth()->id() ? auth()->user()->hasDownVoted($article) : false;
-        $article->vote_count = $article->countUpVoters();
         
         $this->visitor->log($article->id);
 
+        //$article = (object) array_merge_recursive((array) $article, (array) $vote);
+
+        //dd($article);
+
         return $article;
+    }
+
+    /**
+     * Get the vote of article by article's id.
+     *
+     * @param $slug
+     * @return object
+     */
+    public function getVoteById($id)
+    {
+        $article = $this->getById($id);
+        $vote = [
+            'is_voted' => auth()->id() ? $article->isVotedBy(auth()->id()) : false,
+            'is_up_voted' => auth()->id() ? auth()->user()->hasUpVoted($article) : false,
+            'is_down_voted' => auth()->id() ? auth()->user()->hasDownVoted($article) : false,
+            'vote_count' =>  $article->countUpVoters()
+        ];
+
+        return $vote;
     }
 
     /**

@@ -2,9 +2,7 @@
     <div class="container">
         <div class="row comment">
             <div class="col-md-12">
-                <h5>
-                    {{ title }}
-                </h5>
+                <h5>{{ title }}</h5>
             </div>
             <div :class="contentWrapperClass">
                 <div :class="nullClass" v-if="comments.length == 0">
@@ -16,18 +14,14 @@
                             <a class="media-left" :href="'/user/' + comment.username">
                                 <img :src="comment.avatar" class="img-fluid img-circle avatar">
                                 {{ comment.username }}
-                            </a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <i class="fas fa-clock">
-                            </i>
+                            </a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-clock"></i>
                             {{ comment.created_at }}
                             <span class="float-right operate" style="font-size: 12px;">
 								<vote-button v-if="username != comment.username" :item="comment"></vote-button>
 								<a href="javascript:;" @click="commentDelete(index, comment.id)" v-if="username == comment.username"><i class="fas fa-trash-alt"></i>
 								</a> &nbsp|&nbsp&nbsp<a href="javascript:;" @click="reply(comment.username)"><i class="fas fa-share"></i></a>
 							</span>
-                        </div>
-                        <br>
+                        </div><br>
                         <div class="comment-body markdown" :class="comment.is_down_voted ? 'downvoted' : ''" v-html="comment.content_html">
                         </div>
                     </div>
@@ -179,8 +173,6 @@
         },
         methods: {
             loadMore(next_page_url) {
-                console.log('hello world')
-                console.log(next_page_url)
                 this.$http.get(next_page_url)
                     .then((response) => {
                         console.log(response.data.meta)

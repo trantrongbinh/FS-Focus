@@ -1,8 +1,7 @@
 <template>
   <span class="vote-button">
-    <p v-if="item.vote_count > 0" class="number">{{ item.vote_count }}</p>
-    <a href="javascript:;" class="claps_button btn-tool" @click="upVote( item.id )">
-        <i :class="item.is_up_voted ? 'fas fa-thumbs-up text-success' : 'far fa-thumbs-up'"></i>
+    <a href="javascript:;" class="claps_button btn-tool" @click="upVote( articleId )">
+        <i :class="vote.is_up_voted ? 'fas fa-thumbs-up text-success' : 'far fa-thumbs-up'"> <span v-if="vote.vote_count > 0" class="number">&nbsp {{ vote.vote_count }}</span></i>
     </a>
     <br>
   </span>
@@ -11,7 +10,7 @@
 <script>
     export default {
         props: {
-            votableId: {
+            articleId: {
                 type: String,
                 default() {
                     return 0
@@ -19,20 +18,21 @@
             },
             api: {
                 type: String,
-                default: 'articles'
+                default: 'article'
             },
         },
         data() {
             return {
-                isLike: false,
+                vote: []
             }
         },
+        mounted() {
+            var url = this.api + '/' + this.articleId + '/vote'
+            this.$http.get(url, {votetableType: 'articles'}).then((response) => {
+                this.vote = response.data
+            })
+        },
         methods: {
-            toggleStatus() {
-                let count = this.item.vote_count
-                this.item.is_voting = !this.item.is_voting
-                this.item.vote_count = this.item.is_voting ? count + 1 : count - 1
-            },
             upVote(id) {
                 this.toggleVote(id, 'up')
             },
@@ -48,15 +48,14 @@
 
                 this.$http.post(url, {id: id})
                     .then(() => {
-                        if (this.item[checkType]) {
-                            this.item[upType] = !this.item[upType]
-                            this.item[downType] = !this.item[downType]
-                            type == 'up' ? this.item.vote_count++ : this.item.vote_count--
+                        if (this.vote[checkType]) {
+                            this.vote[upType] = !this.vote[upType]
+                            this.vote[downType] = !this.vote[downType]
+                            type == 'up' ? this.vote.vote_count++ : this.vote.vote_count--
                         } else {
-                            this.item[votingType] = !this.item[votingType]
-                            if (type == 'up') this.item[upType] ? this.item.vote_count++ : this.item.vote_count--
+                            this.vote[votingType] = !this.vote[votingType]
+                            if (type == 'up') this.vote[upType] ? this.vote.vote_count++ : this.vote.vote_count--
                         }
-                        console.log(this.item.vote_count)
                     }).catch((response) => {
                     console.log(response)
                     if (response.status == 401) {
@@ -119,9 +118,8 @@
     }
 
     .number{
-        font-size: 14px !important;
-        margin-left: -5px;
-        margin-bottom: 30px;
+        font-size: 12px !important;
+        margin-top: 5px;
     }
 
     a.claps_button {
