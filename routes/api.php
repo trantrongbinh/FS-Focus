@@ -16,7 +16,6 @@ Route::group([
         'update' => 'api.article.update',
         'destroy' => 'api.article.destroy',
     ], 'except' => ['create', 'show']]);
-    Route::post('article/vote/{type}', 'MeController@postClapArticle')->middleware('auth:api');
 
     Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
     Route::get('/categories', 'CategoryController@getList');
@@ -57,5 +56,6 @@ Route::group([
     Route::post('comments', 'CommentController@store')->middleware('auth:api');
     Route::delete('comments/{id}', 'CommentController@destroy')->middleware('auth:api');
     Route::post('comments/vote/{type}', 'MeController@postVoteComment')->middleware('auth:api');
+    Route::post('articles/vote/{type}', 'MeController@postClapArticle')->middleware('auth:api');
     Route::get('tags', 'TagController@getList');
 });

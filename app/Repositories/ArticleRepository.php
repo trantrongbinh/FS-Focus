@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Article;
 use App\View;
+use App\Notifications\VoteArticle;
 use App\Scopes\DraftScope;
 use Carbon\Carbon;
 
@@ -18,7 +19,6 @@ class ArticleRepository
     public function __construct(Article $article, VisitorRepository $visitor)
     {
         $this->model = $article;
-
         $this->visitor = $visitor;
     }
 
@@ -105,9 +105,12 @@ class ArticleRepository
     public function getBySlug($slug)
     {
         $this->model = $this->checkAuthScope();
-
         $article = $this->model->where('slug', $slug)->withCount('comments')->firstOrFail();
-
+        $article->is_voted = auth()->id() ? $article->isVotedBy(auth()->id()) : false;
+        $article->is_up_voted = auth()->id() ? auth()->user()->hasUpVoted($article) : false;
+        $article->is_down_voted = auth()->id() ? auth()->user()->hasDownVoted($article) : false;
+        $article->vote_count = $article->countUpVoters();
+        
         $this->visitor->log($article->id);
 
         return $article;
@@ -220,7 +223,7 @@ class ArticleRepository
         }
 
         if ($type == 'up') {
-            $target->user->notify(new GotVote($type . '_vote', $user, $target));
+            $target->user->notify(new VoteArticle($type . '_vote', $user, $target));
         }
 
         $user->{$type . 'Vote'}($target);

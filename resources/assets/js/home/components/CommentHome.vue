@@ -8,20 +8,19 @@
                 <!-- User image -->
                 <div class="post-footer d-flex align-items-center">
                     <a :href="'/user/' + comment.username" class="author d-flex align-items-center flex-wrap">
-                        <div style="margin-right: 10px;"><img :src="comment.avatar" alt="avatar"
-                                                              class="img-fluid img-circle img-sm"></div>
+                        <div style="margin-right: 10px;">
+                            <img :src="comment.avatar" alt="avatar" class="img-fluid img-circle img-sm">
+                        </div>
                         <div class="title"><span>{{ comment.username }}</span></div>
                     </a>
                     <div class="date"><i class="far fa-clock"></i> {{ comment.created_at }}</div>
                     <div class="comments meta-last"><i class="far fa-comment-alt"></i>12</div>
                 </div>
                 <span class="float-right operate">
-					<a href="javascript:void(0)" class="float-right btn-tool" data-toggle="dropdown"
-                       v-if="username == comment.username"><i class="fas fa-ellipsis-h"></i></a>
+					<a href="javascript:void(0)" class="float-right btn-tool" data-toggle="dropdown" v-if="username == comment.username"><i class="fas fa-ellipsis-h"></i></a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="javascript:;" @click="reply(comment.username)">Edit</a>
-						<a class="dropdown-item" href="javascript:;"
-                           @click="commentDelete(index, comment.id)">Delete</a>
+						<a class="dropdown-item" href="javascript:;" @click="commentDelete(index, comment.id)">Delete</a>
 					</div>
 				</span>
                 <span class="float-right btn-tool" v-if="username != comment.username" style="font-size: 12px;">
@@ -29,8 +28,7 @@
 					<a href="javascript:;" @click="reply(comment.username)"><i class="fas fa-share"></i></a>
 				</span>
                 <!-- /.username -->
-                <div class="comment-body markdown" v-html="comment.content_html">
-                </div>
+                <div class="comment-body markdown" v-html="comment.content_html"></div>
                 <!-- /.comment-text -->
             </div>
             <!-- /.card-comment -->
