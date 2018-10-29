@@ -68,13 +68,13 @@ class VisitorRepository
             $this->model->where('article_id', $article_id)
                 ->where('ip', $ip)
                 ->increment('clicks');
-
         } else {
             $data = [
                 'ip' => $ip,
                 'article_id' => $article_id,
                 'clicks' => 1
             ];
+
             $this->model->firstOrCreate($data);
         }
     }

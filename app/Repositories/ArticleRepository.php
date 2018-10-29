@@ -106,6 +106,7 @@ class ArticleRepository
     {
         $this->model = $this->checkAuthScope();
         $article = $this->model->where('slug', $slug)->withCount('comments')->firstOrFail();
+
         $article->is_voted = auth()->id() ? $article->isVotedBy(auth()->id()) : false;
         $article->is_up_voted = auth()->id() ? auth()->user()->hasUpVoted($article) : false;
         $article->is_down_voted = auth()->id() ? auth()->user()->hasDownVoted($article) : false;

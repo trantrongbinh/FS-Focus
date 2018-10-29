@@ -1,8 +1,7 @@
 <template>
   <span class="vote-button">
-    <p v-if="item.vote_count > 0" class="number">{{ item.vote_count }}</p>
     <a href="javascript:;" class="claps_button btn-tool" @click="upVote( item.id )">
-        <i :class="item.is_up_voted ? 'fas fa-thumbs-up text-success' : 'far fa-thumbs-up'"></i>
+        <i :class="item.is_up_voted ? 'fas fa-thumbs-up text-success' : 'far fa-thumbs-up'"> <span v-if="item.vote_count > 0" class="number">&nbsp {{ item.vote_count }}</span></i>
     </a>
     <br>
   </span>
@@ -11,10 +10,10 @@
 <script>
     export default {
         props: {
-            votableId: {
-                type: String,
+            item: {
+                type: Object,
                 default() {
-                    return 0
+                    return {}
                 }
             },
             api: {
@@ -24,15 +23,11 @@
         },
         data() {
             return {
-                isLike: false,
+                isVoted: false,
+                voteCount: ''
             }
         },
         methods: {
-            toggleStatus() {
-                let count = this.item.vote_count
-                this.item.is_voting = !this.item.is_voting
-                this.item.vote_count = this.item.is_voting ? count + 1 : count - 1
-            },
             upVote(id) {
                 this.toggleVote(id, 'up')
             },
@@ -56,7 +51,7 @@
                             this.item[votingType] = !this.item[votingType]
                             if (type == 'up') this.item[upType] ? this.item.vote_count++ : this.item.vote_count--
                         }
-                        console.log(this.item.vote_count)
+                        console.log(this.item.is_up_voted)
                     }).catch((response) => {
                     console.log(response)
                     if (response.status == 401) {
@@ -119,9 +114,8 @@
     }
 
     .number{
-        font-size: 14px !important;
-        margin-left: -5px;
-        margin-bottom: 30px;
+        font-size: 12px !important;
+        margin-top: 5px;
     }
 
     a.claps_button {
