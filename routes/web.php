@@ -1,23 +1,31 @@
 <?php
 //Route test variables
 Route::get('/testt', 'Api\HomeController@statistics');
+
+//Route Social Login
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
 // User Auth
 Auth::routes();
 Route::post('password/change', 'UserController@changePassword')->middleware('auth');
 
 // Github Auth Route
-Route::group(['prefix' => 'auth/github'], function () {
-    Route::get('/', 'Auth\AuthController@redirectToProvider');
-    Route::get('callback', 'Auth\AuthController@handleProviderCallback');
-    Route::get('register', 'Auth\AuthController@create');
-    Route::post('register', 'Auth\AuthController@store');
-});
+// Route::group(['prefix' => 'auth/github'], function () {
+//     Route::get('/', 'Auth\AuthController@redirectToProvider');
+//     Route::get('callback', 'Auth\AuthController@handleProviderCallback');
+//     Route::get('register', 'Auth\AuthController@create');
+//     Route::post('register', 'Auth\AuthController@store');
+// });
 
 // Search
 Route::get('search', 'HomeController@search');
 
 // Discussion
 Route::resource('discussion', 'DiscussionController', ['except' => 'destroy']);
+
+// Team
+Route::resource('team', 'TeamController', ['except' => 'destroy']);
 
 // User
 Route::group(['prefix' => 'user'], function () {
@@ -53,6 +61,7 @@ Route::get('link', 'LinkController@index');
 
 // Category
 Route::group(['prefix' => 'category'], function () {
+    Route::post('create', 'CategoryController@store');
     Route::get('{category}', 'CategoryController@show');
     Route::get('/', 'CategoryController@index');
 });
@@ -71,7 +80,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], funct
 });
 
 // Article
-Route::get('/', 'ArticleController@index');
+Route::get('/', 'ArticleController@index')->name('home');
 Route::get('{slug}', 'ArticleController@show');
 Route::get('article/new', 'ArticleController@create');
 Route::post('article/new', 'ArticleController@store');

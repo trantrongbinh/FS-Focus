@@ -1,4 +1,6 @@
+// ---------------------------------------------- //
 // Back To Top
+// ---------------------------------------------- //
 $(window).scroll(function () {
     if ($(this).scrollTop() > 100) {
         $('#goTop').fadeIn();
@@ -7,7 +9,7 @@ $(window).scroll(function () {
     }
 });
 $('#goTop').click(function () {
-    $("html, body").animate({scrollTop: 0}, 600);
+    $('html, body').animate({scrollTop: 0}, 600);
     return false;
 });
 
@@ -15,20 +17,30 @@ $(document).ready(function () {
 
     'use strict';
 
+    // ---------------------------------------------- //
+    // Select2
+    // ---------------------------------------------- //
     $('.select2').select2({
         maximumSelectionLength: 3
     })
 
-    $(".button-show").click(function () {
-        $(".optional").show(700);
+    // ---------------------------------------------- //
+    // Show and Hide
+    // ---------------------------------------------- //
+    $('.button-show').click(function () {
+        $('.optional').show(700);
     });
 
-    $(".button-hide").click(function () {
-        $(".optional").hide(700);
+    $('.button-hide').click(function () {
+        $('.optional').hide(700);
     });
 
-    $(".button-toggle").click(function () {
-        $(".optional").toggle(700);
+    $('.button-toggle').click(function () {
+        $('.optional').toggle(700);
+    });
+
+    $('.button-toggle-team').click(function () {
+        $('.optional-team').toggle(500);
     });
 
     // ------------------------------------------------------- //
@@ -53,18 +65,20 @@ $(document).ready(function () {
     });
 
     // ------------------------------------------------------- //
-    // Right side navbar
+    // Show Right Side Navbar
     // ------------------------------------------------------ //
-    $("#menu-close").click(function (e) {
+    $('#menu-close').click(function (e) {
         e.preventDefault();
-        $("#sidebar-wrapper-home").toggleClass("active");
+        $('#sidebar-wrapper-home').toggleClass('active');
     });
-    $("#menu-toggle-right").click(function (e) {
+    $('#menu-toggle-right').click(function (e) {
         e.preventDefault();
-        $("#sidebar-wrapper-home").toggleClass("active");
+        $('#sidebar-wrapper-home').toggleClass('active');
     });
 
-    //Auto height textarea
+    // ------------------------------------------------------- //
+    // Auto Height Textarea
+    // ------------------------------------------------------ //
     $.each($('.textarea--autoHeight'), function () {
         var offset = this.offsetHeight - this.clientHeight;
         var resizeTextarea = function resizeTextarea(el) {

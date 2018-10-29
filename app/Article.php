@@ -6,10 +6,12 @@ use App\Scopes\DraftScope;
 use App\Tools\Markdowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use CyrildeWit\EloquentViewable\Viewable;
 
 class Article extends Model
 {
     use SoftDeletes;
+    use Viewable;
 
     /**
      * The attributes that should be mutated to dates.
@@ -175,4 +177,5 @@ class Article extends Model
 
         $this->attributes['content'] = json_encode($data);
     }
+
 }

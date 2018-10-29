@@ -3,7 +3,7 @@
 
         @include('modules.left-box')
 
-        <main class="posts-listing col-lg-7">
+        <main class="posts-listing col-lg-7 border-frame">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -25,8 +25,10 @@
                                 </div>
                             @else
                                 <a rel="nofollow " href="javascript:;" class="d-flex button-post">
-                                    <div class="news-f-img"><img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60"></div>
-                                    <div class="msg-body" style="margin-left: 30px; ">
+                                    <div class="news-f-img">
+                                        <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60">
+                                    </div>
+                                    <div class="msg-body" style="margin-left: 30px;">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
                                         <small>{{ lang('Discuss Subtitle') }}</small>
                                     </div>
@@ -45,7 +47,29 @@
                     <div class="tab-content">
                         <div class="active tab-pane" id="activity">
                             <div id="featured-posts">
-                            @forelse($articles as $article)
+                                <div class="box-popup">
+                                    <img class="user-small-img" src="http://www.clker.com/cliparts/1/1/6/f/1355259240202822213Round%20Green%20Button.svg.med.png">
+                                    <span style="font-size: 16px;color: #fff;">
+                                        <strong>Welcome To The Website</strong>
+                                    </span>
+                                    <div class="user-ditels">
+                                        <div class="images" style="float: left; width: 70px; height: 70px;">
+                                            <img class="img-fluid" src="https://yt3.ggpht.com/a-/AN66SAy8MOVDMxgsHkINCUMrbVgFdJah9DjZv-67vw=s900-mo-c-c0xffffffff-rj-k-no" style="padding: 7px;">
+                                        </div>
+                                        <span class="user-full-ditels text-center">
+                                            <h3 class="h6">FS-Focus</h3>
+                                            <p><strong>Nothing is impossible!</strong></p>
+                                        </span>
+                                        <div class="social-icon">
+                                            <a href="#"><i class="fab fa-facebook-square" data-toggle="tooltip" data-placement="bottom" title="Facebook"></i></a>
+                                            <a href="#"><i class="fab fa-twitter" data-toggle="tooltip" data-placement="bottom" title="Twitter"></i></a>
+                                            <a href="#"><i class="fab fa-google-plus" data-toggle="tooltip" data-placement="bottom" title="Google Plus"></i></a>
+                                            <a href="#"><i class="fab fa-youtube" data-toggle="tooltip" data-placement="bottom" title="Youtube"></i></a>
+                                            <a href="#"><i class="fab fa-github" data-toggle="tooltip" data-placement="bottom" title="Github"></i></a>               
+                                        </div>
+                                    </div>
+                                </div>
+                                @forelse($articles as $article)
                                 <!-- Post -->
                                     <div class="post card">
                                         <div class="card-body">
@@ -72,14 +96,8 @@
                                             <a href="{{ url($article->slug) }}" style="margin-top: 10px;">
                                                 <h3 class="h4">{{ $article->title }}</h3>
                                             </a>
-                                            @if($article->subtitle)
-                                                <div class="meta">
-                                                    <span class="cinema">{{ $article->subtitle }}</span>
-                                                </div>
-                                            @endif
-                                            <div class="description">
-                                                {{ $article->meta_description }}
-                                                <a class="text-blue" href="{{ url($article->slug) }}">... more</a>
+                                            <div class="meta">
+                                                <span class="cinema"><strong>{{ $article->subtitle }}</strong></span> {{ $article->meta_description }}
                                             </div>
                                             @if($article->page_image)
                                                 <div class="row mb-3" style="margin-top: 10px;">
@@ -97,21 +115,12 @@
                                                 <span class="float-right"><a href="#" class="link-black text-sm"> <i class="far fa-comments mr-1"></i> Comments ({{ $article->comments_count }})</a></span>
                                             </p>
                                         </div>
-
                                         <!-- comment -->
                                         @if(Auth::guest())
                                             <a href="{{ url('login') }}" class="text-center">@lang('You must be logged to add a comment !')</a>
-                                            <comment-home title="Post Comments" commentable-type="articles"
-                                                          commentable-id="{{ $article->id }}"
-                                                          comment-number="{{ $article->comments_count }}"
-                                                          null-text=""></comment-home>
+                                            <comment-home title="Post Comments" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text=""></comment-home>
                                         @else
-                                            <comment-home title="Bình luận" username="{{ Auth::user()->name }}"
-                                                          user-avatar="{{ Auth::user()->avatar }}"
-                                                          commentable-type="articles"
-                                                          commentable-id="{{ $article->id }}"
-                                                          comment-number="{{ $article->comments_count }}" null-text=""
-                                                          can-comment></comment-home>
+                                            <comment-home title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="" can-comment></comment-home>
                                         @endif
                                     </div>
                                     <!-- /.post -->

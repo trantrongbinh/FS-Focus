@@ -13,17 +13,13 @@
         }
 
         .fixed-link {
-            /* position: fixed;
-            right: 0;
-            bottom: 0; */
             height: 500px;
             line-height: 50px;
-            margin-top: 250px;
             font-size: 20px;
             padding-left: 70px;
             position: -webkit-sticky;
             position: sticky;
-            top: 250px;
+            top: 180px;
         }
     </style>
 @endsection
@@ -47,47 +43,45 @@
                                          style="font-size: 12px;">
                                         <a href="/user/{{ $article->user->name }}"
                                            class="author d-flex align-items-center flex-wrap">
-                                            <div class="avatar"><img src="{{ $article->user->avatar }}"
-                                                                     alt="{{ $article->user->name }}" class="img-fluid">
+                                            <div class="avatar">
+                                                <img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}" class="img-fluid">
                                             </div>
                                             <div class="title">
                                                 <span><b>{{ $article->user->name or 'No Name' }}</b></span>
                                             </div>
                                         </a>
                                         <div class="d-flex align-items-center flex-wrap">
-                                            <div class="date"><b><i
-                                                            class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}
-                                                </b>
+                                            <div class="date">
+                                                <b><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</b>
                                             </div>
-                                            <div class="views"><b><i class="far fa-eye"></i> {{ $article->view_count }}
-                                                </b>
+                                            <div class="views">
+                                                <b><i class="far fa-eye"></i> {{ $article->getViews() }}</b>
                                             </div>
-                                            <div class="comments meta-last"><b><i
-                                                            class="far fa-comment-alt"></i> {{ $article->comments_count }}
-                                                </b>
+                                            <div class="comments meta-last">
+                                                <b><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</b>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <br>
                                 @if($article->page_image)
-                                    <div class="text-center"><img src="{{ $article->page_image }}"
-                                                                  alt="{{ $article->slug }}" class="img-fluid"></div>
+                                    <div class="text-center">
+                                        <img src="{{ $article->page_image }}" alt="{{ $article->slug }}" class="img-fluid">
+                                    </div>
                                 @endif
                                 <div class="post-details">
-
                                     <div class="post-body" style="font-size: 18px;">
                                         <h4>{{ $article->subtitle }}</h4>
                                         <p class="lead">{{ $article->meta_description }}</p>
                                         <parse content="{{ $article->content['raw'] }}"></parse>
                                     </div>
                                     <br>
-                                    {{--  @if($article->is_original) --}}
+                                    @if($article->is_original)
                                     <div class="publishing alert alert-dismissible alert-info">
                                         <button type="button" class="close" data-dismiss="alert">×</button>
                                         {!! config('blog.license') !!}
                                     </div>
-                                    {{--  @endif --}}
+                                    @endif
                                     <div>
                                         <div class="post-tags" style="display: inline">
                                             @if(count($article->tags))
@@ -99,12 +93,7 @@
                                         </div>
                                         @if(config('blog.social_share.article_share'))
                                             <div class="float-right">
-                                                <div class="social-share"
-                                                     data-title="{{ $article->title }}"
-                                                     data-description="{{ $article->title }}"
-                                                     {{ config('blog.social_share.sites') ? "data-sites=" . config('blog.social_share.sites') : '' }}
-                                                     {{ config('blog.social_share.mobile_sites') ? "data-mobile-sites=" . config('blog.social_share.mobile_sites') : '' }}
-                                                     initialized>
+                                                <div class="social-share" data-title="{{ $article->title }}" data-description="{{ $article->title }}" {{ config('blog.social_share.sites') ? "data-sites=" . config('blog.social_share.sites') : '' }} {{ config('blog.social_share.mobile_sites') ? "data-mobile-sites=" . config('blog.social_share.mobile_sites') : '' }} initialized>
                                                 </div>
                                             </div>
                                         @endif
@@ -112,15 +101,11 @@
                                     <br><br>
                                     <!-- comment -->
                                     @if(Auth::guest())
-                                        <comment title="You must be logged to add a comment !" commentable-type="articles"
-                                                 commentable-id="{{ $article->id }}"
-                                                 comment-number="{{ $article->comments_count }}" null-text=""></comment>
+                                        <comment title="You must be logged to add a comment !" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="">
+                                        </comment>
                                     @else
-                                        <comment title="Bình luận" username="{{ Auth::user()->name }}"
-                                                 user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles"
-                                                 commentable-id="{{ $article->id }}"
-                                                 comment-number="{{ $article->comments_count }}" null-text=""
-                                                 can-comment></comment>
+                                        <comment title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="" can-comment>
+                                        </comment>
                                     @endif
                                 </div>
                             </div>

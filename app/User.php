@@ -2,17 +2,23 @@
 
 namespace App;
 
-use Jcc\LaravelVote\Vote;
-use App\Traits\FollowTrait;
 use App\Scopes\StatusScope;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Overtrue\LaravelFollow\Traits\CanFollow;
+use Overtrue\LaravelFollow\Traits\CanLike;
+use Overtrue\LaravelFollow\Traits\CanFavorite;
+use Overtrue\LaravelFollow\Traits\CanSubscribe;
+use Overtrue\LaravelFollow\Traits\CanVote;
+use Overtrue\LaravelFollow\Traits\CanBookmark;
+
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, SoftDeletes, FollowTrait, Vote;
+    use HasApiTokens, Notifiable, SoftDeletes;
+    use CanFollow, CanBookmark, CanLike, CanFavorite, CanSubscribe, CanVote;
 
     /**
      * The attributes that should be mutated to dates.
@@ -27,9 +33,25 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'is_admin', 'avatar', 'password', 'confirm_code',
-        'nickname', 'real_name', 'facebook_name', 'facebook_link', 'email_notify_enabled',
-        'github_id', 'github_name', 'github_url', 'website', 'description', 'status'
+        'name',
+        'email',
+        'is_admin',
+        'avatar',
+        'password',
+        'confirm_code',
+        'nickname',
+        'real_name',
+        'facebook_name',
+        'facebook_link',
+        'email_notify_enabled',
+        'github_id',
+        'github_name',
+        'github_url',
+        'website',
+        'description',
+        'status',
+        'provider',
+        'provider_id'
     ];
 
     /**
@@ -49,7 +71,6 @@ class User extends Authenticatable
     public static function boot()
     {
         parent::boot();
-
         static::addGlobalScope(new StatusScope());
     }
 
@@ -74,6 +95,18 @@ class User extends Authenticatable
     }
 
     /**
+     * Many to Many relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class)
+            ->as('join')
+            ->withTimestamps();
+    }
+
+    /**
      * Get the avatar and return the default avatar if the avatar is null.
      *
      * @param string $value
@@ -92,6 +125,7 @@ class User extends Authenticatable
     public function routeNotificationForMail()
     {
         if (auth()->id() != $this->id && $this->email_notify_enabled == 'yes' && config('blog.mail_notification')) {
+
             return $this->email;
         }
     }

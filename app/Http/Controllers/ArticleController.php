@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleHomeRequest;
 use App\Repositories\ArticleRepository;
+use Carbon\Carbon;
 
 class ArticleController extends Controller
 {
@@ -25,7 +26,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = $this->article->page(config('blog.article.number'), config('blog.article.sort'), config('blog.article.sortColumn'));
+        $articles = $this->article->page(
+            config('blog.article.number'), 
+            config('blog.article.sort'), 
+            config('blog.article.sortColumn')
+        );
 
         return view('article.index', compact('articles'));
     }
@@ -40,6 +45,8 @@ class ArticleController extends Controller
     {
         $article = $this->article->getBySlug($slug);
 
+        $article->addViewWithExpiryDate(Carbon::now()->addMinute());
+        
         return view('article.show', compact('article'));
     }
 
@@ -59,7 +66,7 @@ class ArticleController extends Controller
      * @param  \App\Http\Requests\ArticleHomeRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleHomeRequest $request)
     {
         $data = array_merge($request->all(), [
             'user_id' => \Auth::id(),

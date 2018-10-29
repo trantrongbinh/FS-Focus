@@ -171,8 +171,9 @@ return [
         JellyBool\Translug\TranslugServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
-        Jcc\LaravelVote\VoteServiceProvider::class,
+        Overtrue\LaravelFollow\FollowServiceProvider::class,
         JellyBool\Flysystem\Upyun\UpyunServiceProvider::class,
+        CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
 
         /*
          * Application Service Providers...
