@@ -13,6 +13,7 @@ use App\Http\ViewComposers\CategoryComposer;
 use App\Http\ViewComposers\TagComposer;
 use App\Http\ViewComposers\HotPostComposer;
 use App\Http\ViewComposers\UserComposer;
+use App\Http\ViewComposers\TeamComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', TagComposer::class);
         view()->composer('*', HotPostComposer::class);
         view()->composer('*', UserComposer::class);
+        view()->composer('*', TeamComposer::class);
     }
 
     /**
