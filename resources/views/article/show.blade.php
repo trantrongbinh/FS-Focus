@@ -116,7 +116,7 @@
                             <ul class="list-unstyled">
                                 <li>
                                     @if(!Auth::guest())
-                                    <clap :item="{{ $article }}"></clap>
+                                    <clap article-id="{{ $article->id }}"></clap>
                                     @endif
                                 </li>
                                 <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>

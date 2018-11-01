@@ -173,8 +173,6 @@
         },
         methods: {
             loadMore(next_page_url) {
-                console.log('hello world')
-                console.log(next_page_url)
                 this.$http.get(next_page_url)
                     .then((response) => {
                         console.log(response.data.meta)

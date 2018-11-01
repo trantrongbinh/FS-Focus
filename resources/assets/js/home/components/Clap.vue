@@ -1,7 +1,7 @@
 <template>
   <span class="vote-button">
-    <a href="javascript:;" class="claps_button btn-tool" @click="upVote( item.id )">
-        <i :class="item.is_up_voted ? 'fas fa-thumbs-up text-success' : 'far fa-thumbs-up'"> <span v-if="item.vote_count > 0" class="number">&nbsp {{ item.vote_count }}</span></i>
+    <a href="javascript:;" class="claps_button btn-tool" @click="upVote( articleId )">
+        <i :class="vote.is_up_voted ? 'fas fa-thumbs-up text-success' : 'far fa-thumbs-up'"> <span v-if="vote.vote_count > 0" class="number">&nbsp {{ vote.vote_count }}</span></i>
     </a>
     <br>
   </span>
@@ -10,22 +10,27 @@
 <script>
     export default {
         props: {
-            item: {
-                type: Object,
+            articleId: {
+                type: String,
                 default() {
                     return {}
                 }
             },
             api: {
                 type: String,
-                default: 'articles'
+                default: 'article'
             },
         },
         data() {
             return {
-                isVoted: false,
-                voteCount: ''
+                vote: []
             }
+        },
+        mounted() {
+            var url = this.api + '/' + this.articleId + '/vote'
+            this.$http.get(url, {votetableType: 'articles'}).then((response) => {
+                this.vote = response.data
+            })
         },
         methods: {
             upVote(id) {
@@ -43,15 +48,14 @@
 
                 this.$http.post(url, {id: id})
                     .then(() => {
-                        if (this.item[checkType]) {
-                            this.item[upType] = !this.item[upType]
-                            this.item[downType] = !this.item[downType]
-                            type == 'up' ? this.item.vote_count++ : this.item.vote_count--
+                        if (this.vote[checkType]) {
+                            this.vote[upType] = !this.vote[upType]
+                            this.vote[downType] = !this.vote[downType]
+                            type == 'up' ? this.vote.vote_count++ : this.vote.vote_count--
                         } else {
-                            this.item[votingType] = !this.item[votingType]
-                            if (type == 'up') this.item[upType] ? this.item.vote_count++ : this.item.vote_count--
+                            this.vote[votingType] = !this.vote[votingType]
+                            if (type == 'up') this.vote[upType] ? this.vote.vote_count++ : this.vote.vote_count--
                         }
-                        console.log(this.item.is_up_voted)
                     }).catch((response) => {
                     console.log(response)
                     if (response.status == 401) {

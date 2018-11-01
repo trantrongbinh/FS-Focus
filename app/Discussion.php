@@ -6,10 +6,12 @@ use App\Scopes\StatusScope;
 use App\Tools\Markdowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use CyrildeWit\EloquentViewable\Viewable;
 
 class Discussion extends Model
 {
     use SoftDeletes;
+    use Viewable;
 
     /**
      * The attributes that should be mutated to dates.
