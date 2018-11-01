@@ -45,9 +45,17 @@ class ArticleController extends Controller
     {
         $article = $this->article->getBySlug($slug);
 
+        if($article->category_id != NULL) {
+            $related_articles = $this->article->getRelatedPosts($article);
+        }else {
+            $related_articles = [];
+        }
+        
+        $related_of_author = $this->article->getRelatedPostsByAuthor($article);
+
         $article->addViewWithExpiryDate(Carbon::now()->addMinute());
         
-        return view('article.show', compact('article'));
+        return view('article.show', compact('article', 'related_articles', 'related_of_author'));
     }
 
     /**
