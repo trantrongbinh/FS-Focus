@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\TagRepository;
 use App\Http\Requests\DiscussionRequest;
 use App\Repositories\DiscussionRepository;
+use Carbon\Carbon;
 
 class DiscussionController extends Controller
 {
@@ -80,6 +81,8 @@ class DiscussionController extends Controller
     public function show($id)
     {
         $discussion = $this->discussion->getById($id);
+
+        $discussion->addViewWithExpiryDate(Carbon::now()->addMinute());
 
         return view('discussion.show', compact('discussion'));
     }
