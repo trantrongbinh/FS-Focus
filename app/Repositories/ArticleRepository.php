@@ -109,10 +109,6 @@ class ArticleRepository
         
         $this->visitor->log($article->id);
 
-        //$article = (object) array_merge_recursive((array) $article, (array) $vote);
-
-        //dd($article);
-
         return $article;
     }
 
