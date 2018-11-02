@@ -262,4 +262,28 @@ class ArticleRepository
         return $viewsArticlesToday;
     }
 
+    public function getRelatedPosts($article)
+    {   
+        $articles = $this->model
+            ->where('id', '!=' , $article->id)
+            ->where('category_id', $article->category_id)
+            ->orderBy('published_at', 'desc')
+            ->take(3)
+            ->get(); 
+
+        return $articles;
+    }
+
+    public function getRelatedPostsByAuthor($article)
+    {   
+        $articles = $this->model
+            ->where('id', '!=' , $article->id)
+            ->where('user_id', $article->user_id)
+            ->orderBy('published_at', 'desc')
+            ->take(3)
+            ->get(); 
+
+        return $articles;
+    }
+
 }
