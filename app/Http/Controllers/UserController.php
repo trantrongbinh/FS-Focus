@@ -34,6 +34,16 @@ class UserController extends Controller
     }
 
     /**
+     * Show all auther
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function allAuther()
+    {
+        return view('user.all');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int $username

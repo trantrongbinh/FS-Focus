@@ -26,7 +26,7 @@
                             @else
                                 <a rel="nofollow " href="javascript:;" class="d-flex button-post">
                                     <div class="news-f-img">
-                                        <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60">
+                                        <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60">
                                     </div>
                                     <div class="msg-body" style="margin-left: 30px;">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>

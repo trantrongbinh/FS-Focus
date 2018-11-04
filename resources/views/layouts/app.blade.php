@@ -26,6 +26,7 @@
     </script>
 
     @yield('styles')
+    
 </head>
 <body>
 <div id="app">
