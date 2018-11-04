@@ -108,7 +108,7 @@
                 </a>
             @endforeach
             <div class="border-top text-center view-all-button">
-                <a href="#" class="text-info"><strong><i class="fas fa-users"></i> View All ...</strong></a>
+                <a href="/user/all-auther" class="text-info"><strong><i class="fas fa-users"></i> View All ...</strong></a>
             </div>
         </div>
     </div>
