@@ -82,9 +82,11 @@ class DiscussionController extends Controller
     {
         $discussion = $this->discussion->getById($id);
 
+        $related_discussions = $this->discussion->getRelatedDiscussions($discussion);
+        
         $discussion->addViewWithExpiryDate(Carbon::now()->addMinute());
 
-        return view('discussion.show', compact('discussion'));
+        return view('discussion.show', compact('discussion', 'related_discussions'));
     }
 
     /**

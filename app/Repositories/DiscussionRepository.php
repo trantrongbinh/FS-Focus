@@ -172,4 +172,16 @@ class DiscussionRepository
     {
         return $this->getById($id)->delete();
     }
+
+    public function getRelatedDiscussions($discussion)
+    {
+        $discussions = $this->model->whereHas('tags', function ($q) use ($discussion) {
+            return $q->whereIn('tag', $discussion->tags->pluck('tag')); 
+        })
+        ->where('id', '!=', $discussion->id)
+        ->get();
+
+        return $discussions;
+    }
+
 }
