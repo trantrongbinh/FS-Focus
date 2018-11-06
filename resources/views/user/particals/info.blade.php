@@ -1,27 +1,9 @@
 <div class="user jumbotron jumbotron-fluid">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mt-2">
-                <div class="card">
-                    <div class="dropdown pull-right menu-sett-card" > 
-                        <a id="notifications" class="nav-link" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-ellipsis-v men"></i> 
-                        </a>
-                        <ul aria-labelledby="notifications" class="dropdown-menu">
-                            <li>
-                                <a rel="nofollow" href="#" class="dropdown-item nav-link">Edit</a>
-                            </li>
-                            <li>
-                                <a rel="nofollow" href="#" class="dropdown-item nav-link">FAQ</a>
-                            </li>
-                            <li>
-                                <a rel="nofollow" href="#" class="dropdown-item nav-link">Support</a>
-                            </li> 
-                        </ul>
-                    </div>
-                    <div class="card-block">
-                        <canvas id="doughnut-chart2" width="400" height="400"></canvas>
-                    </div>
+            <div class="col-sm-12">
+                <div id="canvas-holder" style="width:40%">
+                    <canvas id="chart-area"></canvas>
                 </div>
             </div>
             <div class="col-sm-2 text-center">
