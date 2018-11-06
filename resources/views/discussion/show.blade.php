@@ -211,22 +211,16 @@
                                 <h3 class="h6">Related</h3>
                             </header>
                             <ul class="list-unstyled">
-                                <li><a href="#"><i class="fab fa-facebook-square"></i> Laravel : How do I get records
-                                        from pivot table whereby its foreign key does not reference a primary key?</a>
+                                @forelse($related_discussions as $discussion)
+                                <li>
+                                    <a href="/discussion/{{ $discussion->id }}">
+                                        <i class="fab fa-facebook-square"></i>
+                                        {{ $discussion->title }}
+                                    </a>
                                 </li>
-                                <li><a href="#"><i class="fab fa-twitter"></i> Laravel : How do I get records from pivot
-                                        table whereby its foreign key does not reference a primary key?</a></li>
-                                <li><a href="#"><i class="fab fa-github"></i> Laravel : How do I get records from pivot
-                                        table whereby its forei</a></li>
-                                <li><a href="#"><i class="fab fa-stack-overflow"></i> Laravel : How do I get records
-                                        from pivot table whereby its foreign key does not reference a primary key?
-                                        Laravel : How do I get records from pivot table whereby its foreign key does not
-                                        reference a primary key?</a></li>
-                                <li><a href="#"><i class="fab fa-facebook-square"></i> Laravel : How do I get records
-                                        from pivot table whereby its foreign key does not reference a primary key?</a>
-                                </li>
-                                <li><a href="#"><i class="fab fa-twitter"></i> Laravel : How do I get records from pivot
-                                        table whereby its foreign key does not reference a primary key?</a></li>
+                                @empty
+                                <h5 class="text-center">{{ lang('Nothing') }}</h5>
+                                @endforelse
                             </ul>
                         </div>
                     </div>
