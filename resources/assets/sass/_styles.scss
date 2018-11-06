@@ -1,4 +1,25 @@
 // GENERAL
+ .top-v1 {
+    font-size: 13px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    font-weight: bold;
+}
+.top-v1 a{
+  color: #fff !important;
+}
+.top-v1 a:hover{
+  color: #DADADA !important;
+}
+.navbar-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: .6rem;
+    font-weight: 300;
+    padding: 2px 4px;
+}
+
 .border-frame{
     margin-top: 77px;
     margin-bottom: 100px;
@@ -16,23 +37,25 @@
     opacity: 0;
     visibility: hidden;
     position: absolute;
-    top: -35px;
+    left: -170px;
+    top: 15px;
     transform: translate(0,10px);
-    background-color: #BFBFBF;
+    background-color: #fff;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     width: 160px;
+    border: 1px solid #cccccc;
 }
 .popover__content:before {
     position: absolute;
     z-index: -1;
     content: '';
-    right: calc(50% - 15px);
-    bottom: -15px;
+    top: calc(50% - 7px);
+    right: -15px;
     border-style: solid;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 15px solid #BFBFBF;
-    border-bottom: none;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 15px solid #dedede;
+    border-right: none;
 }
 .popover__wrapper:hover .popover__content {
     z-index: 10;
@@ -938,6 +961,10 @@ main.posts-listing .post {
 
 .widget.teams {
   padding: 10px !important;
+}
+
+.widget.teams header {
+  position: relative;
 }
 
 .widget.teams a {

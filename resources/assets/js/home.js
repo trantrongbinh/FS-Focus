@@ -7,10 +7,11 @@ import httpPlugin from 'plugins/http';
 import 'select2/dist/js/select2.full.min.js';
 
 require('bootstrap');
+require('chart.js');
 require('social-share.js/dist/js/social-share.min.js');
 require('vendor/jquery.fancybox.min.js');
 require('vendor/main.js');
-require('chart.js');
+require('vendor/chart_utils');
 window.marked = require('marked');
 window.hljs = require('vendor/highlight.min.js');
 window.toastr = require('toastr/build/toastr.min.js');
