@@ -17,7 +17,7 @@ use Overtrue\LaravelFollow\Traits\CanBookmark;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, SoftDeletes;
+    use Notifiable, HasApiTokens, SoftDeletes;
     use CanFollow, CanBookmark, CanLike, CanFavorite, CanSubscribe, CanVote;
 
     /**
@@ -122,6 +122,7 @@ class User extends Authenticatable
      *
      * @return string
      */
+    /* Error in this function!
     public function routeNotificationForMail()
     {
         if (auth()->id() != $this->id && $this->email_notify_enabled == 'yes' && config('blog.mail_notification')) {
@@ -129,4 +130,5 @@ class User extends Authenticatable
             return $this->email;
         }
     }
+    */
 }
