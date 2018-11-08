@@ -1,4 +1,4 @@
-## About FS-Focus | FullStask Focus ##
+## BKFA Team | FullStask Focus ##
 
 ### Purpose
 
