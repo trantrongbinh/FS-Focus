@@ -1,4 +1,4 @@
-## About FS-Focus | FullStask Focus ##
+## BKFA Team | FullStask Focus ##
 
 ### Purpose
 
@@ -29,7 +29,8 @@ FS-Focus is my project for the purpose of synthesizing, archiving, solving probl
 * type `git clone https://github.com/trantrongbinh/qna_01.git` to clone the repository 
 * type `cd projectname`
 * type `composer install`
-* or able type `composer update`
+* or able type `composer update` if need update package
+* ( if install in windows type: `composer update --ignore-platform-reqs` - ignoring requested PHP extensions )
 * type `npm install` if use npm or type `yarn install` if use yarn
 * copy *.env.example* to *.env*
 * type `php artisan key:generate`to generate secure key in *.env* file
