@@ -1,17 +1,5 @@
 @extends('layouts.app')
 
-@section('styles')
-    <style>
-        body {
-            background: #ffffff;
-        }
-
-        .widget {
-            border: none;
-        }
-    </style>
-@endsection
-
 @section('content')
     @component('particals.jumbotron')
         <h3>{{ $category->name }}</h3>
@@ -19,7 +7,7 @@
         <h6>{{ lang('Category Meta') }}</h6>
     @endcomponent
 
-    <div class="container list">
+    <div id="body-white" class="container list" style="margin-top: -27px;">
         <div class="row">
             <main class="col-md-12">
                 <div class="row">
@@ -41,11 +29,11 @@
                                                     <h3 class="h4">{{ $article->title }}</h3>
                                                 </a>
                                             </header>
-                                            <p><b>{{ $article->subtitle }} </b> {{ $article->meta_description }} <a
-                                                        class="text-blue" href="{{ url($article->slug) }}">... more</a>
+                                            <p>
+                                                <b>{{ $article->subtitle }} </b> {{ $article->meta_description }} <a class="text-blue" href="{{ url($article->slug) }}">... more</a>
                                             </p>
-                                            <footer class="post-footer d-flex align-items-center"
-                                                    style="font-size: 0.8em;"><a href="#" class="author d-flex align-items-center flex-wrap">
+                                            <footer class="post-footer d-flex align-items-center" style="font-size: 0.8em;">
+                                                <a href="#" class="author d-flex align-items-center flex-wrap">
                                                     <div class="avatar img-sm">
                                                         <img src="/img/avatar-1.jpg" alt="..." class="img-fluid">
                                                     </div>
@@ -79,8 +67,8 @@
                     <!-- Box Left-->
                     <div class="col-lg-4">
                         <!-- Widget [Latest Posts Widget]        -->
-                        <div class="widget latest-posts">
-                            <header>
+                        <div class="widget latest-posts border-0">
+                            <header style="background: #dedede; padding: 10px; margin-top: -15px; text-align: center;">
                                 <h3 class="h6">Hot Posts</h3>
                             </header>
                             <div class="blog-posts">

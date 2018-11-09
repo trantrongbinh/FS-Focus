@@ -271,7 +271,12 @@ class ArticleRepository
      */
     public function getRelatedPostsByCategory($article)
     {
-        $articles = $this->model->where('category_id', $article->category_id)->get(); 
+        $articles = $this->model
+        ->where('id', '!=' , $article->id)
+        ->where('category_id', $article->category_id)
+        ->orderBy('published_at', 'desc')
+        ->take(3)
+        ->get(); 
 
         return $articles;
     }

@@ -121,6 +121,26 @@ i[class*="icon-"] {
 }
 
 /*=== Helpers ===*/
+#body-white {
+    background: #fff !important;
+}
+
+.border-none {
+    border: none !important;
+}
+
+.font-size-12 {
+    font-size: 12px;
+}
+
+.font-size-18 {
+    font-size: 18px;
+}
+
+.font-size-14 {
+    font-size: 14px;
+}
+
 .bg-red {
     background: #ff7676 !important;
     color: #fff;
@@ -439,8 +459,8 @@ div[class*="-btn"] {
 }
 
 // POST
-.latest-posts .read-next {
-  margin-top: 50px;
+.related-posts {
+  margin-top: 30px;
 }
 
 .post-meta {
@@ -1506,10 +1526,24 @@ textarea{
     margin-bottom: 10px;
 }
 
+.clear2 {
+    margin-bottom: 100px;
+}
+
 .text-bold {
     font-weight: 700;
 }
 
 .text-small {
     font-size: 0.9rem;
+}
+
+.fixed-link {
+    height: 500px;
+    line-height: 50px;
+    font-size: 20px;
+    padding-left: 70px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 180px;
 }

@@ -2,30 +2,8 @@
 
 @section('title', $article->title)
 
-@section('styles')
-    <style>
-        body {
-            background: #ffffff;
-        }
-
-        .box-content {
-            position: relative;
-        }
-
-        .fixed-link {
-            height: 500px;
-            line-height: 50px;
-            font-size: 20px;
-            padding-left: 70px;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 180px;
-        }
-    </style>
-@endsection
-
 @section('content')
-    <div class="article container">
+    <div id="body-white" class="article container">
         <div class="row">
             <main class="post blog-post col-lg-10 offset-md-1">
                 <div class="row box-content">
@@ -43,10 +21,8 @@
                                         @endif
                                     </div>
                                     <h1>{{ $article->title }}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
-                                    <div class="post-footer d-flex align-items-center flex-column flex-sm-row"
-                                         style="font-size: 12px;">
-                                        <a href="/user/{{ $article->user->name }}"
-                                           class="author d-flex align-items-center flex-wrap">
+                                    <div class="post-footer d-flex align-items-center flex-column flex-sm-row font-size-12">
+                                        <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar">
                                                 <img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}" class="img-fluid">
                                             </div>
@@ -74,7 +50,7 @@
                                     </div>
                                 @endif
                                 <div class="post-details">
-                                    <div class="post-body" style="font-size: 18px;">
+                                    <div class="post-body font-size-18">
                                         <h4>{{ $article->subtitle }}</h4>
                                         <p class="lead">{{ $article->meta_description }}</p>
                                         <parse content="{{ $article->content['raw'] }}"></parse>
@@ -87,7 +63,7 @@
                                     </div>
                                     @endif
                                     <div>
-                                        <div class="post-tags" style="display: inline">
+                                        <div class="post-tags">
                                             @if(count($article->tags))
                                                 @foreach($article->tags as $tag)
                                                     <a href="{{ url('tag', ['tag' => $tag->tag]) }}"
@@ -134,9 +110,27 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Related Posts -->
-                        
-                        @include('article.related')
+                        @empty($related['related_category'])
+                            <div class="related-posts">
+                                <div class="container">
+                                    <a href="#" class="read-next clear">
+                                        <strong>Related <i class="fas fa-angle-double-right font-size-12"></i></strong>
+                                    </a>
+                                    @include('article.related', ['related' => $related['related_category']])
+                                </div> <hr>
+                            </div>
+                        @endempty
 
+                        @empty($related['related_author'])
+                            <div class="related-posts">
+                                <div class="container">
+                                    <a href="#" class="read-next clear">
+                                        <strong>More from {{ $article->user->name }} <i class="fas fa-angle-double-right font-size-12"></i></strong>
+                                    </a>
+                                    @include('article.related', ['related' => $related['related_author']])
+                                </div> <hr>
+                            </div>
+                        @endempty
                         <div class="clear clear2"></div>
                     </div>
                 </div>
