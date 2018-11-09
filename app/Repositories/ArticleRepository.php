@@ -262,18 +262,27 @@ class ArticleRepository
         return $viewsArticlesToday;
     }
 
-    public function getRelatedPosts($article)
-    {   
-        $articles = $this->model
-            ->where('id', '!=' , $article->id)
-            ->where('category_id', $article->category_id)
-            ->orderBy('published_at', 'desc')
-            ->take(3)
-            ->get(); 
+    /**
+     * Get related post by category.
+     *
+     * @param  object $article
+     *
+     * @return collection
+     */
+    public function getRelatedPostsByCategory($article)
+    {
+        $articles = $this->model->where('category_id', $article->category_id)->get(); 
 
         return $articles;
     }
 
+    /**
+     * Get related post by author.
+     *
+     * @param $article
+     *
+     * @return collection
+     */
     public function getRelatedPostsByAuthor($article)
     {   
         $articles = $this->model

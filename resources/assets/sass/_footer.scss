@@ -5,34 +5,28 @@ footer.main-footer {
   right: 0;
   bottom: 0;
   left: 0;
-}
-
-footer.main-footer a {
-  color: inherit;
-  font-weight: 300;
-  margin-bottom: 7px;
-}
-
-footer.main-footer a:hover, footer.main-footer a:focus {
-  color: #999;
-}
-
-footer.main-footer ul {
-  margin-right: 30px;
-}
-
-footer.main-footer .copyrights {
-  background: #090909;
-  padding: 20px 0;
-  font-size: 0.9em;
-}
-
-footer.main-footer .copyrights * {
-  margin-bottom: 0;
-}
-
-footer.main-footer li {
-  padding: 0 5px;
+  a {
+    color: inherit;
+    font-weight: 300;
+    margin-bottom: 7px;
+  }
+  a:hover, a:focus {
+    color: #999;
+  }
+  ul {
+    margin-right: 30px;
+  }
+  .copyrights {
+    background: #090909;
+    padding: 20px 0;
+    font-size: 0.9em;
+    * {
+      margin-bottom: 0;
+    }
+  }
+  li {
+    padding: 0 5px;
+  }
 }
 
 #goTop {

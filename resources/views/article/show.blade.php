@@ -35,8 +35,12 @@
                             <div class="post-single">
                                 <div class="text-center">
                                     <div class="post-meta justify-content-between">
-                                        @if($article->category_id)<h4 class="h5"><i class="fas fa-link text-blue"></i>
-                                            <a href="#"> {{ $article->category->name }}</a></h4>@endif
+                                        @if($article->category_id)
+                                        <h4 class="h5"> ( 
+                                            <i class="fas fa-bolt text-blue"></i> 
+                                            <a href="#"> {{ $article->category->name }}</a> )
+                                        </h4>
+                                        @endif
                                     </div>
                                     <h1>{{ $article->title }}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
                                     <div class="post-footer d-flex align-items-center flex-column flex-sm-row"
@@ -130,8 +134,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Related Posts -->
-                        @include('modules.related-post')
-                        <div class="clear" style="margin-bottom: 100px; "></div>
+                        
+                        @include('article.related')
+
+                        <div class="clear clear2"></div>
                     </div>
                 </div>
             </main>
@@ -142,11 +148,5 @@
 @section('scripts')
     <script>
         hljs.initHighlightingOnLoad();
-
-        // $(window).scroll(function() {
-        //     if($(window).scrollTop() + $(window).height() > $(document).height() - 750) {
-        //         //$('.link-right').removeClass('fixed-link');
-        //     }
-        // });
     </script>
 @endsection

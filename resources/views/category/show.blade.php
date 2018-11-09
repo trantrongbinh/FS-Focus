@@ -21,7 +21,7 @@
 
     <div class="container list">
         <div class="row">
-            <main class="col-md-10 offset-md-1">
+            <main class="col-md-12">
                 <div class="row">
                     <div class="post col-lg-8">
                         @forelse($articles as $article)

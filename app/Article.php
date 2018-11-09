@@ -32,6 +32,7 @@ class Article extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
         'user_id',
         'last_user_id',
         'category_id',
@@ -137,46 +138,6 @@ class Article extends Model
         } else {
             $this->setUniqueSlug(translug($value), '');
         }
-    }
-
-    public function setIsVotedAttribute($value)
-    {
-        $this->attributes['is_voted'] = strtolower($value);
-    }
-
-    public function getIsVotedAttribute($value)
-    {
-        return ucfirst($value);
-    }
-
-    public function setIsUpVotedAttribute($value)
-    {
-        $this->attributes['is_up_voted'] = strtolower($value);
-    }
-
-    public function getIsUpVotedAttribute($value)
-    {
-        return ucfirst($value);
-    }
-
-    public function setIsDownVotedAttribute($value)
-    {
-        $this->attributes['is_down_voted'] = strtolower($value);
-    }
-
-    public function getIsDownVotedAttribute($value)
-    {
-        return ucfirst($value);
-    }
-
-    public function setVoteCountAttribute($value)
-    {
-        $this->attributes['vote_count'] = strtolower($value);
-    }
-    
-    public function getVoteCountAttribute($value)
-    {
-        return ucfirst($value);
     }
 
     /**
