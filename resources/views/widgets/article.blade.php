@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
 
-        @include('modules.left-box')
+        @include('modules.left')
 
         <main class="posts-listing col-lg-7 border-frame">
             <div class="row">
@@ -137,7 +137,7 @@
             </div>
         </main>
 
-        @include('modules.right-box')
+        @include('modules.right')
 
     </div>
 </div>

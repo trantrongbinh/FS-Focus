@@ -4,8 +4,9 @@
             <strong>Related Post <i class="fa fa-angle-right"></i></strong>
         </a>
         <hr>
+        @dump($related)
         <div class="row">
-            @forelse($related_articles as $article)
+            {{-- @forelse($related_articles as $article)
                 <div class="post col-md-4">
                     <div class="post-thumbnail"><a href="post.html"><img src="{{ $article->page_image }}" alt="..." class="img-fluid"></a></div>
                     <div class="post-details">
@@ -32,7 +33,7 @@
                 </div>
             @empty
                 <h3 class="text-center">{{ lang('Nothing') }}</h3>
-            @endforelse
+            @endforelse --}}
         </div>
     </div>
 </div>
@@ -44,7 +45,7 @@
         </a>
         <hr>
         <div class="row">
-            @forelse($related_of_author as $article)
+            {{-- @forelse($related_of_author as $article)
                 <div class="post col-md-4">
                     <div class="post-thumbnail"><a href="post.html"><img src="{{ $article->page_image }}" alt="..." class="img-fluid"></a></div>
                     <div class="post-details">
@@ -71,7 +72,7 @@
                 </div>
             @empty
                 <h3 class="text-center">{{ lang('Nothing') }}</h3>
-            @endforelse
+            @endforelse --}}
         </div>
     </div>
 </div>

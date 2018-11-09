@@ -36,7 +36,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * Display the article resource by article slug.
+     * Display the article resource by article slug with related.
      *
      * @param  string $slug
      * @return mixed
@@ -44,18 +44,17 @@ class ArticleController extends Controller
     public function show($slug)
     {
         $article = $this->article->getBySlug($slug);
+        $related = [];
 
-        if($article->category_id != NULL) {
-            $related_articles = $this->article->getRelatedPosts($article);
-        }else {
-            $related_articles = [];
+        if ($article->category_id != NULL) {
+            $related['related_category'] = $this->article->getRelatedPostsByCategory($article);
         }
         
-        $related_of_author = $this->article->getRelatedPostsByAuthor($article);
+        $related['related_author'] = $this->article->getRelatedPostsByAuthor($article);
 
         $article->addViewWithExpiryDate(Carbon::now()->addMinute());
         
-        return view('article.show', compact('article', 'related_articles', 'related_of_author'));
+        return view('article.show', compact('article', 'related'));
     }
 
     /**
