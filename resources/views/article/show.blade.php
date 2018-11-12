@@ -110,7 +110,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Related Posts -->
-                        @empty($related['related_category'])
+                        @if(!$related['related_category']->isEmpty())
                             <div class="related-posts">
                                 <div class="container">
                                     <a href="#" class="read-next clear">
@@ -118,10 +118,10 @@
                                     </a>
                                     @include('article.related', ['related' => $related['related_category']])
                                 </div> <hr>
-                            </div>
-                        @endempty
+                            </div>                      
+                        @endif
 
-                        @empty($related['related_author'])
+                        @if(!$related['related_author']->isEmpty())
                             <div class="related-posts">
                                 <div class="container">
                                     <a href="#" class="read-next clear">
@@ -130,7 +130,7 @@
                                     @include('article.related', ['related' => $related['related_author']])
                                 </div> <hr>
                             </div>
-                        @endempty
+                        @endif
                         <div class="clear clear2"></div>
                     </div>
                 </div>

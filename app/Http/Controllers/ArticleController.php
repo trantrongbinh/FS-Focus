@@ -46,9 +46,7 @@ class ArticleController extends Controller
         $article = $this->article->getBySlug($slug);
         $related = [];
 
-        if ($article->category_id != NULL) {
-            $related['related_category'] = $this->article->getRelatedPostsByCategory($article);
-        }
+        $related['related_category'] = ($article->category_id != NULL) ? $this->article->getRelatedPostsByCategory($article) : null;
         
         $related['related_author'] = $this->article->getRelatedPostsByAuthor($article);
 

@@ -41,7 +41,7 @@
     </div>
     <hr>
 @empty
-    <h3 class="text-center">{{ lang('Nothing') }}</h3>
+    <h6 class="nothing">{{ lang('Nothing') }}</h6>
 @endforelse
 
 {{-- {{ $discussions->links('pagination.default') }} --}}

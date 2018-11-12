@@ -1,11 +1,11 @@
 <div class="user jumbotron jumbotron-fluid">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
+           {{--  <div class="col-sm-12">
                 <div id="canvas-holder" style="width:40%">
                     <canvas id="chart-area"></canvas>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-sm-2 text-center">
                 <img class="avatar rounded-circle" src="{{ $user->avatar }}">
             </div>

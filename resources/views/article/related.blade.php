@@ -1,7 +1,7 @@
 <div class="row">
     @forelse($related as $article)
         <div class="post col-md-4">
-            <div class="post-thumbnail"><a href="post.html"><img src="{{ $article->page_image }}" alt="..." class="img-fluid"></a></div>
+            <div class="post-thumbnail min-height-240"><a href="post.html"><img src="{{ $article->page_image }}" alt="..." class="img-fluid"></a></div>
             <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">
                     <div class="date">{{ $article->published_at->toFormattedDateString() }}</div>
@@ -10,7 +10,7 @@
                     <h3 class="h4">{{ str_limit($article->title, '45') }}</h3>
                 </a>
                 <p class="text-muted">
-                    <parse content="{{ $article->content['raw'] }}"></parse>
+                    <parse content="{{ str_limit($article->content['raw'], '150') }}"></parse>
                 </p>
                 <footer class="post-footer d-flex align-items-center">
                     <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
