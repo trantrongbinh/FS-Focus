@@ -110,7 +110,7 @@
                                                 </div>
                                             @endif
                                             <p>
-                                                <a href="#" class="link-black text-sm mr-2"><i class="far fa-star mr-1"></i> Rate (2)</a>
+                                                <a href="#" class="link-black text-sm mr-2"><i class="far fa-bookmark"></i> Bookmark (2)</a>
                                                 <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like (100)</a>
                                                 <span class="float-right"><a href="#" class="link-black text-sm"> <i class="far fa-comments mr-1"></i> Comments ({{ $article->comments_count }})</a></span>
                                             </p>

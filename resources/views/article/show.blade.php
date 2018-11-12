@@ -15,12 +15,12 @@
                                     <div class="post-meta justify-content-between">
                                         @if($article->category_id)
                                         <h4 class="h5"> ( 
-                                            <i class="fas fa-bolt text-blue"></i> 
+                                            <i class="fas fa-bolt text-violet"></i> 
                                             <a href="#"> {{ $article->category->name }}</a> )
                                         </h4>
                                         @endif
                                     </div>
-                                    <h1>{{ $article->title }}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
+                                    <h1>{{ $article->title }}&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#"><i class="far fa-bookmark"></i></a></h1>
                                     <div class="post-footer d-flex align-items-center flex-column flex-sm-row font-size-12">
                                         <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar">
@@ -37,8 +37,11 @@
                                             <div class="views">
                                                 <b><i class="far fa-eye"></i> {{ $article->getViews() }}</b>
                                             </div>
-                                            <div class="comments meta-last">
+                                            <div class="views">
                                                 <b><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</b>
+                                            </div>
+                                            <div class="comments meta-last">
+                                                <b><i class="far fa-bookmark"></i> 999</b>
                                             </div>
                                         </div>
                                     </div>
@@ -99,6 +102,7 @@
                                     <clap article-id="{{ $article->id }}"></clap>
                                     @endif
                                 </li>
+                                <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
                                 <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fab fa-github"></i></a></li>
