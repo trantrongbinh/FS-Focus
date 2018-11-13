@@ -1551,3 +1551,75 @@ textarea{
     position: sticky;
     top: 180px;
 }
+
+//Clap
+@keyframes clap {
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-100px) scale(1);
+    }
+    80% {
+        transform: translateY(-190px) scale(0.6);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0;
+    }
+    70% {
+        box-shadow: 0 0 5px 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+.claps_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #02b875;
+    width: 60px;
+    height: 60px;
+    outline: 0;
+    cursor: pointer;
+    filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.05));
+    transform: scale(1);
+    transition: all .1s ease-in;
+    z-index: 1;
+    fill: #02B875;
+    pointer-events: visible;
+}
+
+.number{
+    font-size: 12px !important;
+    margin-top: 5px;
+}
+
+a.claps_button {
+    border-color: #02b875;
+    color: #00ab6b;
+    fill: #00ab6b;
+    animation: pulse 3s infinite;
+    position: absolute;
+    margin-left: -23px;
+}
+
+a.claps_button:hover {
+    width: 65px;
+    height: 65px;
+    border-color: #02b875;
+    color: #00ab6b;
+    fill: #00ab6b;
+    animation: pulse 2s infinite;
+}

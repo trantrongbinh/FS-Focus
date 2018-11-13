@@ -73,7 +73,7 @@ class DiscussionController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource with related.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -82,11 +82,11 @@ class DiscussionController extends Controller
     {
         $discussion = $this->discussion->getById($id);
 
-        $related_discussions = $this->discussion->getRelatedDiscussions($discussion);
+        $related = $this->discussion->getRelatedDiscussions($discussion);
         
         $discussion->addViewWithExpiryDate(Carbon::now()->addMinute());
 
-        return view('discussion.show', compact('discussion', 'related_discussions'));
+        return view('discussion.show', compact('discussion', 'related'));
     }
 
     /**

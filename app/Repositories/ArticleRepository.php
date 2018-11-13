@@ -106,7 +106,7 @@ class ArticleRepository
     {
         $this->model = $this->checkAuthScope();
         $article = $this->model->where('slug', $slug)->withCount('comments')->firstOrFail();
-        
+
         $this->visitor->log($article->id);
 
         return $article;

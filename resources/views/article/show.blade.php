@@ -14,9 +14,9 @@
                                 <div class="text-center">
                                     <div class="post-meta justify-content-between">
                                         @if($article->category_id)
-                                        <h4 class="h5"> ( 
-                                            <i class="fas fa-bolt text-violet"></i> 
-                                            <a href="#"> {{ $article->category->name }}</a> )
+                                        <h4 class="h5">
+                                            <i class="fas fa-arrow-alt-circle-right text-violet"></i>
+                                            <a href="#" class="text-blue"> {{ $article->category->name }}</a>
                                         </h4>
                                         @endif
                                     </div>
@@ -98,8 +98,10 @@
                         <div class="links">
                             <ul class="list-unstyled">
                                 <li>
-                                    @if(!Auth::guest())
-                                    <clap article-id="{{ $article->id }}"></clap>
+                                    @if(Auth::guest())
+                                        <clap article-id="{{ $article->id }}" api="article" vote-count="{{ $article->countUpVoters() }}"></clap>
+                                    @else
+                                        <clap article-id="{{ $article->id }}" api="article" vote-count="" can-vote></clap>
                                     @endif
                                 </li>
                                 <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
