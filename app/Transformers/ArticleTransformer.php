@@ -29,10 +29,10 @@ class ArticleTransformer extends TransformerAbstract
             'visitors'          => $article->view_count,
             'published_at'      => $article->published_at->diffForHumans(),
             'published_time'    => $article->published_at->toDateTimeString(),
-            'is_voted'      => auth()->guard('api')->id() ? $comment->isVotedBy(auth()->guard('api')->id()) : false,
-            'is_up_voted'   => auth()->guard('api')->id() ? auth()->guard('api')->user()->hasUpVoted($comment) : false,
-            'is_down_voted' => auth()->guard('api')->id() ? auth()->guard('api')->user()->hasDownVoted($comment) : false,
-            'vote_count'    => $comment->countUpVoters(),
+            'is_voted'          => auth()->guard('api')->id() ? $article->isVotedBy(auth()->guard('api')->id()) : false,
+            'is_up_voted'       => auth()->guard('api')->id() ? auth()->guard('api')->user()->hasUpVoted($article) : false,
+            'is_down_voted'     => auth()->guard('api')->id() ? auth()->guard('api')->user()->hasDownVoted($article) : false,
+            'vote_count'        => $article->countUpVoters(),
         ];
     }
 
