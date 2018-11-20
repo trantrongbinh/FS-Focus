@@ -101,9 +101,7 @@ class User extends Authenticatable
      */
     public function teams()
     {
-        return $this->belongsToMany(Team::class)
-            ->as('join')
-            ->withTimestamps();
+        return $this->belongsToMany(Team::class)->withTimestamps();
     }
 
     /**

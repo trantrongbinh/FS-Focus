@@ -32,8 +32,6 @@ class Team extends Model
      */
     public function users()
     {
-        return $this->belongsToMany(User::class)
-            ->as('have')
-            ->withTimestamps();
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
 }
