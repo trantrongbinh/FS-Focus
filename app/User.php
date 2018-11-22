@@ -85,6 +85,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the articles for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function articles()
+    {
+        return $this->hasMany(Discussion::class)->orderBy('created_at', 'desc');
+    }
+
+    /**
      * Get the comments for the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

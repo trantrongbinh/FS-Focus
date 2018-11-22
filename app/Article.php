@@ -35,6 +35,7 @@ class Article extends Model
         'id',
         'user_id',
         'last_user_id',
+        'team_id',
         'category_id',
         'title',
         'subtitle',
@@ -71,6 +72,16 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the team for the blog article.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 
     /**

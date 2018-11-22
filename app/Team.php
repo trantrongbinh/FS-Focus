@@ -34,4 +34,14 @@ class Team extends Model
     {
         return $this->belongsToMany(User::class)->withTimestamps();
     }
+
+    /**
+     * Many to Many relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }

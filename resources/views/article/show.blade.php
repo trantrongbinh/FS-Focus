@@ -15,7 +15,7 @@
                                     <div class="post-meta justify-content-between">
                                         @if($article->category_id)
                                         <h4 class="h5">
-                                            <i class="fas fa-arrow-alt-circle-right text-violet"></i>
+                                            <i class="fas fa-arrow-alt-circle-right text-gray-v1"></i>
                                             <a href="#" class="text-blue"> {{ $article->category->name }}</a>
                                         </h4>
                                         @endif

@@ -175,7 +175,6 @@
             loadMore(next_page_url) {
                 this.$http.get(next_page_url)
                     .then((response) => {
-                        console.log(response.data.meta)
                         response.data.data.forEach((data) => {
                             data.content_html = this.parse(data.content_raw)
                             return data
@@ -264,7 +263,6 @@
                     },
                     callbacks: {
                         onPasteReceived(file) {
-                            console.log('success')
                             let promise = new FineUploader.Promise()
 
                             if (file == null || typeof file.type == 'undefined' || file.type.indexOf('image/')) {

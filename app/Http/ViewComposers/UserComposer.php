@@ -17,10 +17,12 @@ class UserComposer
     public function compose(View $view)
     {
         $view->with('users', User::select('id', 'name', 'avatar', 'email')
+            ->withCount('articles')
             ->whereStatus(true)
             ->where('id', '!=', Auth::id())
             ->where('is_admin', '!=', 1)
-            ->OrderBy('id', 'desc')
+            ->withCount('articles')
+            ->OrderBy('articles_count', 'desc')
             ->get()
             ->take(4));
     }

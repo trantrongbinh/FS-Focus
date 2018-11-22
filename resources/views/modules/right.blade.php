@@ -2,7 +2,7 @@
     <!-- Widget [Authors Widget]-->
     <div class="widget teams">
         <header>
-            <h3 class="h6">Hot Author</h3>
+            <h3 class="h6">Hot Authors</h3>
              <span class="top-v1 badge-info navbar-badge" style="z-index: 100;"><a href="/user/all-auther">All Author</a></span>
         </header>
         <div class="blog-posts">
@@ -15,7 +15,7 @@
                         <div class="title"><strong>{{ $user->name }}</strong>
                             <div class="d-flex align-items-center">
                                 <div class="views" data-toggle="tooltip" data-placement="bottom" title="Followers"><i class="fas fa-user-plus"></i> 50</div>
-                                <div class="comments" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> 12</div>
+                                <div class="comments" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $user->articles_count }}</div>
                             </div>
                         </div>
                     </div>
@@ -26,74 +26,47 @@
     <!-- Widget [Teams Widget]        -->
     <div class="widget teams">
         <header>
-            <h3 class="h6">Teams</h3>
+            <h3 class="h6">Hot Teams</h3>
             <span class="top-v1 badge-info navbar-badge" style="z-index: 100;"><a href="#">All Team</a></span>
         </header>
         <div class="blog-posts">
-            <a href="#">
-                <div class="item d-flex align-items-center">
-                    <div class="image">
-                        <img class="img-fluid img-sm" src="img/user3-128x128.jpg" alt="User Image">
-                    </div>
-                    <div class="title"><strong>BKFA Team </strong>
-                        <div class="d-flex align-items-center">
-                            <div class="views" data-toggle="tooltip" data-placement="bottom" title="Members"><i class="fas fa-user-friends"></i> 10</div>
-                            <div class="comments" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> 12</div>
+            @foreach ($teams['otherTeam'] as $team)
+                <a href="/team/{{ $team->slug }}">
+                    <div class="item d-flex align-items-center">
+                        <div class="image">
+                            <img class="img-fluid img-sm" src="{{ $team->avatar }}" alt="Team avatar">
+                        </div>
+                        <div class="title"><strong>{{ $team->name }}</strong>
+                            <div class="d-flex align-items-center">
+                                <div class="views" data-toggle="tooltip" data-placement="bottom" title="Members"><i class="fas fa-user-friends"></i> {{ $team->users_count }}</div>
+                                <div class="comments" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $team->articles_count }}</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-            <a href="#">
-                <div class="item d-flex align-items-center">
-                    <div class="image">
-                        <img class="img-fluid img-sm" src="img/small-thumbnail-2.jpg" alt="..." class="img-fluid">
+                </a>
+            @endforeach
+            @if (!Auth::guest())
+                @if(!$teams['yourTeam']->isEmpty())
+                    <hr>
+                    <div class="nav-team">
+                        <span class="top-v1 badge-danger navbar-badge"><a href="#">Your Team</a></span>
                     </div>
-                    <div class="title"><strong>Teach Hot</strong>
-                        <div class="d-flex align-items-center">
-                            <div class="views"><i class="icon-eye"></i> 500</div>
-                            <div class="comments"><i class="icon-comment"></i>12</div>
-                        </div>
-                    </div>
-                    <div class="push popover__content">
-                        <p class="popover__message">Teach Hot</p>
-                    </div>
-                </div>
-            </a>
-            <a href="#">
-                <div class="item d-flex align-items-center">
-                    <div class="image">
-                        <img class="img-fluid img-sm" src="img/small-thumbnail-3.jpg" alt="..." class="img-fluid">
-                    </div>
-                    <div class="title"><strong>CTTN 4.0</strong>
-                        <div class="d-flex align-items-center">
-                            <div class="views"><i class="icon-eye"></i> 500</div>
-                            <div class="comments"><i class="icon-comment"></i>12</div>
-                        </div>
-                    </div>
-                    <div class="push popover__content">
-                        <p class="popover__message">CTTN 4.0</p>
-                    </div>
-                </div>
-            </a>
-            <div class="item d-flex border-bottom"></div>
-            <a href="#">
-                <div class="item d-flex align-items-center">
-                    <div class="image">
-                        <img class="img-fluid img-sm" src="/images/team-default.png" alt="User Image">
-                    </div>
-                    <div class="title"><strong>BKFA Team </strong>
-                        <div class="d-flex align-items-center">
-                            <div class="views"><i class="fas fa-user-friends"></i> 10</div>
-                            <div class="comments"><i class="fas fa-pencil-alt"></i> 12</div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            @if (Auth::guest())
-                <div class="border-top text-center">
-                    <a href="{{ url('login') }}" class="text-info create-button"><strong><i class="fas fa-users-cog"></i> Create Team</strong></a>
-                </div>
-            @else
+                    @foreach ($teams['yourTeam'] as $team)
+                        <a href="/team/{{ $team->slug }}">
+                            <div class="item d-flex align-items-center">
+                                <div class="image">
+                                    <img class="img-fluid img-sm" src="{{ $team->avatar }}" alt="Team avatar">
+                                </div>
+                                <div class="title"><strong>{{ $team->name }}</strong>
+                                    <div class="d-flex align-items-center">
+                                        <div class="views" data-toggle="tooltip" data-placement="bottom" title="Members"><i class="fas fa-user-friends"></i> {{ $team->users_count }}</div>
+                                        <div class="comments" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $team->articles_count }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                @endif
                 <div class="border-top text-center">
                     <a href="javascript:;" class="text-info button-toggle-team create-button"><strong><i class="fas fa-users-cog"></i> Create Team</strong></a>
                     <div class="optional-team  {{ $errors->isEmpty() ? 'hide' : ''}}">
@@ -104,6 +77,10 @@
                             <button type="submit" class="btn btn-outline-info btn-sm full-width"><i class="fas fa-check text-dark"></i></button>
                         </form>
                     </div>
+                </div>
+            @else
+                <div class="border-top text-center">
+                    <a href="{{ url('login') }}" class="text-info create-button"><strong><i class="fas fa-users-cog"></i> Create Team</strong></a>
                 </div>
             @endif
         </div>

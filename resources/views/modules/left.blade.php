@@ -56,8 +56,8 @@
                 </div>
             @endif
         @endforeach
-        <hr>
         @if(!$categories['other']->isEmpty())
+            <hr>
             <h3 class="h6">Other Categories</h3>
             @foreach ($categories['other'] as $category)
                 @if($category->articles_count != 0)

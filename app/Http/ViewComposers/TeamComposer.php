@@ -16,28 +16,18 @@ class TeamComposer
     public function compose(View $view)
     {
         if (\Auth::check()) {
-            // $teams = Team::with(['users' => function($q) {
-            //         $q->select('users.id','name', 'nickname');
-            //     }
-            // ])
-            // ->OrderBy('rank', 'desc')
-            // ->get(['teams.id', 'name', 'slug', 'avatar'])
-            // ->take(4);
-
             $yourTeam = Team::select('name', 'slug', 'avatar')
                 ->whereHas('users', function($q) {
                     $q->where('users.id', \Auth::id())->where('role', 1);
-                })->withCount('users')->get();
+                })->withCount('users')->withCount('articles')->OrderBy('articles_count', 'desc')->get();
 
             $otherTeam = Team::select('name', 'slug', 'avatar')
                 ->whereHas('users', function($q) {
                     $q->where('users.id', '!=', \Auth::id());
-                })->take(4)->get();
-
-                dd($yourTeam);
+                })->withCount('users')->withCount('articles')->OrderBy('articles_count', 'desc')->take(4)->get();
         } else {
             $yourTeam = null;
-            $otherTeam = Team::select('name', 'slug', 'avatar')->take(4)->get();
+            $otherTeam = Team::select('name', 'slug', 'avatar')->withCount('users')->withCount('articles')->OrderBy('articles_count', 'desc')->take(4)->get();
         }
 
         $view->with('teams', ['yourTeam' => $yourTeam, 'otherTeam' => $otherTeam]);

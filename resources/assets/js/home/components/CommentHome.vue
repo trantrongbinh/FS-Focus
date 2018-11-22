@@ -166,10 +166,8 @@
         },
         methods: {
             loadMore(next_page_url) {
-                console.log(next_page_url)
                 this.$http.get(next_page_url)
                     .then((response) => {
-                        console.log(response.data.meta)
                         response.data.data.forEach((data) => {
                             data.content_html = this.parse(data.content_raw)
                             return data
@@ -191,10 +189,8 @@
                 }
 
                 this.isSubmiting = true
-                console.log(data)
                 this.$http.post('comments', data)
                     .then((response) => {
-                        console.log(response)
                         let comment = null
 
                         comment = response.data.data
