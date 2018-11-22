@@ -21,8 +21,8 @@ FS-Focus is my project for the purpose of synthesizing, archiving, solving probl
 
 ### About Me
 
-- trantrongbinh - developer
-	"Learning new languages and technologies is what I am passionate about."
+- Bkfa Team:
+	"Nothing is impossible!"
 
 ## Installation
 
