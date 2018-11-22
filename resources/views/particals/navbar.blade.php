@@ -22,7 +22,6 @@
                         {{ csrf_field() }}
                     </form>
                 </a>
-                <a href="#" class="contact">Contact</a>
             </div>
         </div>
         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
