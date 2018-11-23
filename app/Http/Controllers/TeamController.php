@@ -17,6 +17,18 @@ class TeamController extends Controller
     }
 
     /**
+     * Display the teams resource.
+     *
+     * @return mixed
+     */
+    public function index()
+    {
+        $teams = $this->category->all();
+
+        return view('category.index', compact('categories'));
+    }
+
+    /**
      * Store a new team.
      *
      * @param  TeamRequest $request

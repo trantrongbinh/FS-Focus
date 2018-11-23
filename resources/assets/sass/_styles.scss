@@ -1,5 +1,6 @@
 // GENERAL
 body {
+    font-family: "Space Mono", Arial, serif;
     overflow-x: hidden;
     position: relative;
     background: #EDF3FC;
@@ -38,7 +39,7 @@ section {
 
 button, input {
     outline: none !important;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Space Mono", Arial, serif;
 }
 
 button {
@@ -642,24 +643,24 @@ main.posts-listing .post {
   border: none;
   border-bottom: 1px solid #ddd;
   font-size: 0.95em;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Space Mono", Arial, serif;
   font-weight: 400;
   background: none;
 }
 
 .widget.search input::-moz-placeholder {
   color: #aaa;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Space Mono", Arial, serif;
 }
 
 .widget.search input::-webkit-input-placeholder {
   color: #aaa;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Space Mono", Arial, serif;
 }
 
 .widget.search input:-ms-input-placeholder {
   color: #aaa;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Space Mono", Arial, serif;
 }
 
 .widget.search .submit {
