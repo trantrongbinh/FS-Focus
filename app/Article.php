@@ -38,7 +38,6 @@ class Article extends Model
         'team_id',
         'category_id',
         'title',
-        'subtitle',
         'slug',
         'page_image',
         'content',

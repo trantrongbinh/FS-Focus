@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                                 @forelse($articles as $article)
-                                <!-- Post -->
+                                    <!-- Post -->
                                     <div class="post card">
                                         <div class="card-body">
                                             <div class="user-block">
@@ -97,7 +97,15 @@
                                                 <h3 class="h4">{{ $article->title }}</h3>
                                             </a>
                                             <div class="meta">
-                                                <span class="cinema"><strong>{{ $article->subtitle }}</strong></span> {{ $article->meta_description }}
+                                                <p class="lead">{{ $article->meta_description }}</p>
+                                                @if(count($article->tags))
+                                                    <div class="post-tags">
+                                                        @foreach($article->tags as $tag)
+                                                            <a href="{{ url('tag', ['tag' => $tag->tag]) }}"
+                                                               class="tag">#{{ $tag->tag }}</a>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
                                             </div>
                                             @if($article->page_image)
                                                 <div class="row mb-3" style="margin-top: 10px;">
@@ -109,19 +117,19 @@
                                                     <!-- /.col -->
                                                 </div>
                                             @endif
-                                            <p>
+                                            {{-- <p>
                                                 <a href="#" class="link-black text-sm mr-2"><i class="far fa-bookmark"></i> Bookmark (2)</a>
                                                 <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like (100)</a>
                                                 <span class="float-right"><a href="#" class="link-black text-sm"> <i class="far fa-comments mr-1"></i> Comments ({{ $article->comments_count }})</a></span>
-                                            </p>
+                                            </p> --}}
                                         </div>
                                         <!-- comment -->
-                                        @if(Auth::guest())
+                                        {{-- @if(Auth::guest())
                                             <a href="{{ url('login') }}" class="text-center">@lang('You must be logged to add a comment !')</a>
                                             <comment-home title="Post Comments" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text=""></comment-home>
                                         @else
                                             <comment-home title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="" can-comment></comment-home>
-                                        @endif
+                                        @endif --}}
                                     </div>
                                     <!-- /.post -->
                                 @empty

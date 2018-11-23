@@ -15,7 +15,6 @@
         <div class="row">
             <main class="post blog-post col-lg-12">
                 <div class="row">
-                    <div class="col-lg-1"></div>
                     <div class="col-lg-1 link-right fixed-link">
                         <div class="links">
                             <ul class="list-unstyled">
@@ -26,11 +25,12 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="col-lg-1"></div>
                     <div class="post blog-post col-lg-7">
                         <div class="post-single">
                             <h1 class="h2">
                                 {{ $discussion->title }}
-                                <a href="javascript:;"><iclass="fa fa-bookmark-o"></i></a>
+                                <a href="javascript:;"><i class="fa fa-bookmark-o"></i></a>
                             </h1>
                             <div class="post-footer d-flex align-items-center flex-column flex-sm-row"
                                  style="font-size: 12px;">
@@ -59,20 +59,24 @@
                                 <div class="post-body" style="font-size: 17px;">
                                     <parse content="{{ json_decode($discussion->content)->raw }}"></parse>
                                 </div>
-                                <div class="post-tags">
+                                <div class="display-inline">
                                     @if(count($discussion->tags))
-                                        @foreach($discussion->tags as $tag)
-                                            <a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">#{{ $tag->tag }}</a>
-                                        @endforeach
+                                        <span class="post-tags">
+                                            @foreach($discussion->tags as $tag)
+                                                <a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">#{{ $tag->tag }}</a>
+                                            @endforeach
+                                        </span>
+                                    @endif
+
+                                    @if(config('blog.social_share.discussion_share'))
+                                        <span class="footing float-right">
+                                            <div class="social-share" data-title="{{ $discussion->title }}" data-description="{{ $discussion->title }}" {{ config('blog.social_share.sites') ? "data-sites=" . config('blog.social_share.sites') : '' }} {{ config('blog.social_share.mobile_sites') ? "data-mobile-sites=" . config('blog.social_share.mobile_sites') : '' }} initialized></div>
+                                        </span>
                                     @endif
                                 </div>
-                                @if(config('blog.social_share.discussion_share'))
-                                    <div class="footing float-right" style="margin-top: -40px;">
-                                        <div class="social-share" data-title="{{ $discussion->title }}" data-description="{{ $discussion->title }}" {{ config('blog.social_share.sites') ? "data-sites=" . config('blog.social_share.sites') : '' }} {{ config('blog.social_share.mobile_sites') ? "data-mobile-sites=" . config('blog.social_share.mobile_sites') : '' }} initialized></div>
-                                    </div>
-                                @endif
                             </div>
                         </div>
+                        <br><br>
                         <!-- comment -->
                         @if(Auth::guest())
                             <comment commentable-type="discussions"
@@ -80,7 +84,7 @@
                                      null-text="" comment-number="{{ $discussion->comments_count }}">
                             </comment>
                         @else
-                            <comment username="{{ Auth::user()->name }}"
+                            <comment title="Bình luận" username="{{ Auth::user()->name }}"
                                      user-avatar="{{ Auth::user()->avatar }}"
                                      commentable-type="discussions"
                                      commentable-id="{{ $discussion->id }}"

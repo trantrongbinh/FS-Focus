@@ -88,52 +88,54 @@
                         </div>
                         <div class="clear"></div>
                         @forelse($discussions as $discussion)
-                            <!-- Post-->
-                            <div class="d-flex post card">
+                            <!-- Post -->
+                            <div class="post card">
                                 <div class="card-body">
-                                    @if(Auth::check() && Auth::user()->id == $discussion->user->id)
-                                        <a href="javascript:;" class="float-right" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="{{ url("discussion/{$discussion->id}/edit") }}">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    @else
-                                        <a href="javascript:;" class="float-right">&times;</a>
-                                    @endif
-                                    <div class="text-inner d-flex align-items-center">
-                                        <div class="content">
-                                            <header class="post-header">
-                                                <div class="category">
-                                                    @if(count($discussion->tags))
-                                                        @foreach($discussion->tags as $tag)
-                                                            <a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">#{{ $tag->tag }}</a>
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                                <a href="{{ url('discussion', ['id' => $discussion->id]) }}"><h3 class="h4">{{ $discussion->title }}</h3></a>
-                                                @if($discussion->meta_description)
-                                                    <p>{{ $discussion->meta_description}}</p>@endif
-                                            </header>
-                                            <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                                                    <div class="avatar">
-                                                        <img src="{{ $discussion->user->avatar ?? config('blog.default_avatar') }}" alt="Avatar" class="img-fluid">
-                                                    </div>
-                                                    <div class="title">
-                                                        <span> {{ $discussion->user->name or 'null' }} </span>
-                                                    </div>
+                                    <div class="user-block">
+                                        <div class="post-footer d-flex align-items-center">
+                                            <a href="/user/{{ $discussion->user->name }}" class="author d-flex align-items-center flex-wrap">
+                                                <div class="avatar"><img src="{{ $discussion->user->avatar }}" alt="{{ $discussion->user->name }}" class="img-fluid"></div>
+                                                <div class="title"><span><b>{{ $discussion->user->name }}</b></span></div>
+                                            </a>
+                                            <div class="date"><b><i class="far fa-clock"></i> {{ $discussion->created_at->diffForHumans() }}</b></div>
+                                            <div class="comments meta-last">
+                                                <a href="{{ url('discussion', ['id' => $discussion->id]) }}"><i class="far fa-comment-alt"> {{ $discussion->comments_count }}</i> {{ lang('Replies') }}
                                                 </a>
-                                                <div class="date">
-                                                    <i class="far fa-clock"></i> {{ $discussion->created_at->diffForHumans() }}
-                                                </div>
-                                                <div class="comments">
-                                                    <a href="{{ url('discussion', ['id' => $discussion->id]) }}"><i class="far fa-comment-alt"> {{ $discussion->comments->count() }}</i> {{ lang('Replies') }}
-                                                    </a>
-                                                </div>
-                                            </footer>
+                                            </div>
                                         </div>
+                                        @if(Auth::check() && Auth::user()->id == $discussion->user->id)
+                                            <a href="javascript:;" class="float-right  btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="{{ url("discussion/{$discussion->id}/edit") }}">Edit</a>
+                                                <a class="dropdown-item" href="#">Delete</a>
+                                            </div>
+                                        @else
+                                            <a href="javascript:;" class="float-right btn-tool">&times;</a>
+                                        @endif
                                     </div>
+                                     <header class="post-header">
+                                        <a href="{{ url('discussion', ['id' => $discussion->id]) }}"><h3 class="h4">{{ $discussion->title }}</h3></a>
+                                        @if($discussion->meta_description)
+                                            <p class="lead">{{ $discussion->meta_description}}</p>
+                                        @endif
+                                        @if(count($discussion->tags))
+                                            <div class="post-tags">
+                                                @foreach($discussion->tags as $tag)
+                                                    <a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">#{{ $tag->tag }}</a>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </header>
                                 </div>
+                                <!-- comment -->
+                                @if(Auth::guest())
+                                    <a href="{{ url('login') }}" class="text-center">@lang('You must be logged to add a comment !')</a>
+                                    <comment-home title="Post Comments" commentable-type="discussions" commentable-id="{{ $discussion->id }}" comment-number="{{ $discussion->comments_count }}" null-text=""></comment-home>
+                                @else
+                                    <comment-home title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="discussions" commentable-id="{{ $discussion->id }}" comment-number="{{ $discussion->comments_count }}" null-text="" can-comment></comment-home>
+                                @endif
                             </div>
+                            <!-- /.post -->
                         @empty
                             <h3 class="text-center">{{ lang('Nothing') }}</h3>
                         @endforelse

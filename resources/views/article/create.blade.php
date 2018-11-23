@@ -157,11 +157,6 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-4 offset-md-4 text-center">
-                                    <button type="button" class="btn btn-light btn-sm button-toggle">Show bố cục chuẩn</button>
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <div class="col-md-6">
                                     <div class="form-group row">
                                         <div class="col-sm-6 offset-md-3 single-select">
@@ -200,8 +195,8 @@
                                         <div class="col-sm-8 offset-md-2">
                                             @if ($errors->has('tags'))
                                                 <span class="invalid-feedback d-block">
-                                                            <strong>{{ $errors->first('tags') }}</strong>
-                                                        </span>
+                                                    <strong>{{ $errors->first('tags') }}</strong>
+                                                </span>
                                             @endif
                                             <select class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }} select2" multiple="multiple" data-placeholder=" Tag your post" style="width: 100%;" name="tags[]">
                                                 @foreach($tags as $tag)
@@ -216,20 +211,15 @@
                                 <div class="col-sm-12">
                                     @if ($errors->has('title'))
                                         <span class="invalid-feedback d-block">
-                                                    <strong>{{ $errors->first('title') }}</strong>
-                                                </span>
+                                            <strong>{{ $errors->first('title') }}</strong>
+                                        </span>
                                     @endif
                                     <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="TITLE YOUR POST" rows="1" id="title" name="title"></textarea>
                                 </div>
                             </div>
-                            <div class="form-group row optional hide">
+                            <div class="form-group row">
                                 <div class="col-sm-12">
-                                    <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Lời mở đầu ..." rows="1"  id="subtitle" name="subtitle" ></textarea>
-                                </div>
-                            </div>
-                             <div class="form-group row optional hide">
-                                <div class="col-sm-12">
-                                    <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Mô tả bài viết giúp người đọc dễ dàng lắm bắt ..." rows="3"  id="meta_description" name="meta_description"></textarea>
+                                    <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Mô tả bài viết ..." rows="1"  id="meta_description" name="meta_description"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">

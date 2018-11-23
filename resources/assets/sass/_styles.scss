@@ -121,6 +121,9 @@ i[class*="icon-"] {
 }
 
 /*=== Helpers ===*/
+.display-inline {
+    display: inline;
+}
 .min-height-240 {
     min-height: 240px;
 }
@@ -553,9 +556,13 @@ div[class*="-btn"] {
   color: #ccc;
 }
 
-.post .post-tags {
-  margin-top: 30px;
+.post-header {
+  margin-top: 15px;
 }
+
+// .post .post-tags {
+//   margin-top: 30px;
+// }
 
 .post .post-tags .tag {
   padding: 5px 25px;

@@ -25,7 +25,6 @@ class ArticleRequest extends FormRequest
     {
         return [
             'title' => 'required|min:3',
-            'subtitle' => 'required|min:3',
             'content' => 'required',
             'category_id' => 'required',
             'published_at' => 'required',

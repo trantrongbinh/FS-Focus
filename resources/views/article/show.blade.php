@@ -15,7 +15,7 @@
                                     <div class="post-meta justify-content-between">
                                         @if($article->category_id)
                                         <h4 class="h5">
-                                            <i class="fas fa-arrow-alt-circle-right text-gray-v1"></i>
+                                            <i class="fas fa-arrow-alt-circle-right text-gray-v1"> CATEGORY: </i>
                                             <a href="#" class="text-blue"> {{ $article->category->name }}</a>
                                         </h4>
                                         @endif
@@ -54,7 +54,6 @@
                                 @endif
                                 <div class="post-details">
                                     <div class="post-body font-size-18">
-                                        <h4>{{ $article->subtitle }}</h4>
                                         <p class="lead">{{ $article->meta_description }}</p>
                                         <parse content="{{ $article->content['raw'] }}"></parse>
                                     </div>
@@ -65,20 +64,20 @@
                                         {!! config('blog.license') !!}
                                     </div>
                                     @endif
-                                    <div>
-                                        <div class="post-tags">
-                                            @if(count($article->tags))
+                                    <div class="display-inline">
+                                        @if(count($article->tags))
+                                            <span class="post-tags">
                                                 @foreach($article->tags as $tag)
                                                     <a href="{{ url('tag', ['tag' => $tag->tag]) }}"
                                                        class="tag">#{{ $tag->tag }}</a>
                                                 @endforeach
-                                            @endif
-                                        </div>
+                                            </span>
+                                        @endif
                                         @if(config('blog.social_share.article_share'))
-                                            <div class="float-right">
+                                            <span class="float-right">
                                                 <div class="social-share" data-title="{{ $article->title }}" data-description="{{ $article->title }}" {{ config('blog.social_share.sites') ? "data-sites=" . config('blog.social_share.sites') : '' }} {{ config('blog.social_share.mobile_sites') ? "data-mobile-sites=" . config('blog.social_share.mobile_sites') : '' }} initialized>
                                                 </div>
-                                            </div>
+                                            </span>
                                         @endif
                                     </div>
                                     <br><br>

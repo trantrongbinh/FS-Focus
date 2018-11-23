@@ -39,8 +39,7 @@ class ArticleRepository
 
         return $this->model
             ->when($keyword, function ($query) use ($keyword) {
-                $query->where('title', 'like', "%{$keyword}%")
-                    ->orWhere('subtitle', 'like', "%{$keyword}%");
+                $query->where('title', 'like', "%{$keyword}%");
             })
             ->orderBy($sortColumn, $sort)->paginate($number);
     }
