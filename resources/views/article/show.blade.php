@@ -49,7 +49,7 @@
                                 <br>
                                 @if($article->page_image)
                                     <div class="text-center">
-                                        <img src="{{ $article->page_image }}" alt="{{ $article->slug }}" class="img-fluid">
+                                        <img src="{{ $article->page_image }}" alt="{{ $article->slug }}" onclick="window.open(this.src)" class="img-fluid">
                                     </div>
                                 @endif
                                 <div class="post-details">
