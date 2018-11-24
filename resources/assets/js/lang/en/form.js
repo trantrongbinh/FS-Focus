@@ -48,7 +48,7 @@ export default {
     'create_tag': 'Create Tag',
     'edit_tag': 'Edit Tag',
     'create_folder': 'Create New Folder',
-    'upload_file': 'Upload New File',
+    'upload_file': 'Upload Images',
     'create_category': 'Create Category',
     'edit_category': 'Edit Category',
     'category_description': 'Please input category\'s description',

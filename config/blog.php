@@ -68,7 +68,7 @@ return [
             'url'  => 'https://facebook.com'
         ],
         'meta' => '© FS-Focus Blog 2018.',
-        'author' => 'Build By BKFA Team.',
+        'author' => 'BKFA Team 😎 😀 😉 😛',
     ],
 
     'license' => 'Sống thì đừng quan tâm người khác nói gì về mình, bởi chỉ có bạn mới biết mình là ai.',

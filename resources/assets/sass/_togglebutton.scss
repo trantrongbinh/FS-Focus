@@ -1,8 +1,13 @@
 .togglebutton {
   vertical-align: middle;
-  &, label, input, .toggle {
+
+  &,
+  label,
+  input,
+  .toggle {
     user-select: none;
   }
+
   label {
     cursor: pointer;
     color: $mdb-toggle-label-color;
@@ -17,9 +22,10 @@
     .toggle {
       text-align: left; // Issue #737 horizontal form
     }
+
     // Switch bg off and disabled
     .toggle,
-    input[type=checkbox][disabled] + .toggle {
+    input[type=checkbox][disabled]+.toggle {
       content: "";
       display: inline-block;
       width: 40px;
@@ -30,6 +36,7 @@
       transition: background 0.3s ease;
       vertical-align: middle;
     }
+
     // Handle off
     .toggle:after {
       content: "";
@@ -44,37 +51,40 @@
       top: -4px;
       transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease;
     }
+
     input[type=checkbox] {
+
       // Handle disabled
       &[disabled] {
-        & + .toggle:after,
-        &:checked + .toggle:after {
+
+        &+.toggle:after,
+        &:checked+.toggle:after {
           background-color: #BDBDBD;
         }
       }
 
-      & + .toggle:active:after,
-      &[disabled] + .toggle:active:after {
+      &+.toggle:active:after,
+      &[disabled]+.toggle:active:after {
         box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 0, 0, 0.1);
       }
 
       // Ripple off and disabled
-      &:checked + .toggle:after {
+      &:checked+.toggle:after {
         left: 20px;
       }
     }
 
     // set bg when checked
     input[type=checkbox]:checked {
-      + .toggle {
+      +.toggle {
         background-color: rgba($brand-secondary, (50/100)); // Switch bg on
       }
 
-      + .toggle:after {
+      +.toggle:after {
         background-color: $brand-secondary; // Handle on
       }
 
-      + .toggle:active:after {
+      +.toggle:active:after {
         box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba($brand-secondary, (10/100)); // Ripple on
       }
     }

@@ -2,8 +2,8 @@
     <!-- Widget [Authors Widget]-->
     <div class="widget teams">
         <header>
-            <h3 class="h6">Hot Authors</h3>
-             <span class="top-v1 badge-info navbar-badge" style="z-index: 100;"><a href="/user/all-auther">All Author</a></span>
+            <h3 class="h6">Top Authors</h3>
+             <span class="top-v1 badge-info navbar-badge" style="z-index: 100;"><a href="/user/all-auther">All</a></span>
         </header>
         <div class="blog-posts">
             @foreach($users as $user)
@@ -23,11 +23,11 @@
             @endforeach
         </div>
     </div>
-    <!-- Widget [Teams Widget]        -->
+    <!-- Widget [Teams Widget] -->
     <div class="widget teams">
         <header>
-            <h3 class="h6">Hot Teams</h3>
-            <span class="top-v1 badge-info navbar-badge" style="z-index: 100;"><a href="#">All Team</a></span>
+            <h3 class="h6">Top Teams</h3>
+            <span class="top-v1 badge-info navbar-badge" style="z-index: 100;"><a href="#">All</a></span>
         </header>
         <div class="blog-posts">
             @foreach ($teams['otherTeam'] as $team)
@@ -88,7 +88,7 @@
     <!-- Link -->
     <div class="widget links">
         <header>
-            <h3 class="h6">Link</h3>
+            <h3 class="h6">Links</h3>
         </header>
         <ul class="list-unstyled">
             @if(config('blog.footer.facebook.open'))

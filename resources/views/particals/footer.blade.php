@@ -16,8 +16,8 @@
                     </ul>
                 </div>
                 <div class="col-md-3 text-right">
-                    <p><a href="https://bootstraptemple.com" class="text-white">{!! config('blog.footer.author') !!}
-                            .</a>
+                    <p>
+                        <a href="https://bootstraptemple.com" class="text-white">{!! config('blog.footer.author') !!}</a>
                     </p>
                 </div>
             </div>

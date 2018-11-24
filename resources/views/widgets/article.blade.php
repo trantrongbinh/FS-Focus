@@ -11,15 +11,15 @@
                             @if (Auth::guest())
                                 <a rel="nofollow " href="{{ url('login') }}" class=" d-flex">
                                     <div class="news-f-img"><img src="/images/default.png" alt="User Image" class="img-fluid img-circle" width="60"></div>
-                                    <div class="msg-body" style="margin-left: 30px;">
+                                    <div class="msg-body margin-left-30">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
-                                        <small>{{ lang('Discuss Subtitle') }}</small>
+                                        <p>{{ lang('Discuss Subtitle') }}</p>
                                     </div>
                                 </a>
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
+                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right margin-left-30"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
                                         <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
                                     </div>
                                 </div>
@@ -28,15 +28,15 @@
                                     <div class="news-f-img">
                                         <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60">
                                     </div>
-                                    <div class="msg-body" style="margin-left: 30px;">
+                                    <div class="msg-body margin-left-30">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
-                                        <small>{{ lang('Discuss Subtitle') }}</small>
+                                        <p>{{ lang('Discuss Subtitle') }}</p>
                                     </div>
                                 </a>
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        <a href="{{ url('article/new') }}" class="btn btn-info btn-sm float-right" style="margin-left: 30px;"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
+                                        <a href="{{ url('article/new') }}" class="btn btn-info btn-sm float-right margin-left-30"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
                                         <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                             <div id="featured-posts">
                                 <div class="box-popup">
                                     <img class="user-small-img" src="http://www.clker.com/cliparts/1/1/6/f/1355259240202822213Round%20Green%20Button.svg.med.png">
-                                    <span style="font-size: 16px;color: #fff;">
+                                    <span class="welcome">
                                         <strong>Welcome To The Website</strong>
                                     </span>
                                     <div class="user-ditels">
@@ -97,7 +97,7 @@
                                                 <h3 class="h4">{{ $article->title }}</h3>
                                             </a>
                                             <div class="meta">
-                                                <p class="lead">{{ $article->meta_description }}</p>
+                                                <p class="lead">{{ str_limit($article->meta_description, '200') }}</p>
                                                 @if(count($article->tags))
                                                     <div class="post-tags">
                                                         @foreach($article->tags as $tag)

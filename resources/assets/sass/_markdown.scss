@@ -152,11 +152,11 @@
     overflow: auto;
   }
 
-  .markdown-body > *:first-child {
+  .markdown-body>*:first-child {
     margin-top: 0 !important;
   }
 
-  .markdown-body > *:last-child {
+  .markdown-body>*:last-child {
     margin-bottom: 0 !important;
   }
 
@@ -250,7 +250,7 @@
     margin-bottom: 0;
   }
 
-  li > p {
+  li>p {
     margin-top: 16px;
   }
 
@@ -278,11 +278,11 @@
     border-left: 4px solid #ecf0f1;
   }
 
-  blockquote > :first-child {
+  blockquote> :first-child {
     margin-top: 20;
   }
 
-  blockquote > :last-child {
+  blockquote> :last-child {
     margin-bottom: 20;
   }
 
@@ -351,7 +351,7 @@
     content: "\00a0";
   }
 
-  pre > code {
+  pre>code {
     padding: 0;
     margin: 0;
     font-size: 14px;

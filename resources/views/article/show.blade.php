@@ -15,8 +15,7 @@
                                     <div class="post-meta justify-content-between">
                                         @if($article->category_id)
                                         <h4 class="h5">
-                                            <i class="fas fa-arrow-alt-circle-right text-gray-v1"> CATEGORY: </i>
-                                            <a href="#" class="text-blue"> {{ $article->category->name }}</a>
+                                            <p class="text-hero"><i class="fas fa-arrow-alt-circle-right text-gray-v1 font-size-10"></i> Category: <span><a href="{{ url('category', ['name' => $article->category->name]) }}" class="text-blue hero-link"> {{ $article->category->name }}</a></span></p>
                                         </h4>
                                         @endif
                                     </div>
@@ -61,7 +60,7 @@
                                     @if($article->is_original)
                                     <div class="publishing alert alert-dismissible alert-info">
                                         <button type="button" class="close" data-dismiss="alert">×</button>
-                                        {!! config('blog.license') !!}
+                                        <p>"{!! config('blog.license') !!}" -- Bkfa Team</p>
                                     </div>
                                     @endif
                                     <div class="display-inline">
