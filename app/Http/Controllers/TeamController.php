@@ -12,7 +12,6 @@ class TeamController extends Controller
 
     public function __construct(TeamRepository $team)
     {
-    	$this->middleware('auth')->except(['index', 'show']);
         $this->team = $team;
     }
 
@@ -23,9 +22,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = $this->category->all();
-
-        return view('category.index', compact('categories'));
+        return view('team.index');
     }
 
     /**

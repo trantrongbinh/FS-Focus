@@ -31,7 +31,7 @@
         </header>
         <div class="blog-posts">
             @foreach ($teams['otherTeam'] as $team)
-                <a href="/team/{{ $team->slug }}">
+                <a href="{{ url('team') }}">
                     <div class="item d-flex align-items-center">
                         <div class="image">
                             <img class="img-fluid img-sm" src="{{ $team->avatar }}" alt="Team avatar">
