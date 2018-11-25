@@ -29,9 +29,7 @@
                                                     <h3 class="h4">{{ $article->title }}</h3>
                                                 </a>
                                             </header>
-                                            <p>
-                                                <b>{{ $article->subtitle }} </b> {{ $article->meta_description }} <a class="text-blue" href="{{ url($article->slug) }}">... more</a>
-                                            </p>
+                                            <p>{{ str_limit($article->meta_description, '200') }}</p>
                                             <footer class="post-footer d-flex align-items-center" style="font-size: 0.8em;">
                                                 <a href="#" class="author d-flex align-items-center flex-wrap">
                                                     <div class="avatar img-sm">

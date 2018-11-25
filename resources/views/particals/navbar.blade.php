@@ -48,7 +48,7 @@
         @if (Auth::guest())
             <!-- Log in-->
                 <li class="nav-item d-flex align-items-center">
-                    <a class="nav-link" href="{{ url('login') }}"></i> {{ lang('Login') }}</a>
+                    <a class="nav-link login" href="{{ url('login') }}"></i> {{ lang('Login') }}</a>
                 </li>
                 <!-- Sign up-->
                 <li class="nav-item d-flex align-items-center">
