@@ -1,8 +1,8 @@
 // GENERAL
 body {
+  background: #ffffff;
   overflow-x: hidden;
   position: relative;
-  background: #EDF3FC;
   min-height: 100vh;
 }
 
@@ -113,7 +113,6 @@ h1:hover a {
 }
 
 .category a {
-  color: #999;
   letter-spacing: 0.08em;
   font-weight: 700;
   text-transform: uppercase;
@@ -146,6 +145,11 @@ i[class*="icon-"] {
 }
 
 /*=== Helpers ===*/
+.jumbotron {
+  margin-top: 50px;
+  margin-bottom: 0px;   
+}
+
 .margin-left-30 {
   margin-left: 30px;
 }
@@ -158,8 +162,8 @@ i[class*="icon-"] {
   min-height: 240px;
 }
 
-#body-white {
-  background: #fff !important;
+#background-body {
+  background: #EDF3FC !important;
 }
 
 .border-none {
@@ -546,14 +550,6 @@ div[class*="-btn"] {
 
   h3:hover {
     color: #555;
-  }
-
-  .category a {
-    color: #999;
-    letter-spacing: 0.05em;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
   }
 
   .date {

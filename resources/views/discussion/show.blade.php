@@ -2,14 +2,6 @@
 
 @section('title', $discussion->title)
 
-@section('styles')
-    <style>
-        body {
-            background: #ffffff;
-        }
-    </style>
-@endsection
-
 @section('content')
     <div class="discuss-show container" style="padding: 30px;">
         <div class="row">

@@ -88,5 +88,4 @@ $(document).ready(function () {
             resizeTextarea(this);
         }).removeAttr('data-autoresize');
     });
-
 });

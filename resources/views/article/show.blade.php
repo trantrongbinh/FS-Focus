@@ -3,7 +3,7 @@
 @section('title', $article->title)
 
 @section('content')
-    <div id="body-white" class="article container">
+    <div class="article container body-white">
         <div class="row">
             <main class="post blog-post col-lg-10 offset-md-1">
                 <div class="row box-content">

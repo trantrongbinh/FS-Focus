@@ -22,7 +22,7 @@ class Category extends Model
      */
     public function articles()
     {
-        return $this->hasMany(Article::Class);
+        return $this->hasMany(Article::Class)->orderBy('published_at', 'desc');
     }
 
     /**

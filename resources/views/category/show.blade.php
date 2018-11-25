@@ -7,9 +7,9 @@
         <h6>{{ lang('Category Meta') }}</h6>
     @endcomponent
 
-    <div id="body-white" class="container list" style="margin-top: -27px;">
+    <div class="container">
         <div class="row">
-            <main class="col-md-12">
+            <main class="col-md-11" style="margin: 0 auto;">
                 <div class="row">
                     <div class="post col-lg-8">
                         @forelse($articles as $article)
@@ -18,17 +18,19 @@
                                     <div class="text-inner d-flex align-items-center">
                                         <div class="content">
                                             <header class="post-header">
-                                                <div class="category">
-                                                    @foreach($article->tags as $tag)
-                                                        <a href="{{ url('tag', ['tag' => $tag->tag]) }}">
-                                                            <i class="fas fa-tag"></i>{{ $tag->tag }}
-                                                        </a>
-                                                    @endforeach
-                                                </div>
                                                 <a href="{{ url($article->slug) }}">
                                                     <h3 class="h4">{{ $article->title }}</h3>
                                                 </a>
                                             </header>
+                                            @if(count($article->tags))
+                                                <div class="category">
+                                                    @foreach($article->tags as $tag)
+                                                        <a class="text-blue" href="{{ url('tag', ['tag' => $tag->tag]) }}">
+                                                            # {{ $tag->tag }}
+                                                        </a>
+                                                    @endforeach
+                                                </div>
+                                            @endif
                                             <p>{{ str_limit($article->meta_description, '200') }}</p>
                                             <footer class="post-footer d-flex align-items-center" style="font-size: 0.8em;">
                                                 <a href="#" class="author d-flex align-items-center flex-wrap">
@@ -43,7 +45,7 @@
                                                 </a>
                                                 <div class="date"><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}
                                                 </div>
-                                                <div class="comments"><i class="fas fa-eye"></i> {{ $article->getViews() }}</div>
+                                                <div class="comments meta-last"><i class="fas fa-eye"></i> {{ $article->getViews() }}</div>
                                             </footer>
                                         </div>
                                     </div>
