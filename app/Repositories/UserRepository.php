@@ -83,7 +83,7 @@ class UserRepository
      */
     public function page($number = 10, $sort = 'desc', $sortColumn = 'created_at')
     {
-        return $this->model->withoutGlobalScope(StatusScope::class)->orderBy($sortColumn, $sort)->paginate($number);
+        return $this->model->withoutGlobalScope(StatusScope::class)->orderBy($sortColumn, $sort)->withCount('articles')->paginate($number);
     }
 
     /**

@@ -40,7 +40,9 @@ class UserController extends Controller
      */
     public function allAuther()
     {
-        return view('user.all');
+        $authors = $this->user->page(8);
+        
+        return view('user.all', compact('authors'));
     }
 
     /**
