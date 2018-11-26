@@ -37,8 +37,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', CategoryComposer::class);
         view()->composer('*', TagComposer::class);
         view()->composer('*', HotPostComposer::class);
-        view()->composer('*', UserComposer::class);
-        view()->composer('*', TeamComposer::class);
+        view()->composer('modules.right', UserComposer::class);
+        view()->composer('modules.right', TeamComposer::class);
     }
 
     /**
