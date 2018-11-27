@@ -161,4 +161,17 @@ class UserRepository
         return $this->getById($id)->delete();
     }
 
+    /**
+     * Search the articles by the keyword.
+     *
+     * @param  string $key
+     * @return collection
+     */
+    public function search($key)
+    {
+        $key = trim($key);
+
+        return $this->model->where('name', 'like', "%{$key}%")->withCount('articles')->get();
+    }
+
 }

@@ -221,4 +221,14 @@ class UserController extends Controller
 
         return view('user.notifications', compact('user'));
     }
+
+    public function searchAuthor(Request $request)
+    {
+        $key = trim($request->data);
+        $authors = $this->user->search($key);
+
+        return [
+            'html' => view('user.particals.authors', compact('authors'))->render()
+        ];
+    }
 }
