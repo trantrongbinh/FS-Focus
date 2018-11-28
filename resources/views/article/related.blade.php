@@ -1,7 +1,9 @@
 <div class="row">
     @forelse($related as $article)
         <div class="post col-md-4">
-            <div class="post-thumbnail min-height-240"><a href="post.html"><img src="{{ $article->page_image }}" alt="..." class="img-fluid"></a></div>
+            @if ($article->page_image)
+                <div class="post-thumbnail min-height-240"><a href="post.html"><img src="{{ $article->page_image }}" alt="..." class="img-fluid"></a></div>
+            @endif
             <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">
                     <div class="date">{{ $article->published_at->toFormattedDateString() }}</div>

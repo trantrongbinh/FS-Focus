@@ -14,7 +14,7 @@
                     <div class="post col-lg-8">
                         @forelse($articles as $article)
                             <div class="row d-flex align-items-stretch featured-posts">
-                                <div class="text col-lg-8">
+                                <div class="text {{ ($article->page_image)?'col-lg-8':'col-lg-12' }}">
                                     <div class="text-inner d-flex align-items-center">
                                         <div class="content">
                                             <header class="post-header">
@@ -26,7 +26,7 @@
                                                 <div class="category">
                                                     @foreach($article->tags as $tag)
                                                         <a class="text-blue" href="{{ url('tag', ['tag' => $tag->tag]) }}">
-                                                            # {{ $tag->tag }}
+                                                            #{{ $tag->tag }} &nbsp
                                                         </a>
                                                     @endforeach
                                                 </div>
@@ -50,13 +50,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="image col-lg-4 text-right">
-                                    @if($article->page_image)
+                                @if($article->page_image)
+                                    <div class="image col-lg-4 text-right">
                                         <a href="{{ url($article->slug) }}">
                                             <img alt="{{ $article->slug }}" src="{{ $article->page_image }}" style="margin-right: 15px; margin-top: 10px;" class="img-fluid">
                                         </a>
-                                    @endif
-                                </div>
+                                    </div>
+                                @endif
                             </div>
                             <div class="clear"></div>
                             <hr>
@@ -65,30 +65,14 @@
                         @endforelse
                     </div>
                     <!-- Box Left-->
-                    <div class="col-lg-4">
-                        <!-- Widget [Latest Posts Widget]        -->
+                    <div class="col-lg-4 border-0">
+                        <!-- Widget [Latest Posts Widget] -->
                         <div class="widget latest-posts border-0">
-                            <header style="background: #dedede; padding: 10px; margin-top: -15px; text-align: center;">
+                            <header class="text-header">
                                 <h3 class="h6">Hot Posts</h3>
                             </header>
-                            <div class="blog-posts">
-                                @foreach ($hot_post as $post)
-                                    <a href="{{ url($post->slug) }}">
-                                        <div class="item d-flex align-items-center">
-                                            <div class="image"><img alt="{{ $post->slug }}" src="{{ $post->page_image }}" class="img-fluid">
-                                            </div>
-                                            <div class="title"><strong>{{ $post->title }}</strong>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="views"><i class="far fa-eye"></i></i> {{ $post->view_count }}
-                                                    </div>
-                                                    <div class="comments"><i class="far fa-comment-alt"></i> {{ $post->comments_count }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                @endforeach
-                            </div>
+
+                            @include('modules.hot-post')
                         </div>
                     </div>
                 </div>

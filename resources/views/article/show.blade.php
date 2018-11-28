@@ -19,7 +19,7 @@
                                         </h4>
                                         @endif
                                     </div>
-                                    <h1>{{ $article->title }}&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#"><i class="far fa-bookmark"></i></a></h1>
+                                    <h1>{{ $article->title }}&nbsp&nbsp<a href="#"><i class="far fa-bookmark"></i></a></h1>
                                     <div class="post-footer d-flex align-items-center flex-column flex-sm-row font-size-12">
                                         <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar">
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 link-right fixed-link">
+                    <div class="col-md-2 fixed-link">
                         <div class="links">
                             <ul class="list-unstyled">
                                 <li>
@@ -114,24 +114,24 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Related Posts -->
-                        @if(!$related['related_category']->isEmpty())
+                        @if(!$related['relatedCategory']->isEmpty())
                             <div class="related-posts">
                                 <div class="container">
                                     <a href="#" class="read-next clear">
                                         <strong>Related <i class="fas fa-angle-double-right font-size-12"></i></strong>
                                     </a>
-                                    @include('article.related', ['related' => $related['related_category']])
+                                    @include('article.related', ['related' => $related['relatedCategory']])
                                 </div> <hr>
                             </div>                      
                         @endif
 
-                        @if(!$related['related_author']->isEmpty())
+                        @if(!$related['relatedAuthor']->isEmpty())
                             <div class="related-posts">
                                 <div class="container">
                                     <a href="#" class="read-next clear">
                                         <strong>More from {{ $article->user->name }} <i class="fas fa-angle-double-right font-size-12"></i></strong>
                                     </a>
-                                    @include('article.related', ['related' => $related['related_author']])
+                                    @include('article.related', ['related' => $related['relatedAuthor']])
                                 </div> <hr>
                             </div>
                         @endif
