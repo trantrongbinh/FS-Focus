@@ -31,6 +31,7 @@ Route::resource('team', 'TeamController', ['except' => 'destroy']);
 Route::group(['prefix' => 'user'], function () {
     Route::get('/', 'UserController@index');
     Route::get('/all-auther', 'UserController@allAuther');
+    Route::get('/all-auther/search', 'UserController@searchAuthor');
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('profile', 'UserController@edit');
