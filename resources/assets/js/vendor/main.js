@@ -13,6 +13,25 @@ $('#goTop').click(function () {
     return false;
 });
 
+// ---------------------------------------------- //
+// Fixed Element
+// ---------------------------------------------- //
+$( window ).resize(function() {
+    let rightheight = $('.right').height();
+    let leftheight = $('.left').height();
+    let windowheight = $(window).height();
+
+    if (rightheight < windowheight) {
+        $('#right').removeClass('is-bottomPosition');
+        $('#right').addClass('is-topPosition');
+    }
+
+    if (leftheight < windowheight) {
+        $('#left').removeClass('is-bottomPosition');
+        $('#left').addClass('is-topPosition');
+    }
+});
+
 $(document).ready(function () {
 
     'use strict';

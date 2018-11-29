@@ -1687,12 +1687,6 @@ textarea {
   }
 }
 
-@media only screen and (max-width: 970px) {
-  .left-box {
-    display: none;
-  }
-}
-
 .clear {
   margin-bottom: 10px;
 }
@@ -1808,7 +1802,18 @@ a.claps_button:hover {
   text-align: center;
 }
 
+.display-flex {
+  display: flex;
+}
+
 .is-bottomPosition {
-  position: absolute;
-  bottom: 0;
+  position: sticky; 
+  bottom: 50px; 
+  align-self: flex-end;
+}
+
+.is-topPosition {
+  position: sticky; 
+  top: 70px; 
+  align-self: flex-start;
 }
