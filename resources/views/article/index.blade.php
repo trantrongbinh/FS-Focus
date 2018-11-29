@@ -5,5 +5,3 @@
         @include('widgets.article')
     </div>
 @endsection
-
-@section('scripts')

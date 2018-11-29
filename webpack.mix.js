@@ -35,8 +35,8 @@ mix.webpackConfig({
 });
 
 let themes = [
-    'resources/assets/sass/themes/default-theme.scss',
-    'resources/assets/sass/themes/gray-theme.scss',
+    'resources/assets/scss/themes/default-theme.scss',
+    'resources/assets/scss/themes/gray-theme.scss',
 ];
 
 themes.forEach((item) => {
@@ -44,7 +44,9 @@ themes.forEach((item) => {
 })
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css')
     .js('resources/assets/js/home.js', 'public/js')
-    .sass('resources/assets/sass/home.scss', 'public/css')
+    .js('resources/assets/js/dest/author.js', 'public/js')
+    .sass('resources/assets/scss/app.scss', 'public/css')
+    .sass('resources/assets/scss/home.scss', 'public/css')
+    .sass('resources/assets/scss/dest/author.scss', 'public/css')
     .version();
