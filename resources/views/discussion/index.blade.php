@@ -130,7 +130,7 @@
                                     </div>
                                     <!-- comment -->
                                     @if(Auth::guest())
-                                        <a href="{{ url('login') }}" class="text-center">@lang('You must be logged to add a comment !')</a>
+                                        <a href="{{ url('login') }}" class="text-center" style="padding-bottom: 20px;">@lang('You must be logged to add a comment !')</a>
                                         <comment-home title="Post Comments" commentable-type="discussions" commentable-id="{{ $discussion->id }}" comment-number="{{ $discussion->comments_count }}" null-text=""></comment-home>
                                     @else
                                         <comment-home title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="discussions" commentable-id="{{ $discussion->id }}" comment-number="{{ $discussion->comments_count }}" null-text="" can-comment></comment-home>

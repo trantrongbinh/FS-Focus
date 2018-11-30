@@ -2,11 +2,11 @@
     @forelse($related as $article)
         <div class="post col-md-4">
             @if ($article->page_image)
-                <div class="post-thumbnail min-height-240"><a href="post.html"><img src="{{ $article->page_image }}" alt="..." class="img-fluid"></a></div>
+                <div class="post-thumbnail min-height-240"><a href="{{ url($article->slug) }}"><img src="{{ $article->page_image }}" alt="..." class="img-fluid"></a></div>
             @endif
             <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">
-                    <div class="date">{{ $article->published_at->toFormattedDateString() }}</div>
+                    <div class="date meta-last"><strong>{{ $article->published_at->toFormattedDateString() }}</strong></div>
                 </div>
                 <a href="{{ url($article->slug) }}">
                     <h3 class="h4">{{ str_limit($article->title, '45') }}</h3>

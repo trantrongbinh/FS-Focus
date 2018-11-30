@@ -60,7 +60,7 @@
                                     @if($article->is_original)
                                     <div class="publishing alert alert-dismissible alert-info">
                                         <button type="button" class="close" data-dismiss="alert">×</button>
-                                        <p>"{!! config('blog.license') !!}" -- Bkfa Team</p>
+                                        <p>"{!! config('blog.license') !!}" - Bkfa Team</p>
                                     </div>
                                     @endif
                                     <div class="display-inline">
