@@ -1797,9 +1797,10 @@ a.claps_button:hover {
 }
 
 .text-header {
-  background: #f4f4f4; 
-  padding: 10px; 
+  background: #f4f4f4;
+  padding: 10px 0 3px 0;
   text-align: center;
+  margin-top: 20px;
 }
 
 .display-flex {
@@ -1816,4 +1817,33 @@ a.claps_button:hover {
   position: sticky; 
   top: 70px; 
   align-self: flex-start;
+}
+
+.post-ttb {
+  border-bottom: 1px solid #ccc;
+  margin: 2rem auto;
+  padding-bottom: 2rem;
+  position: relative;  
+}
+
+/* Add little circle in the middle after each post */
+.post-ttb:after {
+  content: "";
+  display: block;
+
+  /* The circle */
+  width: 7px;
+  height: 7px;
+  background: #FFF;
+  border: 1px solid #aaa;
+  box-shadow: #FFF 0 0 0 10px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+
+  /* Put in the middle of post's border bottom */
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  margin-left: -5px;
 }

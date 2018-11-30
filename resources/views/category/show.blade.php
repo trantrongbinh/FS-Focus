@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="post col-lg-8">
                         @forelse($articles as $article)
-                            <div class="row d-flex align-items-stretch featured-posts">
+                            <div class="row d-flex align-items-stretch featured-posts post-ttb">
                                 <div class="text {{ ($article->page_image)?'col-lg-8':'col-lg-12' }}">
                                     <div class="text-inner d-flex align-items-center">
                                         <div class="content">
@@ -58,8 +58,6 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="clear"></div>
-                            <hr>
                         @empty
                             <h3 class="text-center">{{ lang('Nothing') }}</h3>
                         @endforelse
@@ -71,7 +69,6 @@
                             <header class="text-header">
                                 <h3 class="h6">Hot Posts</h3>
                             </header>
-
                             @include('modules.hot-post')
                         </div>
                     </div>
