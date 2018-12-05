@@ -48,13 +48,6 @@
 
         @yield('scripts')
 
-        <script>
-            $(function () {
-                $("[data-toggle='tooltip']").tooltip();
-            });
-
-        </script>
-
         @if(config('blog.google.open'))
             <script>
                 (function (i, s, o, g, r, a, m) {

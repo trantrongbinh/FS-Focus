@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top" style="position: fixed; top: 0; right: 0; left: 0; z-index: 1030;">
+<nav class="navbar navbar-expand-lg fixed-top">
     <div class="search-box">
         <button class="dismiss"><i class="fa fa-times"></i></button>
         <form id="searchForm" action="{{ url('search') }}" role="search" method="get">
@@ -13,7 +13,7 @@
                     <div class="brand-text brand-small"><img src="/images/logo-icon.png" alt="Logo" class="img-fluid">
                     </div>
                 </a>
-                <a href="#">
+                {{-- <a href="#">
                     <form action="" class="form-lang" method="post">
                         <select name="locale">
                             <option value="en">English</option>
@@ -21,32 +21,32 @@
                         </select>
                         {{ csrf_field() }}
                     </form>
-                </a>
+                </a> --}}
             </div>
         </div>
         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-        @if (Auth::guest())
-            <!-- Write post-->
+            @if (Auth::guest())
+                <!-- Write post-->
                 <li class="nav-item d-flex align-items-center">
                     <a class="nav-link" href="{{ url('login') }}" data-toggle="tooltip" title="Write an article"><i class="fas fa-user-edit"></i></a>
                 </li>
-        @else
-            <!-- Write post-->
+            @else
+                <!-- Write post-->
                 <li class="nav-item d-flex align-items-center">
                     <a class="nav-link" href="{{ url('article/new') }}" data-toggle="tooltip" title="Write an article"><i class="fas fa-user-edit"></i></a>
                 </li>
-        @endif
-        <!-- questions-->
-            <li class="nav-item d-flex align-items-center">
-                <a class="nav-link" href="{{ url('discussion') }}" data-toggle="tooltip" title="Discussion"><i class="fas fa-question-circle"></i></a>
-            </li>
-            <!-- Search-->
-            <li class="nav-item d-flex align-items-center">
-                <a id="search" class="nav-link" href="#"><i class="fas fa-search"></i></a>
-            </li>
+            @endif
+                <!-- questions-->
+                <li class="nav-item d-flex align-items-center">
+                    <a class="nav-link" href="{{ url('discussion') }}" data-toggle="tooltip" title="Discussion"><i class="fas fa-question-circle"></i></a>
+                </li>
+                <!-- Search-->
+                <li class="nav-item d-flex align-items-center">
+                    <a id="search" class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                </li>
             <!-- Authentication Links -->
-        @if (Auth::guest())
-            <!-- Log in-->
+            @if (Auth::guest())
+                <!-- Log in-->
                 <li class="nav-item d-flex align-items-center">
                     <a class="nav-link login" href="{{ url('login') }}"></i> {{ lang('Login') }}</a>
                 </li>
@@ -54,8 +54,8 @@
                 <li class="nav-item d-flex align-items-center">
                     <a class="nav-link btn btn-info btn-sm text-white" href="{{ url('register') }}">{{ lang('Register') }}</a>
                 </li>
-        @else
-            <!-- Notifications-->
+            @else
+                <!-- Notifications-->
                 <li class="nav-item notification">
                     <a id="notifications" class="nav-link" rel="nofollow" href="{{ url('user/notification') }}">
                         <i class="fa fa-bell"></i>
@@ -139,6 +139,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </nav>
             @endif
         </ul>

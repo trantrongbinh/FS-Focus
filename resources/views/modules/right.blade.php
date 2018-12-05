@@ -1,5 +1,5 @@
 <!-- Box right-->
-<aside class="col-lg-2 display-flex">
+<aside class="col-lg-2 display-flex col-right">
     <div id="right" class="is-bottomPosition">
         <div class="right">
             <!-- Widget [Authors Widget]-->

@@ -7,8 +7,7 @@
         <div class="row">
             <main class="post blog-post col-lg-10 offset-md-1">
                 <div class="row box-content">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-9">
+                    <div class="col-md-10">
                         <div class="container">
                             <div class="post-single">
                                 <div class="text-center">

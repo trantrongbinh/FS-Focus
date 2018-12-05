@@ -1,9 +1,9 @@
 <div class="container">
-    <div class="row">
+    <div class="row" id="content">
 
         @include('modules.left')
 
-        <main class="posts-listing col-lg-7 border-frame">
+        <main class="col-content posts-listing col-lg-7 border-frame">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">

@@ -2,7 +2,7 @@
     @forelse($related as $article)
         <div class="post col-md-4">
             @if ($article->page_image)
-                <div class="post-thumbnail min-height-240"><a href="{{ url($article->slug) }}"><img src="{{ $article->page_image }}" alt="..." class="img-fluid"></a></div>
+                <div class="post-thumbnail"><a href="{{ url($article->slug) }}"><img src="{{ $article->page_image }}" alt="..." class="img-fluid"></a></div>
             @endif
             <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">

@@ -7,7 +7,7 @@
         <div class="row">
             <main class="post blog-post col-lg-12">
                 <div class="row">
-                    <div class="col-lg-1 link-right fixed-link">
+                    <div class="col-lg-2 link-right fixed-link">
                         <div class="links">
                             <ul class="list-unstyled">
                                 <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
@@ -17,7 +17,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-1"></div>
                     <div class="post blog-post col-lg-7">
                         <div class="post-single">
                             <h1 class="h2">

@@ -1,5 +1,5 @@
 <!-- Box Left-->
-<aside class="col-lg-3 display-flex">
+<aside class="col-lg-3 display-flex col-left">
     <div id="left" class="is-bottomPosition">
         <div class="left">
             <!-- Widget [Search Bar Widget]-->

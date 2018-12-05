@@ -55,7 +55,7 @@
                         <!-- /.card-header -->
                         <div class="container card-body">
                             <div class="row">
-                                <div class="post col-md-8 offset-md-2">
+                                <div class="post col-md-10 offset-md-1">
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="recent-articles">
                                             <div class="row d-flex align-items-stretch featured-posts post-ttb">
