@@ -47,4 +47,16 @@ class TeamController extends Controller
 
         return redirect()->to('/');
     }
+
+    public function userJoinTeam($slug)
+    {
+        if (!\Auth::id()) {
+            return redirect()->route('login');
+        } else { 
+            $team = $this->team->getBySlug($slug);        
+            $this->team->attachUser($team, \Auth::id());
+
+            return redirect()->back();
+        }
+    }
 }

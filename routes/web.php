@@ -88,3 +88,6 @@ Route::get('article/new', 'ArticleController@create');
 Route::post('article/new', 'ArticleController@store');
 Route::get('article/{id}/edit', 'ArticleController@edit');
 Route::put('article/{id}/edit', 'ArticleController@update');
+
+//User Join Team
+Route::post('user/join-team/{slug}', 'TeamController@userJoinTeam')->name('join.team');
