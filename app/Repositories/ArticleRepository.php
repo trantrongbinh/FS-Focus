@@ -56,7 +56,7 @@ class ArticleRepository
     {
         $this->model = $this->checkAuthScope();
 
-        return $this->model->with('user')->withCount('comments')->orderBy($sortColumn, $sort)->paginate($number);
+        return $this->model->with(['user', 'tags'])->withCount('comments')->orderBy($sortColumn, $sort)->paginate($number);
     }
 
     /**
@@ -271,11 +271,12 @@ class ArticleRepository
     public function getRelatedPostsByCategory($article)
     {
         $articles = $article->where('id', '!=' , $article->id)
-        ->where('category_id', $article->category_id)
-        ->where('user_id', '!=', $article->user_id)
-        ->orderBy('published_at', 'desc')
-        ->take(3)
-        ->get(); 
+            ->where('category_id', $article->category_id)
+            ->where('user_id', '!=', $article->user_id)
+            ->with('user')
+            ->orderBy('published_at', 'desc')
+            ->take(3)
+            ->get(['id', 'user_id', 'slug', 'page_image', 'published_at', 'title', 'content']); 
 
         return $articles;
     }
@@ -291,6 +292,7 @@ class ArticleRepository
     {   
         $articles = $article->where('id', '!=' , $article->id)
             ->where('user_id', $article->user_id)
+            ->with('user')
             ->orderBy('published_at', 'desc')
             ->take(3)
             ->get(); 

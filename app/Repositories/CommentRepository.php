@@ -87,7 +87,7 @@ class CommentRepository
     public function getByCommentable($commentableId, $request)
     {
         $commentableType = $request->get('commentable_type');
-        $comments = $this->model->where('commentable_id', $commentableId)
+        $comments = $this->model->with('user')->where('commentable_id', $commentableId)
             ->where('commentable_type', $commentableType)
             ->paginate(2);
 

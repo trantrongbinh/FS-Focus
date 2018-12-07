@@ -21,7 +21,6 @@ class UserComposer
             ->whereStatus(true)
             ->where('id', '!=', Auth::id())
             ->where('is_admin', '!=', 1)
-            ->withCount('articles')
             ->OrderBy('articles_count', 'desc')
             ->get()
             ->take(4));

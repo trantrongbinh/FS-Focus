@@ -57,8 +57,8 @@ class UserController extends Controller
 
         if (!isset($user)) abort(404);
 
-        $discussions = $user->discussions->take(10);
-        $comments = $user->comments->take(10);
+        $discussions = $user->discussions()->take(10);
+        $comments = $user->comments()->take(10);
 
         return view('user.index', compact('user', 'discussions', 'comments'));
     }
