@@ -53,7 +53,7 @@ class DiscussionRepository
     {
         $this->model = $this->checkAuthScope();
 
-        return $this->model->withCount('comments')->orderBy($sortColumn, $sort)->paginate($number);
+        return $this->model->with(['user', 'tags'])->withCount('comments')->orderBy($sortColumn, $sort)->paginate($number);
     }
 
     /**

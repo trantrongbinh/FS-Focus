@@ -34,9 +34,19 @@ class AppServiceProvider extends ServiceProvider
 
         Schema::defaultStringLength(191);
 
-        view()->composer('*', CategoryComposer::class);
-        view()->composer('*', TagComposer::class);
-        view()->composer('*', HotPostComposer::class);
+        view()->composer([
+            'article.create',
+            'modules.left',
+            'user.index'
+        ], CategoryComposer::class);
+
+        view()->composer([
+            'modules.left',
+            'article.create',
+            'discussion.index'
+        ], TagComposer::class);
+
+        view()->composer('modules.hot-post', HotPostComposer::class);
         view()->composer('modules.right', UserComposer::class);
         view()->composer('modules.right', TeamComposer::class);
     }

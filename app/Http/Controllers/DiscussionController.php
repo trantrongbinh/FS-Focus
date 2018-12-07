@@ -34,7 +34,11 @@ class DiscussionController extends Controller
      */
     public function index()
     {
-        $discussions = $this->discussion->page(config('blog.discussion.number'), config('blog.discussion.sort'), config('blog.discussion.sortColumn'));
+        $discussions = $this->discussion->page(
+            config('blog.discussion.number'),
+            config('blog.discussion.sort'),
+            config('blog.discussion.sortColumn')
+        );
 
         return view('discussion.index', compact('discussions'));
     }
