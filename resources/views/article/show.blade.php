@@ -5,13 +5,13 @@
 @section('content')
     <div class="article container body-white">
         <div class="row">
-            <main class="post blog-post col-lg-10 offset-md-1">
+            <main class="post blog-post col-lg-10 offset-md-1" style="display: inline-block; padding: 1em;">
                 <div class="row box-content">
-                    <div class="col-md-10">
+                    <div class="col-md-10 offset-md-1">
                         <div class="container">
-                            <div class="post-single">
-                                <div class="text-center">
-                                    <div class="post-meta justify-content-between">
+                            <div class="post-single" style="padding: 1em;">
+                                <div style="padding: 0.5em">
+                                    <div class="post-meta justify-content-between text-center">
                                         @if($article->category_id)
                                         <h4 class="h5">
                                             <p class="text-hero"><i class="fas fa-arrow-alt-circle-right text-gray-v1 font-size-10"></i> Category: <span><a href="{{ url('category', ['name' => $article->category->name]) }}" class="text-blue hero-link"> {{ $article->category->name }}</a></span></p>
@@ -19,28 +19,44 @@
                                         @endif
                                     </div>
                                     <h1>{{ $article->title }}&nbsp&nbsp<a href="#"><i class="far fa-bookmark"></i></a></h1>
-                                    <div class="post-footer d-flex align-items-center flex-column flex-sm-row font-size-12">
-                                        <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
-                                            <div class="avatar">
-                                                <img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}" class="img-fluid">
+                                </div>
+                                <div class="display-inline">
+                                    @if(count($article->tags))
+                                        <span class="post-tags">
+                                            @foreach($article->tags as $tag)
+                                                <a href="{{ url('tag', ['tag' => $tag->tag]) }}"
+                                                   class="tag">#{{ $tag->tag }}</a>
+                                            @endforeach
+                                        </span>
+                                    @endif
+                                    @if(config('blog.social_share.article_share'))
+                                        <span class="float-right">
+                                            <div class="social-share" data-title="{{ $article->title }}" data-description="{{ $article->title }}" {{ config('blog.social_share.sites') ? "data-sites=" . config('blog.social_share.sites') : '' }} {{ config('blog.social_share.mobile_sites') ? "data-mobile-sites=" . config('blog.social_share.mobile_sites') : '' }} initialized>
                                             </div>
-                                            <div class="title">
-                                                <span><b>{{ $article->user->name or 'No Name' }}</b></span>
-                                            </div>
-                                        </a>
-                                        <div class="d-flex align-items-center flex-wrap">
-                                            <div class="date">
-                                                <b><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</b>
-                                            </div>
-                                            <div class="views">
-                                                <b><i class="far fa-eye"></i> {{ $article->getViews() }}</b>
-                                            </div>
-                                            <div class="views">
-                                                <b><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</b>
-                                            </div>
-                                            <div class="comments meta-last">
-                                                <b><i class="far fa-bookmark"></i> 999</b>
-                                            </div>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="post-footer d-flex align-items-center flex-column flex-sm-row font-size-12">
+                                    <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
+                                        <div class="avatar">
+                                            <img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}" class="img-fluid">
+                                        </div>
+                                        <div class="title">
+                                            <span><b>{{ $article->user->name or 'No Name' }}</b></span>
+                                        </div>
+                                    </a>
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="date">
+                                            <b><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</b>
+                                        </div>
+                                        <div class="views">
+                                            <b><i class="far fa-eye"></i> {{ $article->getViews() }}</b>
+                                        </div>
+                                        <div class="views">
+                                            <b><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</b>
+                                        </div>
+                                        <div class="comments meta-last">
+                                            <b><i class="far fa-bookmark"></i> 999</b>
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +107,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 fixed-link">
+                    <div class="col-md-1 fixed-link float-right">
                         <div class="links">
                             <ul class="list-unstyled">
                                 <li>

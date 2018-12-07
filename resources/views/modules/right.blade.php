@@ -37,7 +37,11 @@
                         <a href="{{ url('team') }}">
                             <div class="item d-flex align-items-center">
                                 <div class="image">
-                                    <img class="img-fluid img-sm" src="{{ $team->avatar }}" alt="Team avatar">
+                                    @if ($team->avatar)
+                                        <img class="img-fluid img-sm" src="{{ $team->avatar }}" alt="Team avatar">
+                                    @else
+                                        <img class="img-fluid img-sm" src="/images/team-default.png" alt="Team avatar">
+                                    @endif
                                 </div>
                                 <div class="title"><strong>{{ $team->name }}</strong>
                                     <div class="d-flex align-items-center">
@@ -58,7 +62,11 @@
                                 <a href="/team/{{ $team->slug }}">
                                     <div class="item d-flex align-items-center">
                                         <div class="image">
-                                            <img class="img-fluid img-sm" src="{{ $team->avatar }}" alt="Team avatar">
+                                            @if ($team->avatar)
+                                                <img class="img-fluid img-sm" src="{{ $team->avatar }}" alt="Your team avatar">
+                                            @else
+                                                <img class="img-fluid img-sm" src="/images/team-default.png" alt="Your team avatar">
+                                            @endif
                                         </div>
                                         <div class="title"><strong>{{ $team->name }}</strong>
                                             <div class="d-flex align-items-center">
