@@ -63,9 +63,9 @@
                         @endforelse
                     </div>
                     <!-- Box Left-->
-                    <div class="col-lg-4 border-0">
+                    <div class="col-lg-4 border-0 display-flex">
                         <!-- Widget [Latest Posts Widget] -->
-                        <div class="widget latest-posts border-0">
+                        <div class="widget latest-posts border-0 is-bottomPosition">
                             <header class="text-header">
                                 <h3 class="h6">Hot Posts</h3>
                             </header>

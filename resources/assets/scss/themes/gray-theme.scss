@@ -71,8 +71,9 @@ a {
 }
 
 .jumbotron.jumbotron-fluid {
-  background-color: #9caebf;
-  padding: 100px;
+  margin-bottom: 0px;
+  padding: 50px !important;
+  background: #f4f4f4 !important;
 }
 
 .search input {
