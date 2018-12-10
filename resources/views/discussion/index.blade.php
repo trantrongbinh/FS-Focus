@@ -15,7 +15,7 @@
                                     @if (Auth::guest())
                                         <a rel="nofollow " href="{{ url('login') }}" class=" d-flex">
                                             <div class="news-f-img">
-                                                <img src="/images/default.png" alt="User Image" class="img-fluid img-circle" width="60">
+                                                <img src="{{ asset('/images/default.png') }}" alt="User Image" class="img-fluid img-circle" width="60">
                                             </div>
                                             <div class="msg-body">
                                                 <h3 class="h5 msg-nav-h3">What is your question?</h3>
@@ -25,7 +25,7 @@
                                     @else
                                         <a rel="nofollow " href="javascript:;" class="d-flex button-show">
                                             <div class="news-f-img">
-                                                <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60"></div>
+                                                <img src="{{ asset(Auth::user()->avatar) }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60"></div>
                                             <div class="msg-body">
                                                 <h3 class="h5 msg-nav-h3">What is your question?</h3>
                                                 <p>{{ lang('Discuss Subtitle') }}</p>
@@ -95,7 +95,7 @@
                                         <div class="user-block">
                                             <div class="post-footer d-flex align-items-center">
                                                 <a href="/user/{{ $discussion->user->name }}" class="author d-flex align-items-center flex-wrap">
-                                                    <div class="avatar"><img src="{{ $discussion->user->avatar }}" alt="{{ $discussion->user->name }}" class="img-fluid"></div>
+                                                    <div class="avatar"><img src="{{ asset($discussion->user->avatar) }}" alt="{{ $discussion->user->name }}" class="img-fluid"></div>
                                                     <div class="title"><span><b>{{ $discussion->user->name }}</b></span></div>
                                                 </a>
                                                 <div class="date"><b><i class="far fa-clock"></i> {{ $discussion->created_at->diffForHumans() }}</b></div>

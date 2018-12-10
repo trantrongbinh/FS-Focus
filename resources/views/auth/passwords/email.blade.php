@@ -11,8 +11,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ config('blog.default_icon') }}">
     <title>@yield('title', config('app.name'))</title>
-    <link rel="stylesheet" href="{{ mix('css/home.css') }}">
-    <link rel="stylesheet" href="{{ mix('css/themes/' . config('blog.color_theme') . '.css') }}">
+    <link rel="stylesheet" href="{{ asset(mix('css/home.css')) }}">
+    <link rel="stylesheet" href="{{ asset(mix('css/themes/' . config('blog.color_theme') . '.css')) }}">
     <style>
         .lockscreen {
             background: #e9ecef;
@@ -106,7 +106,7 @@
 <body class="lockscreen">
 <div class="lockscreen-wrapper">
     <div class="lockscreen-logo">
-        <a href="/"><img src="/images/logo-blue.png" alt="Logo"></a>
+        <a href="/"><img src="{{ asset('/images/logo-blue.png') }}" alt="Logo"></a>
     </div>
     <!-- User name -->
     @if (session('status'))
@@ -119,7 +119,7 @@
     <div class="lockscreen-item">
         <!-- lockscreen image -->
         <div class="lockscreen-image">
-            <img src="/images/ava.png" alt="User Image">
+            <img src="{{ asset('/images/ava.png') }}" alt="User Image">
         </div>
         <!-- /.lockscreen-image -->
         <!-- lockscreen credentials (contains the form) -->
@@ -153,7 +153,7 @@
     </div>
 </div>
 <!-- Scripts -->
-<script src="{{ mix('js/home.js') }}"></script>
+<script src="{{ asset(mix('js/home.js')) }}"></script>
 @yield('scripts')
 <script>
     $(function () {

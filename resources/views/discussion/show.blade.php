@@ -27,7 +27,7 @@
                                  style="font-size: 12px;">
                                 <a href="#" class="author d-flex align-items-center flex-wrap">
                                     <div class="avatar">
-                                        <img src="{{ $discussion->user->avatar }}" alt="{{ $discussion->user->name }}" class="img-fluid">
+                                        <img src="{{ asset($discussion->user->avatar) }}" alt="{{ $discussion->user->name }}" class="img-fluid">
                                     </div>
                                     <div class="title"><span><b>{{ $discussion->user->name or 'No Name' }}</b></span></div>
                                 </a>

@@ -10,7 +10,7 @@
                         <div class="card-body">
                             @if (Auth::guest())
                                 <a rel="nofollow " href="{{ url('login') }}" class=" d-flex">
-                                    <div class="news-f-img"><img src="/images/default.png" alt="User Image" class="img-fluid img-circle" width="60"></div>
+                                    <div class="news-f-img"><img src="{{ asset('/images/default.png') }}" alt="User Image" class="img-fluid img-circle" width="60"></div>
                                     <div class="msg-body margin-left-30">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
                                         <p>{{ lang('Discuss Subtitle') }}</p>
@@ -26,7 +26,7 @@
                             @else
                                 <a rel="nofollow " href="javascript:;" class="d-flex button-post">
                                     <div class="news-f-img">
-                                        <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60">
+                                        <img src="{{ asset(Auth::user()->avatar) }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60">
                                     </div>
                                     <div class="msg-body margin-left-30">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
@@ -48,13 +48,13 @@
                         <div class="active tab-pane" id="activity">
                             <div id="featured-posts">
                                 <div class="box-popup">
-                                    <img class="user-small-img" src="http://www.clker.com/cliparts/1/1/6/f/1355259240202822213Round%20Green%20Button.svg.med.png">
+                                    <img class="user-small-img" src="{{ asset('http://www.clker.com/cliparts/1/1/6/f/1355259240202822213Round%20Green%20Button.svg.med.png') }}">
                                     <span class="welcome">
                                         <strong>Welcome To The Website</strong>
                                     </span>
                                     <div class="user-ditels">
                                         <div class="images" style="float: left; width: 70px; height: 70px;">
-                                            <img class="img-fluid" src="https://yt3.ggpht.com/a-/AN66SAy8MOVDMxgsHkINCUMrbVgFdJah9DjZv-67vw=s900-mo-c-c0xffffffff-rj-k-no" style="padding: 7px;">
+                                            <img class="img-fluid" src="{{ asset('https://yt3.ggpht.com/a-/AN66SAy8MOVDMxgsHkINCUMrbVgFdJah9DjZv-67vw=s900-mo-c-c0xffffffff-rj-k-no') }}" style="padding: 7px;">
                                         </div>
                                         <span class="user-full-ditels text-center">
                                             <h3 class="h6">FS-Focus</h3>
@@ -76,7 +76,7 @@
                                             <div class="user-block">
                                                 <div class="post-footer d-flex align-items-center">
                                                     <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
-                                                        <div class="avatar"><img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}" class="img-fluid"></div>
+                                                        <div class="avatar"><img src="{{ asset($article->user->avatar) }}" alt="{{ $article->user->name }}" class="img-fluid"></div>
                                                         <div class="title"><span><b>{{ $article->user->name }}</b></span></div>
                                                     </a>
                                                     <div class="date"><b><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</b></div>
@@ -111,7 +111,7 @@
                                                 <div class="row mb-3" style="margin-top: 10px;">
                                                     <div class="col-sm-12 text-center image-wrap">
                                                         <a href="{{ url($article->slug) }}">
-                                                            <img class="img-fluid bg-image" alt="{{ $article->slug }}" src="{{ $article->page_image }}" data-holder-rendered="true">
+                                                            <img class="img-fluid bg-image" alt="{{ $article->slug }}" src="{{ asset($article->page_image) }}" data-holder-rendered="true">
                                                         </a>
                                                     </div>
                                                     <!-- /.col -->

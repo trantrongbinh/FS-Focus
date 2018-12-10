@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-2 text-center">
-                <img class="avatar rounded-circle" src="{{ $user->avatar }}">
+                <img class="avatar rounded-circle" src="{{ asset($user->avatar) }}">
             </div>
             <div class="col-sm-5 content">
                 <div class="header">

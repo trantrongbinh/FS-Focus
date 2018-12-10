@@ -13,7 +13,7 @@
                         <a href="/user/{{ $user->name }}">
                             <div class="item d-flex align-items-center">
                                 <div class="image">
-                                    <img class="img-fluid img-circle img-sm" src="{{ $user->avatar }}" alt="User Image">
+                                    <img class="img-fluid img-circle img-sm" src="{{ asset($user->avatar) }}" alt="User Image">
                                 </div>
                                 <div class="title"><strong>{{ $user->name }}</strong>
                                     <div class="d-flex align-items-center">
@@ -38,9 +38,9 @@
                             <div class="item d-flex align-items-center">
                                 <div class="image">
                                     @if ($team->avatar)
-                                        <img class="img-fluid img-sm" src="{{ $team->avatar }}" alt="Team avatar">
+                                        <img class="img-fluid img-sm" src="{{ asset($team->avatar) }}" alt="Team avatar">
                                     @else
-                                        <img class="img-fluid img-sm" src="/images/team-default.png" alt="Team avatar">
+                                        <img class="img-fluid img-sm" src="{{ asset('/images/team-default.png') }}" alt="Team avatar">
                                     @endif
                                 </div>
                                 <div class="title"><strong>{{ $team->name }}</strong>
@@ -63,9 +63,9 @@
                                     <div class="item d-flex align-items-center">
                                         <div class="image">
                                             @if ($team->avatar)
-                                                <img class="img-fluid img-sm" src="{{ $team->avatar }}" alt="Your team avatar">
+                                                <img class="img-fluid img-sm" src="{{ asset($team->avatar) }} }}" alt="Your team avatar">
                                             @else
-                                                <img class="img-fluid img-sm" src="/images/team-default.png" alt="Your team avatar">
+                                                <img class="img-fluid img-sm" src="{{ asset('/images/team-default.png') }}" alt="Your team avatar">
                                             @endif
                                         </div>
                                         <div class="title"><strong>{{ $team->name }}</strong>

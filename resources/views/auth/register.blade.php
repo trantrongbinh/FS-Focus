@@ -11,8 +11,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ config('blog.default_icon') }}">
     <title>@yield('title', config('app.name'))</title>
-    <link rel="stylesheet" href="{{ mix('css/home.css') }}">
-    <link rel="stylesheet" href="{{ mix('css/themes/' . config('blog.color_theme') . '.css') }}">
+    <link rel="stylesheet" href="{{ asset(mix('css/home.css')) }}">
+    <link rel="stylesheet" href="{{ asset(mix('css/themes/' . config('blog.color_theme') . '.css')) }}">
     <!-- Scripts -->
     <script>
         window.Language = '{{ config('
@@ -28,7 +28,7 @@
 <body>
 <div id="app" class="register-box">
     <div class="register-logo">
-        <a href="/"><img src="/images/logo-blue.png" alt="Logo"></a>
+        <a href="/"><img src="{{ asset('/images/logo-blue.png') }}" alt="Logo"></a>
     </div>
     <div class="card">
         <div class="card-body register-card-body">
@@ -119,7 +119,7 @@
     <!-- /.card -->
 </div>
 <!-- Scripts -->
-<script src="{{ mix('js/home.js') }}"></script>
+<script src="{{ asset(mix('js/home.js')) }}"></script>
 @yield('scripts')
 <script>
     $(function () {

@@ -39,7 +39,7 @@
                                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row font-size-12">
                                     <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
                                         <div class="avatar">
-                                            <img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}" class="img-fluid">
+                                            <img src="{{ asset($article->user->avatar) }}" alt="{{ $article->user->name }}" class="img-fluid">
                                         </div>
                                         <div class="title">
                                             <span><b>{{ $article->user->name or 'No Name' }}</b></span>
@@ -63,7 +63,7 @@
                                 <br>
                                 @if($article->page_image)
                                     <div class="text-center">
-                                        <img src="{{ $article->page_image }}" alt="{{ $article->slug }}" onclick="window.open(this.src)" class="img-fluid">
+                                        <img src="{{ asset($article->page_image) }}" alt="{{ $article->slug }}" onclick="window.open(this.src)" class="img-fluid">
                                     </div>
                                 @endif
                                 <div class="post-details">

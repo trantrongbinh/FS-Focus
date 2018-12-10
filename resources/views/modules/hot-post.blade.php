@@ -3,7 +3,7 @@
         <a href="{{ url($post->slug) }}">
             <div class="item d-flex align-items-center">
                 @if ($post->page_image)
-                    <div class="image"><img alt="{{ $post->slug }}" src="{{ $post->page_image }}" class="img-fluid"></div>
+                    <div class="image"><img alt="{{ $post->slug }}" src="{{ asset($post->page_image) }}" class="img-fluid"></div>
                 @endif
                 <div class="title">
                     <strong>{{ str_limit($post->title, '50') }}</strong>

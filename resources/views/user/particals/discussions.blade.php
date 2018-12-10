@@ -27,7 +27,7 @@
                         nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
                     <footer class="post-footer d-flex align-items-center">
                         <a href="#"class="author d-flex align-items-center flex-wrap">
-                            <div class="avatar"><img src="{{ $discussion->user->avatar ?? config('blog.default_avatar') }}" alt="Avatar" class="img-fluid"></div>
+                            <div class="avatar"><img src="{{ asset($discussion->user->avatar) ?? config('blog.default_avatar') }}" alt="Avatar" class="img-fluid"></div>
                             <div class="title"><span>{{ $discussion->user->name or 'null' }}</span></div>
                         </a>
                         <div class="date"><i class="far fa-clock"></i> {{ $discussion->created_at->diffForHumans() }}</div>

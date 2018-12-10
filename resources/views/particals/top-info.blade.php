@@ -5,7 +5,7 @@
             <header>
                 <div class="pen_logo">
                     <a href="{{ url('/') }}" class="navbar-brand">
-                        <div class="brand-text brand-big hidden-lg-down"><img src="/images/logo-white.png" alt="Logo" class="img-fluid"></div>
+                        <div class="brand-text brand-big hidden-lg-down"><img src="{{ asset('/images/logo-white.png') }}" alt="Logo" class="img-fluid"></div>
                     </a>
                 </div>
                 <div class="pen_cta">
@@ -97,7 +97,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="image col-lg-4 text-right"><a href="http://localhost:8000/cac-trinh-thong-dich-javascript-va-v8-engine-tim-hieu-va-ung-dung-vao-viec-toi-uu-ma-nguon-kxtny"><img alt="cac-trinh-thong-dich-javascript-va-v8-engine-tim-hieu-va-ung-dung-vao-viec-toi-uu-ma-nguon-kxtny" src="http://localhost:8000/uploads/cover/2018/11/24/5GhoRS0VSDoxh8rLjdUHyVSWdubhAp53vPJZ21ee.png" class="img-fluid" style="margin-right: 15px; margin-top: 10px;"></a></div>
+                                                <div class="image col-lg-4 text-right">
+                                                    <a href="http://localhost:8000/cac-trinh-thong-dich-javascript-va-v8-engine-tim-hieu-va-ung-dung-vao-viec-toi-uu-ma-nguon-kxtny">
+                                                        <img alt="cac-trinh-thong-dich-javascript-va-v8-engine-tim-hieu-va-ung-dung-vao-viec-toi-uu-ma-nguon-kxtny" src="http://localhost:8000/uploads/cover/2018/11/24/5GhoRS0VSDoxh8rLjdUHyVSWdubhAp53vPJZ21ee.png" class="img-fluid" style="margin-right: 15px; margin-top: 10px;">
+                                                    </a>
+                                                </div>
                                             </div>
                                             <div class="row d-flex align-items-stretch featured-posts post-ttb">
                                                 <div class="text col-lg-8">
@@ -114,7 +118,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="image col-lg-4 text-right"><a href="http://localhost:8000/quia-maiores-voluptatem-similique-kksya"><img alt="quia-maiores-voluptatem-similique-kksya" src="https://lorempixel.com/640/480/?78515" class="img-fluid" style="margin-right: 15px; margin-top: 10px;"></a></div>
+                                                <div class="image col-lg-4 text-right">
+                                                    <a href="http://localhost:8000/quia-maiores-voluptatem-similique-kksya">
+                                                        <img alt="quia-maiores-voluptatem-similique-kksya" src="https://lorempixel.com/640/480/?78515" class="img-fluid" style="margin-right: 15px; margin-top: 10px;">
+                                                    </a>
+                                                </div>
                                             </div>
                                             <div class="row d-flex align-items-stretch featured-posts post-ttb">
                                                 <div class="text col-lg-8">
@@ -131,7 +139,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="image col-lg-4 text-right"><a href="http://localhost:8000/nemo-eum-neque-vel-nihil-sequi-totam-a23nx"><img alt="nemo-eum-neque-vel-nihil-sequi-totam-a23nx" src="https://lorempixel.com/640/480/?55930" class="img-fluid" style="margin-right: 15px; margin-top: 10px;"></a></div>
+                                                <div class="image col-lg-4 text-right">
+                                                    <a href="http://localhost:8000/nemo-eum-neque-vel-nihil-sequi-totam-a23nx">
+                                                        <img alt="nemo-eum-neque-vel-nihil-sequi-totam-a23nx" src="https://lorempixel.com/640/480/?55930" class="img-fluid" style="margin-right: 15px; margin-top: 10px;">
+                                                    </a>
+                                                </div>
                                             </div>
                                             <div class="row d-flex align-items-stretch featured-posts post-ttb">
                                                 <div class="text col-lg-8">
@@ -148,7 +160,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="image col-lg-4 text-right"><a href="http://localhost:8000/recusandae-qui-voluptatem-inventore-magnam-sit-quo-rerum-quia-ipsam-rfchw"><img alt="recusandae-qui-voluptatem-inventore-magnam-sit-quo-rerum-quia-ipsam-rfchw" src="https://lorempixel.com/640/480/?47169" class="img-fluid" style="margin-right: 15px; margin-top: 10px;"></a></div>
+                                                <div class="image col-lg-4 text-right">
+                                                    <a href="http://localhost:8000/recusandae-qui-voluptatem-inventore-magnam-sit-quo-rerum-quia-ipsam-rfchw">
+                                                        <img alt="recusandae-qui-voluptatem-inventore-magnam-sit-quo-rerum-quia-ipsam-rfchw" src="https://lorempixel.com/640/480/?47169" class="img-fluid" style="margin-right: 15px; margin-top: 10px;">
+                                                    </a>
+                                                </div>
                                             </div>
                                             <div class="row d-flex align-items-stretch featured-posts post-ttb">
                                                 <div class="text col-lg-8">
@@ -165,7 +181,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="image col-lg-4 text-right"><a href="http://localhost:8000/aut-aut-vitae-maxime-iure-sapiente-nemo-quod-quod-aut-viswz"><img alt="aut-aut-vitae-maxime-iure-sapiente-nemo-quod-quod-aut-viswz" src="https://lorempixel.com/640/480/?11204" class="img-fluid" style="margin-right: 15px; margin-top: 10px;"></a></div>
+                                                <div class="image col-lg-4 text-right">
+                                                    <a href="http://localhost:8000/aut-aut-vitae-maxime-iure-sapiente-nemo-quod-quod-aut-viswz">
+                                                        <img alt="aut-aut-vitae-maxime-iure-sapiente-nemo-quod-quod-aut-viswz" src="https://lorempixel.com/640/480/?11204" class="img-fluid" style="margin-right: 15px; margin-top: 10px;">
+                                                    </a>
+                                                </div>
                                             </div>
                                             <div class="row d-flex align-items-stretch featured-posts post-ttb">
                                                 <div class="text col-lg-8">
@@ -182,7 +202,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="image col-lg-4 text-right"><a href="http://localhost:8000/in-asperiores-porro-fk4ih"><img alt="in-asperiores-porro-fk4ih" src="https://lorempixel.com/640/480/?46328" class="img-fluid" style="margin-right: 15px; margin-top: 10px;"></a></div>
+                                                <div class="image col-lg-4 text-right">
+                                                    <a href="http://localhost:8000/in-asperiores-porro-fk4ih">
+                                                        <img alt="in-asperiores-porro-fk4ih" src="https://lorempixel.com/640/480/?46328" class="img-fluid" style="margin-right: 15px; margin-top: 10px;">
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- /.tab-pane -->

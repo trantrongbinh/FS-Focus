@@ -4,7 +4,7 @@
     <div class="container profile">
         <main class="row">
             <div class="col-md-2 offset-md-1">
-                <avatar src="{{ $user->avatar }}"></avatar>
+                <avatar src="{{ asset($user->avatar) }}"></avatar>
             </div>
             <div class="col-md-7">
                 <form action="{{ url('user/profile', ['id' => $user->id]) }}" method="POST" class="form">
