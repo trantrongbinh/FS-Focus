@@ -12,7 +12,7 @@
 
     <link rel="shortcut icon" href="{{ config('blog.default_icon') }}">
 
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset(mix('css/app.css')) }}">
 
     <style>
         [v-cloak] {
@@ -35,7 +35,7 @@
 
 </div>
 
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ asset(mix('js/app.js')) }}"></script>
 
 @if(config('blog.google.open'))
     <script>

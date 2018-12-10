@@ -3,7 +3,7 @@
     <div class="user-block">
         <div class="post-footer d-flex align-items-center">
             <a href="#" class="author d-flex align-items-center flex-wrap">
-                <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
+                <div class="avatar"><img src="{{ asset('img/avatar-3.jpg') }}" alt="..." class="img-fluid"></div>
                 <div class="title"><span>John Doe</span></div>
             </a>
             <div class="date"><i class="far fa-clock"></i> 2 months ago</div>
@@ -30,7 +30,7 @@
             <!-- User image -->
             <div class="post-footer d-flex align-items-center">
                 <a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="img/user5-128x128.jpg" alt="..."
+                    <div class="avatar"><img src="{{ asset('img/user5-128x128.jpg') }}" alt="..."
                                              class="img-fluid img-circle img-sm"></div>
                     <div class="title"><span>John Doe</span></div>
                 </a>
@@ -50,9 +50,12 @@
             <!-- User image -->
             <div class="post-footer d-flex align-items-center">
                 <a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="img/user5-128x128.jpg" alt="..."
-                                             class="img-fluid img-circle img-sm"></div>
-                    <div class="title"><span>John Doe</span></div>
+                    <div class="avatar">
+                        <img src="{{ asset('img/user5-128x128.jpg') }}" alt="..." class="img-fluid img-circle img-sm">
+                    </div>
+                    <div class="title">
+                        <span>John Doe</span>
+                    </div>
                 </a>
                 <div class="date"><i class="far fa-clock"></i> 2 months ago</div>
                 <div class="comments meta-last"><i class="far fa-comment-alt"></i>12</div>
@@ -68,7 +71,7 @@
         </div>
         <!-- form comment   -->
         <form action="#" method="post">
-            <img class="img-fluid img-circle img-sm" src="img/user4-128x128.jpg" alt="Alt Text">
+            <img class="img-fluid img-circle img-sm" src="{{ asset('img/user4-128x128.jpg') }}" alt="Alt Text">
             <!-- .img-push is used to add margin to elements next to floating images -->
             <div class="img-push">
                 <input type="text" class="form-control form-control-sm"

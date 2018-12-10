@@ -14,7 +14,7 @@
 
     <title>@yield('title', config('app.name'))</title>
 
-    <link rel="stylesheet" href="{{ mix('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset(mix('css/home.css')) }}">
     <style type="text/css">
         .select2 {
             width: 100% !important;
@@ -43,10 +43,12 @@
             <div class="navbar-holder d-flex align-items-center justify-content-between">
                 <div class="navbar-header">
                     <a href="{{ url('/') }}" class="navbar-brand">
-                        <div class="brand-text brand-big hidden-lg-down"><img src="/images/logo-white.png" alt="Logo"
-                                                                              class="img-fluid"></div>
-                        <div class="brand-text brand-small"><img src="/images/logo-icon.png" alt="Logo"
-                                                                 class="img-fluid"></div>
+                        <div class="brand-text brand-big hidden-lg-down">
+                            <img src="{{ asset('/images/logo-white.png') }}" alt="Logo" class="img-fluid">
+                        </div>
+                        <div class="brand-text brand-small">
+                            <img src="{{ asset('/images/logo-icon.png') }}" alt="Logo" class="img-fluid">
+                        </div>
                     </a>
                     <a href="#">
                         <form action="" class="form-lang" method="post">
@@ -105,7 +107,7 @@
                     <li class="nav-item dropdown">
                         <a id="profile" class="nav-link logout" data-target="#" href="#" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle"
+                            <img src="{{ asset(Auth::user()->avatar) }}" alt="..." class="img-fluid rounded-circle"
                                  data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}"
                                  style="height: 30px; width: 30px;">
                         </a>
@@ -113,9 +115,8 @@
                             <li>
                                 <a rel="nofollow" href="{{ url('user', ['name' => Auth::user()->name]) }}"
                                    class="dropdown-item d-flex">
-                                    <div class="msg-profile avatar"><img src="{{ Auth::user()->avatar }}" alt="..."
-                                                                         class="img-fluid rounded-circle"
-                                                                         style="height: 50px; width: 50px;"></div>
+                                    <div class="msg-profile avatar"><img src="{{ asset(Auth::user()->avatar) }}" alt="..." class="img-fluid rounded-circle" style="height: 50px; width: 50px;">
+                                    </div>
                                     <div class="msg-body">
                                         <h3 class="h5">{{ Auth::user()->name }}</h3>
                                         <span>{{ Auth::user()->email }}</span>
@@ -277,7 +278,7 @@
 @include('particals.footer')
 
 <!-- Scripts -->
-<script src="{{ mix('js/home.js') }}"></script>
+<script src="{{ asset(mix('js/home.js')) }}"></script>
 
 <script>
     $(function () {

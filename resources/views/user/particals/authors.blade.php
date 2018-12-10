@@ -4,10 +4,12 @@
             <div class="panel panel-default panel-card">
                 <div class="panel-heading"></div>
                 <div class="panel-figure">
-                    <img class="img-fluid rounded-circle" src="{{ $author->avatar }}" />
+                    <img class="img-fluid rounded-circle" src="{{ asset($author->avatar) }}" />
                 </div>
                 <div class="panel-body text-center">
-                    <h5 class="panel-header h6" title="{{ $author->name }}"><a href="/user/{{ $author->name }}">{{ str_limit($author->name, $limit = 17, $end = '...') }}</a></h5>
+                    <h5 class="panel-header h6" title="{{ $author->name }}">
+                        <a href="/user/{{ $author->name }}">{{ str_limit($author->name, $limit = 17, $end = '...') }}</a>
+                    </h5>
                     @isset($author->description)
                         <small>{{ $author->description }}</small>
                     @endisset

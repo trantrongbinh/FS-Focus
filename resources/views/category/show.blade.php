@@ -35,7 +35,7 @@
                                             <footer class="post-footer d-flex align-items-center" style="font-size: 0.8em;">
                                                 <a href="#" class="author d-flex align-items-center flex-wrap">
                                                     <div class="avatar img-sm">
-                                                        <img src="/img/avatar-1.jpg" alt="..." class="img-fluid">
+                                                        <img src="{{ asset('/img/avatar-1.jpg') }}" alt="..." class="img-fluid">
                                                     </div>
                                                     <div class="title">
                                                         <span>
@@ -53,7 +53,7 @@
                                 @if($article->page_image)
                                     <div class="image col-lg-4 text-right">
                                         <a href="{{ url($article->slug) }}">
-                                            <img alt="{{ $article->slug }}" src="{{ $article->page_image }}" style="margin-right: 15px; margin-top: 10px;" class="img-fluid">
+                                            <img alt="{{ $article->slug }}" src="{{ asset($article->page_image) }}" style="margin-right: 15px; margin-top: 10px;" class="img-fluid">
                                         </a>
                                     </div>
                                 @endif

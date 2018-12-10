@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('styles')
-<link rel="stylesheet" href="{{ mix('css/author.css') }}">
+<link rel="stylesheet" href="{{ asset(mix('css/author.css')) }}">
 @endsection
 
 @section('content')
@@ -12,7 +12,9 @@
                     <form method="GET" id="form-search-author" action="" class="search-author">
                         <div class="form-group">
                             <input type="search" id="name" placeholder="What are you looking for?" class="form-control" data-action="grow" autocomplete="off" name="q" required>
-                            <button id="submit" type="submit" class="submit"><i class="fas fa-search"></i></button>
+                            <button id="submit" type="submit" class="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -26,5 +28,5 @@
 @endsection
 
 @section('scripts')
-<script src="{{ mix('js/author.js') }}"></script>
+<script src="{{ asset(mix('js/author.js')) }}"></script>
 @endsection

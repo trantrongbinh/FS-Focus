@@ -9,8 +9,8 @@
         <div class="navbar-holder d-flex align-items-center justify-content-between">
             <div class="navbar-header">
                 <a href="{{ url('/') }}" class="navbar-brand">
-                    <div class="brand-text brand-big hidden-lg-down"><img src="/images/logo-white.png" alt="Logo" class="img-fluid"></div>
-                    <div class="brand-text brand-small"><img src="/images/logo-icon.png" alt="Logo" class="img-fluid">
+                    <div class="brand-text brand-big hidden-lg-down"><img src="{{ asset('/images/logo-white.png') }}" alt="Logo" class="img-fluid"></div>
+                    <div class="brand-text brand-small"><img src="{{ asset('/images/logo-icon.png') }}" alt="Logo" class="img-fluid">
                     </div>
                 </a>
                 {{-- <a href="#">
@@ -67,14 +67,14 @@
                 <li class="nav-item dropdown">
                     <a id="profile" class="nav-link logout" data-target="#" href="#" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}"  style="height: 30px; width: 30px;">
+                        <img src="{{ asset(Auth::user()->avatar) }}" alt="..." class="img-fluid rounded-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}"  style="height: 30px; width: 30px;">
                     </a>
                     <ul aria-labelledby="profile" class="dropdown-menu profile">
                         <li>
                             <a rel="nofollow" href="{{ url('user', ['name' => Auth::user()->name]) }}"
                                class="dropdown-item d-flex">
                                 <div class="msg-profile avatar">
-                                    <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" style="height: 50px; width: 50px;">
+                                    <img src="{{ asset(Auth::user()->avatar) }}" alt="..." class="img-fluid rounded-circle" style="height: 50px; width: 50px;">
                                 </div>
                                 <div class="msg-body">
                                     <h3 class="h5">{{ Auth::user()->name }}</h3><span>{{ Auth::user()->email }}</span>

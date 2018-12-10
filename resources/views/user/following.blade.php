@@ -15,7 +15,7 @@
                                     <div class="row">
                                         <div class="col-md-2">
                                             <a href="{{ url('user', ['name' => $following->name]) }}">
-                                                <img class="aimg-circle img-fluid" src="{{ $following->avatar }}">
+                                                <img class="aimg-circle img-fluid" src="{{ asset($following->avatar) }}">
                                             </a>
                                         </div>
                                         <div class=" col-md-10">

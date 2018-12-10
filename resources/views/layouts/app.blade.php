@@ -14,8 +14,8 @@
 
         <title>@yield('title', config('app.name'))</title>
 
-        <link rel="stylesheet" href="{{ mix('css/home.css') }}">
-        <link rel="stylesheet" href="{{ mix('css/themes/' . config('blog.color_theme') . '.css') }}">
+        <link rel="stylesheet" href="{{ asset(mix('css/home.css')) }}">
+        <link rel="stylesheet" href="{{ asset(mix('css/themes/' . config('blog.color_theme') . '.css')) }}">
         <!-- Scripts -->
         <script>
             window.Language = '{{ config('app.locale') }}';
@@ -44,7 +44,7 @@
         @include('particals.footer')
 
         <!-- Scripts -->
-        <script src="{{ mix('js/home.js') }}"></script>
+        <script src="{{ asset(mix('js/home.js')) }}"></script>
 
         @yield('scripts')
 
