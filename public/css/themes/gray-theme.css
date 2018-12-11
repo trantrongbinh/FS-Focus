@@ -1,0 +1,127 @@
+a {
+  color: #34495e;
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: #9caebf;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link:focus {
+  color: #6289ad;
+  background-color: transparent;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #6289ad;
+  background-color: transparent;
+}
+
+.navbar-nav > li > .dropdown-menu {
+  border: none;
+}
+
+.navbar-nav > li > .dropdown-menu li a {
+  color: #6289ad;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #6289ad;
+  border-color: #6289ad;
+}
+
+.btn-success:hover {
+  color: #fff;
+  background-color: #4b6f91;
+  border-color: #486a8a;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #34495e;
+  border-color: #32465b;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #22303d;
+  border-color: #1c2833;
+}
+
+.navbar-nav > li > .dropdown-menu > li:focus,
+.navbar-nav > li > .dropdown-menu > li:hover {
+  text-decoration: none;
+  background-color: #6289ad;
+}
+
+.navbar-nav > li > .dropdown-menu > li:focus a,
+.navbar-nav > li > .dropdown-menu > li:hover a {
+  color: #fff;
+}
+
+.user-follow a.text {
+  color: #fff;
+}
+
+.form-control,
+.form-control:focus,
+input {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: 0;
+}
+
+.jumbotron.jumbotron-fluid {
+  background-color: #9caebf;
+  padding: 100px;
+}
+
+.search input {
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: transparent;
+}
+
+.search input::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.search input:-ms-input-placeholder {
+  color: #fff;
+}
+
+.search input::-ms-input-placeholder {
+  color: #fff;
+}
+
+.search input::placeholder {
+  color: #fff;
+}
+
+.search input::-ms-input-placeholder {
+  color: #fff;
+}
+
+.search input::-ms-input-placeholder {
+  color: #fff;
+}
+
+.footer {
+  background-color: #9caebf;
+  color: #fff;
+  margin-top: 30px;
+}
+
+.footer .copy-right {
+  background-color: #9caebf;
+}
+
+.footer a:hover {
+  color: #6289ad;
+}
+
