@@ -67,14 +67,14 @@
                 <li class="nav-item dropdown">
                     <a id="profile" class="nav-link logout" data-target="#" href="#" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ asset(Auth::user()->avatar) }}" alt="..." class="img-fluid rounded-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}"  style="height: 30px; width: 30px;">
+                        <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}"  style="height: 30px; width: 30px;">
                     </a>
                     <ul aria-labelledby="profile" class="dropdown-menu profile">
                         <li>
                             <a rel="nofollow" href="{{ url('user', ['name' => Auth::user()->name]) }}"
                                class="dropdown-item d-flex">
                                 <div class="msg-profile avatar">
-                                    <img src="{{ asset(Auth::user()->avatar) }}" alt="..." class="img-fluid rounded-circle" style="height: 50px; width: 50px;">
+                                    <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" style="height: 50px; width: 50px;">
                                 </div>
                                 <div class="msg-body">
                                     <h3 class="h5">{{ Auth::user()->name }}</h3><span>{{ Auth::user()->email }}</span>
@@ -123,18 +123,25 @@
                         <div class="tab" role="tabpanel">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item ">
-                                    <a class="nav-link active" href="#live" role="tab" data-toggle="tab"><i class="fa fa-globe"></i> Friends</a>
+                                    <a class="nav-link active" href="#live" role="tab" data-toggle="tab"><i class="fas fa-newspaper"></i> Hot</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#trend" role="tab" data-toggle="tab"><i class="fa fa-rocket"></i> Hot Trending</a>
+                                    <a class="nav-link" href="#trend" role="tab" data-toggle="tab"><i class="fas fa-globe"></i> Authors</a>
                                 </li>
                             </ul>
                             <div class="tab-content tabs">
                                 <div role="tabpanel" class="tab-pane fade show active" id="live">
-                                    <h3>Content</h3>
+                                    <div class="row">
+                                        <aside class="col-lg-12">
+                                            @include('modules.left')
+                                        </aside>
+                                    </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="trend">
-                                    <div class="card card-c2" style="box-shadow: 0 0 0;">
+                                    <div class="row">
+                                        <aside class="col-lg-12">
+                                            @include('modules.right')
+                                        </aside>
                                     </div>
                                 </div>
                             </div>

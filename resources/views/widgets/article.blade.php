@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row" id="content">
-
-        @include('modules.left')
+        <!-- Box Left-->
+        <aside class="col-lg-3 display-flex col-left">
+            @include('modules.left')
+        </aside>
 
         <main class="col-content posts-listing col-lg-7 border-frame">
             <div class="row">
@@ -26,7 +28,7 @@
                             @else
                                 <a rel="nofollow " href="javascript:;" class="d-flex button-post">
                                     <div class="news-f-img">
-                                        <img src="{{ asset(Auth::user()->avatar) }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60">
+                                        <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60">
                                     </div>
                                     <div class="msg-body margin-left-30">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
@@ -145,7 +147,10 @@
             </div>
         </main>
 
-        @include('modules.right')
+        <!-- Box right-->
+        <aside class="col-lg-2 display-flex col-right">
+            @include('modules.right')
+        </aside>
 
     </div>
 </div>
