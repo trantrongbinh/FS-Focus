@@ -4,11 +4,11 @@
         <div class="widget teams">
             <header>
                 <h3 class="h6">Top Authors</h3>
-                 <span class="top-v1 badge-info navbar-badge" style="z-index: 100;"><a href="/user/all-auther">All</a></span>
+                <span class="top-v1 badge-info navbar-badge" style="z-index: 100;"><a href="/user/all-auther">All</a></span>
             </header>
             <div class="blog-posts">
                 @foreach($users as $user)
-                    <a href="/user/{{ $user->name }}">
+                    <a href="/user/{{ $user->name }}" class="element">
                         <div class="item d-flex align-items-center">
                             <div class="image">
                                 <img class="img-fluid img-circle img-sm" src="{{ asset($user->avatar) }}" alt="User Image">
@@ -16,7 +16,8 @@
                             <div class="title"><strong>{{ $user->name }}</strong>
                                 <div class="d-flex align-items-center">
                                     <div class="views" data-toggle="tooltip" data-placement="bottom" title="Followers"><i class="fas fa-user-plus"></i> 50</div>
-                                    <div class="comments" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $user->articles_count }}</div>
+                                    <div class="views" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $user->articles_count }}</div>
+                                    <div class="comments cup"><i class="fa fa-trophy"></i></div>
                                 </div>
                             </div>
                         </div>
@@ -32,7 +33,7 @@
             </header>
             <div class="blog-posts">
                 @foreach ($teams['otherTeam'] as $team)
-                    <a href="{{ url('team') }}">
+                    <a href="{{ url('team') }}" class="element">
                         <div class="item d-flex align-items-center">
                             <div class="image">
                                 @if ($team->avatar)
@@ -44,7 +45,8 @@
                             <div class="title"><strong>{{ $team->name }}</strong>
                                 <div class="d-flex align-items-center">
                                     <div class="views" data-toggle="tooltip" data-placement="bottom" title="Members"><i class="fas fa-user-friends"></i> {{ $team->users_count }}</div>
-                                    <div class="comments" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $team->articles_count }}</div>
+                                    <div class="views" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $team->articles_count }}</div>
+                                    <div class="comments cup"><i class="fa fa-trophy"></i></div>
                                 </div>
                             </div>
                         </div>

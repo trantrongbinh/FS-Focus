@@ -5,7 +5,10 @@
         <div class="container">
             <div class="row">
 
-                @include('modules.left')
+                <!-- Box Left-->
+                <aside class="col-lg-3 display-flex col-left">
+                    @include('modules.left')
+                </aside>
 
                 <main class="posts-listing col-lg-7 border-frame">
                     <div class="row">
@@ -145,7 +148,10 @@
                     </div>
                 </main>
 
-                @include('modules.right')
+                <!-- Box right-->
+                <aside class="col-lg-2 display-flex col-right">
+                    @include('modules.right')
+                </aside>
 
             </div>
         </div>

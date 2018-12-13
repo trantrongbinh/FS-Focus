@@ -63,13 +63,17 @@
                         @endforelse
                     </div>
                     <!-- Box Left-->
-                    <div class="col-lg-4 border-0 display-flex">
-                        <!-- Widget [Latest Posts Widget] -->
-                        <div class="widget latest-posts border-0 is-bottomPosition">
-                            <header class="text-header">
-                                <h3 class="h6">Hot Posts</h3>
-                            </header>
-                            @include('modules.hot-post')
+                    <div class="col-lg-4 display-flex">
+                        <div id="right" class="is-topPosition">
+                            <div  class="right">
+                                <!-- Widget [Latest Posts Widget] -->
+                                <div class="widget latest-posts border-0">
+                                    <header class="text-header">
+                                        <h3 class="h6">Hot Posts</h3>
+                                    </header>
+                                    @include('modules.hot-post')
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
