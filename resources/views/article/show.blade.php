@@ -107,8 +107,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-1 fixed-link float-right">
-                        <div class="links">
+                    <div class="col-md-1 float-right display-flex">
+                        <div class="links fixed-link">
                             <ul class="list-unstyled">
                                 <li>
                                     @if(Auth::guest())
