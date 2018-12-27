@@ -122,13 +122,15 @@
                                             @if($discussion->meta_description)
                                                 <p class="lead">{{ $discussion->meta_description}}</p>
                                             @endif
-                                            @if(count($discussion->tags))
-                                                <div class="post-tags">
-                                                    @foreach($discussion->tags as $tag)
-                                                        <a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">#{{ $tag->tag }}</a>
-                                                    @endforeach
-                                                </div>
-                                            @endif
+                                            <div class="meta">
+                                                @if(count($discussion->tags))
+                                                    <div class="post-tags">
+                                                        @foreach($discussion->tags as $tag)
+                                                            <a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">#{{ $tag->tag }}</a>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
+                                            </div>
                                         </header>
                                     </div>
                                     <!-- comment -->

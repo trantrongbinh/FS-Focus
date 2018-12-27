@@ -145,6 +145,10 @@ i[class*="icon-"] {
 }
 
 /*=== Helpers ===*/
+.text-equidistant {
+  text-align: justify;
+}
+
 .margin-left-30 {
   margin-left: 30px;
 }
@@ -745,6 +749,7 @@ main.posts-listing {
   }
 
   strong {
+    letter-spacing: 1px;
     font-size: 0.95em;
     display: block;
     line-height: 1em;
@@ -936,7 +941,6 @@ main.posts-listing {
   h1 {
     color: #444;
     line-height: 1.3em;
-    margin-left: -10px;
   }
 
   h1:hover {
@@ -1828,4 +1832,24 @@ a.claps_button:hover {
   letter-spacing: -.003em;
   line-height: 1.58;
   font-style: normal;
+}
+
+.title-ttb {
+  margin-left: -10px;
+}
+
+.icon-post{
+  margin: 0 25px 15px;
+  a:nth-child(2) {
+    padding-left: 20px;
+  }
+}
+
+.meta {
+  .post-tags {
+    margin-top: -10px;
+    a {
+      padding: 3px 15px !important;
+    }
+  }
 }

@@ -82,7 +82,6 @@
                                                         <div class="title"><span><b>{{ $article->user->name }}</b></span></div>
                                                     </a>
                                                     <div class="date"><b><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</b></div>
-                                                    <div class="comments meta-last"><b><i class="far fa-comment-alt"></i>{{ $article->comments_count }}</b></div>
                                                 </div>
                                                 @if(Auth::check() && Auth::user()->id == $article->user->id)
                                                     <a href="javascript:;" class="float-right  btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
@@ -96,7 +95,7 @@
                                             </div>
                                             <!-- /.user-block -->
                                             <a href="{{ url($article->slug) }}" style="margin-top: 10px;">
-                                                <h3 class="h4">{{ $article->title }}</h3>
+                                                <h3 class="h4 text-equidistant">{{ $article->title }}</h3>
                                             </a>
                                             <div class="meta">
                                                 <p class="lead">{{ str_limit($article->meta_description, '200') }}</p>
@@ -119,11 +118,11 @@
                                                     <!-- /.col -->
                                                 </div>
                                             @endif
-                                            {{-- <p>
-                                                <a href="#" class="link-black text-sm mr-2"><i class="far fa-bookmark"></i> Bookmark (2)</a>
-                                                <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like (100)</a>
-                                                <span class="float-right"><a href="#" class="link-black text-sm"> <i class="far fa-comments mr-1"></i> Comments ({{ $article->comments_count }})</a></span>
-                                            </p> --}}
+                                        </div>
+                                        <div class="icon-post">
+                                            <a href="#" class="link-black"><i class="far fa-thumbs-up mr-1"></i>100</a>
+                                            <a href="#" class="link-black"><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</a>
+                                            <span class="float-right"><a href="#" class="link-black"><i class="far fa-bookmark"></i> 2</a></span>
                                         </div>
                                         <!-- comment -->
                                         {{-- @if(Auth::guest())

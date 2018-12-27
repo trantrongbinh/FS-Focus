@@ -18,7 +18,7 @@
                                         </h4>
                                         @endif
                                     </div>
-                                    <h1>{{ $article->title }}&nbsp&nbsp<a href="#"><i class="far fa-bookmark"></i></a></h1>
+                                    <h1 class="text-equidistant title-ttb">{{ $article->title }}&nbsp&nbsp<a href="#"><i class="far fa-bookmark"></i></a></h1>
                                 </div>
                                 <div class="display-inline">
                                     @if(count($article->tags))
@@ -67,7 +67,7 @@
                                     </div>
                                 @endif
                                 <div class="post-details">
-                                    <div class="post-body font-size-18">
+                                    <div class="post-body font-size-18 text-equidistant">
                                         <p class="lead">{{ $article->meta_description }}</p>
                                         <parse content="{{ $article->content['raw'] }}"></parse>
                                     </div>
