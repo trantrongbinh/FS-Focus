@@ -91,7 +91,7 @@
             commentableType: {
                 type: String,
                 default() {
-                    return 'articles'
+                    return 'discussions'
                 }
             },
             commentableId: {
@@ -162,6 +162,8 @@
                 })
                 this.comments = response.data.data
                 this.next_page_url = response.data.meta.pagination.links.next + '&commentable_type=' + this.commentableType
+            }).catch(error => {
+                stack_error(response)
             })
         },
         methods: {
@@ -251,5 +253,50 @@
         #content {
             width: 75%;
         }
+    }
+
+    .card-comments {
+      background: #fbfbfb;
+      border-top: none !important;
+
+      .card-comment {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .card-comment:last-child {
+        border-bottom: none !important;
+      }
+
+      .card-comment::after {
+        display: block;
+        clear: both;
+        content: "";
+      }
+
+      .card-comment:last-of-type {
+        border-bottom: 0;
+      }
+
+      .card-comment:first-of-type {
+        padding-top: 0;
+      }
+
+      .comment-text {
+        margin-left: 40px;
+        color: #555;
+      }
+
+      .username {
+        color: #444;
+        display: block;
+        font-weight: 600;
+      }
+
+      .text-muted {
+        font-weight: 400;
+        font-size: 14px;
+      }
+
     }
 </style>
