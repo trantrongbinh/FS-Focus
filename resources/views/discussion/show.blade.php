@@ -19,12 +19,9 @@
                     </div>
                     <div class="post blog-post col-lg-7">
                         <div class="post-single">
-                            <h1 class="h2">
-                                {{ $discussion->title }}
-                                <a href="javascript:;"><i class="fa fa-bookmark-o"></i></a>
+                            <h1 class="h2 text-equidistant">{{ $discussion->title }}<a href="javascript:;"><i class="fa fa-bookmark-o"></i></a>
                             </h1>
-                            <div class="post-footer d-flex align-items-center flex-column flex-sm-row"
-                                 style="font-size: 12px;">
+                            <div class="post-footer d-flex align-items-center flex-column flex-sm-row font-size-12">
                                 <a href="#" class="author d-flex align-items-center flex-wrap">
                                     <div class="avatar">
                                         <img src="{{ asset($discussion->user->avatar) }}" alt="{{ $discussion->user->name }}" class="img-fluid">
@@ -47,7 +44,8 @@
                             </div>
                             <br>
                             <div class="post-details">
-                                <div class="post-body" style="font-size: 17px;">
+                                <div class="post-body font-size-18 text-equidistant">
+                                    <p class="lead">{{ $discussion->meta_description }}</p>
                                     <parse content="{{ json_decode($discussion->content)->raw }}"></parse>
                                 </div>
                                 <div class="display-inline">

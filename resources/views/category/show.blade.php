@@ -19,7 +19,7 @@
                                         <div class="content">
                                             <header class="post-header">
                                                 <a href="{{ url($article->slug) }}">
-                                                    <h3 class="h4">{{ $article->title }}</h3>
+                                                    <h3 class="h4 text-equidistant">{{ $article->title }}</h3>
                                                 </a>
                                             </header>
                                             @if(count($article->tags))
@@ -31,7 +31,7 @@
                                                     @endforeach
                                                 </div>
                                             @endif
-                                            <p>{{ str_limit($article->meta_description, '200') }}</p>
+                                            <p class="text-equidistant">{{ str_limit($article->meta_description, '200') }}</p>
                                             <footer class="post-footer d-flex align-items-center" style="font-size: 0.8em;">
                                                 <a href="#" class="author d-flex align-items-center flex-wrap">
                                                     <div class="avatar img-sm">

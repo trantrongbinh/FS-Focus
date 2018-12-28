@@ -50,13 +50,13 @@
                         <div class="active tab-pane" id="activity">
                             <div id="featured-posts">
                                 <div class="box-popup">
-                                    <img class="user-small-img" src="{{ asset('http://www.clker.com/cliparts/1/1/6/f/1355259240202822213Round%20Green%20Button.svg.med.png') }}">
+                                    <img class="user-small-img" src="{{ asset('/images/dot.png') }}">
                                     <span class="welcome">
                                         <strong>Welcome To The Website</strong>
                                     </span>
                                     <div class="user-ditels">
                                         <div class="images" style="float: left; width: 70px; height: 70px;">
-                                            <img class="img-fluid" src="{{ asset('https://yt3.ggpht.com/a-/AN66SAy8MOVDMxgsHkINCUMrbVgFdJah9DjZv-67vw=s900-mo-c-c0xffffffff-rj-k-no') }}" style="padding: 7px;">
+                                            <img class="img-fluid" src="{{ asset('/images/group.jpg') }}" style="padding: 7px;">
                                         </div>
                                         <span class="user-full-ditels text-center">
                                             <h3 class="h6">FS-Focus</h3>
