@@ -32,6 +32,11 @@
 
             this.simplemde = new SimpleMDE({
                 element: document.getElementById("editor"),
+                spellChecker: false,
+                autosave: {
+                    enabled: true,
+                    unique_id: "editor",
+                },
                 placeholder: t('form.content_placeholder', {type: t('form.article')}),
                 autoDownloadFontAwesome: true,
                 forceSync: true,

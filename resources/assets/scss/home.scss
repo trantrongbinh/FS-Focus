@@ -1,18 +1,17 @@
 // Public
 @import "public";
-
 // Share.js
 @import "node_modules/social-share.js/src/css/share.scss";
-
+//highlight.js
+@import "node_modules/highlight.js/styles/github";
 // Select 2
 @import "node_modules/select2/src/scss/core.scss";
-
 //Simplemde
 @import url("vendor/simplemde.min.css");
 
 // Markdown
 @import "markdown";
-@import url("vendor/highlight.min.css");
+// @import url("vendor/highlight.min.css");
 
 @import "helper";
 @import "styles";

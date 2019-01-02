@@ -4,6 +4,9 @@ window.Vue = require('vue');
 import VueI18n from 'vue-i18n';
 import locales from 'lang';
 import httpPlugin from 'plugins/http';
+//highlight code
+import hljs from 'highlight.js';
+//select2
 import 'select2/dist/js/select2.full.min.js';
 
 require('bootstrap');
@@ -11,7 +14,6 @@ require('social-share.js/dist/js/social-share.min.js');
 require('vendor/jquery.fancybox.min.js');
 require('vendor/main.js');
 window.marked = require('marked');
-window.hljs = require('vendor/highlight.min.js');
 window.toastr = require('toastr/build/toastr.min.js');
 window.voca  = require('voca');
 

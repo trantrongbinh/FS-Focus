@@ -14,7 +14,12 @@
 
     <title>@yield('title', config('app.name'))</title>
 
-    <link rel="stylesheet" href="{{ mix('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset(mix('css/home.css')) }}">
+
+    <link rel="stylesheet" href="{{ asset(mix('css/quill.css')) }}">
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
+
     <!-- Scripts -->
     <script>
         window.Language = '{{ config('app.locale') }}';
@@ -224,7 +229,11 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12">
-                                    <form-content></form-content>
+                                    <div class="quill-editor">
+                                        <div id="editor"  class="form-control" type="text"></div>
+                                        <input name="comment" type="hidden">
+                                    </div>
+                                    {{-- <form-content></form-content> --}}
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -258,7 +267,9 @@
         @include('particals.footer')
 
         <!-- Scripts -->
-        <script src="{{ mix('js/home.js') }}"></script>
+        <script src="{{ asset(mix('js/home.js')) }}"></script>
+        <script src="{{ asset(mix('js/quill.js')) }}"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>
             $('#name').keyup(function () {
                 $('#slug').val(voca.slugify($(this).val()))
