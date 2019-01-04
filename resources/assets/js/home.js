@@ -13,6 +13,7 @@ require('bootstrap');
 require('social-share.js/dist/js/social-share.min.js');
 require('vendor/jquery.fancybox.min.js');
 require('vendor/main.js');
+
 window.marked = require('marked');
 window.toastr = require('toastr/build/toastr.min.js');
 window.voca  = require('voca');

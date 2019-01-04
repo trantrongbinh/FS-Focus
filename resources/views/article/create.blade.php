@@ -3,30 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="language" content="english">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="{{ config('blog.meta.keywords') }}">
     <meta name="description" content="{{ config('blog.meta.description') }}">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}">
-
     <title>@yield('title', config('app.name'))</title>
-
     <link rel="stylesheet" href="{{ asset(mix('css/home.css')) }}">
-
+    <link rel="stylesheet" href="{{ asset(mix('css/katex.css')) }}">
     <link rel="stylesheet" href="{{ asset(mix('css/quill.css')) }}">
-
-    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" rel="stylesheet">
-
     <!-- Scripts -->
     <script>
         window.Language = '{{ config('app.locale') }}';
-
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
+    </script>
+    <script>
+        window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+        heap.load("1135832181");
     </script>
 </head>
 <body style="background: none;">
@@ -229,11 +226,11 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12">
-                                    <div class="quill-editor">
-                                        <div id="editor"  class="form-control" type="text"></div>
-                                        <input name="comment" type="hidden">
+                                    <div id="full-wrapper">
+                                        <div id="full-container">
+                                            <div class="editor"></div>
+                                        </div>
                                     </div>
-                                    {{-- <form-content></form-content> --}}
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -265,11 +262,14 @@
         </div>
 
         @include('particals.footer')
-
         <!-- Scripts -->
         <script src="{{ asset(mix('js/home.js')) }}"></script>
+        <script src="{{ asset(mix('js/katex.js')) }}"></script>
+        <script type="text/javascript">
+            hljs.registerLanguage("java",function(e){var a="[a-zA-Z_$][a-zA-Z_$0-9]*"});
+            console.log(hljs.listLanguages());
+        </script>
         <script src="{{ asset(mix('js/quill.js')) }}"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>
             $('#name').keyup(function () {
                 $('#slug').val(voca.slugify($(this).val()))
