@@ -6,14 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="keywords" content="{{ config('blog.meta.keywords') }}">
         <meta name="description" content="{{ config('blog.meta.description') }}">
-
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
         <link rel="shortcut icon" href="{{ config('blog.default_icon') }}">
-
         <title>@yield('title', config('app.name'))</title>
-
         <link rel="stylesheet" href="{{ asset(mix('css/home.css')) }}">
         <link rel="stylesheet" href="{{ asset(mix('css/themes/' . config('blog.color_theme') . '.css')) }}">
         <!-- Scripts -->
@@ -24,30 +20,22 @@
                 'csrfToken' => csrf_token(),
             ]); ?>
         </script>
-
-        @yield('styles')
         
+        @yield('styles')
     </head>
     <body>
         <div id="app">
-
             @include('particals.navbar')
-
             <div class="main">
-
                 @yield('content')
-
             </div>
-
         </div>
 
         @include('particals.footer')
 
         <!-- Scripts -->
         <script src="{{ asset(mix('js/home.js')) }}"></script>
-
         @yield('scripts')
-
         @if(config('blog.google.open'))
             <script>
                 (function (i, s, o, g, r, a, m) {

@@ -17,8 +17,10 @@ import locales from 'lang';
 
 import App from './App.vue';
 
-window.marked = require('marked');
+require('vendor/katex.min.js');
 window.hljs = require('vendor/highlight.min.js');
+
+window.marked = require('marked');
 window.toastr = require('toastr/build/toastr.min.js');
 window.innerHeight = 800;
 

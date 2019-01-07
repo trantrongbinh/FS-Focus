@@ -2,9 +2,12 @@
 @import "public";
 //Simplemde
 @import url("vendor/simplemde.min.css");
+// Math expression
+@import url("vendor/katex.min.css");
+// Highlight code
+@import url("vendor/highlight.js/monokai-sublime.min.css");
 // Markdown
 @import "markdown";
-@import url("vendor/highlight.js/monokai-sublime.min.css");
 @import "form";
 @import "navbar";
 @import "ibox";

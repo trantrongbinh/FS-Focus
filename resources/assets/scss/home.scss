@@ -1,5 +1,9 @@
 // Public
 @import "public";
+// Math expression
+@import url("vendor/katex.min.css");
+// Highlight code
+@import url("vendor/highlight.js/monokai-sublime.min.css");
 // Share.js
 @import "node_modules/social-share.js/src/css/share.scss";
 // Select 2
@@ -8,8 +12,6 @@
 @import url("vendor/simplemde.min.css");
 // Markdown
 @import "markdown";
-// Highlight code
-@import url("vendor/highlight.js/monokai-sublime.min.css");
 
 @import "helper";
 @import "styles";
