@@ -20,7 +20,7 @@
         box-shadow: 0 0 40px 2px rgba(28, 31, 47, 0.1);
         font-size: 1.5rem;
         padding: 0 10px;
-        width: 100%;
+        width: 105%;
     }
 
     #demo-container {

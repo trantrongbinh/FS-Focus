@@ -1,48 +1,72 @@
-(function() {
-    $(document).ready(function() {
-        var fonts = ['sofia', 'slabo', 'roboto', 'inconsolata', 'ubuntu'];
-        var Font = Quill.import('formats/font');
-        Font.whitelist = fonts;
-        Quill.register(Font, true);
+import Quill from 'quill';
+import { ImageResize } from 'quill-image-resize-module';
+import { ImageDrop } from 'quill-image-drop-module';
+import 'quill-emoji/dist/quill-emoji';
 
-        var toolbarOptions = [
-          [{ 'font': fonts }],
-          [{'header': [false, 6, 5, 4, 3, 2, 1]}],
-          ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-          ['blockquote', 'code-block'],
-          [{'list': 'ordered'}, {'list': 'bullet'}],
-          [{'indent': '-1'}, {'indent': '+1'}],          // outdent/indent
-          [{'script': 'sub'}, {'script': 'super'}],      // superscript/subscript
-          [{'color': []}, {'background': []}],          // dropdown with defaults from theme
-          [ 'direction', { 'align': [] }],
-          [ 'link', 'image', 'video', 'formula' ],
-          ['clean']                             // remove formatting button,
-        ];
+window.Quill = Quill;
 
-        var fullEditor = new Quill('#full-container .editor', {
-            bounds: '#full-container .editor',
-            modules: {
-                'syntax': true,
-                'toolbar': toolbarOptions
-            },
-            theme: 'snow'
-        });
+const fonts = ['sofia', 'slabo', 'roboto', 'inconsolata', 'ubuntu', 'font-test'];
+const Font = Quill.import('formats/font');
+Font.whitelist = fonts;
 
-        loadFonts();
-        $('#carousel-container').animate({ opacity: 1 }, 500);
-    });
-    
-    function loadFonts() {
-      window.WebFontConfig = {
-        google: { families: [ 'Inconsolata::latin', 'Ubuntu+Mono::latin', 'Slabo+27px::latin', 'Roboto+Slab::latin' ] }
-      };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })();
+window.Quill.register(Font, true);
+window.Quill.register({
+    'modules/imageResize': ImageResize,
+    'modules/imageDrop': ImageDrop,
+});
+
+const toolbarOptions = {
+    container: [
+        ['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+        [{ 'header': 1 }, { 'header': 2 }],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{ 'script': 'sub' }, { 'script': 'super' }],
+        [{ 'indent': '-1' }, { 'indent': '+1' }],
+        [{ 'direction': 'rtl' }],
+        [{ 'header': [false, 6, 5, 4, 3, 2, 1] }],
+        [{ 'color': [] }, { 'background': [] }],
+        [{ 'font': fonts }],
+        [{ 'align': [] }],
+        ['clean'],
+        ['emoji'],
+        ['link', 'image', 'video']
+    ],
+    handlers: {
+        'emoji': function () {}
     }
-})();
+}
+
+const imageResize = {
+    displaySize: true,
+    parchment: Quill.import('parchment'),
+    modules: [ 'Resize', 'DisplaySize', 'Toolbar' ],
+    handleStyles: {
+        backgroundColor: 'black',
+        border: 'none',
+        color: white
+    },
+    displayStyles: {
+        backgroundColor: 'black',
+        border: 'none',
+        color: white
+    }
+}
+
+
+const quill = new Quill('#full-container .editor', {
+    // bounds: '#full-container .editor',
+    modules: {
+        'syntax': true,
+        'toolbar': toolbarOptions,
+        'emoji-toolbar': true,
+        'emoji-shortname': true,
+        'emoji-textarea': true,
+        'imageDrop': true
+        // 'imageResize': imageResize
+    },
+    placeholder: 'Enter content...',
+    theme: 'snow',
+});
+
+export { quill };
