@@ -48,10 +48,13 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/dest/author.js', 'public/js')
     .js('resources/assets/js/dest/java-highlight-custom.js', 'public/js')
     .js('resources/assets/js/dest/quill-custom.js', 'public/js/quill.js')
-    // .scripts([
-    //     'node_modules/quill/dist/quill.min.js',
-    //     'resources/assets/js/dest/quill-custom.js',
-    // ], 'public/js/quill.js')
+    .scripts([
+        'node_modules/quill/dist/quill.min.js',
+        'node_modules/quill-image-resize-module/image-resize.min.js',
+        'node_modules/quill-image-drop-module/image-drop.min.js',
+        'node_modules/quill-emoji/dist/quill-emoji.js',
+        'resources/assets/js/dest/quill-custom.js',
+    ], 'public/js/editor.js')
     .sass('resources/assets/scss/app.scss', 'public/css')
     .sass('resources/assets/scss/home.scss', 'public/css')
     .sass('resources/assets/scss/dest/author.scss', 'public/css')
@@ -59,12 +62,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
         'node_modules/quill/dist/quill.bubble.css',
         'node_modules/quill/dist/quill.snow.css',
         'resources/assets/scss/dest/quill-custom.scss',
-    ], 'public/css/quill.css')
-    .copy([
-        'resources/assets/scss/vendor/katex.min.css',
-    ], 'public/css')
-    .copy([
-        'resources/assets/js/vendor/katex.min.js',
-    ], 'public/js')
+    ], 'public/css/editor.css')
     .copyDirectory('resources/assets/images', 'public/images')
     .version();
