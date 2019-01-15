@@ -1,7 +1,3 @@
-const fonts = ['sofia', 'slabo'];
-const Font = Quill.import('formats/font');
-Font.whitelist = fonts;
-
 class Counter {
   constructor(quill, options) {
     this.quill = quill;
@@ -32,16 +28,24 @@ class Counter {
   }
 }
 
+const fonts = ['times-new-roman', 'arial'];
+const size = ['', '12px', '14px', '16px', '18px'];
+const Font = Quill.import('formats/font');
+const Size = Quill.import('attributors/style/size');
+Size.whitelist = size;
+Font.whitelist = fonts;
+
+Quill.register(Size, true);
 Quill.register(Font, true);
 Quill.register('modules/counter', Counter);
 
 const toolbarOptions = {
     container: [
         [{ 'font': fonts }],
-        [{ 'header': [false, 6, 5, 4, 3, 2, 1] }],
+        [{ 'header': ['', 6, 5, 4, 3, 2, 1] }],
+        [{ 'size': size }],
         ['bold', 'italic', 'underline', 'strike'],
         ['blockquote', 'code-block'],
-        [{ 'header': 1 }, { 'header': 2 }],
         [{ 'list': 'ordered' }, { 'list': 'bullet' }],
         [{ 'script': 'sub' }, { 'script': 'super' }],
         [{ 'indent': '-1' }, { 'indent': '+1' }],
@@ -57,9 +61,7 @@ const toolbarOptions = {
     }
 }
 
-
 const quill = new Quill('#full-editor .editor', {
-    bounds: '#full-editor .editor',
     modules: {
         'syntax': true,
         'toolbar': toolbarOptions,
@@ -75,4 +77,3 @@ const quill = new Quill('#full-editor .editor', {
     placeholder: 'Enter content...',
     theme: 'snow',
 });
-

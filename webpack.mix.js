@@ -54,6 +54,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
         'node_modules/quill-image-drop-module/image-drop.min.js',
         'node_modules/quill-emoji/dist/quill-emoji.js',
         'resources/assets/js/dest/quill-custom.js',
+        'resources/assets/js/dest/quill-handle.js',
     ], 'public/js/editor.js')
     .sass('resources/assets/scss/app.scss', 'public/css')
     .sass('resources/assets/scss/home.scss', 'public/css')

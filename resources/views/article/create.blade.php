@@ -64,9 +64,6 @@
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
-    
-        window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
-        heap.load("1135832181");
     </script>
 </head>
 
@@ -197,11 +194,6 @@
                     <form class="form" action="{{ url('article/new') }}" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group row">
-                            <div class="col-sm-12">
-                                <form-image></form-image>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <div class="col-sm-6 offset-md-3 single-select">
@@ -239,9 +231,9 @@
                                 <div class=" form-group row">
                                     <div class="col-sm-8 offset-md-2">
                                         @if ($errors->has('tags'))
-                                        <span class="invalid-feedback d-block">
-                                                    <strong>{{ $errors->first('tags') }}</strong>
-                                                </span>
+                                            <span class="invalid-feedback d-block">
+                                                <strong>{{ $errors->first('tags') }}</strong>
+                                            </span>
                                         @endif
                                         <select class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }} select2" multiple="multiple" data-placeholder=" Tag your post" style="width: 100%;" name="tags[]">
                                             @foreach($tags as $tag)
@@ -255,9 +247,9 @@
                         <div class="form-group row">
                             <div class="col-sm-12">
                                 @if ($errors->has('title'))
-                                <span class="invalid-feedback d-block">
-                                            <strong>{{ $errors->first('title') }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback d-block">
+                                        <strong>{{ $errors->first('title') }}</strong>
+                                    </span>
                                 @endif
                                 <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="TITLE YOUR POST" rows="1" id="title" name="title"></textarea>
                             </div>
@@ -272,6 +264,7 @@
                                 <div id="editor-container">
                                     <div id="full-editor">
                                         <div class="editor"></div>
+                                        <textarea class="hidden" id="content-html" name="content"></textarea>
                                     </div>
                                     <div id="counter" class="float-right font-size-12"></div>
                                 </div>
@@ -313,19 +306,6 @@
         $('#name').keyup(function() {
             $('#slug').val(voca.slugify($(this).val()))
         })
-
-        window.onscroll = function() {addClassFixed()};
-        var toolbar = document.getElementsByClassName('ql-toolbar')[0];
-        var content = document.getElementById('content');
-        var sticky = parseInt(content.offsetTop) + 120;
-
-        function addClassFixed() {
-          if (window.pageYOffset > sticky) {
-            toolbar.classList.add("sticky");
-          } else {
-            toolbar.classList.remove("sticky");
-          }
-        }
     </script>
     @if(!$errors->isEmpty())
     <script>

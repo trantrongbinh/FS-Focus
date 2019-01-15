@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ArticleHomeRequest;
+use App\Http\Requests\ArticleRequest;
 use App\Repositories\ArticleRepository;
 use Carbon\Carbon;
 
@@ -70,7 +70,7 @@ class ArticleController extends Controller
      * @param  \App\Http\Requests\ArticleHomeRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArticleHomeRequest $request)
+    public function store(ArticleRequest $request)
     {
         $data = array_merge($request->all(), [
             'user_id' => \Auth::id(),
