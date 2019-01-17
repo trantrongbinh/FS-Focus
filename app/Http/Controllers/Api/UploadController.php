@@ -78,6 +78,7 @@ class UploadController extends ApiController
         ];
         try {
             $strategy = $request->get('strategy', 'images');
+            dd($strategy);
             if (!$request->hasFile('image')) {
                 return $this->response->json($res);
             }

@@ -1,3 +1,4 @@
+
 class Counter {
   constructor(quill, options) {
     this.quill = quill;
@@ -39,6 +40,62 @@ Quill.register(Size, true);
 Quill.register(Font, true);
 Quill.register('modules/counter', Counter);
 
+
+function quill_img_handler() {
+  let fileInput = this.container.querySelector('input.ql-image[type=file]');
+
+  if (fileInput == null) {
+      fileInput = document.createElement('input');
+      fileInput.setAttribute('type', 'file');
+      fileInput.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/bmp, image/x-icon');
+      fileInput.classList.add('ql-image');
+      fileInput.addEventListener('change', () => {
+          const files = fileInput.files;
+          const range = this.quill.getSelection(true);
+
+          if (!files || !files.length) {
+              console.log('No files selected');
+              return;
+          }
+
+          const formData = new FormData();
+          formData.append('file', files[0]);
+
+          console.log(files[0]);
+
+          this.quill.enable(false);
+
+          let saveFile = $.ajax({
+            url: '/api/file/upload',
+            type: 'POST',
+            data: {
+              'strategy': 'article',
+              'formData': formData
+            },
+            processData: false,
+            headers: {
+                'X-CSRF-TOKEN': window.Laravel.csrfToken,
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+          })
+          .then(response => {
+              console.log(response);
+              this.quill.enable(true);
+              this.quill.editor.insertEmbed(range.index, 'image', response.data.url_path);
+              this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
+              fileInput.value = '';
+          })
+          .catch(error => {
+              console.log('quill image upload failed');
+              console.log(error);
+              this.quill.enable(true);
+          });
+      });
+      this.container.appendChild(fileInput);
+  }
+  fileInput.click();
+}
+
 const toolbarOptions = {
     container: [
         [{ 'font': fonts }],
@@ -57,7 +114,8 @@ const toolbarOptions = {
         ['emoji']
     ],
     handlers: {
-        'emoji': function () {}
+        'emoji': function () {},
+        'image': quill_img_handler
     }
 }
 

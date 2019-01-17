@@ -303,9 +303,40 @@
     <script src="{{ asset(mix('js/java-highlight-custom.js')) }}"></script>
     <script src="{{ asset(mix('js/editor.js')) }}"></script>
     <script>
-        $('#name').keyup(function() {
-            $('#slug').val(voca.slugify($(this).val()))
-        })
+        (function() {
+            $('#name').keyup(function() {
+                $('#slug').val(voca.slugify($(this).val()))
+            })
+                /**
+               * Step1. select local image
+               *
+            //    */
+            // function selectLocalImage() {
+            //   const input = document.createElement('input');
+            //   input.setAttribute('type', 'file');
+            //   $('#content').append(input);
+            //   input.click();
+
+            //   // Listen upload local image and save to server
+            //   input.onchange = () => {
+            //     const file = input.files[0];
+
+            //     console.log(file);
+
+            //     // file type is only image.
+            //     if (/^image\//.test(file.type)) {
+            //       //saveToServer(file);
+            //     } else {
+            //       console.warn('You could only upload images.');
+            //     }
+            //   };
+            // }
+
+
+            // quill.getModule('toolbar').addHandler('image', () => {
+            //   selectLocalImage();
+            // });
+        })();
     </script>
     @if(!$errors->isEmpty())
     <script>

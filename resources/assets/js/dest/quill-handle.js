@@ -4,10 +4,6 @@
         $("#content-html").text(html);
     });
 
-    // quill.getModule("toolbar").addHandler("image", function(a){
-    //     console.log(a);
-    // });
-
     window.onscroll = function() {addClassFixed()};
     var toolbar = document.getElementsByClassName('ql-toolbar')[0];
     var content = document.getElementById('content');
