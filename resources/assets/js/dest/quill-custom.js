@@ -1,11 +1,10 @@
-
 class Counter {
   constructor(quill, options) {
     this.quill = quill;
     this.options = options;
     this.container = document.querySelector(options.container);
     quill.on('text-change', this.update.bind(this));
-    this.update();  // Account for initial contents
+    this.update(); // Account for initial contents
   }
 
   calculate() {
@@ -18,7 +17,7 @@ class Counter {
       return text.length;
     }
   }
-  
+
   update() {
     var length = this.calculate();
     var label = this.options.unit;
@@ -45,93 +44,92 @@ function quill_img_handler() {
   let fileInput = this.container.querySelector('input.ql-image[type=file]');
 
   if (fileInput == null) {
-      fileInput = document.createElement('input');
-      fileInput.setAttribute('type', 'file');
-      fileInput.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/bmp, image/x-icon');
-      fileInput.classList.add('ql-image');
-      fileInput.addEventListener('change', () => {
-          const files = fileInput.files;
-          const range = this.quill.getSelection(true);
+    fileInput = document.createElement('input');
+    fileInput.setAttribute('type', 'file');
+    fileInput.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/bmp, image/x-icon');
+    fileInput.classList.add('ql-image');
+    fileInput.addEventListener('change', () => {
+      const files = fileInput.files;
+      const range = this.quill.getSelection(true);
 
-          if (!files || !files.length) {
-              console.log('No files selected');
-              return;
-          }
+      if (!files || !files.length) {
+        console.log('No files selected');
+        return;
+      }
 
-          const formData = new FormData();
-          formData.append('file', files[0]);
+      const formData = new FormData();
+      formData.append('image', files[0]);
+      formData.append('strategy', 'article')
 
-          console.log(files[0]);
+      console.log(formData.get('image'))
 
-          this.quill.enable(false);
+      this.quill.enable(false);
 
-          let saveFile = $.ajax({
-            url: '/api/file/upload',
-            type: 'POST',
-            data: {
-              'strategy': 'article',
-              'formData': formData
-            },
-            processData: false,
-            headers: {
-                'X-CSRF-TOKEN': window.Laravel.csrfToken,
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-          })
-          .then(response => {
-              console.log(response);
-              this.quill.enable(true);
-              this.quill.editor.insertEmbed(range.index, 'image', response.data.url_path);
-              this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
-              fileInput.value = '';
-          })
-          .catch(error => {
-              console.log('quill image upload failed');
-              console.log(error);
-              this.quill.enable(true);
-          });
-      });
-      this.container.appendChild(fileInput);
+      let saveFile = $.ajax({
+          url: '/api/file/upload2',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: formData,
+          type: 'POST',
+          headers: {
+            'X-CSRF-TOKEN': window.Laravel.csrfToken,
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+        })
+        .then(response => {
+          this.quill.enable(true);
+          this.quill.editor.insertEmbed(range.index, 'image', response.url);
+          this.quill.setSelection(range.index + 1, Quill.sources.SILENT);
+          fileInput.value = '';
+        })
+        .catch(error => {
+          console.log('quill image upload failed');
+          console.log(error);
+          this.quill.enable(true);
+        });
+    });
+    this.container.appendChild(fileInput);
   }
   fileInput.click();
 }
 
 const toolbarOptions = {
-    container: [
-        [{ 'font': fonts }],
-        [{ 'header': ['', 6, 5, 4, 3, 2, 1] }],
-        [{ 'size': size }],
-        ['bold', 'italic', 'underline', 'strike'],
-        ['blockquote', 'code-block'],
-        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-        [{ 'script': 'sub' }, { 'script': 'super' }],
-        [{ 'indent': '-1' }, { 'indent': '+1' }],
-        [{ 'direction': 'rtl' }],
-        [{ 'color': [] }, { 'background': [] }],
-        [{ 'align': [] }],
-        ['link', 'image', 'video', 'formula'],
-        ['clean'],
-        ['emoji']
-    ],
-    handlers: {
-        'emoji': function () {},
-        'image': quill_img_handler
-    }
+  container: [
+    [{ 'font': fonts }],
+    [{ 'header': ['', 6, 5, 4, 3, 2, 1] }],
+    [{ 'size': size }],
+    ['bold', 'italic', 'underline', 'strike'],
+    ['blockquote', 'code-block'],
+    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+    [{ 'script': 'sub' }, { 'script': 'super' }],
+    [{ 'indent': '-1' }, { 'indent': '+1' }],
+    [{ 'direction': 'rtl' }],
+    [{ 'color': [] }, { 'background': [] }],
+    [{ 'align': [] }],
+    ['link', 'image', 'video', 'formula'],
+    ['clean'],
+    ['emoji']
+  ],
+  handlers: {
+    'emoji': function() {},
+    'image': quill_img_handler
+  }
 }
 
 const quill = new Quill('#full-editor .editor', {
-    modules: {
-        'syntax': true,
-        'toolbar': toolbarOptions,
-        'emoji-shortname': true,
-        'emoji-toolbar': true,
-        'imageDrop': true,
-        'imageResize': true,
-        'counter': {
-          container: '#counter',
-          unit: 'word'
-        }
-    },
-    placeholder: 'Enter content...',
-    theme: 'snow',
+  modules: {
+    'syntax': true,
+    'toolbar': toolbarOptions,
+    'emoji-shortname': true,
+    'emoji-toolbar': true,
+    'imageDrop': true,
+    'imageResize': true,
+    'counter': {
+      container: '#counter',
+      unit: 'word'
+    }
+  },
+  placeholder: 'Enter content...',
+  theme: 'snow',
 });

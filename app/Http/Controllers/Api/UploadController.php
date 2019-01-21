@@ -78,7 +78,39 @@ class UploadController extends ApiController
         ];
         try {
             $strategy = $request->get('strategy', 'images');
-            dd($strategy);
+
+            if (!$request->hasFile('image')) {
+                return $this->response->json($res);
+            }
+            $path = $strategy . '/' . date('Y') . '/' . date('m') . '/' . date('d');
+
+            $result = $this->manager->store($request->file('image'), $path);
+
+            return $this->response->json($result);
+        } catch (\Exception $exception) {
+            Log::error($exception->getTraceAsString());
+            $res['message'] = $exception->getMessage();
+            return $this->response->json($res);
+        }
+    }
+
+    /**
+     * Generic file upload method 2.
+     *
+     * @param  Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function fileUpload2(ImageRequest $request)
+    {
+        $res = [
+            'success' => false,
+            'message' => 'Upload image fail.',
+            'error' => 'no file found.',
+        ];
+        try {
+            $strategy = $request->get('strategy', 'images');
+
             if (!$request->hasFile('image')) {
                 return $this->response->json($res);
             }
