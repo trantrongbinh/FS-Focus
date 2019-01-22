@@ -51,8 +51,8 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .scripts([
         'node_modules/quill/dist/quill.min.js',
         'node_modules/quill-image-resize-module/image-resize.min.js',
-        'node_modules/quill-image-drop-module/image-drop.min.js',
         'node_modules/quill-emoji/dist/quill-emoji.js',
+        'resources/assets/js/dest/quill-drop-handle.js',
         'resources/assets/js/dest/quill-custom.js',
         'resources/assets/js/dest/quill-handle.js',
     ], 'public/js/editor.js')

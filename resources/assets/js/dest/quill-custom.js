@@ -39,7 +39,6 @@ Quill.register(Size, true);
 Quill.register(Font, true);
 Quill.register('modules/counter', Counter);
 
-
 function quill_img_handler() {
   let fileInput = this.container.querySelector('input.ql-image[type=file]');
 
@@ -123,8 +122,8 @@ const quill = new Quill('#full-editor .editor', {
     'toolbar': toolbarOptions,
     'emoji-shortname': true,
     'emoji-toolbar': true,
-    'imageDrop': true,
     'imageResize': true,
+    'imageDrop': true,
     'counter': {
       container: '#counter',
       unit: 'word'
