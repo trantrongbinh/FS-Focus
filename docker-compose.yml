@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+    # The Application (môi trường chạy project) and The Web Server (máy chủ web - nginx)
+    fs_focus:
+        container_name: fs_focus
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        volumes:
+            - ./:/var/www/fs_focus
+        ports:
+            - "8000:80"
+        links:
+            - database
+
+    # The Database
+    database:
+        image: mysql:5.7
+        restart: always
+        volumes:
+            - ./database/:/var/lib/mysql # ánh xạ thư mục database với thư mục /var/lib/mysql của container
+        environment: # tham số cấu hình MySQL
+            MYSQL_DATABASE: fs_focus
+            MYSQL_USER: bkfa
+            MYSQL_PASSWORD: bkfa
+            MYSQL_ROOT_PASSWORD: bkfa
+        command: # lệnh được chạy khi thực docker-compose run
+            mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+            --sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"
+        ports:
+            - "3306:3306" # ánh xạ cổng 3306 ở local sang cổng 3306 trong container
+        expose:
+            - "3306" # expose chỉ định cổng mạng cac container lắng nghe khi chạy
