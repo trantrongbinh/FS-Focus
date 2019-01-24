@@ -77,9 +77,3 @@ export class ImageDrop {
     });
   }
 }
-
-(function() {
-  var exports = {};
-  
-  window.Quill.register('modules/imageDrop', exports.ImageDrop);
-})();

@@ -1,3 +1,5 @@
+import ImageDrop from './quill-drop-handle.js';
+
 class Counter {
   constructor(quill, options) {
     this.quill = quill;
@@ -38,6 +40,7 @@ Font.whitelist = fonts;
 Quill.register(Size, true);
 Quill.register(Font, true);
 Quill.register('modules/counter', Counter);
+Quill.register('modules/imageDrop', ImageDrop);
 
 function quill_img_handler() {
   let fileInput = this.container.querySelector('input.ql-image[type=file]');
@@ -132,3 +135,4 @@ const quill = new Quill('#full-editor .editor', {
   placeholder: 'Enter content...',
   theme: 'snow',
 });
+

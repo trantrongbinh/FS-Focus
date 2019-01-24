@@ -52,7 +52,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
         'node_modules/quill/dist/quill.min.js',
         'node_modules/quill-image-resize-module/image-resize.min.js',
         'node_modules/quill-emoji/dist/quill-emoji.js',
-        'resources/assets/js/dest/quill-drop-handle.js',
         'resources/assets/js/dest/quill-custom.js',
         'resources/assets/js/dest/quill-handle.js',
     ], 'public/js/editor.js')
