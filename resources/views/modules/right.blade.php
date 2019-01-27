@@ -13,7 +13,7 @@
                             <div class="image">
                                 <img class="img-fluid img-circle img-sm" src="{{ asset($user->avatar) }}" alt="User Image">
                             </div>
-                            <div class="title"><strong>{{ $user->name }}</strong>
+                            <div class="title"><strong>{{ str_limit($user->name, config('blog.str_limit.name')) }}</strong>
                                 <div class="d-flex align-items-center">
                                     <div class="views" data-toggle="tooltip" data-placement="bottom" title="Followers"><i class="fas fa-user-plus"></i> 50</div>
                                     <div class="views" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $user->articles_count }}</div>
@@ -42,10 +42,10 @@
                                     <img class="img-fluid img-sm" src="{{ asset('/images/team-default.png') }}" alt="Team avatar">
                                 @endif
                             </div>
-                            <div class="title"><strong>{{ $team->name }}</strong>
+                            <div class="title"><strong>{{ str_limit($team->name, config('blog.str_limit.name')) }}</strong>
                                 <div class="d-flex align-items-center">
                                     <div class="views" data-toggle="tooltip" data-placement="bottom" title="Members"><i class="fas fa-user-friends"></i> {{ $team->users_count }}</div>
-                                    <div class="views" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $team->articles_count }}</div>
+                                    <div class="views" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $team->getTotalArticles($team->id) }}</div>
                                     <div class="comments cup"><i class="fa fa-trophy"></i></div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                             <img class="img-fluid img-sm" src="{{ asset('/images/team-default.png') }}" alt="Your team avatar">
                                         @endif
                                     </div>
-                                    <div class="title"><strong>{{ $team->name }}</strong>
+                                    <div class="title"><strong>{{ str_limit($team->name, config('blog.str_limit.name')) }}</strong>
                                         <div class="d-flex align-items-center">
                                             <div class="views" data-toggle="tooltip" data-placement="bottom" title="Members"><i class="fas fa-user-friends"></i> {{ $team->users_count }}</div>
                                             <div class="comments" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $team->articles_count }}</div>

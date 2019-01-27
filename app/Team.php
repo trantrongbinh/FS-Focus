@@ -44,4 +44,18 @@ class Team extends Model
     {
         return $this->hasMany(Article::class);
     }
+
+    /**
+     * Count articals of a team
+     *
+     * @param  int $team_id
+     * @return string
+     */
+    public function getTotalArticles($team_id)
+    {
+        return Article::join('users', 'users.id', '=', 'articles.user_id')
+            ->join('team_user', 'users.id', '=', 'team_user.user_id')
+            ->where('team_user.team_id', $team_id)
+            ->count();
+    }
 }

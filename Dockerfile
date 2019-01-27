@@ -1,39 +1,58 @@
-FROM ubuntu:16.04
+FROM php:7.2-fpm
 
-MAINTAINER BKFA <bkfa.com@gmail.com>
+# Copy composer.lock and composer.json
+COPY composer.lock composer.json /var/www/
 
-# clean up
-RUN apt clean && apt-get update && apt-get upgrade -y
+# nginx
+ADD ./.docker/nginx/conf.d/app.conf /etc/nginx/conf.d/default.conf
 
-# php required settings
-RUN apt install -y locales
-RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+# Set working directory
+WORKDIR /var/www
 
-# nginx 1.12
-ADD ./.docker/web/server.conf /etc/nginx/conf.d/default.conf
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    mysql-client \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    locales \
+    zip \
+    jpegoptim optipng pngquant gifsicle \
+    vim \
+    unzip \
+    git \
+    curl
 
-# random
-RUN apt install  -y \
-    curl zip unzip git software-properties-common
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# install PHP
-RUN add-apt-repository ppa:ondrej/php -y
-RUN apt update
-RUN apt install -y php7.2 php7.2-cli php7.2-common php7.2-mbstring php7.2-xml php7.2-mysqlnd php7.2-pdo-sqlite
+# Install extensions
+RUN docker-php-ext-install mysqli pdo pdo_mysql mbstring zip exif pcntl
+RUN docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
+RUN docker-php-ext-install gd
 
-# PHP composer
-RUN curl -sS https://getcomposer.org/installer | php --  --install-dir=/usr/bin --filename=composer
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # nodejs latest
+RUN apt-get update && apt-get install -y gnupg
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-RUN apt install -y nodejs
+RUN apt-get install -y nodejs
 
-# zip extension
-RUN apt install php7.2-dev -y
-RUN apt install php-pear -y
-##RUN pecl install xdebug
+# Add user for laravel application
+RUN groupadd -g 1000 www
+RUN useradd -u 1000 -ms /bin/bash -g www www
 
-WORKDIR /var/www/fs_focus/
+# Copy existing application directory contents
+COPY . /var/www
+
+# Copy existing application directory permissions
+COPY --chown=www:www . /var/www
+
+# Change current user to www
+USER www
+
+# Expose port 9000 and start php-fpm server
+EXPOSE 9000
+CMD ["php-fpm"]

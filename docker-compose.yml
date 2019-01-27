@@ -7,13 +7,16 @@ services:
         build:
             context: ./
             dockerfile: Dockerfile
-        working_dir: /var/www/fs_focus
+        working_dir: /var/www
         networks:
             - fs_focus
         volumes:
-            - ./:/var/www/fs_focus
+            - ./:/var/www
+            - ./.docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+            - ./.docker/nginx/conf.d/app.conf:/etc/nginx/conf.d/default.conf
         ports:
-            - "8000:80"
+            - "8080:80"
+            - "443:443"
         links:
             - database
     # The Database
@@ -25,16 +28,25 @@ services:
             - fs_focus
         environment: # tham số cấu hình MySQL
             - MYSQL_DATABASE=fs_focus
-            - MYSQL_USER=bkfa
-            - MYSQL_PASSWORD=bkfa
-            - MYSQL_ROOT_PASSWORD=bkfa
+            - MYSQL_USER=root
+            - MYSQL_PASSWORD=binhtk97
+            - MYSQL_ROOT_PASSWORD=binhtk97
+        volumes:
+            - dbdata:/var/lib/mysql/
+            - ./.docker/mysql/my.cnf:/etc/mysql/my.cnf
         command: # lệnh được chạy khi thực docker-compose run
             mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
             --sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"
         ports:
-            - "3306:3306" # ánh xạ cổng 3306 ở local sang cổng 3306 trong container
+            - "3307:3306" # ánh xạ cổng 3306 ở local sang cổng 3306 trong container
         expose:
-            - "3306" # expose chỉ định cổng mạng cac container lắng nghe khi chạy
+            - "3307" # expose chỉ định cổng mạng cac container lắng nghe khi chạy
+
+#Docker Networks
 networks:
   fs_focus:
     driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
