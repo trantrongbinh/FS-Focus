@@ -1,52 +1,68 @@
 version: '3'
 
 services:
-    # The Application (môi trường chạy project) and The Web Server (máy chủ web - nginx)
-    fs_focus:
-        container_name: fs_focus
+    #PHP Service
+    app:
         build:
-            context: ./
+            context: .
             dockerfile: Dockerfile
+        image: fs_focus
+        container_name: fs_focus
+        restart: unless-stopped
+        tty: true
+        #tty - bảng điều khiển giua thiet bi dau cuoi va container - hien thi phan hoi dau ra tu container
+        environment: # tham số cấu hình app
+            SERVICE_NAME: app
+            SERVICE_TAGS: dev
         working_dir: /var/www
-        networks:
-            - fs_focus
         volumes:
             - ./:/var/www
             - ./.docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
-            - ./.docker/nginx/conf.d/app.conf:/etc/nginx/conf.d/default.conf
+        networks:
+            - app-network
+
+    #Nginx Service
+    webserver:
+        image: nginx:alpine
+        container_name: webserver
+        restart: unless-stopped
+        tty: true
         ports:
             - "8080:80"
             - "443:443"
-        links:
-            - database
-    # The Database
-    database:
-        image: mysql:5.7
-        restart: always
-        container_name: fs_focus_mysql
+        volumes:
+            - ./:/var/www
+            - ./.docker/nginx/conf.d/:/etc/nginx/conf.d/
         networks:
-            - fs_focus
+            - app-network
+
+    #MySQL Service
+    db:
+        image: mysql:5.7.22
+        container_name: db
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "3309:3306"
+        expose:
+            - "3309" # expose chỉ định cổng mạng cac container lắng nghe khi chạy
         environment: # tham số cấu hình MySQL
-            - MYSQL_DATABASE=fs_focus
-            - MYSQL_USER=root
-            - MYSQL_PASSWORD=binhtk97
-            - MYSQL_ROOT_PASSWORD=binhtk97
+            MYSQL_DATABASE: fs_focus
+            MYSQL_ROOT_PASSWORD: binhtk97
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        command: mysqld --sql_mode="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION" --max-allowed-packet=15000000
         volumes:
             - dbdata:/var/lib/mysql/
             - ./.docker/mysql/my.cnf:/etc/mysql/my.cnf
-        command: # lệnh được chạy khi thực docker-compose run
-            mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
-            --sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"
-        ports:
-            - "3307:3306" # ánh xạ cổng 3306 ở local sang cổng 3306 trong container
-        expose:
-            - "3307" # expose chỉ định cổng mạng cac container lắng nghe khi chạy
+        networks:
+            - app-network
 
 #Docker Networks
 networks:
-  fs_focus:
-    driver: bridge
+    app-network:
+        driver: bridge
 #Volumes
 volumes:
-  dbdata:
-    driver: local
+    dbdata:
+        driver: local
