@@ -1,4 +1,4 @@
-export class ImageDrop {
+export default class ImageDrop {
   /**
    * Instantiate the module given a quill instance and any options
    * @param {Quill} quill

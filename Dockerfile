@@ -36,6 +36,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN apt-get update && apt-get install -y gnupg
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
 RUN apt-get install -y nodejs
+#Install YARN
+RUN curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
+RUN apt-get install -y yarn
 
 # Add user for laravel application
 RUN groupadd -g 1000 www

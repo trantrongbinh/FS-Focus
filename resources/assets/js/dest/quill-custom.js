@@ -1,34 +1,9 @@
-import ImageDrop from './quill-drop-handle.js';
+import Quill from 'quill';
+window.Quill  = Quill;
+import ImageResize from 'quill-image-resize-module';
+import Emoji from 'quill-emoji/dist/quill-emoji';
 
-class Counter {
-  constructor(quill, options) {
-    this.quill = quill;
-    this.options = options;
-    this.container = document.querySelector(options.container);
-    quill.on('text-change', this.update.bind(this));
-    this.update(); // Account for initial contents
-  }
-
-  calculate() {
-    let text = this.quill.getText();
-    if (this.options.unit === 'word') {
-      text = text.trim();
-      // Splitting empty text returns a non-empty array
-      return text.length > 0 ? text.split(/\s+/).length : 0;
-    } else {
-      return text.length;
-    }
-  }
-
-  update() {
-    var length = this.calculate();
-    var label = this.options.unit;
-    if (length !== 1) {
-      label += 's';
-    }
-    this.container.innerText = length + ' ' + label;
-  }
-}
+import Counter from './quill-editor/quill-counter-word';
 
 const fonts = ['times-new-roman', 'arial'];
 const size = ['', '12px', '14px', '16px', '18px'];
@@ -40,7 +15,7 @@ Font.whitelist = fonts;
 Quill.register(Size, true);
 Quill.register(Font, true);
 Quill.register('modules/counter', Counter);
-Quill.register('modules/imageDrop', ImageDrop);
+Quill.register('modules/imageResize', ImageResize);
 
 function quill_img_handler() {
   let fileInput = this.container.querySelector('input.ql-image[type=file]');
