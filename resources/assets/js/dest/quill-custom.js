@@ -4,6 +4,7 @@ import ImageResize from 'quill-image-resize-module';
 import Emoji from 'quill-emoji/dist/quill-emoji';
 
 import Counter from './quill-editor/quill-counter-word';
+import ImageDrop from './quill-editor/quill-drop-handle';
 
 const fonts = ['times-new-roman', 'arial'];
 const size = ['', '12px', '14px', '16px', '18px'];
@@ -16,6 +17,7 @@ Quill.register(Size, true);
 Quill.register(Font, true);
 Quill.register('modules/counter', Counter);
 Quill.register('modules/imageResize', ImageResize);
+Quill.register('modules/imageDrop', ImageDrop);
 
 function quill_img_handler() {
   let fileInput = this.container.querySelector('input.ql-image[type=file]');
@@ -110,4 +112,3 @@ const quill = new Quill('#full-editor .editor', {
   placeholder: 'Enter content...',
   theme: 'snow',
 });
-
