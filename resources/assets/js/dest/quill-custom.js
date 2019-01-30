@@ -7,7 +7,7 @@ import Counter from './quill-editor/quill-counter-word';
 import ImageDrop from './quill-editor/quill-drop-handle';
 
 const fonts = ['times-new-roman', 'arial'];
-const size = ['', '12px', '14px', '16px', '18px'];
+const size = [false, '12px', '14px', '16px', '18px'];
 const Font = Quill.import('formats/font');
 const Size = Quill.import('attributors/style/size');
 Size.whitelist = size;
@@ -40,12 +40,12 @@ function quill_img_handler() {
       formData.append('image', files[0]);
       formData.append('strategy', 'article')
 
-      console.log(formData.get('image'))
+      console.log(formData.get('image'));
 
       this.quill.enable(false);
 
       let saveFile = $.ajax({
-          url: '/api/file/upload2',
+          url: '/api/file/upload',
           cache: false,
           contentType: false,
           processData: false,
@@ -76,7 +76,7 @@ function quill_img_handler() {
 const toolbarOptions = {
   container: [
     [{ 'font': fonts }],
-    [{ 'header': ['', 6, 5, 4, 3, 2, 1] }],
+    [{ 'header': [false, 6, 5, 4, 3, 2, 1] }],
     [{ 'size': size }],
     ['bold', 'italic', 'underline', 'strike'],
     ['blockquote', 'code-block'],
