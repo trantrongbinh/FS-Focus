@@ -26,6 +26,7 @@ mix.webpackConfig({
             'dashboard': 'assets/js/dashboard',
             'home': 'assets/js/home',
             'js': 'assets/js',
+            'window.Quill': 'quill',
         },
         modules: [
             'node_modules',
@@ -35,16 +36,37 @@ mix.webpackConfig({
 });
 
 let themes = [
-    'resources/assets/sass/themes/default-theme.scss',
-    'resources/assets/sass/themes/gray-theme.scss',
+    'resources/assets/scss/themes/default-theme.scss',
+    'resources/assets/scss/themes/gray-theme.scss',
 ];
 
 themes.forEach((item) => {
     mix.sass(item, 'public/css/themes').version();
 })
 
+mix.autoload({
+    quill: ['window.Quill']
+})
+
 mix.js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css')
     .js('resources/assets/js/home.js', 'public/js')
-    .sass('resources/assets/sass/home.scss', 'public/css')
+    .js('resources/assets/js/dest/author.js', 'public/js')
+    .js('resources/assets/js/dest/java-highlight-custom.js', 'public/js')
+    .js('resources/assets/js/dest/quill-custom.js', 'public/js/quill.js')
+    // .scripts([
+    //     'node_modules/quill/dist/quill.min.js',
+    //     'node_modules/quill-image-resize-module/image-resize.min.js',
+    //     'node_modules/quill-emoji/dist/quill-emoji.js',
+    //     'resources/assets/js/dest/quill-custom.js',
+    //     'resources/assets/js/dest/quill-handle.js',
+    // ], 'public/js/editor.js')
+    .sass('resources/assets/scss/app.scss', 'public/css')
+    .sass('resources/assets/scss/home.scss', 'public/css')
+    .sass('resources/assets/scss/dest/author.scss', 'public/css')
+    .styles([
+        'node_modules/quill/dist/quill.bubble.css',
+        'node_modules/quill/dist/quill.snow.css',
+        'resources/assets/scss/dest/quill-custom.scss',
+    ], 'public/css/editor.css')
+    .copyDirectory('resources/assets/images', 'public/images')
     .version();

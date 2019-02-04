@@ -83,7 +83,7 @@ class UserRepository
      */
     public function page($number = 10, $sort = 'desc', $sortColumn = 'created_at')
     {
-        return $this->model->withoutGlobalScope(StatusScope::class)->orderBy($sortColumn, $sort)->paginate($number);
+        return $this->model->withoutGlobalScope(StatusScope::class)->orderBy($sortColumn, $sort)->withCount('articles')->paginate($number);
     }
 
     /**
@@ -159,6 +159,19 @@ class UserRepository
     public function destroy($id)
     {
         return $this->getById($id)->delete();
+    }
+
+    /**
+     * Search the articles by the keyword.
+     *
+     * @param  string $key
+     * @return collection
+     */
+    public function search($key)
+    {
+        $key = trim($key);
+
+        return $this->model->where('name', 'like', "%{$key}%")->withCount('articles')->get();
     }
 
 }

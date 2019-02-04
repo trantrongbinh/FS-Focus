@@ -8,10 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use CyrildeWit\EloquentViewable\Viewable;
 
+use Overtrue\LaravelFollow\Traits\CanBeLiked;
+use Overtrue\LaravelFollow\Traits\CanBeFavorited;
+use Overtrue\LaravelFollow\Traits\CanBeBookmarked;
+use App\Traits\CanBeVoted;
+
 class Article extends Model
 {
     use SoftDeletes;
     use Viewable;
+    use CanBeLiked, CanBeFavorited, CanBeVoted, CanBeBookmarked;
 
     /**
      * The attributes that should be mutated to dates.
@@ -26,12 +32,12 @@ class Article extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
         'user_id',
         'last_user_id',
-        'type',
+        'team_id',
         'category_id',
         'title',
-        'subtitle',
         'slug',
         'page_image',
         'content',
@@ -65,6 +71,16 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the team for the blog article.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 
     /**
@@ -127,7 +143,7 @@ class Article extends Model
     {
         $this->attributes['title'] = $value;
 
-        if (!config('services.youdao.appKey') || !config('services.youdao.appSecret')) {
+        if (!config('services.trans_app.appKey') || !config('services.trans_app.appSecret')) {
             $this->setUniqueSlug($value, str_random(5));
         } else {
             $this->setUniqueSlug(translug($value), '');
@@ -177,5 +193,4 @@ class Article extends Model
 
         $this->attributes['content'] = json_encode($data);
     }
-
 }

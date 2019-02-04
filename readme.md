@@ -1,4 +1,4 @@
-## About FS-Focus | FullStask Focus ##
+## BKFA Team | FullStask Focus ##
 
 ### Purpose
 
@@ -21,15 +21,16 @@ FS-Focus is my project for the purpose of synthesizing, archiving, solving probl
 
 ### About Me
 
-- trantrongbinh - developer
-	"Learning new languages and technologies is what I am passionate about."
+- Bkfa Team:
+	"Nothing is impossible!"
 
 ## Installation
 
 * type `git clone https://github.com/trantrongbinh/qna_01.git` to clone the repository 
 * type `cd projectname`
 * type `composer install`
-* or able type `composer update`
+* or able type `composer update` if need update package
+* ( if install in windows type: `composer update --ignore-platform-reqs` - ignoring requested PHP extensions )
 * type `npm install` if use npm or type `yarn install` if use yarn
 * copy *.env.example* to *.env*
 * type `php artisan key:generate`to generate secure key in *.env* file
@@ -53,3 +54,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Image demo
+
+<img src="https://github.com/trantrongbinh/FS-Focus/blob/master/public/img/blog.png">

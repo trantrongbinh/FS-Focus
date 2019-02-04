@@ -22,7 +22,7 @@ class Category extends Model
      */
     public function articles()
     {
-        return $this->hasMany(Article::Class);
+        return $this->hasMany(Article::Class)->orderBy('published_at', 'desc');
     }
 
     /**
@@ -34,7 +34,7 @@ class Category extends Model
     {
         $this->attributes['name'] = $value;
 
-        if (!config('services.youdao.appKey') || !config('services.youdao.appSecret')) {
+        if (!config('services.trans_app.appKey') || !config('services.trans_app.appSecret')) {
             $this->setUniqueSlug($value, str_random(5));
         } else {
             $this->setUniqueSlug(translug($value), '');

@@ -6,10 +6,12 @@ use App\Scopes\StatusScope;
 use App\Tools\Markdowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use CyrildeWit\EloquentViewable\Viewable;
 
 class Discussion extends Model
 {
     use SoftDeletes;
+    use Viewable;
 
     /**
      * The attributes that should be mutated to dates.
@@ -83,7 +85,7 @@ class Discussion extends Model
     {
         $this->attributes['title'] = $value;
 
-        if (!config('services.youdao.appKey') || !config('services.youdao.appSecret')) {
+        if (!config('services.trans_app.appKey') || !config('services.trans_app.appSecret')) {
             $this->setUniqueSlug($value, str_random(5));
         } else {
             $this->setUniqueSlug(translug($value), '');

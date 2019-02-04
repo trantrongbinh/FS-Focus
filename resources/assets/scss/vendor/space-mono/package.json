@@ -1,0 +1,48 @@
+{
+  "_from": "typeface-space-mono",
+  "_id": "typeface-space-mono@0.0.54",
+  "_inBundle": false,
+  "_integrity": "sha512-9j0u+ipPxlvkKQZB1Dn1NOaacZ0m9gETfwd2ofhQls36tFK5bMNzS1bEurlCrE8LrrhnVZQwC7zhc3ZH0fnKBg==",
+  "_location": "/typeface-space-mono",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "typeface-space-mono",
+    "name": "typeface-space-mono",
+    "escapedName": "typeface-space-mono",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/typeface-space-mono/-/typeface-space-mono-0.0.54.tgz",
+  "_shasum": "0dd2fa58e0a3f50f5d9c2f3bbbc6246f2cfacb82",
+  "_spec": "typeface-space-mono",
+  "_where": "/home/ttb/Desktop/FS-Focus",
+  "author": {
+    "name": "Kyle Mathews",
+    "email": "mathews.kyle@gmail.com"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Space Mono typeface",
+  "keywords": [
+    "typeface",
+    "font",
+    "font family",
+    "google fonts",
+    "space-mono"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "typeface-space-mono",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KyleAMathews/typefaces/tree/master/packages/space-mono"
+  },
+  "version": "0.0.54"
+}

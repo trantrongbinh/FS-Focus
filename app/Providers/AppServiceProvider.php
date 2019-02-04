@@ -13,6 +13,7 @@ use App\Http\ViewComposers\CategoryComposer;
 use App\Http\ViewComposers\TagComposer;
 use App\Http\ViewComposers\HotPostComposer;
 use App\Http\ViewComposers\UserComposer;
+use App\Http\ViewComposers\TeamComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,10 +34,21 @@ class AppServiceProvider extends ServiceProvider
 
         Schema::defaultStringLength(191);
 
-        view()->composer('*', CategoryComposer::class);
-        view()->composer('*', TagComposer::class);
-        view()->composer('*', HotPostComposer::class);
-        view()->composer('*', UserComposer::class);
+        view()->composer([
+            'article.create',
+            'modules.left',
+            'user.index'
+        ], CategoryComposer::class);
+
+        view()->composer([
+            'modules.left',
+            'article.create',
+            'discussion.index'
+        ], TagComposer::class);
+
+        view()->composer('modules.hot-post', HotPostComposer::class);
+        view()->composer('modules.right', UserComposer::class);
+        view()->composer('modules.right', TeamComposer::class);
     }
 
     /**

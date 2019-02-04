@@ -245,6 +245,7 @@
 
                 this.$http.get(url, {params: params})
                     .then(response => {
+                        console.log(response)
                         this.pagination = response.data.meta.pagination
                         this.items = response.data.data
                         this.totalPage = response.data.meta.pagination.total_pages

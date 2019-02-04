@@ -17,7 +17,7 @@ use Overtrue\LaravelFollow\Traits\CanBookmark;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable, SoftDeletes;
+    use Notifiable, HasApiTokens, SoftDeletes;
     use CanFollow, CanBookmark, CanLike, CanFavorite, CanSubscribe, CanVote;
 
     /**
@@ -85,6 +85,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the articles for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function articles()
+    {
+        return $this->hasMany(Discussion::class)->orderBy('created_at', 'desc');
+    }
+
+    /**
      * Get the comments for the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -101,9 +111,7 @@ class User extends Authenticatable
      */
     public function teams()
     {
-        return $this->belongsToMany(Team::class)
-            ->as('join')
-            ->withTimestamps();
+        return $this->belongsToMany(Team::class)->withTimestamps();
     }
 
     /**

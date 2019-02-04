@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('widgets.article')
+    <div id="background-body">
+        @include('widgets.article')
+    </div>
 @endsection

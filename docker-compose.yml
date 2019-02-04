@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+    #PHP Service
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: fs_focus
+        container_name: fs_focus
+        restart: unless-stopped
+        tty: true
+        #tty - bảng điều khiển giua thiet bi dau cuoi va container - hien thi phan hoi dau ra tu container
+        environment: # tham số cấu hình app
+            SERVICE_NAME: app
+            SERVICE_TAGS: dev
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+            - ./.docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        networks:
+            - app-network
+
+    #Nginx Service
+    webserver:
+        image: nginx:alpine
+        container_name: webserver
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "8080:80"
+            - "443:443"
+        volumes:
+            - ./:/var/www
+            - ./.docker/nginx/conf.d/:/etc/nginx/conf.d/
+        networks:
+            - app-network
+
+    #MySQL Service
+    db:
+        image: mysql:5.7.22
+        container_name: db
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "3309:3306"
+        expose:
+            - "3309" # expose chỉ định cổng mạng cac container lắng nghe khi chạy
+        environment: # tham số cấu hình MySQL
+            MYSQL_DATABASE: fs_focus
+            MYSQL_ROOT_PASSWORD: binhtk97
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        command: mysqld --sql_mode="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION" --max-allowed-packet=15000000
+        volumes:
+            - dbdata:/var/lib/mysql/
+            - ./.docker/mysql/my.cnf:/etc/mysql/my.cnf
+        networks:
+            - app-network
+
+#Docker Networks
+networks:
+    app-network:
+        driver: bridge
+#Volumes
+volumes:
+    dbdata:
+        driver: local

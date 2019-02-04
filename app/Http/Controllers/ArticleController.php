@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ArticleHomeRequest;
+use App\Http\Requests\ArticleRequest;
 use App\Repositories\ArticleRepository;
 use Carbon\Carbon;
 
@@ -36,7 +36,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * Display the article resource by article slug.
+     * Display the article resource by article slug with related.
      *
      * @param  string $slug
      * @return mixed
@@ -44,10 +44,14 @@ class ArticleController extends Controller
     public function show($slug)
     {
         $article = $this->article->getBySlug($slug);
+        $related = [];
+        
+        $related['relatedCategory'] = ($article->category_id != NULL) ? $this->article->getRelatedPostsByCategory($article) : null;
+        $related['relatedAuthor'] = $this->article->getRelatedPostsByAuthor($article);
 
         $article->addViewWithExpiryDate(Carbon::now()->addMinute());
         
-        return view('article.show', compact('article'));
+        return view('article.show', compact('article', 'related'));
     }
 
     /**
@@ -66,7 +70,7 @@ class ArticleController extends Controller
      * @param  \App\Http\Requests\ArticleHomeRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArticleHomeRequest $request)
+    public function store(ArticleRequest $request)
     {
         $data = array_merge($request->all(), [
             'user_id' => \Auth::id(),

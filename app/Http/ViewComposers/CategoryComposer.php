@@ -15,14 +15,14 @@ class CategoryComposer
      */
     public function compose(View $view)
     {
-        $public = Category::withCount('articles')->whereNull('user_id')->get();
+        $public = Category::withCount('articles')->whereNull('user_id')->OrderBy('articles_count', 'desc')->get();
         
         if (\Auth::check()) {
-            $yourCategory = Category::withCount('articles')->where('user_id', \Auth::id())->get();
-            $other = Category::withCount('articles')->whereNotNull('user_id')->where('user_id', '!=', \Auth::id())->get();
+            $yourCategory = Category::withCount('articles')->where('user_id', \Auth::id())->OrderBy('articles_count', 'desc')->get();
+            $other = Category::withCount('articles')->whereNotNull('user_id')->where('user_id', '!=', \Auth::id())->OrderBy('articles_count', 'desc')->get();
         } else {
             $yourCategory = null;
-            $other = Category::withCount('articles')->whereNotNull('user_id')->get();
+            $other = Category::withCount('articles')->whereNotNull('user_id')->OrderBy('articles_count', 'desc')->get();
         }
 
         $view->with('categories', ['yourCategory' => $yourCategory, 'public' => $public, 'other' => $other]);

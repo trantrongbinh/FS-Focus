@@ -22,7 +22,7 @@ class Team extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'avatar', 'description', 'rank', 'path'
+        'id', 'name', 'slug', 'avatar', 'description', 'rank', 'path'
     ];
 
     /**
@@ -32,8 +32,30 @@ class Team extends Model
      */
     public function users()
     {
-        return $this->belongsToMany(User::class)
-            ->as('have')
-            ->withTimestamps();
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
+
+    /**
+     * Many to Many relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
+    /**
+     * Count articals of a team
+     *
+     * @param  int $team_id
+     * @return string
+     */
+    public function getTotalArticles($team_id)
+    {
+        return Article::join('users', 'users.id', '=', 'articles.user_id')
+            ->join('team_user', 'users.id', '=', 'team_user.user_id')
+            ->where('team_user.team_id', $team_id)
+            ->count();
     }
 }

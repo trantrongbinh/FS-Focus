@@ -12,13 +12,15 @@ import store from './vuex/store.js';
 import VueI18n from 'vue-i18n';
 import 'vue-multiselect/dist/vue-multiselect.min.css';
 
-import router from './router'
+import router from './router';
 import locales from 'lang';
 
 import App from './App.vue';
 
-window.marked = require('marked');
+require('vendor/katex.min.js');
 window.hljs = require('vendor/highlight.min.js');
+
+window.marked = require('marked');
 window.toastr = require('toastr/build/toastr.min.js');
 window.innerHeight = 800;
 

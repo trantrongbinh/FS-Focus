@@ -12,8 +12,17 @@ class TeamController extends Controller
 
     public function __construct(TeamRepository $team)
     {
-    	$this->middleware('auth')->except(['index', 'show']);
         $this->team = $team;
+    }
+
+    /**
+     * Display the teams resource.
+     *
+     * @return mixed
+     */
+    public function index()
+    {
+        return view('team.index');
     }
 
     /**
@@ -37,5 +46,17 @@ class TeamController extends Controller
         $this->team->store($data, $syncData);
 
         return redirect()->to('/');
+    }
+
+    public function userJoinTeam($slug)
+    {
+        if (!\Auth::id()) {
+            return redirect()->route('login');
+        } else { 
+            $team = $this->team->getBySlug($slug);        
+            $this->team->attachUser($team, \Auth::id());
+
+            return redirect()->back();
+        }
     }
 }

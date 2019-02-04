@@ -30,6 +30,8 @@ Route::resource('team', 'TeamController', ['except' => 'destroy']);
 // User
 Route::group(['prefix' => 'user'], function () {
     Route::get('/', 'UserController@index');
+    Route::get('/all-auther', 'UserController@allAuther');
+    Route::get('/all-auther/search', 'UserController@searchAuthor');
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('profile', 'UserController@edit');
@@ -86,3 +88,6 @@ Route::get('article/new', 'ArticleController@create');
 Route::post('article/new', 'ArticleController@store');
 Route::get('article/{id}/edit', 'ArticleController@edit');
 Route::put('article/{id}/edit', 'ArticleController@update');
+
+//User Join Team
+Route::post('user/join-team/{slug}', 'TeamController@userJoinTeam')->name('join.team');

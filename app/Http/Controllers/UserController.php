@@ -34,6 +34,18 @@ class UserController extends Controller
     }
 
     /**
+     * Show all auther
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function allAuther()
+    {
+        $authors = $this->user->page(8);
+        
+        return view('user.all', compact('authors'));
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int $username
@@ -45,8 +57,8 @@ class UserController extends Controller
 
         if (!isset($user)) abort(404);
 
-        $discussions = $user->discussions->take(10);
-        $comments = $user->comments->take(10);
+        $discussions = $user->discussions()->take(10);
+        $comments = $user->comments()->take(10);
 
         return view('user.index', compact('user', 'discussions', 'comments'));
     }
@@ -208,5 +220,15 @@ class UserController extends Controller
         $user->unreadNotifications->markAsRead();
 
         return view('user.notifications', compact('user'));
+    }
+
+    public function searchAuthor(Request $request)
+    {
+        $key = trim($request->data);
+        $authors = $this->user->search($key);
+
+        return [
+            'html' => view('user.particals.authors', compact('authors'))->render()
+        ];
     }
 }

@@ -2,9 +2,7 @@
     <div class="container">
         <div class="row comment">
             <div class="col-md-12">
-                <h5>
-                    {{ title }}
-                </h5>
+                <h5>{{ title }}</h5>
             </div>
             <div :class="contentWrapperClass">
                 <div :class="nullClass" v-if="comments.length == 0">
@@ -16,34 +14,19 @@
                             <a class="media-left" :href="'/user/' + comment.username">
                                 <img :src="comment.avatar" class="img-fluid img-circle avatar">
                                 {{ comment.username }}
-                            </a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <i class="fas fa-clock">
-                            </i>
+                            </a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-clock"></i>
                             {{ comment.created_at }}
                             <span class="float-right operate" style="font-size: 12px;">
-														<vote-button v-if="username != comment.username"
-                                                                     :item="comment">
-														</vote-button>
-														<a href="javascript:;" @click="commentDelete(index, comment.id)"
-                                                           v-if="username == comment.username">
-																<i class="fas fa-trash-alt">
-																</i>
-														</a> &nbsp|&nbsp&nbsp
-														<a href="javascript:;" @click="reply(comment.username)">
-																<i class="fas fa-share">
-																</i>
-														</a>
-													</span>
-                        </div>
-                        <br>
-                        <div class="comment-body markdown" :class="comment.is_down_voted ? 'downvoted' : ''"
-                             v-html="comment.content_html">
+								<vote-button v-if="username != comment.username" :item="comment"></vote-button>
+								<a href="javascript:;" @click="commentDelete(index, comment.id)" v-if="username == comment.username"><i class="fas fa-trash-alt"></i>
+								</a> &nbsp|&nbsp&nbsp<a href="javascript:;" @click="reply(comment.username)"><i class="fas fa-share"></i></a>
+							</span>
+                        </div><br>
+                        <div class="comment-body markdown" :class="comment.is_down_voted ? 'downvoted' : ''" v-html="comment.content_html">
                         </div>
                     </div>
                 </div>
-                <div class="text-center" v-if="commentNumber > 2"
-                     style="padding: 10px; font-size: 12px; margin-top: 10px;">
+                <div class="text-center" v-if="commentNumber > 2" style="padding: 10px; font-size: 12px; margin-top: 10px;">
                     <a v-if="!isHidden" href="javascript:void(0)" @click="loadMore(next_page_url)">Load More ...</a>
                 </div>
                 <form class="form mt-4" style="margin-top: 30px;" @submit.prevent="comment" v-if="canComment">
@@ -54,15 +37,12 @@
                             </a>
                         </label>
                         <div class="col-sm-10">
-                            <text-complete id="content" area-class="form-control textarea--autoHeight" v-model="content"
-                                           placeholder="Markdown" :rows="7" :strategies="strategies">
-                            </text-complete>
+                            <text-complete id="content" area-class="form-control textarea--autoHeight" v-model="content"placeholder="Markdown" :rows="7" :strategies="strategies"></text-complete>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <button type="submit" :disabled="isSubmiting ? true : false"
-                                    class="btn btn-success float-right">
+                            <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-success float-right">
                                 {{ $t('form.submit_comment') }}
                             </button>
                         </div>
@@ -193,11 +173,8 @@
         },
         methods: {
             loadMore(next_page_url) {
-                console.log('hello world')
-                console.log(next_page_url)
                 this.$http.get(next_page_url)
                     .then((response) => {
-                        console.log(response.data.meta)
                         response.data.data.forEach((data) => {
                             data.content_html = this.parse(data.content_raw)
                             return data
@@ -286,7 +263,6 @@
                     },
                     callbacks: {
                         onPasteReceived(file) {
-                            console.log('success')
                             let promise = new FineUploader.Promise()
 
                             if (file == null || typeof file.type == 'undefined' || file.type.indexOf('image/')) {

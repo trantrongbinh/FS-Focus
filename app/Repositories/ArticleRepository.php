@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Article;
 use App\View;
+use App\Notifications\VoteArticle;
 use App\Scopes\DraftScope;
 use Carbon\Carbon;
 
@@ -18,7 +19,6 @@ class ArticleRepository
     public function __construct(Article $article, VisitorRepository $visitor)
     {
         $this->model = $article;
-
         $this->visitor = $visitor;
     }
 
@@ -39,8 +39,7 @@ class ArticleRepository
 
         return $this->model
             ->when($keyword, function ($query) use ($keyword) {
-                $query->where('title', 'like', "%{$keyword}%")
-                    ->orWhere('subtitle', 'like', "%{$keyword}%");
+                $query->where('title', 'like', "%{$keyword}%");
             })
             ->orderBy($sortColumn, $sort)->paginate($number);
     }
@@ -57,7 +56,7 @@ class ArticleRepository
     {
         $this->model = $this->checkAuthScope();
 
-        return $this->model->with('user')->withCount('comments')->orderBy($sortColumn, $sort)->paginate($number);
+        return $this->model->with(['user', 'tags'])->withCount('comments')->orderBy($sortColumn, $sort)->paginate($number);
     }
 
     /**
@@ -105,12 +104,30 @@ class ArticleRepository
     public function getBySlug($slug)
     {
         $this->model = $this->checkAuthScope();
-
         $article = $this->model->where('slug', $slug)->withCount('comments')->firstOrFail();
 
         $this->visitor->log($article->id);
 
         return $article;
+    }
+
+    /**
+     * Get the vote of article by article's id.
+     *
+     * @param $slug
+     * @return object
+     */
+    public function getVoteById($id)
+    {
+        $article = $this->getById($id);
+        $vote = [
+            'is_voted' => auth()->id() ? $article->isVotedBy(auth()->id()) : false,
+            'is_up_voted' => auth()->id() ? auth()->user()->hasUpVoted($article) : false,
+            'is_down_voted' => auth()->id() ? auth()->user()->hasDownVoted($article) : false,
+            'vote_count' =>  $article->countUpVoters()
+        ];
+
+        return $vote;
     }
 
     /**
@@ -220,7 +237,7 @@ class ArticleRepository
         }
 
         if ($type == 'up') {
-            $target->user->notify(new GotVote($type . '_vote', $user, $target));
+            $target->user->notify(new VoteArticle($type . '_vote', $user, $target));
         }
 
         $user->{$type . 'Vote'}($target);
@@ -242,6 +259,45 @@ class ArticleRepository
             ->count();
 
         return $viewsArticlesToday;
+    }
+
+    /**
+     * Get related post by category.
+     *
+     * @param  object $article
+     *
+     * @return collection
+     */
+    public function getRelatedPostsByCategory($article)
+    {
+        $articles = $article->where('id', '!=' , $article->id)
+            ->where('category_id', $article->category_id)
+            ->where('user_id', '!=', $article->user_id)
+            ->with('user')
+            ->orderBy('published_at', 'desc')
+            ->take(3)
+            ->get(['id', 'user_id', 'slug', 'page_image', 'published_at', 'title', 'content']); 
+
+        return $articles;
+    }
+
+    /**
+     * Get related post by author.
+     *
+     * @param $article
+     *
+     * @return collection
+     */
+    public function getRelatedPostsByAuthor($article)
+    {   
+        $articles = $article->where('id', '!=' , $article->id)
+            ->where('user_id', $article->user_id)
+            ->with('user')
+            ->orderBy('published_at', 'desc')
+            ->take(3)
+            ->get(); 
+
+        return $articles;
     }
 
 }

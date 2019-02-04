@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\TagRepository;
 use App\Http\Requests\DiscussionRequest;
 use App\Repositories\DiscussionRepository;
+use Carbon\Carbon;
 
 class DiscussionController extends Controller
 {
@@ -33,7 +34,11 @@ class DiscussionController extends Controller
      */
     public function index()
     {
-        $discussions = $this->discussion->page(config('blog.discussion.number'), config('blog.discussion.sort'), config('blog.discussion.sortColumn'));
+        $discussions = $this->discussion->page(
+            config('blog.discussion.number'),
+            config('blog.discussion.sort'),
+            config('blog.discussion.sortColumn')
+        );
 
         return view('discussion.index', compact('discussions'));
     }
@@ -72,7 +77,7 @@ class DiscussionController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource with related.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -81,7 +86,11 @@ class DiscussionController extends Controller
     {
         $discussion = $this->discussion->getById($id);
 
-        return view('discussion.show', compact('discussion'));
+        $related = $this->discussion->getRelatedDiscussions($discussion);
+        
+        $discussion->addViewWithExpiryDate(Carbon::now()->addMinute());
+
+        return view('discussion.show', compact('discussion', 'related'));
     }
 
     /**

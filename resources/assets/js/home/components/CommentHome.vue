@@ -8,20 +8,19 @@
                 <!-- User image -->
                 <div class="post-footer d-flex align-items-center">
                     <a :href="'/user/' + comment.username" class="author d-flex align-items-center flex-wrap">
-                        <div style="margin-right: 10px;"><img :src="comment.avatar" alt="avatar"
-                                                              class="img-fluid img-circle img-sm"></div>
+                        <div style="margin-right: 10px;">
+                            <img :src="comment.avatar" alt="avatar" class="img-fluid img-circle img-sm">
+                        </div>
                         <div class="title"><span>{{ comment.username }}</span></div>
                     </a>
                     <div class="date"><i class="far fa-clock"></i> {{ comment.created_at }}</div>
                     <div class="comments meta-last"><i class="far fa-comment-alt"></i>12</div>
                 </div>
                 <span class="float-right operate">
-					<a href="javascript:void(0)" class="float-right btn-tool" data-toggle="dropdown"
-                       v-if="username == comment.username"><i class="fas fa-ellipsis-h"></i></a>
+					<a href="javascript:void(0)" class="float-right btn-tool" data-toggle="dropdown" v-if="username == comment.username"><i class="fas fa-ellipsis-h"></i></a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="javascript:;" @click="reply(comment.username)">Edit</a>
-						<a class="dropdown-item" href="javascript:;"
-                           @click="commentDelete(index, comment.id)">Delete</a>
+						<a class="dropdown-item" href="javascript:;" @click="commentDelete(index, comment.id)">Delete</a>
 					</div>
 				</span>
                 <span class="float-right btn-tool" v-if="username != comment.username" style="font-size: 12px;">
@@ -29,8 +28,7 @@
 					<a href="javascript:;" @click="reply(comment.username)"><i class="fas fa-share"></i></a>
 				</span>
                 <!-- /.username -->
-                <div class="comment-body markdown" v-html="comment.content_html">
-                </div>
+                <div class="comment-body markdown" v-html="comment.content_html"></div>
                 <!-- /.comment-text -->
             </div>
             <!-- /.card-comment -->
@@ -93,7 +91,7 @@
             commentableType: {
                 type: String,
                 default() {
-                    return 'articles'
+                    return 'discussions'
                 }
             },
             commentableId: {
@@ -164,14 +162,14 @@
                 })
                 this.comments = response.data.data
                 this.next_page_url = response.data.meta.pagination.links.next + '&commentable_type=' + this.commentableType
+            }).catch(error => {
+                stack_error(response)
             })
         },
         methods: {
             loadMore(next_page_url) {
-                console.log(next_page_url)
                 this.$http.get(next_page_url)
                     .then((response) => {
-                        console.log(response.data.meta)
                         response.data.data.forEach((data) => {
                             data.content_html = this.parse(data.content_raw)
                             return data
@@ -193,10 +191,8 @@
                 }
 
                 this.isSubmiting = true
-                console.log(data)
                 this.$http.post('comments', data)
                     .then((response) => {
-                        console.log(response)
                         let comment = null
 
                         comment = response.data.data
@@ -257,5 +253,50 @@
         #content {
             width: 75%;
         }
+    }
+
+    .card-comments {
+      background: #fbfbfb;
+      border-top: none !important;
+
+      .card-comment {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .card-comment:last-child {
+        border-bottom: none !important;
+      }
+
+      .card-comment::after {
+        display: block;
+        clear: both;
+        content: "";
+      }
+
+      .card-comment:last-of-type {
+        border-bottom: 0;
+      }
+
+      .card-comment:first-of-type {
+        padding-top: 0;
+      }
+
+      .comment-text {
+        margin-left: 40px;
+        color: #555;
+      }
+
+      .username {
+        color: #444;
+        display: block;
+        font-weight: 600;
+      }
+
+      .text-muted {
+        font-weight: 400;
+        font-size: 14px;
+      }
+
     }
 </style>
