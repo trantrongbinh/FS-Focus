@@ -2,7 +2,7 @@
 
 ### Purpose
 
-FS-Focus is my project for the purpose of synthesizing, archiving, solving problems, knowledge of information technology. My goal for this blog is to help you guys as much as possible.
+FS-Focus is my project for the purpose of synthesizing, archiving, solving problems, knowledge of information technology. My goal for this blog is to help you guys as much as possible. In 2019, we will done this, of course! Love all.
 
 ### Technology
 
