@@ -14,6 +14,8 @@
 @import url("vendor/simplemde.min.css");
 // Markdown
 @import "markdown";
+// Editor
+@import "dest/quill-custom";
 
 @import "helper";
 @import "styles";

@@ -37,6 +37,8 @@ Vue.component('parse', require('home/components/Parse.vue'));
 Vue.component('parse-textarea', require('home/components/Textarea.vue'));
 Vue.component('avatar', require('home/components/AvatarUpload.vue'));
 Vue.component('clap', require('home/components/Clap.vue'));
+Vue.component('snow-editor', require('home/components/SnowQuillEditor.vue'));
+Vue.component('bubble-editor', require('home/components/BubbleQuillEditor.vue'));
 
 new Vue({
     i18n: i18n,

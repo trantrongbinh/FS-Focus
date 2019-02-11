@@ -63,10 +63,10 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/scss/app.scss', 'public/css')
     .sass('resources/assets/scss/home.scss', 'public/css')
     .sass('resources/assets/scss/dest/author.scss', 'public/css')
-    .styles([
-        'node_modules/quill/dist/quill.bubble.css',
-        'node_modules/quill/dist/quill.snow.css',
-        'resources/assets/scss/dest/quill-custom.scss',
-    ], 'public/css/editor.css')
+    // .styles([
+    //     'node_modules/quill/dist/quill.bubble.css',
+    //     'node_modules/quill/dist/quill.snow.css',
+    //     'resources/assets/scss/dest/quill-custom.scss',
+    // ], 'public/css/editor.css')
     .copyDirectory('resources/assets/images', 'public/images')
     .version();

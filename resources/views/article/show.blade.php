@@ -95,6 +95,9 @@
                                         @endif
                                     </div>
                                     <br><br>
+                                    <bubble-editor></bubble-editor>
+                                    <br>
+                                    <snow-editor></snow-editor>
                                     <!-- comment -->
                                     @if(Auth::guest())
                                         <comment title="You must be logged to add a comment !" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="">
@@ -136,7 +139,8 @@
                                         <strong>Related <i class="fas fa-angle-double-right font-size-12"></i></strong>
                                     </a>
                                     @include('article.related', ['related' => $related['relatedCategory']])
-                                </div> <hr>
+                                </div>
+                                <hr>
                             </div>                      
                         @endif
 

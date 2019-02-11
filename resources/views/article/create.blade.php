@@ -13,7 +13,6 @@
     <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}">
     <title>@yield('title', config('app.name'))</title>
     <link rel="stylesheet" href="{{ asset(mix('css/home.css')) }}">
-    <link rel="stylesheet" href="{{ asset(mix('css/editor.css')) }}">
     <style type="text/css">
     #editor-container {
         font-size: 1.5rem;
