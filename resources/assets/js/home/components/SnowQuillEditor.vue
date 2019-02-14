@@ -45,7 +45,7 @@ export default {
         this.editor.root.innerHTML = this.value;
 
         // We will add the update event here
-        this.editor.on('text-change', () => { console.log('dm') });
+        this.editor.on('text-change', () => { console.log('word') });
     },
     methods: {
         onEditorBlur(editor) {

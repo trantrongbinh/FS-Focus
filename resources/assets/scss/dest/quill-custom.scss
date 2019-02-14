@@ -1,5 +1,22 @@
+.textarea-emoji-control {
+    margin-right: -35px;
+    margin-top: -10px;
+}
+
+.ql-emojiblot {
+    margin-top: -3px;
+}
+
+.ql-tooltip {
+    z-index: 1000 !important;
+}
+
+#emoji-palette {
+    z-index: 1200 !important;
+}
+
 .ql-editor {
-    padding: 20px 5px !important;
+    padding: 3px 5px !important;
 }
 
 .ql-snow .ql-picker.ql-font {
@@ -70,4 +87,3 @@ Set the font-family content used for the HTML content.
     content: '18px';
     font-size: 18px !important;
 }
-

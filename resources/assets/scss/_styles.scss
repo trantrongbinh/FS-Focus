@@ -183,8 +183,9 @@ i[class*="icon-"] {
 
 .post {
   p:not(.lead) {
-    font-weight: 400;
-    font-size: 0.95em;
+    font-size: 16px;
+    line-height: 1.58;
+    letter-spacing: -.004em;
   }
 
   a {
@@ -730,9 +731,9 @@ main.posts-listing {
   width: 30px !important;
 }
 
-.submit-comment img {
-  width: 30px !important;
-}
+// .submit-comment img {
+//   width: 30px !important;
+// }
 
 .img-sm+.img-push,
 .card-comments .card-comment img+.img-push,

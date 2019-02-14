@@ -94,9 +94,6 @@
                                             </span>
                                         @endif
                                     </div>
-                                    <br><br>
-                                    <bubble-editor></bubble-editor>
-                                    <br>
                                     <snow-editor></snow-editor>
                                     <!-- comment -->
                                     @if(Auth::guest())

@@ -82,7 +82,8 @@ class UploadController extends ApiController
             if (!$request->hasFile('image')) {
                 return $this->response->json($res);
             }
-            $path = $strategy . '/' . date('Y') . '/' . date('m') . '/' . date('d');
+            $path = $strategy . '/' . $request->get('table_type') . '/' . $request->get('element_id');
+            //$path = $strategy . '/' . date('Y') . '/' . date('m') . '/' . date('d');
 
             $result = $this->manager->store($request->file('image'), $path);
 
