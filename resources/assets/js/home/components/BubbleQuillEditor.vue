@@ -38,12 +38,19 @@ export default {
 
     mounted() {
         Quill.register('modules/imageResize', ImageResize);
+
         ImageDrop.prototype.handleDrop = (evt) => {
             if (evt.dataTransfer && evt.dataTransfer.files && evt.dataTransfer.files.length) {
-                console.log(ImageDrop.prototype);
-                ImageDrop.prototype.readFiles(evt.dataTransfer.files, this.uploadImages.bind(ImageDrop.prototype));
+                [].forEach.call(evt.dataTransfer.files, file => {
+                    if (!file.type.match(/^image\/(gif|jpe?g|a?png|svg|webp|bmp|vnd\.microsoft\.icon)/i)) {
+                        return;
+                    }
+
+                    ImageDrop.prototype.handleSendFileToServer(file);
+                });
             }
         };
+
         Quill.register('modules/imageDrop', ImageDrop);
 
         const toolbarOptions = {
