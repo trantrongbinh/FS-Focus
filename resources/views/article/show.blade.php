@@ -94,7 +94,7 @@
                                             </span>
                                         @endif
                                     </div>
-                                    <snow-editor></snow-editor>
+                                    <div class="clear2"></div>
                                     <!-- comment -->
                                     @if(Auth::guest())
                                         <comment title="You must be logged to add a comment !" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="">
@@ -159,9 +159,3 @@
     </div>
 @endsection
 
-@section('scripts')
-    <script>
-        hljs.initHighlightingOnLoad();
-        hljs.registerLanguage("java",function(e){var a = "[a-zA-Z_$][a-zA-Z_$0-9]*"});
-    </script>
-@endsection

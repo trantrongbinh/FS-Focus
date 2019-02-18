@@ -47,7 +47,6 @@ export default class ImageDrop {
         const formData = new FormData();
         formData.append('image', files);
         formData.append('strategy', 'article')
-
         let sendFile = $.ajax({
                 url: '/api/file/upload',
                 cache: false,

@@ -8,7 +8,6 @@ import Quill from 'quill';
 window.Quill = Quill;
 import ImageResize from 'quill-image-resize-module';
 import Emoji from 'quill-emoji/dist/quill-emoji';
-import ImageDrop from './../../dest/quill-editor/quill-drop-handle';
 
 export default {
     props: {
@@ -32,26 +31,13 @@ export default {
 
     data() {
         return {
-            editor: null
+            editor: null,
+            contents: ''
         };
     },
 
     mounted() {
         Quill.register('modules/imageResize', ImageResize);
-
-        ImageDrop.prototype.handleDrop = (evt) => {
-            if (evt.dataTransfer && evt.dataTransfer.files && evt.dataTransfer.files.length) {
-                [].forEach.call(evt.dataTransfer.files, file => {
-                    if (!file.type.match(/^image\/(gif|jpe?g|a?png|svg|webp|bmp|vnd\.microsoft\.icon)/i)) {
-                        return;
-                    }
-
-                    ImageDrop.prototype.handleSendFileToServer(file);
-                });
-            }
-        };
-
-        Quill.register('modules/imageDrop', ImageDrop);
 
         const toolbarOptions = {
             container: [
@@ -71,10 +57,8 @@ export default {
 
         this.editor = new Quill(this.$refs.editor, {
             modules: {
-                syntax: true,
                 toolbar: toolbarOptions,
                 imageResize: true,
-                imageDrop: true,
                 'emoji-toolbar': true,
                 'emoji-textarea': true,
                 'emoji-shortname': true,
@@ -90,15 +74,20 @@ export default {
 
         this.editor.root.innerHTML = this.value;
 
+        // handle image drop
+        this.editor.root.addEventListener('drop', this.handleImageDrop, false);
+
         // We will add the update event here
-        this.editor.on('text-change', () => {});
+        this.editor.on('text-change', () => this.update());
     },
     methods: {
         update() {
-            this.$emit('input', this.editor.getText() ? this.editor.root.innerHTML : '');
+            this.contents = this.editor.root.innerHTML;
+            this.$emit('contentUpdated', this.content);
+            //this.$emit('input', this.editor.getText() ? this.editor.root.innerHTML : '');
         },
 
-        uploadImages(files = null) {
+        uploadImages() {
             let fileInput = document.querySelector('input.ql-image[type=file]');
 
             if (fileInput == null) {
@@ -108,39 +97,57 @@ export default {
                 fileInput.classList.add('ql-image');
                 fileInput.addEventListener('change', () => {
                     const files = fileInput.files;
-                    const range = this.editor.getSelection(true);
 
                     if (!files || !files.length) {
                         console.log('No files selected');
                         return;
                     }
 
-                    const formData = new FormData();
-                    formData.append('image', files[0]);
-                    formData.append('strategy', 'comment')
-                    formData.append('element_id', this.elementId)
-                    formData.append('table_type', this.tableType)
-
-                    this.editor.enable(false);
-
-                    this.$http.post('file/upload', formData)
-                    .then(response => {
-                        this.editor.enable(true);
-                        this.editor.insertEmbed(range.index, 'image', response.data.url);
-                        this.editor.setSelection(range.index + 1, Quill.sources.SILENT);
-                        fileInput.value = '';
-                    })
-                    .catch(error => {
-                        console.log('quill image upload failed');
-                        console.log(error);
-                        this.editor.enable(true);
-                    });
+                    this.handleSaveFile(files);
                 });
             }
             fileInput.click();
+        },
+
+        handleImageDrop(evt) {
+            evt.preventDefault();
+            if (evt.dataTransfer && evt.dataTransfer.files && evt.dataTransfer.files.length) {
+                [].forEach.call(evt.dataTransfer.files, file => {
+                    if (!file.type.match(/^image\/(gif|jpe?g|a?png|svg|webp|bmp|vnd\.microsoft\.icon)/i)) {
+                        return;
+                    }
+
+                    this.handleSaveFile(evt.dataTransfer.files);
+                });
+            }
+        },
+
+        handleSaveFile(files) {
+            const formData = new FormData();
+            formData.append('image', files[0]);
+            formData.append('strategy', 'comment')
+            formData.append('element_id', this.elementId)
+            formData.append('table_type', this.tableType)
+
+            this.editor.enable(false);
+
+            this.$http.post('file/upload', formData)
+                .then(response => {
+                    this.editor.enable(true);
+                    this.insertImage(response.data.url);
+                })
+                .catch(error => {
+                    console.log('quill image upload failed');
+                    console.log(error);
+                    this.editor.enable(true);
+                });
+        },
+
+        insertImage(dataUrl) {
+            const index = (this.editor.getSelection() || {}).index || this.editor.getLength();
+            this.editor.insertEmbed(index, 'image', dataUrl, 'user');
         }
     }
 }
 
 </script>
-

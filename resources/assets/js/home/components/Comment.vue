@@ -31,18 +31,19 @@
                 </div>
                 <form class="form mt-4" style="margin-top: 30px;" @submit.prevent="comment" v-if="canComment">
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label own-avatar">
+                       <!--  <label class="col-sm-2 col-form-label own-avatar">
                             <a :href="'/user/' + username">
                                 <img width="60" class="rounded-circle" :src="userAvatar"/>
                             </a>
-                        </label>
-                        <div class="col-sm-10">
-                            <text-complete id="content" area-class="form-control textarea--autoHeight" v-model="content"placeholder="Markdown" :rows="7" :strategies="strategies"></text-complete>
+                        </label> -->
+                        <div class="col-sm-12">
+                            <snow-quill-editor id="content" :strategies="strategies" v-model="content" :table-type="commentableType" :element-id="commentableId"></snow-quill-editor>
                         </div>
                     </div>
+                    <div class="clear2"></div>
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-success float-right">
+                            <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-success">
                                 {{ $t('form.submit_comment') }}
                             </button>
                         </div>
@@ -60,10 +61,11 @@
     import {stack_error} from 'config/helper'
     import VoteButton from 'home/components/VoteButton'
     import TextComplete from 'v-textcomplete'
+    import SnowQuillEditor from 'home/components/SnowQuillEditor'
     import {default as githubEmoji} from 'vendor/github_emoji'
 
     export default {
-        components: {VoteButton, TextComplete},
+        components: {VoteButton, TextComplete, SnowQuillEditor},
         props: {
             contentWrapperClass: {
                 type: String,
@@ -166,10 +168,6 @@
             })
 
             toastr.options = toastrConfig
-
-            if (this.canComment) {
-                this.contentUploader()
-            }
         },
         methods: {
             loadMore(next_page_url) {
@@ -233,92 +231,6 @@
                 })
 
                 return emojione.toImage(marked(html))
-            },
-            contentUploader() {
-                let vm = this
-
-                document.getElementById("content").addEventListener('paste', function (e) {
-                    if (event.clipboardData.types.indexOf("Files") >= 0) {
-                        event.preventDefault()
-                    }
-                }, false);
-
-                let uploader = new FineUploader.FineUploaderBasic({
-                    paste: {
-                        targetElement: document.querySelector('#content')
-                    },
-                    request: {
-                        endpoint: '/api/file/upload',
-                        inputName: 'image',
-                        customHeaders: {
-                            'X-CSRF-TOKEN': window.Laravel.csrfToken,
-                            'X-Requested-With': 'XMLHttpRequest'
-                        },
-                        params: {
-                            strategy: 'comment'
-                        }
-                    },
-                    validation: {
-                        allowedExtensions: ['jpeg', 'jpg', 'gif', 'png']
-                    },
-                    callbacks: {
-                        onPasteReceived(file) {
-                            let promise = new FineUploader.Promise()
-
-                            if (file == null || typeof file.type == 'undefined' || file.type.indexOf('image/')) {
-                                toastr.error('Only can upload image!');
-                                return promise.failure('not a image.')
-                            }
-
-                            if (!/\/(?:jpeg|jpg|png|gif)/i.test(file.type)) {
-                                toastr.error('Uploaded Failed! Image only supported jpeg, jpg, gif and png.');
-                                return promise.failure('not a image.')
-                            }
-
-                            return promise.then(() => {
-                                vm.createdImageUploading('image.png')
-                            }).success('image')
-                        },
-                        onComplete(id, name, responseJSON) {
-                            vm.replaceImageUploading(name, responseJSON.url)
-                        },
-                        onError() {
-                            toastr.error('Uploaded Failed!');
-                            vm.replaceImageUploading(name, '')
-                        }
-                    },
-                });
-
-                let dragAndDropModule = new FineUploader.DragAndDrop({
-                    dropZoneElements: [document.querySelector('#content')],
-                    callbacks: {
-                        processingDroppedFilesComplete(files, dropTarget) {
-                            files.forEach((file) => {
-                                if (!/\/(?:jpeg|jpg|png|gif)/i.test(file.type)) {
-                                    typeoastr.error('Uploaded Failed! Image only supported jpeg, jpg, gif and png.');
-                                    return promise.failure('not a image.')
-                                }
-                                vm.createdImageUploading(file.name)
-                            })
-                            uploader.addFiles(files); //this submits the dropped files to Fine Uploader
-                        }
-                    }
-                })
-            },
-            getImageUploading() {
-                return '\n![Uploading ...]()\n'
-            },
-            createdImageUploading(name) {
-                this.content = this.content + this.getImageUploading()
-            },
-            replaceImageUploading(name, url) {
-                let result = ''
-
-                if (url) {
-                    result = '\n![' + name + '](' + url + ')\n'
-                }
-
-                this.content = this.content.replace(this.getImageUploading(), result)
             },
         }
     }

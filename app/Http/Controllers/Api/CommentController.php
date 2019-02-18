@@ -36,7 +36,7 @@ class CommentController extends ApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(CommentRequest $request)
+    public function store(Request $request)
     {
         $data = array_merge($request->all(), [
             'user_id' => Auth::user()->id

@@ -41,7 +41,7 @@
                     <img class="img-fluid img-circle img-sm" :src="userAvatar" alt="Alt Text">
                 </a>
                 <div class="img-push">
-                    <bubble-quill-editor id="content" :strategies="strategies" v-model="content" :table-type="commentableType" :element-id="commentableId"></bubble-quill-editor>
+                    <bubble-quill-editor id="content" :strategies="strategies" v-model="content" :table-type="commentableType" :element-id="commentableId" @contentUpdated="content = $event" :test="content"></bubble-quill-editor>
                     <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-primary btn-sm send">Send</button>
                 </div>
             </form>
@@ -128,7 +128,7 @@ export default {
     data() {
         return {
             comments: [],
-            content: '',
+            //content: '',
             isSubmiting: false,
             next_page_url: '',
             isHidden: false,
@@ -147,6 +147,9 @@ export default {
                     return '$1:' + value + ': '
                 },
             }],
+            content: [{
+                
+            }]
         }
     },
     mounted() {
@@ -190,6 +193,8 @@ export default {
                 commentable_id: this.commentableId,
                 commentable_type: this.commentableType
             }
+
+            console.log(data);
 
             this.isSubmiting = true
             this.$http.post('comments', data)
