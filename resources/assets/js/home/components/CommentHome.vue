@@ -41,7 +41,7 @@
                     <img class="img-fluid img-circle img-sm" :src="userAvatar" alt="Alt Text">
                 </a>
                 <div class="img-push">
-                    <bubble-quill-editor id="content" :strategies="strategies" v-model="content" :table-type="commentableType" :element-id="commentableId" @contentUpdated="content = $event" :test="content"></bubble-quill-editor>
+                    <bubble-quill-editor id="content" :strategies="strategies" :table-type="commentableType" :element-id="commentableId" @contentUpdated="getContent" ></bubble-quill-editor>
                     <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-primary btn-sm send">Send</button>
                 </div>
             </form>
@@ -171,6 +171,10 @@ export default {
         })
     },
     methods: {
+        getContent (event) {
+           console.log('data after child handle: ', event) // get the data after child dealing
+        },
+
         loadMore(next_page_url) {
             this.$http.get(next_page_url)
                 .then((response) => {

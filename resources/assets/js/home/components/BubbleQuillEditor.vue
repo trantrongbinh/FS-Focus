@@ -83,7 +83,7 @@ export default {
     methods: {
         update() {
             this.contents = this.editor.root.innerHTML;
-            this.$emit('contentUpdated', this.content);
+            this.$emit('contentUpdated', this.contents);
             //this.$emit('input', this.editor.getText() ? this.editor.root.innerHTML : '');
         },
 
