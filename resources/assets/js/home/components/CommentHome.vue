@@ -41,7 +41,7 @@
                     <img class="img-fluid img-circle img-sm" :src="userAvatar" alt="Alt Text">
                 </a>
                 <div class="img-push">
-                    <bubble-quill-editor id="content" :strategies="strategies" :table-type="commentableType" :element-id="commentableId" @contentUpdated="getContent" ></bubble-quill-editor>
+                    <bubble-quill-editor id="content" :strategies="strategies" :table-type="commentableType" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent"></bubble-quill-editor>
                     <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-primary btn-sm send">Send</button>
                 </div>
             </form>
@@ -128,7 +128,7 @@ export default {
     data() {
         return {
             comments: [],
-            //content: '',
+            content: '',
             isSubmiting: false,
             next_page_url: '',
             isHidden: false,
@@ -147,9 +147,6 @@ export default {
                     return '$1:' + value + ': '
                 },
             }],
-            content: [{
-                
-            }]
         }
     },
     mounted() {
@@ -166,13 +163,13 @@ export default {
             })
             this.comments = response.data.data
             this.next_page_url = response.data.meta.pagination.links.next + '&commentable_type=' + this.commentableType
-        }).catch(error => {
-            stack_error(response)
         })
+
+        toastr.options = toastrConfig
     },
     methods: {
-        getContent (event) {
-           console.log('data after child handle: ', event) // get the data after child dealing
+        getContent (value) {
+           this.content = value;
         },
 
         loadMore(next_page_url) {
@@ -197,10 +194,8 @@ export default {
                 commentable_id: this.commentableId,
                 commentable_type: this.commentableType
             }
-
-            console.log(data);
-
             this.isSubmiting = true
+
             this.$http.post('comments', data)
                 .then((response) => {
                     let comment = null
@@ -209,6 +204,7 @@ export default {
                     comment.content_html = this.parse(comment.content_raw)
 
                     this.comments.push(comment)
+                    console.log(this.content)
                     this.content = ''
                     this.isSubmiting = false
 

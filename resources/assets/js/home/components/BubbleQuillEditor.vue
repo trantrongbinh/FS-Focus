@@ -15,6 +15,12 @@ export default {
             type: String,
             default: ''
         },
+        canComment: {
+            type: Boolean,
+            default () {
+                return false
+            }
+        },
         tableType: {
             type: String,
             default () {
@@ -31,8 +37,7 @@ export default {
 
     data() {
         return {
-            editor: null,
-            contents: ''
+            editor: null
         };
     },
 
@@ -71,20 +76,16 @@ export default {
         });
 
         this.editor.root.spellcheck = false;
-
         this.editor.root.innerHTML = this.value;
-
         // handle image drop
         this.editor.root.addEventListener('drop', this.handleImageDrop, false);
-
         // We will add the update event here
         this.editor.on('text-change', () => this.update());
     },
+
     methods: {
         update() {
-            this.contents = this.editor.root.innerHTML;
-            this.$emit('contentUpdated', this.contents);
-            //this.$emit('input', this.editor.getText() ? this.editor.root.innerHTML : '');
+            this.$emit('contentUpdated', this.editor.getText() ? this.editor.root.innerHTML : '');
         },
 
         uploadImages() {

@@ -8,6 +8,8 @@
 }
 
 .ql-tooltip {
+    left: 0 !important;
+    position: absolute;
     z-index: 1000 !important;
 }
 
@@ -16,6 +18,7 @@
 }
 
 .ql-editor {
+    position: relative;
     padding: 3px 5px !important;
 }
 
