@@ -19,7 +19,7 @@
                 <span class="float-right operate">
                     <a href="javascript:void(0)" class="float-right btn-tool" data-toggle="dropdown" v-if="username == comment.username"><i class="fas fa-ellipsis-h"></i></a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="javascript:;" @click="reply(comment.username)">Edit</a>
+                        <a class="dropdown-item" href="javascript:;" @click="reply(comment.username)">Reply</a>
                         <a class="dropdown-item" href="javascript:;" @click="commentDelete(index, comment.id)">Delete</a>
                     </div>
                 </span>
@@ -41,8 +41,8 @@
                     <img class="img-fluid img-circle img-sm" :src="userAvatar" alt="Alt Text">
                 </a>
                 <div class="img-push">
-                    <bubble-quill-editor id="content" :strategies="strategies" :table-type="commentableType" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent"></bubble-quill-editor>
-                    <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-primary btn-sm send">Send</button>
+                    <bubble-quill-editor id="content" :table-type="commentableType" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent"></bubble-quill-editor>
+                    <button type="submit" :disabled="false" class="btn btn-primary btn-sm send">Send</button>
                 </div>
             </form>
             <!-- /.card-comment -->
@@ -53,16 +53,12 @@
 <script>
 import { default as toastr } from 'toastr/build/toastr.min.js'
 import toastrConfig from 'config/toastr'
-import emojione from 'emojione'
-import FineUploader from 'fine-uploader/lib/traditional'
 import { stack_error } from 'config/helper'
 import VoteButton from 'home/components/VoteButton'
-import TextComplete from 'v-textcomplete'
 import BubbleQuillEditor from 'home/components/BubbleQuillEditor'
-import { default as githubEmoji } from 'vendor/github_emoji'
 
 export default {
-    components: { VoteButton, TextComplete, BubbleQuillEditor },
+    components: { VoteButton, BubbleQuillEditor },
     props: {
         contentWrapperClass: {
             type: String,
@@ -132,21 +128,6 @@ export default {
             isSubmiting: false,
             next_page_url: '',
             isHidden: false,
-            strategies: [{
-                match: /(^|\s):([a-z0-9+\-\_]*)$/,
-                search(term, callback) {
-                    callback(Object.keys(githubEmoji).filter(function(name) {
-                        return name.startsWith(term);
-                    }).slice(0, 10))
-                },
-                template(name) {
-                    console.log(githubEmoji[name]);
-                    return '<img width="17" src="' + githubEmoji[name] + '"></img> ' + name;
-                },
-                replace(value) {
-                    return '$1:' + value + ': '
-                },
-            }],
         }
     },
     mounted() {
@@ -157,7 +138,7 @@ export default {
             }
         }).then((response) => {
             response.data.data.forEach((data) => {
-                data.content_html = this.parse(data.content_raw)
+                data.content_html = this.parse(data.content_html)
 
                 return data
             })
@@ -168,15 +149,15 @@ export default {
         toastr.options = toastrConfig
     },
     methods: {
-        getContent (value) {
-           this.content = value;
+        getContent(value) {
+            this.content = value;
         },
 
         loadMore(next_page_url) {
             this.$http.get(next_page_url)
                 .then((response) => {
                     response.data.data.forEach((data) => {
-                        data.content_html = this.parse(data.content_raw)
+                        data.content_html = this.parse(data.content_html)
                         return data
                     })
                     this.comments.push(...response.data.data)
@@ -186,38 +167,43 @@ export default {
                         this.isHidden = true
                     }
                 })
-
         },
+
         comment() {
-            const data = {
-                content: this.content,
-                commentable_id: this.commentableId,
-                commentable_type: this.commentableType
+            if (this.content.trim().length !== 0) {
+                const data = {
+                    content: this.content,
+                    commentable_id: this.commentableId,
+                    commentable_type: this.commentableType
+                }
+                this.isSubmiting = true
+
+                this.$http.post('comments', data)
+                    .then((response) => {
+                        let comment = null
+
+                        comment = response.data.data
+                        comment.content_html = this.parse(comment.content_html)
+
+                        this.comments.push(comment)
+                        this.content = ''
+                        this.isSubmiting = false
+
+                        toastr.success('You publish the comment success!')
+                    }).catch(({ response }) => {
+                        this.isSubmiting = false
+                        stack_error(response)
+                    })
+            } else {
+                console.log('nhap content baby!!!')
             }
-            this.isSubmiting = true
-
-            this.$http.post('comments', data)
-                .then((response) => {
-                    let comment = null
-
-                    comment = response.data.data
-                    comment.content_html = this.parse(comment.content_raw)
-
-                    this.comments.push(comment)
-                    console.log(this.content)
-                    this.content = ''
-                    this.isSubmiting = false
-
-                    toastr.success('You publish the comment success!')
-                }).catch(({ response }) => {
-                    this.isSubmiting = false
-                    stack_error(response)
-                })
         },
+
         reply(name) {
             $('#content').focus()
             this.content = '@' + name + ' '
         },
+
         commentDelete(index, id) {
             this.$http.delete('comments/' + id)
                 .then((response) => {
@@ -225,6 +211,7 @@ export default {
                     toastr.success('You delete your comment success!')
                 })
         },
+
         parse(html) {
             marked.setOptions({
                 highlight: (code) => {
@@ -232,7 +219,7 @@ export default {
                 }
             })
 
-            return emojione.toImage(marked(html))
+            return marked(html)
         },
     }
 }

@@ -49,9 +49,7 @@ class CommentRepository
     public function store($input)
     {
         $mention = new Mention();
-
         $input['content'] = $mention->parse($input['content']);
-
         $comment = $this->save($this->model, $input);
 
         foreach ($mention->users as $user) {

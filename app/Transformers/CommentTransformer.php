@@ -22,6 +22,7 @@ class CommentTransformer extends TransformerAbstract
             'commentable'   => isset($comment->commentable) ? $comment->commentable->title : 'Be Forbidden!',
             'type'          => $comment->commentable_type,
             'content_raw'   => $content->raw,
+            'content_html'   => $content->html,
             'created_at'    => $comment->created_at->diffForHumans(),
             'is_voted'      => auth()->guard('api')->id() ? $comment->isVotedBy(auth()->guard('api')->id()) : false,
             'is_up_voted'   => auth()->guard('api')->id() ? auth()->guard('api')->user()->hasUpVoted($comment) : false,

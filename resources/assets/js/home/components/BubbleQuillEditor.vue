@@ -15,7 +15,7 @@ export default {
             type: String,
             default: ''
         },
-        canComment: {
+        status: {
             type: Boolean,
             default () {
                 return false
@@ -37,7 +37,8 @@ export default {
 
     data() {
         return {
-            editor: null
+            editor: null,
+            contents: ''
         };
     },
 
@@ -83,9 +84,21 @@ export default {
         this.editor.on('text-change', () => this.update());
     },
 
+    watch: {
+        status: function() {
+            this.editor.setContents([{ insert: '\n' }]);
+        }
+    },
+
     methods: {
         update() {
-            this.$emit('contentUpdated', this.editor.getText() ? this.editor.root.innerHTML : '');
+            if (!(this.editor.getText().trim().length === 0 && this.editor.container.firstChild.innerHTML.includes("img") === false && this.editor.container.firstChild.innerHTML.includes('class="ql-emojiblot"') === false)) {
+                this.contents = this.editor.root.innerHTML;
+            } else {
+                this.contents = '';
+            };
+
+            this.$emit('contentUpdated', this.contents);
         },
 
         uploadImages() {

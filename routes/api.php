@@ -48,6 +48,7 @@ Route::group([
 ], function () {
     // File Upload
     Route::post('file/upload', 'UploadController@fileUpload')->middleware('auth:api');
+    
     // Edit Avatar
     Route::post('crop/avatar', 'UserController@cropAvatar')->middleware('auth:api');
 

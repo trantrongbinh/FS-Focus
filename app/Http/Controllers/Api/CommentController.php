@@ -42,8 +42,6 @@ class CommentController extends ApiController
             'user_id' => Auth::user()->id
         ]);
 
-        $data['content'] = $data['content'];
-
         $comment = $this->comment->store($data);
 
         $comment->commentable->user->notify(new Received($comment));
