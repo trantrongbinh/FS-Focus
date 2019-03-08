@@ -4,7 +4,7 @@
             <div :class="nullClass" v-if="comments.length == 0">
                 {{ nullText }}
             </div>
-            <div class="card-comment" v-for="(comment, index) in comments">
+            <div class="card-comment" v-for="(comment, index) in comments" v-else>
                 <!-- User image -->
                 <div class="post-footer d-flex align-items-center">
                     <a :href="'/user/' + comment.username" class="author d-flex align-items-center flex-wrap">
@@ -28,7 +28,7 @@
                     <a href="javascript:;" @click="reply(comment.username)"><i class="fas fa-share"></i></a>
                 </span>
                 <!-- /.username -->
-                <div class="comment-body markdown" v-html="comment.content_html"></div>
+                <div class="comment-body markdown" :class="comment.is_down_voted ? 'downvoted' : ''" v-html="comment.content_html"></div>
                 <!-- /.comment-text -->
             </div>
             <!-- /.card-comment -->
@@ -42,7 +42,7 @@
                 </a>
                 <div class="img-push">
                     <bubble-quill-editor id="content" :table-type="commentableType" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent"></bubble-quill-editor>
-                    <button type="submit" :disabled="false" class="btn btn-primary btn-sm send">Send</button>
+                    <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-primary btn-sm send">Send</button>
                 </div>
             </form>
             <!-- /.card-comment -->
@@ -87,7 +87,7 @@ export default {
         commentableType: {
             type: String,
             default () {
-                return 'discussions'
+                return 'articles'
             }
         },
         commentableId: {
@@ -121,6 +121,7 @@ export default {
             }
         }
     },
+
     data() {
         return {
             comments: [],
@@ -130,6 +131,7 @@ export default {
             isHidden: false,
         }
     },
+
     mounted() {
         var url = 'commentable/' + this.commentableId + '/comment'
         this.$http.get(url, {
@@ -148,6 +150,7 @@ export default {
 
         toastr.options = toastrConfig
     },
+
     methods: {
         getContent(value) {
             this.content = value;

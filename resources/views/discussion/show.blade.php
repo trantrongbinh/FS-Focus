@@ -46,7 +46,7 @@
                             <div class="post-details">
                                 <div class="post-body font-size-18 text-equidistant">
                                     <p class="lead">{{ $discussion->meta_description }}</p>
-                                    <parse content="{{ json_decode($discussion->content)->raw }}"></parse>
+                                    {{-- <parse content="{{ json_decode($discussion->content)->raw }}"></parse> --}}
                                 </div>
                                 <div class="display-inline">
                                     @if(count($discussion->tags))
@@ -68,18 +68,10 @@
                         <br><br>
                         <!-- comment -->
                         @if(Auth::guest())
-                            <comment commentable-type="discussions"
-                                     commentable-id="{{ $discussion->id }}"
-                                     null-text="" comment-number="{{ $discussion->comments_count }}">
-                            </comment>
+                            <a href="{{ url('login') }}" class="text-center" style="padding-bottom: 20px;">@lang('You must be logged to add a comment !')</a>
+                            <comment title="Post Comments" commentable-type="discussions" commentable-id="{{ $discussion->id }}" null-text="" comment-number="{{ $discussion->comments_count }}"></comment>
                         @else
-                            <comment title="Bình luận" username="{{ Auth::user()->name }}"
-                                     user-avatar="{{ Auth::user()->avatar }}"
-                                     commentable-type="discussions"
-                                     commentable-id="{{ $discussion->id }}"
-                                     null-text="" comment-number="{{ $discussion->comments_count }}"
-                                     can-comment>
-                            </comment>
+                            <comment title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="discussions" commentable-id="{{ $discussion->id }}" null-text="" comment-number="{{ $discussion->comments_count }}" can-comment></comment>
                         @endif
                     </div>
                     <!-- Box Left-->
@@ -108,8 +100,3 @@
     </div>
 @endsection
 
-@section('scripts')
-    <script>
-        hljs.initHighlightingOnLoad();
-    </script>
-@endsection

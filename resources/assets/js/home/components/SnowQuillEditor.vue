@@ -15,6 +15,12 @@ export default {
             type: String,
             default: ''
         },
+        status: {
+            type: Boolean,
+            default () {
+                return false
+            }
+        },
         tableType: {
             type: String,
             default () {
@@ -31,7 +37,8 @@ export default {
 
     data() {
         return {
-            editor: null
+            editor: null,
+            contents: ''
         };
     },
 
@@ -68,18 +75,29 @@ export default {
         });
 
         this.editor.root.spellcheck = false;
-
         this.editor.root.innerHTML = this.value;
-
         // handle image drop
         this.editor.root.addEventListener('drop', this.handleImageDrop, false);
-
         // We will add the update event here
-        this.editor.on('text-change', () => {});
+        this.editor.on('text-change', () => this.update());
     },
+
+    watch: {
+        status: function() {
+            this.editor.setContents([]);
+            let elem = document.querySelector('.ql-tooltip').nextSibling.style.display = 'none';
+        }
+    },
+
     methods: {
         update() {
-            this.$emit('input', this.editor.getText() ? this.editor.root.innerHTML : '');
+            if (!(this.editor.getText().trim().length === 0 && this.editor.container.firstChild.innerHTML.includes("img") === false && this.editor.container.firstChild.innerHTML.includes('class="ql-emojiblot"') === false)) {
+                this.contents = this.editor.root.innerHTML;
+            } else {
+                this.contents = '';
+            };
+
+            this.$emit('contentUpdated', this.contents);
         },
 
         uploadImages() {
