@@ -47,14 +47,14 @@ section {
   overflow-x: hidden;
 }
 
-button,
-input {
+button {
   font-weight: 700 !important;
   outline: none !important;
+  cursor: pointer;
 }
 
-button {
-  cursor: pointer;
+input {
+  outline: none !important;
 }
 
 a.btn {

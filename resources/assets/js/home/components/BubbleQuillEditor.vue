@@ -1,5 +1,8 @@
 <template>
-    <div ref="editor" v-html="value"></div>
+    <div>
+        <div ref="editor" v-html="value"></div>
+        <textarea class="hidden" name="content">{{ contents }}</textarea>
+    </div>
 </template>
 <script>
 import 'quill/dist/quill.bubble.css';
@@ -30,7 +33,13 @@ export default {
         elementId: {
             type: String,
             default () {
-                return 0
+                return ''
+            }
+        },
+        strategy: {
+            type: String,
+            default () {
+                return 'comment'
             }
         },
     },
@@ -139,7 +148,7 @@ export default {
         handleSaveFile(files) {
             const formData = new FormData();
             formData.append('image', files[0]);
-            formData.append('strategy', 'comment')
+            formData.append('strategy', this.strategy)
             formData.append('element_id', this.elementId)
             formData.append('table_type', this.tableType)
 

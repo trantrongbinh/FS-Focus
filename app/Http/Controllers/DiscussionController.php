@@ -7,6 +7,8 @@ use App\Http\Requests\DiscussionRequest;
 use App\Repositories\DiscussionRepository;
 use Carbon\Carbon;
 
+use Illuminate\Http\Request;
+
 class DiscussionController extends Controller
 {
     /**
@@ -50,8 +52,6 @@ class DiscussionController extends Controller
      */
     public function create()
     {
-        // $tags = $this->tag->all();
-
         return view('discussion.create');
     }
 
@@ -61,7 +61,7 @@ class DiscussionController extends Controller
      * @param  DiscussionRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DiscussionRequest $request)
+    public function store(Request $request)
     {
         $data = array_merge($request->all(), [
             'user_id' => \Auth::id(),

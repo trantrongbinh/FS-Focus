@@ -36,7 +36,7 @@
                             </a>
                         </label> -->
                         <div class="col-sm-12">
-                            <snow-quill-editor id="content" :table-type="commentableType" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent"></snow-quill-editor>
+                            <snow-quill-editor id="content" :table-type="commentableType" strategy="comment" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent"></snow-quill-editor>
                         </div>
                     </div>
                     <div class="clear2"></div>

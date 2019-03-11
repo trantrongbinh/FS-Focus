@@ -41,7 +41,7 @@
                     <img class="img-fluid img-circle img-sm" :src="userAvatar" alt="Alt Text">
                 </a>
                 <div class="img-push">
-                    <bubble-quill-editor id="content" :table-type="commentableType" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent"></bubble-quill-editor>
+                    <bubble-quill-editor id="content" :table-type="commentableType" :element-id="commentableId" strategy="comment" :status="isSubmiting" @contentUpdated="getContent"></bubble-quill-editor>
                     <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-primary btn-sm send">Send</button>
                 </div>
             </form>
