@@ -1,0 +1,39 @@
+#editor-container {
+    font-size: 1.5rem;
+    padding: 0 10px;
+    width: 109%;
+    background-color: #fff;
+    overflow: hidden;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+#full-editor {
+    display: flex;
+    flex-flow: column;
+    font-size: 1.5rem;
+    width: 100%;
+    min-height: 700px;
+
+    .editor {
+        font-size: 18px;
+    }
+
+    .ql-snow {
+        border: none;
+    }
+
+    .ql-toolbar.ql-snow {
+        background: #fff;
+        padding: 5px 0;
+    }
+
+    .ql-toolbar {
+        border-bottom: 1px solid #ccc;
+    }
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+}

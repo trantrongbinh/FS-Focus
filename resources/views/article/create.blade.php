@@ -13,11 +13,13 @@
     <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}">
     <title>@yield('title', config('app.name'))</title>
     <link rel="stylesheet" href="{{ asset(mix('css/home.css')) }}">
+    <link rel="stylesheet" href="{{ asset(mix('css/quill-custom.css')) }}">
+
     <style type="text/css">
     #editor-container {
         font-size: 1.5rem;
         padding: 0 10px;
-        width: 109%;
+        width: 100%;
     }
 
     #editor-container {
@@ -189,7 +191,7 @@
         </nav>
         <div class="container">
             <main class="article row">
-                <div class="col-md-10 offset-md-1 create-post">
+                <div class="col-md-12 create-post">
                     <form class="form" action="{{ url('article/new') }}" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group row">

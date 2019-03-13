@@ -55,16 +55,16 @@ Set the font-family content used for the HTML content.
     font-family: 'Times New Roman';
 }
 
-/* Heading */
-.ql-snow .ql-picker.ql-header .ql-picker-label::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item::before {
+// /* Heading */
+.ql-snow .ql-picker.ql-header .ql-picker-label:not(data-value)::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item:not(data-value)::before {
     content: 'Heading';
 }
 
-/* Size */
-.ql-snow .ql-picker.ql-size .ql-picker-label::before,
-.ql-snow .ql-picker.ql-size .ql-picker-item::before {
-    content: 'Size';
+// /* Size */
+.ql-snow .ql-picker.ql-size .ql-picker-label:not(data-value)::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item:not(data-value)::before {
+    content: 'Front Size';
 }
 
 .ql-snow .ql-picker.ql-size .ql-picker-label[data-value='12px']::before,
