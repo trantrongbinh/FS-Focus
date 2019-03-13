@@ -129,8 +129,8 @@ class Discussion extends Model
     public function setContentAttribute($value)
     {
         $data = [
-            'raw' => $value,
-            'html' => (new Markdowner)->convertMarkdownToHtml($value)
+            'raw' => (new Markdowner)->convertHtmlToMarkdown($value),
+            'html' => $value
         ];
 
         $this->attributes['content'] = json_encode($data);

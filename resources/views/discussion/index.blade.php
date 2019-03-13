@@ -57,27 +57,21 @@
                                                     <span class="text-red">*</span>
                                                     <textarea class="textarea form-control{{ $errors->has('title') ? ' is-invalid' : '' }} box__input textarea--autoHeight" rows="1" id="title" name="title" placeholder="Title your post">{{ old('title') }}</textarea>
                                                     @if ($errors->has('title'))
-                                                        <span class="invalid-feedback d-block">
+                                                        <span class="invalid-feedback d-block text-right">
                                                             <strong>{{ $errors->first('title') }}</strong>
                                                         </span>
                                                     @endif
                                                 </div>
                                             </div>
-                                            {{-- <div class="form-group row">
-                                                <div class="col-sm-12">
-                                                    <textarea class="textarea form-control box__input textarea--autoHeight" rows="1" id="meta_description" name="meta_description" placeholder="Description cô đọng giúp bài viết hay hơn (không bắt buộc)"></textarea>
-                                                </div>
-                                            </div> --}}
                                             <div class="form-group row">
                                                 <div class="col-sm-12 q-item">
                                                     <span class="text-red">*</span>
-                                                    <bubble-editor style="width: 95%; margin-top: 5px;" id="content-dis" table-type="discussion" strategy="discussion"></bubble-editor>
-                                                    {{-- <textarea class="box__input textarea--autoHeight form-control{{ $errors->has('content') ? ' is-invalid' : '' }}" id="content" rows="2" name="content" placeholder="Write Conten here ....">{{ old('content') }}</textarea> --}}
-                                                    {{-- @if ($errors->has('content'))
-                                                    <span class="invalid-feedback">
-                                                        <strong>{{ $errors->first('content') }}</strong>
-                                                    </span>
-                                                    @endif --}}
+                                                    <bubble-editor style="width: 95%; margin-top: 5px;" id="content-dis" table-type="discussion" strategy="discussion" old-content="{{ old('content') }}"></bubble-editor>
+                                                    @if ($errors->has('content'))
+                                                        <span class="invalid-feedback d-block text-right">
+                                                            <strong>{{ $errors->first('content') }}</strong>
+                                                        </span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -89,7 +83,7 @@
                                                         @endforeach
                                                     </select>
                                                     @if ($errors->has('tags'))
-                                                    <span class="invalid-feedback d-block">
+                                                    <span class="invalid-feedback d-block text-right">
                                                         <strong>{{ $errors->first('tags') }}</strong>
                                                     </span>
                                                     @endif
@@ -134,9 +128,7 @@
                                     <a href="{{ url('discussion', ['id' => $discussion->id]) }}">
                                         <h3 class="h4 text-equidistant">{{ $discussion->title }}</h3>
                                     </a>
-                                    @if($discussion->meta_description)
-                                    <p class="lead text-equidistant">{{ $discussion->meta_description}}</p>
-                                    @endif
+                                    {{-- <p class="lead text-equidistant">{{ $discussion->meta_description}}</p> --}}
                                     <div class="meta">
                                         @if(count($discussion->tags))
                                         <div class="post-tags">
@@ -146,6 +138,7 @@
                                         </div>
                                         @endif
                                     </div>
+                                    <parse content="{{ json_decode($discussion->content)->html }}" end-point="{{ url('discussion', ['id' => $discussion->id]) }}" min-limit="{{ config('blog.str_limit.content_discussion.min') }}" max-limit="{{ config('blog.str_limit.content_discussion.max') }}"></parse>
                                 </header>
                             </div>
                             <!-- comment -->

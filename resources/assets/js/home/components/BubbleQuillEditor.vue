@@ -42,6 +42,12 @@ export default {
                 return 'comment'
             }
         },
+        oldContent: {
+            type: String,
+            default () {
+                return ''
+            }
+        }
     },
 
     data() {
@@ -86,7 +92,7 @@ export default {
         });
 
         this.editor.root.spellcheck = false;
-        this.editor.root.innerHTML = this.value;
+        this.editor.root.innerHTML = this.oldContent;
         // handle image drop
         this.editor.root.addEventListener('drop', this.handleImageDrop, false);
         // We will add the update event here
@@ -153,6 +159,8 @@ export default {
             formData.append('table_type', this.tableType)
 
             this.editor.enable(false);
+
+            console.log(formData);
 
             this.$http.post('file/upload', formData)
                 .then(response => {

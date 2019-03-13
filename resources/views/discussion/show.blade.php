@@ -45,8 +45,8 @@
                             <br>
                             <div class="post-details">
                                 <div class="post-body font-size-18 text-equidistant">
-                                    <p class="lead">{{ $discussion->meta_description }}</p>
-                                    {{-- <parse content="{{ json_decode($discussion->content)->raw }}"></parse> --}}
+                                    {{-- <p class="lead">{{ $discussion->meta_description }}</p> --}}
+                                    <div class="markdown">{!! json_decode($discussion->content)->html !!}</div>
                                 </div>
                                 <div class="display-inline">
                                     @if(count($discussion->tags))

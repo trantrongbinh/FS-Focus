@@ -75,6 +75,10 @@ return [
 
     'str_limit' => [
         'name' => 15,
+        'content_discussion' => [
+            'min' => 1000,
+            'max' => 3000,
+        ],
     ],
 
 ];

@@ -1,10 +1,11 @@
 <template>
-    <div class="markdown" v-html="rawHtml"></div>
+    <div>
+        <div class="markdown" v-html="html"></div>
+        <a v-if="!isHidden" href="javascript:void(0)" @click="readMore(content.length)"><strong>Xem thêm</strong></a>
+    </div>
 </template>
 
 <script>
-    import emojione from 'emojione'
-
     export default {
         props: {
             content: {
@@ -12,27 +13,65 @@
                 default() {
                     return null
                 }
-            }
+            },
+
+            endPoint: {
+                type: String,
+                default() {
+                    return ''
+                }
+            },
+
+            minLimit: {
+                type: String,
+                default() {
+                    return 0
+                }
+            },
+
+            maxLimit: {
+                type: String,
+                default() {
+                    return 0
+                }
+            },
         },
+
         data() {
             return {
-                rawHtml: ''
+                html: '',
+                isHidden: false,
             }
         },
-        created() {
-            this.rawHtml = this.parse(this.content)
-        },
-        methods: {
-            parse(content) {
-                marked.setOptions({
-                    highlight: (code) => {
-                        return hljs.highlightAuto(code).value
-                    },
-                    sanitize: true
-                })
 
-                return emojione.toImage(marked(content))
+        created() {
+            this.html = this.parse(this.content, this.minLimit)
+        },
+
+        watch: {
+            minLimit: function() {
+                this.html = this.parse(this.content, this.minLimit)
+            }
+        },
+
+        methods: {
+            parse(content, limit) {
+                if (limit != 0 && content.length > limit) {
+                    content = content.substring(0, limit) + '<div class="text-orange">...</div>';
+                } else {
+                    this.isHidden = true;
+                }
+
+                return content;
             },
+
+            readMore(lengthContent) {
+                if (lengthContent > this.maxLimit) {
+                    window.location = this.endPoint;
+                } else {
+                    this.minLimit = 0;
+                }
+            }
         },
     }
 

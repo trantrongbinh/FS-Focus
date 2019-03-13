@@ -38,17 +38,11 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="meta_description" class="col-sm-2 col-form-label">Description </label>
-                        <div class="col-sm-10">
-                            <textarea class="textarea form-control box__input textarea--autoHeight" rows="3" id="meta_description" name="meta_description"  placeholder="Description cô đọng giúp bài viết hay hơn (không bắt buộc)">{{ $discussion->meta_description }}</textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
                         <label for="content" class="col-sm-2 col-form-label">{{ lang('Discuss Content') }} <span class="text-red">*</span></label>
                         <div class="col-sm-10">
-                            <parse-textarea class="{{ $errors->has('content') ? ' is-invalid' : '' }} box__input textarea--autoHeight" content="{{ json_decode($discussion->content)->raw }}" placeholder="Write Conten here ...."></parse-textarea>
+                            <bubble-editor id="content-dis" table-type="discussion" strategy="discussion" old-content="{{ json_decode($discussion->content)->html }}"></bubble-editor>
                             @if ($errors->has('content'))
-                                <span class="invalid-feedback">
+                                <span class="invalid-feedback d-block">
                                     <strong>{{ $errors->first('content') }}</strong>
                                 </span>
                             @endif

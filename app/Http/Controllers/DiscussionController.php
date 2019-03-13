@@ -7,8 +7,6 @@ use App\Http\Requests\DiscussionRequest;
 use App\Repositories\DiscussionRepository;
 use Carbon\Carbon;
 
-use Illuminate\Http\Request;
-
 class DiscussionController extends Controller
 {
     /**
@@ -61,15 +59,13 @@ class DiscussionController extends Controller
      * @param  DiscussionRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DiscussionRequest $request)
     {
         $data = array_merge($request->all(), [
             'user_id' => \Auth::id(),
             'last_user_id' => \Auth::id(),
             'status' => true
         ]);
-
-        $data['content'] = $data['content'];
 
         $this->discussion->store($data);
 
