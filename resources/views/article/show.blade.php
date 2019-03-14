@@ -14,13 +14,13 @@
                                     <div class="post-meta justify-content-between text-center">
                                         @if($article->category_id)
                                         <h4 class="h5">
-                                            <p class="text-hero"><i class="fas fa-arrow-alt-circle-right text-gray-v1 font-size-10"></i> Category: <span><a href="{{ url('category', ['name' => $article->category->name]) }}" class="text-blue hero-link"> {{ $article->category->name }}</a></span></p>
+                                            <p class="text-hero"><i class="fas fa-arrow-alt-circle-right text-gray_v1 font-size_10"></i> Category: <span><a href="{{ url('category', ['name' => $article->category->name]) }}" class="text-blue hero-link"> {{ $article->category->name }}</a></span></p>
                                         </h4>
                                         @endif
                                     </div>
-                                    <h1 class="text-equidistant title-ttb">{{ $article->title }}&nbsp&nbsp<a href="#"><i class="far fa-bookmark"></i></a></h1>
+                                    <h1 class=" title-article__show">{{ $article->title }}&nbsp&nbsp<a href="#"><i class="far fa-bookmark"></i></a></h1>
                                 </div>
-                                <div class="display-inline">
+                                <div class="display__inline">
                                     @if(count($article->tags))
                                         <span class="post-tags">
                                             @foreach($article->tags as $tag)
@@ -36,7 +36,7 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="post-footer d-flex align-items-center flex-column flex-sm-row font-size-12">
+                                <div class="post-footer d-flex align-items-center flex-column flex-sm-row font-size_12">
                                     <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
                                         <div class="avatar">
                                             <img src="{{ asset($article->user->avatar) }}" alt="{{ $article->user->name }}" class="img-fluid">
@@ -67,7 +67,7 @@
                                     </div>
                                 @endif
                                 <div class="post-details">
-                                    <div class="post-body font-size-18 text-equidistant">
+                                    <div class="post-body font-size_18 ">
                                         <p class="lead">{{ $article->meta_description }}</p>
                                         <parse content="{{ $article->content['raw'] }}"></parse>
                                     </div>
@@ -78,7 +78,7 @@
                                         <p>"{!! config('blog.license') !!}" - Bkfa Team</p>
                                     </div>
                                     @endif
-                                    <div class="display-inline">
+                                    <div class="display__inline">
                                         @if(count($article->tags))
                                             <span class="post-tags">
                                                 @foreach($article->tags as $tag)
@@ -133,7 +133,7 @@
                             <div class="related-posts">
                                 <div class="container">
                                     <a href="#" class="read-next clear">
-                                        <strong>Related <i class="fas fa-angle-double-right font-size-12"></i></strong>
+                                        <strong>Related <i class="fas fa-angle-double-right font-size_12"></i></strong>
                                     </a>
                                     @include('article.related', ['related' => $related['relatedCategory']])
                                 </div>
@@ -145,7 +145,7 @@
                             <div class="related-posts">
                                 <div class="container">
                                     <a href="#" class="read-next clear">
-                                        <strong>More from {{ $article->user->name }} <i class="fas fa-angle-double-right font-size-12"></i></strong>
+                                        <strong>More from {{ $article->user->name }} <i class="fas fa-angle-double-right font-size_12"></i></strong>
                                     </a>
                                     @include('article.related', ['related' => $related['relatedAuthor']])
                                 </div> <hr>

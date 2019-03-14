@@ -58,7 +58,7 @@
                                 <div class="post col-md-10 offset-md-1">
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="recent-articles">
-                                            <div class="row d-flex align-items-stretch featured-posts post-ttb">
+                                            <div class="row d-flex align-items-stretch featured-posts post-list">
                                                 <div class="text col-lg-12">
                                                     <div class="text-inner d-flex align-items-center">
                                                         <div class="content">
@@ -79,7 +79,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row d-flex align-items-stretch featured-posts post-ttb">
+                                            <div class="row d-flex align-items-stretch featured-posts post-list">
                                                 <div class="text col-lg-8">
                                                     <div class="text-inner d-flex align-items-center">
                                                         <div class="content">
@@ -103,7 +103,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="row d-flex align-items-stretch featured-posts post-ttb">
+                                            <div class="row d-flex align-items-stretch featured-posts post-list">
                                                 <div class="text col-lg-8">
                                                     <div class="text-inner d-flex align-items-center">
                                                         <div class="content">
@@ -124,7 +124,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="row d-flex align-items-stretch featured-posts post-ttb">
+                                            <div class="row d-flex align-items-stretch featured-posts post-list">
                                                 <div class="text col-lg-8">
                                                     <div class="text-inner d-flex align-items-center">
                                                         <div class="content">
@@ -145,7 +145,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="row d-flex align-items-stretch featured-posts post-ttb">
+                                            <div class="row d-flex align-items-stretch featured-posts post-list">
                                                 <div class="text col-lg-8">
                                                     <div class="text-inner d-flex align-items-center">
                                                         <div class="content">
@@ -166,7 +166,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="row d-flex align-items-stretch featured-posts post-ttb">
+                                            <div class="row d-flex align-items-stretch featured-posts post-list">
                                                 <div class="text col-lg-8">
                                                     <div class="text-inner d-flex align-items-center">
                                                         <div class="content">
@@ -187,7 +187,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="row d-flex align-items-stretch featured-posts post-ttb">
+                                            <div class="row d-flex align-items-stretch featured-posts post-list">
                                                 <div class="text col-lg-8">
                                                     <div class="text-inner d-flex align-items-center">
                                                         <div class="content">
@@ -211,7 +211,7 @@
                                         </div>
                                         <!-- /.tab-pane -->
                                         <div class="tab-pane posts-listing" id="recent-discussions">
-                                              <div class="row d-flex align-items-stretch featured-posts post-ttb">
+                                              <div class="row d-flex align-items-stretch featured-posts post-list">
                                                 <div class="text col-lg-12">
                                                     <div class="text-inner d-flex align-items-center">
                                                         <div class="content">
@@ -235,7 +235,7 @@
                                         </div>
                                         <!-- /.tab-pane -->
                                         <div class="tab-pane" id="recent-comments">
-                                              <div class="row d-flex align-items-stretch featured-posts post-ttb">
+                                              <div class="row d-flex align-items-stretch featured-posts post-list">
                                                 <div class="text col-lg-12">
                                                     <div class="text-inner d-flex align-items-center">
                                                         <div class="content">
@@ -256,7 +256,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row d-flex align-items-stretch featured-posts post-ttb">
+                                            <div class="row d-flex align-items-stretch featured-posts post-list">
                                                 <div class="text col-lg-12">
                                                     <div class="text-inner d-flex align-items-center">
                                                         <div class="content">

@@ -126,9 +126,9 @@
                                 </div>
                                 <header class="post-header">
                                     <a href="{{ url('discussion', ['id' => $discussion->id]) }}">
-                                        <h3 class="h4 text-equidistant">{{ $discussion->title }}</h3>
+                                        <h3 class="h4 ">{{ $discussion->title }}</h3>
                                     </a>
-                                    {{-- <p class="lead text-equidistant">{{ $discussion->meta_description}}</p> --}}
+                                    {{-- <p class="lead ">{{ $discussion->meta_description}}</p> --}}
                                     <div class="meta">
                                         @if(count($discussion->tags))
                                         <div class="post-tags">

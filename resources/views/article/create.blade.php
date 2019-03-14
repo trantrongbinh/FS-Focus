@@ -267,7 +267,7 @@
                                         <div class="editor"></div>
                                         <textarea class="hidden" id="content-html" name="content"></textarea>
                                     </div>
-                                    <div id="counter" class="float-right font-size-12"></div>
+                                    <div id="counter" class="float-right font-size_12"></div>
                                 </div>
                             </div>
                         </div>

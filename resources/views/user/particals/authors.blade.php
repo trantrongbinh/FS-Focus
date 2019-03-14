@@ -38,7 +38,7 @@
                     </a>
                 </div> --}}
                 <div class="text-center">
-                    <button class="btn btn-success btn-sm btn-follow" role="button"><i class="fa fa-plus font-size-10"></i> Follow</button>
+                    <button class="btn btn-success btn-sm btn-follow" role="button"><i class="fa fa-plus font-size_10"></i> Follow</button>
                 </div>
             </div>
         </div>

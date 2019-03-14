@@ -19,9 +19,9 @@
                     </div>
                     <div class="post blog-post col-lg-7">
                         <div class="post-single">
-                            <h1 class="h2 text-equidistant">{{ $discussion->title }}<a href="javascript:;"><i class="fa fa-bookmark-o"></i></a>
+                            <h1 class="h2 ">{{ $discussion->title }}<a href="javascript:;"><i class="fa fa-bookmark-o"></i></a>
                             </h1>
-                            <div class="post-footer d-flex align-items-center flex-column flex-sm-row font-size-12">
+                            <div class="post-footer d-flex align-items-center flex-column flex-sm-row font-size_12">
                                 <a href="#" class="author d-flex align-items-center flex-wrap">
                                     <div class="avatar">
                                         <img src="{{ asset($discussion->user->avatar) }}" alt="{{ $discussion->user->name }}" class="img-fluid">
@@ -44,11 +44,11 @@
                             </div>
                             <br>
                             <div class="post-details">
-                                <div class="post-body font-size-18 text-equidistant">
+                                <div class="post-body font-size_18 ">
                                     {{-- <p class="lead">{{ $discussion->meta_description }}</p> --}}
                                     <div class="markdown">{!! json_decode($discussion->content)->html !!}</div>
                                 </div>
-                                <div class="display-inline">
+                                <div class="display__inline">
                                     @if(count($discussion->tags))
                                         <span class="post-tags">
                                             @foreach($discussion->tags as $tag)

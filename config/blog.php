@@ -74,11 +74,10 @@ return [
     'license' => 'Sống thì đừng quan tâm người khác nói gì về mình, bởi chỉ có bạn mới biết mình là ai.',
 
     'str_limit' => [
-        'name' => 15,
+        'name' => 14,
         'content_discussion' => [
             'min' => 1000,
             'max' => 3000,
         ],
     ],
-
 ];

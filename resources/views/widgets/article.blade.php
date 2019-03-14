@@ -13,7 +13,7 @@
                             @if (Auth::guest())
                                 <a rel="nofollow " href="{{ url('login') }}" class=" d-flex">
                                     <div class="news-f-img"><img src="{{ asset('/images/default.png') }}" alt="User Image" class="img-fluid img-circle" width="60"></div>
-                                    <div class="msg-body margin-left-30">
+                                    <div class="msg-body margin-left__30">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
                                         <p>{{ lang('Discuss Subtitle') }}</p>
                                     </div>
@@ -21,7 +21,7 @@
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right margin-left-30"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
+                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right margin-left__30"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
                                         <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
                                     </div>
                                 </div>
@@ -30,7 +30,7 @@
                                     <div class="news-f-img">
                                         <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60">
                                     </div>
-                                    <div class="msg-body margin-left-30">
+                                    <div class="msg-body margin-left__30">
                                         <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
                                         <p>{{ lang('Discuss Subtitle') }}</p>
                                     </div>
@@ -38,7 +38,7 @@
                                 <div class="row">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-11">
-                                        <a href="{{ url('article/new') }}" class="btn btn-info btn-sm float-right margin-left-30"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
+                                        <a href="{{ url('article/new') }}" class="btn btn-info btn-sm float-right margin-left__30"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
                                         <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                         <div class="active tab-pane" id="activity">
                             <div id="featured-posts">
                                 <div class="box-popup">
-                                    <img class="user-small-img" src="{{ asset('/images/dot.png') }}">
+                                    <img class="img-user__smal" src="{{ asset('/images/dot.png') }}">
                                     <span class="welcome">
                                         <strong>Welcome To The Website</strong>
                                     </span>
@@ -71,6 +71,54 @@
                                         </div>
                                     </div>
                                 </div>
+                                
+                                <!-- Post -->
+                                   
+                                     
+            
+                                            <div class="card radius shadowDepth1">
+                                                <div class="card__image border-tlr-radius">
+                                                    <img src="https://www.w3schools.com/howto/img_forest.jpg" alt="image" class="border-tlr-radius">
+                                                </div>
+
+                                                <div class="card__content card__padding">
+                                                    <div class="card__share">
+                                                        <div class="card__social">  
+                                                            <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
+                                                            <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
+                                                            <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                                                        </div>
+
+                                                        <a id="share" class="share-toggle share-icon" href="#"></a>
+                                                    </div>
+
+                                                    <div class="card__meta">
+                                                        <a href="#">Web Design</a>
+                                                        <time>17th March</time>
+                                                    </div>
+
+                                                    <article class="card__article">
+                                                        <h2><a href="#">Material Design Card - For Blog Post Article</a></h2>
+
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+                                                    </article>
+                                                </div>
+
+                                                <div class="card__action">
+                                                    
+                                                    <div class="card__author">
+                                                        <img src="http://lorempixel.com/40/40/sports/" alt="user">
+                                                        <div class="card__author-content">
+                                                            By <a href="#">John Doe</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                           
+                                        
+                                    <!-- /.post -->
+
                                 @forelse($articles as $article)
                                     <!-- Post -->
                                     <div class="post card">
@@ -95,7 +143,7 @@
                                             </div>
                                             <!-- /.user-block -->
                                             <a href="{{ url($article->slug) }}" style="margin-top: 10px;">
-                                                <h3 class="h4 text-equidistant">{{ $article->title }}</h3>
+                                                <h3 class="h4 ">{{ $article->title }}</h3>
                                             </a>
                                             <div class="meta">
                                                 <p class="lead">{{ str_limit($article->meta_description, '200') }}</p>
@@ -110,7 +158,7 @@
                                             </div>
                                             @if($article->page_image)
                                                 <div class="row mb-3" style="margin-top: 10px;">
-                                                    <div class="col-sm-12 text-center image-wrap">
+                                                    <div class="col-sm-12 text-center image-wrap" style="width: 152px;">
                                                         <a href="{{ url($article->slug) }}">
                                                             <img class="img-fluid bg-image" alt="{{ $article->slug }}" src="{{ asset($article->page_image) }}" data-holder-rendered="true">
                                                         </a>
