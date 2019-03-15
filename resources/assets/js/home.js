@@ -39,6 +39,7 @@ Vue.component('avatar', require('home/components/AvatarUpload.vue'));
 Vue.component('clap', require('home/components/Clap.vue'));
 Vue.component('snow-editor', require('home/components/SnowQuillEditor.vue'));
 Vue.component('bubble-editor', require('home/components/BubbleQuillEditor.vue'));
+Vue.component('vote', require('home/components/Vote.vue'));
 
 new Vue({
     i18n: i18n,

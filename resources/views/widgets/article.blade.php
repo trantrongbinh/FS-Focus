@@ -4,44 +4,43 @@
         <aside class="col-lg-3 display-flex col-left">
             @include('modules.left')
         </aside>
-
         <main class="col-content posts-listing col-lg-7 border-frame">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
                             @if (Auth::guest())
-                                <a rel="nofollow " href="{{ url('login') }}" class=" d-flex">
-                                    <div class="news-f-img"><img src="{{ asset('/images/default.png') }}" alt="User Image" class="img-fluid img-circle" width="60"></div>
-                                    <div class="msg-body margin-left__30">
-                                        <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
-                                        <p>{{ lang('Discuss Subtitle') }}</p>
-                                    </div>
-                                </a>
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-11">
-                                        <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right margin-left__30"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
-                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
-                                    </div>
+                            <a rel="nofollow " href="{{ url('login') }}" class=" d-flex">
+                                <div class="news-f-img"><img src="{{ asset('/images/default.png') }}" alt="User Image" class="img-fluid img-circle" width="60"></div>
+                                <div class="msg-body margin-left__30">
+                                    <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
+                                    <p>{{ lang('Discuss Subtitle') }}</p>
                                 </div>
+                            </a>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-11">
+                                    <a href="{{ url('login') }}" class="btn btn-info btn-sm float-right margin-left__30"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
+                                    <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
+                                </div>
+                            </div>
                             @else
-                                <a rel="nofollow " href="javascript:;" class="d-flex button-post">
-                                    <div class="news-f-img">
-                                        <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60">
-                                    </div>
-                                    <div class="msg-body margin-left__30">
-                                        <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
-                                        <p>{{ lang('Discuss Subtitle') }}</p>
-                                    </div>
-                                </a>
-                                <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-11">
-                                        <a href="{{ url('article/new') }}" class="btn btn-info btn-sm float-right margin-left__30"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
-                                        <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
-                                    </div>
+                            <a rel="nofollow " href="javascript:;" class="d-flex button-post">
+                                <div class="news-f-img">
+                                    <img src="{{ Auth::user()->avatar }}" alt="User Image" class="img-fluid img-circle" data-toggle="tooltip" data-placement="bottom" title="{{ Auth::user()->nickname ?: Auth::user()->name }}" width="60">
                                 </div>
+                                <div class="msg-body margin-left__30">
+                                    <h3 class="h5 msg-nav-h3"> Share an article or idea or discussion ...</h3>
+                                    <p>{{ lang('Discuss Subtitle') }}</p>
+                                </div>
+                            </a>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-11">
+                                    <a href="{{ url('article/new') }}" class="btn btn-info btn-sm float-right margin-left__30"><i class="fas fa-user-edit"></i> Write an article</a>&nbsp
+                                    <a href="{{ url('discussion') }}" class="btn btn-danger btn-sm float-right"><i class="fas fa-question-circle"></i> Discussion</a>
+                                </div>
+                            </div>
                             @endif
                         </div>
                     </div>
@@ -67,122 +66,81 @@
                                             <a href="#"><i class="fab fa-twitter" data-toggle="tooltip" data-placement="bottom" title="Twitter"></i></a>
                                             <a href="#"><i class="fab fa-google-plus" data-toggle="tooltip" data-placement="bottom" title="Google Plus"></i></a>
                                             <a href="#"><i class="fab fa-youtube" data-toggle="tooltip" data-placement="bottom" title="Youtube"></i></a>
-                                            <a href="#"><i class="fab fa-github" data-toggle="tooltip" data-placement="bottom" title="Github"></i></a>               
+                                            <a href="#"><i class="fab fa-github" data-toggle="tooltip" data-placement="bottom" title="Github"></i></a>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- Post -->
-                                   
-                                     
-            
-                                            <div class="card radius shadowDepth1">
-                                                <div class="card__image border-tlr-radius">
-                                                    <img src="https://www.w3schools.com/howto/img_forest.jpg" alt="image" class="border-tlr-radius">
-                                                </div>
-
-                                                <div class="card__content card__padding">
-                                                    <div class="card__share">
-                                                        <div class="card__social">  
-                                                            <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
-                                                            <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
-                                                            <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
-                                                        </div>
-
-                                                        <a id="share" class="share-toggle share-icon" href="#"></a>
-                                                    </div>
-
-                                                    <div class="card__meta">
-                                                        <a href="#">Web Design</a>
-                                                        <time>17th March</time>
-                                                    </div>
-
-                                                    <article class="card__article">
-                                                        <h2><a href="#">Material Design Card - For Blog Post Article</a></h2>
-
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
-                                                    </article>
-                                                </div>
-
-                                                <div class="card__action">
-                                                    
-                                                    <div class="card__author">
-                                                        <img src="http://lorempixel.com/40/40/sports/" alt="user">
-                                                        <div class="card__author-content">
-                                                            By <a href="#">John Doe</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                           
-                                        
-                                    <!-- /.post -->
 
                                 @forelse($articles as $article)
-                                    <!-- Post -->
-                                    <div class="post card">
-                                        <div class="card-body">
-                                            <div class="user-block">
-                                                <div class="post-footer d-flex align-items-center">
-                                                    <a href="/user/{{ $article->user->name }}" class="d-flex align-items-center flex-wrap">
-                                                        <div class="avatar"><img src="{{ asset($article->user->avatar) }}" alt="{{ $article->user->name }}" class="img-fluid"></div>
-                                                        <div class="title"><span><b>{{ $article->user->name }}</b></span></div>
-                                                    </a>
-                                                    <div class="date"><b><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</b></div>
-                                                </div>
-                                                @if(Auth::check() && Auth::user()->id == $article->user->id)
-                                                    <a href="javascript:;" class="float-right  btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
+                                <!-- Post -->
+                                <div class="card radius shadowDepth1">
+                                    @if($article->page_image)
+                                        <a href="{{ url($article->slug) }}" class="card__image background__cover" style="background-image: url({{ asset($article->page_image) }});">
+                                        </a>
+                                    @endif
+                                    
+                                    <div class="card__content card__padding">
+                                        <div class="card__share">
+                                            <div class="card__social">
+                                                <a class="share-icon facebook" href="#"><span class="fab fa-facebook-square"></span></a>
+                                                <a class="share-icon twitter" href="#"><span class="fab fa-twitter"></span></a>
+                                                <a class="share-icon googleplus" href="#"><span class="fab fa-google-plus"></span></a>
+                                            </div>
+                                            <a id="share" class="share-toggle share-icon" href="#"></a>
+                                        </div>
+                                        <vote></vote>
+                                        <div class="card__post">
+                                            <div class="card__meta">
+                                                <a href="{{ url('category', ['name' => $article->category->name]) }}" class="topic"> {{ $article->category->name }}</a>
+                                                <time><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</time>
+                                                <span class="readingTime">5 min read</span>
+                                            </div>
+                                            <article class="card__article">
+                                                <h3 class="h4"><a href="{{ url($article->slug) }}">{{ $article->title }}</a></h3>
+                                                <p class="card__desc">{{ str_limit($article->meta_description, '200') }}</p>
+                                            </article>
+
+                                            @if(count($article->tags))
+                                                <ul class="tags">
+                                                    @foreach($article->tags as $tag)
+                                                        <li><a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">{{ $tag->tag }}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="card__action">
+                                        <div class="card__author">
+                                            <img src="{{ asset($article->user->avatar) }}" alt="{{ $article->user->name }}">
+                                            <div class="card__author-content">
+                                                By <a href="/user/{{ $article->user->name }}">{{ $article->user->name }}</a>
+                                            </div>
+                                            <div class="float-right card__action-interactive">
+                                                <a href="javascript:;" class="link-black interactive-view"><i class="far fa-eye"></i> 11</a>
+                                                <a href="#" class="link-black interactive-comment"><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</a>
+                                                <a href="#" class="link-black interactive-bookmark"><i class="far fa-bookmark"></i> 2</a>
+                                                <span>
+                                                    <a href="javascript:;" class="btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
                                                     <div class="dropdown-menu">
                                                         <a class="dropdown-item" href="{{ url("article/{$article->id}/edit") }}">Edit</a>
                                                         <a class="dropdown-item" href="#">Delete</a>
                                                     </div>
-                                                @else
-                                                    <a href="javascript:;" class="float-right btn-tool">&times;</a>
-                                                @endif
+                                                </span>
                                             </div>
-                                            <!-- /.user-block -->
-                                            <a href="{{ url($article->slug) }}" style="margin-top: 10px;">
-                                                <h3 class="h4 ">{{ $article->title }}</h3>
-                                            </a>
-                                            <div class="meta">
-                                                <p class="lead">{{ str_limit($article->meta_description, '200') }}</p>
-                                                @if(count($article->tags))
-                                                    <div class="post-tags">
-                                                        @foreach($article->tags as $tag)
-                                                            <a href="{{ url('tag', ['tag' => $tag->tag]) }}"
-                                                               class="tag">#{{ $tag->tag }}</a>
-                                                        @endforeach
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            @if($article->page_image)
-                                                <div class="row mb-3" style="margin-top: 10px;">
-                                                    <div class="col-sm-12 text-center image-wrap" style="width: 152px;">
-                                                        <a href="{{ url($article->slug) }}">
-                                                            <img class="img-fluid bg-image" alt="{{ $article->slug }}" src="{{ asset($article->page_image) }}" data-holder-rendered="true">
-                                                        </a>
-                                                    </div>
-                                                    <!-- /.col -->
-                                                </div>
-                                            @endif
                                         </div>
-                                        <div class="icon-post">
-                                            <a href="#" class="link-black"><i class="far fa-thumbs-up mr-1"></i>100</a>
-                                            <a href="#" class="link-black"><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</a>
-                                            <span class="float-right"><a href="#" class="link-black"><i class="far fa-bookmark"></i> 2</a></span>
-                                        </div>
-                                        <!-- comment -->
-                                        {{-- @if(Auth::guest())
-                                            <a href="{{ url('login') }}" class="text-center">@lang('You must be logged to add a comment !')</a>
-                                            <comment-home title="Post Comments" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text=""></comment-home>
-                                        @else
-                                            <comment-home title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="" can-comment></comment-home>
-                                        @endif --}}
                                     </div>
-                                    <!-- /.post -->
+                                    <!-- comment -->
+                                    {{-- @if(Auth::guest())
+                                        <a href="{{ url('login') }}" class="text-center">@lang('You must be logged to add a comment !')</a>
+                                        <comment-home title="Post Comments" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text=""></comment-home>
+                                    @else
+                                        <comment-home title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="" can-comment></comment-home>
+                                    @endif --}}
+                                </div>
+                                <!-- /.post -->
                                 @empty
-                                    <h3 class="text-center">{{ lang('Nothing') }}</h3>
+                                <h3 class="text-center">{{ lang('Nothing') }}</h3>
                                 @endforelse
                             </div>
                             <!-- Pagination -->
@@ -193,11 +151,9 @@
                 </div>
             </div>
         </main>
-
         <!-- Box right-->
         <aside class="col-lg-2 display-flex col-right">
             @include('modules.right')
         </aside>
-
     </div>
 </div>
