@@ -260,7 +260,7 @@ h1:hover a {
 }
 
 .card__author img {
-    height: 50px;
+    height: 40px;
     border-radius: 50%;
     margin-right: 0.6em;
 }
@@ -271,13 +271,13 @@ h1:hover a {
 
     a {
         font-weight: 700;
-        font-size: 16px !important;
+        font-size: 14px !important;
         cursor: pointer;
     }
 }
 
 .card__action-interactive {
-    margin-top: 12px;
+    margin-top: 10px;
     
     >a {
         padding-right: 20px;
@@ -426,62 +426,43 @@ h1:hover a {
     }
 
     .avatar {
-        max-width: 40px;
-        min-width: 40px;
         height: 40px;
         overflow: hidden;
         border-radius: 50%;
         margin-right: 10px;
+        margin-top: -7px;
     }
-
-    // .post-tags {
-    //     .tag {
-    //         padding: 5px 25px;
-    //         border: 1px solid #999;
-    //         margin: 5px;
-    //         color: #777;
-    //         font-size: 0.75em;
-    //         text-transform: uppercase;
-    //         font-weight: 600;
-    //         text-decoration: none;
-    //         border-radius: 50px;
-
-    //         &:hover {
-    //             background: #999;
-    //             color: #fff;
-    //             border-color: #999;
-    //         }
-    //     }
-    // }
 
     .meta-last::after {
         display: none;
     }
-}
 
-.post .title,
-.post .date,
-.post .comments,
-.post .views {
-    font-weight: 400;
-    color: #999;
-    text-transform: capitalize;
+    .title {
+        font-weight: 700 !important;
+        font-size: 14px;
+        cursor: pointer;
+        color: #34495e;
 
-    i {
-        margin-right: 5px;
-        font-size: 1.1em;
     }
-}
 
-.post .title::after,
-.post .date::after,
-.post .comments::after,
-.post .views::after {
-    content: '-';
-    display: inline-block;
-    margin: 0 7px;
-    font-size: 0.9em;
-    color: #ccc;
+    .title, .date, .comments, .views {
+        font-weight: 400;
+        color: #999;
+        text-transform: capitalize;
+
+        i {
+            margin-right: 5px;
+            font-size: 1.1em;
+        }
+
+        &:after {
+            content: '-';
+            display: inline-block;
+            margin: 0 7px;
+            font-size: 0.9em;
+            color: #ccc;
+        }
+    }
 }
 
 .post-header {
@@ -1551,13 +1532,3 @@ a.claps_button:hover {
         padding-left: 20px;
     }
 }
-
-// .meta {
-//     .post-tags {
-//         margin-top: -10px;
-
-//         a {
-//             padding: 3px 15px !important;
-//         }
-//     }
-// }

@@ -106,36 +106,39 @@
                                     <div class="post-footer d-flex align-items-center">
                                         <a href="/user/{{ $discussion->user->name }}" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="{{ asset($discussion->user->avatar) }}" alt="{{ $discussion->user->name }}" class="img-fluid"></div>
-                                            <div class="title"><span><b>{{ $discussion->user->name }}</b></span></div>
+                                            <div class="title">
+                                                <span>{{ $discussion->user->name }}</span>
+                                            </div>
                                         </a>
-                                        <div class="date"><b><i class="far fa-clock"></i> {{ $discussion->created_at->diffForHumans() }}</b></div>
+                                        <div class="date">
+                                            <i class="far fa-clock"></i> {{ $discussion->created_at->diffForHumans() }}
+                                        </div>
                                         <div class="comments meta-last">
                                             <a href="{{ url('discussion', ['id' => $discussion->id]) }}"><i class="far fa-comment-alt"> {{ $discussion->comments_count }}</i> {{ lang('Replies') }}
                                             </a>
                                         </div>
                                     </div>
                                     @if(Auth::check() && Auth::user()->id == $discussion->user->id)
-                                    <a href="javascript:;" class="float-right  btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{{ url("discussion/{$discussion->id}/edit") }}">Edit</a>
-                                        <a class="dropdown-item" href="#">Delete</a>
-                                    </div>
+                                        <a href="javascript:;" class="float-right  btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="{{ url("discussion/{$discussion->id}/edit") }}">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
                                     @else
-                                    <a href="javascript:;" class="float-right btn-tool">&times;</a>
+                                        <a href="javascript:;" class="float-right btn-tool">&times;</a>
                                     @endif
                                 </div>
                                 <header class="post-header">
                                     <a href="{{ url('discussion', ['id' => $discussion->id]) }}">
                                         <h3 class="h4 ">{{ $discussion->title }}</h3>
                                     </a>
-                                    {{-- <p class="lead ">{{ $discussion->meta_description}}</p> --}}
                                     <div class="meta">
                                         @if(count($discussion->tags))
-                                        <div class="post-tags">
-                                            @foreach($discussion->tags as $tag)
-                                            <a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">#{{ $tag->tag }}</a>
-                                            @endforeach
-                                        </div>
+                                            <div class="post-tags">
+                                                @foreach($discussion->tags as $tag)
+                                                <a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">{{ $tag->tag }}</a>
+                                                @endforeach
+                                            </div>
                                         @endif
                                     </div>
                                     <parse content="{{ json_decode($discussion->content)->html }}" end-point="{{ url('discussion', ['id' => $discussion->id]) }}" min-limit="{{ config('blog.str_limit.content_discussion.min') }}" max-limit="{{ config('blog.str_limit.content_discussion.max') }}"></parse>

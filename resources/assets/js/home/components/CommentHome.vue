@@ -8,7 +8,7 @@
                 <!-- User image -->
                 <div class="post-footer d-flex align-items-center">
                     <a :href="'/user/' + comment.username" class="author d-flex align-items-center flex-wrap">
-                        <div style="margin-right: 10px;">
+                        <div class="img-avatar">
                             <img :src="comment.avatar" alt="avatar" class="img-fluid img-circle img-sm">
                         </div>
                         <div class="title"><span>{{ comment.username }}</span></div>
@@ -23,7 +23,7 @@
                         <a class="dropdown-item" href="javascript:;" @click="commentDelete(index, comment.id)">Delete</a>
                     </div>
                 </span>
-                <span class="float-right btn-tool" v-if="username != comment.username" style="font-size: 12px;">
+                <span class="float-right btn-tool font-size_12" v-if="username != comment.username">
                     <vote-button :item="comment"></vote-button> &nbsp|&nbsp&nbsp
                     <a href="javascript:;" @click="reply(comment.username)"><i class="fas fa-share"></i></a>
                 </span>
@@ -32,11 +32,11 @@
                 <!-- /.comment-text -->
             </div>
             <!-- /.card-comment -->
-            <div class="text-center" v-if="commentNumber > 2" style="padding: 10px; font-size: 12px;">
+            <div class="text-center font-size_12 comment-number" v-if="commentNumber > 2">
                 <a v-if="!isHidden" href="javascript:void(0)" @click="loadMore(next_page_url)">Load More ...</a>
             </div>
             <!-- form comment   -->
-            <form class="submit-comment" style="margin-top: 30px;" @submit.prevent="comment" v-if="canComment">
+            <form class="submit-comment" @submit.prevent="comment" v-if="canComment">
                 <a :href="'/user/' + username">
                     <img class="img-fluid img-circle img-sm" :src="userAvatar" alt="Alt Text">
                 </a>
@@ -302,6 +302,23 @@ export default {
     .text-muted {
         font-weight: 400;
         font-size: 14px;
+    }
+
+    .img-avatar {
+        margin-right: 10px;
+        margin-top: -5px;
+    }
+
+    .title {
+        font-size: 13px !important;
+    }
+
+    .comment-number {
+        padding: 10px;
+    }
+
+    .submit-comment {
+        margin-top: 30px;
     }
 }
 
