@@ -64,7 +64,7 @@ a.btn {
 
 main,
 aside {
-    padding: 50px 0 100px;
+    padding: 50px 0 0px;
     margin-top: 25px;
 }
 
@@ -503,7 +503,7 @@ h1:hover a {
 }
 
 main.posts-listing {
-    padding: 0 0 20px 0;
+    padding: 0 0 1px 0;
 
     .post {
         margin-bottom: 10px;
@@ -1183,7 +1183,7 @@ img.emojione {
 
 .border-frame {
     margin-top: 77px;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
     -webkit-box-shadow: 1px 4px 16px 3px rgba(199, 197, 199, 1);
     -moz-box-shadow: 1px 4px 16px 3px rgba(199, 197, 199, 1);
     box-shadow: 1px 4px 16px 3px rgba(199, 197, 199, 1);

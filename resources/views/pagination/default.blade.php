@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <div class="text-center">
+    <div class="background-white text-center">
         <div class="pagination pagination-minimal">
             <ul>
                 {{-- Previous Page Link --}}

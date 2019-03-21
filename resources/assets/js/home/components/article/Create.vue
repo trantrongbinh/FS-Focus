@@ -1,6 +1,48 @@
 <template>
-    <div id="flex">
-        <div ref="editor" v-html="value"></div>
+    <div class="create-wrapper">
+        <div class="text-center">
+            <a class="nav-link btn btn-primary btn-sm" href="#" data-toggle="modal" data-target="#draftModal"></i><b>Drafts (0)</b></a>
+            <div class="modal fade" id="draftModal" style="color: #000">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Your drafts (0)</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">You do not have any articles.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div id="editor-container">
+            <div id="editor-wrapper" >
+                <div id="title-container">
+                    <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="TITLE YOUR POST" rows="1" id="title" name="title"></textarea>
+                </div>
+                <div class="clear"></div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <multiselect v-model="selected" :options="options"></multiselect>
+                    </div>
+                    <div class="col-sm-7">
+                        <multiselect v-model="tags" :options="allTag" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="code" :multiple="true" :taggable="true" :max="4">
+                        </multiselect>
+                    </div>
+                </div>
+                <div ref="editor" v-html="value"></div>
+            </div>
+            <hr>
+            <div class="action-save text-right">
+                <span class="far fa-check-circle"> Đã cập nhật</span>
+                <span class="far fa-save"> Đang lưu ...</span>
+            </div>
+            <div class="content__save text-center">
+                <button type="submit" class="btn btn-info btn-sm">Đăng bài</button>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -11,7 +53,12 @@ window.Quill = Quill;
 import ImageResize from 'quill-image-resize-module';
 import Emoji from 'quill-emoji/dist/quill-emoji';
 
+import Multiselect from 'vue-multiselect'
+
 export default {
+    components: {
+        Multiselect
+    },
     props: {
         value: {
             type: String,
@@ -28,7 +75,18 @@ export default {
     data() {
         return {
             editor: null,
-            contents: ''
+            contents: '',
+            selected: '',
+            tags: '',
+            options: ['Select option', 'options', 'selected', 'mulitple', 'label', 'searchable', 'clearOnSelect', 'hideSelected', 'maxHeight', 'allowEmpty', 'showLabels', 'onChange', 'touched'],
+            allTag: [
+                { name: 'Vue.js', code: 'vu' },
+                { name: 'Javascript', code: 'js' },
+                { name: 'PHP', code: 'php' },
+                { name: 'Node JS', code: 'nodejs' },
+                { name: 'HTML', code: 'html' },
+                { name: 'Open Source', code: 'os' }
+            ]
         };
     },
 
@@ -39,9 +97,11 @@ export default {
             container: [
                 ['bold', 'italic', 'underline', 'strike'],
                 ['blockquote', 'code-block'],
-                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                [{ 'align': [] }],
-                ['link', 'image'],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'script': 'super' }, { 'script': 'sub' }],
+                [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+                [ 'direction', { 'align': [] }],
+                [ 'link', 'image', 'video', 'formula' ],
                 ['clean'],
                 ['emoji'],
             ],
@@ -84,4 +144,3 @@ export default {
 }
 
 </script>
-
