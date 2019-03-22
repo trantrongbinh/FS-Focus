@@ -9,6 +9,7 @@
     box-sizing: border-box;
     max-width: 1200px;
     padding-bottom: 0 !important;
+    min-height: 875px!important;
 }
 
 @media (min-width: 400px) {
