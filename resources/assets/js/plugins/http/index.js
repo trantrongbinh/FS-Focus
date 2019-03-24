@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {apiUrl} from 'config/base'
+import { apiUrl } from 'config/base'
 
 /**
  * Create Axios
@@ -21,10 +21,10 @@ http.defaults.headers.common = {
 /**
  * Handle all error messages.
  */
-http.interceptors.response.use(function (response) {
+http.interceptors.response.use(function(response) {
     return response;
-}, function (error) {
-    const {response} = error
+}, function(error) {
+    const { response } = error
 
     if ([401].indexOf(response.status) >= 0) {
         if (response.status == 401 && response.data.error.message != 'Unauthorized') {

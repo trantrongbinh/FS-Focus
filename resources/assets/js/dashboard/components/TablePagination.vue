@@ -27,27 +27,28 @@
     </nav>
 </template>
 <script>
-    import PaginationMixin from 'dashboard/components/TablePaginationMixin.vue'
+import PaginationMixin from 'dashboard/components/TablePaginationMixin.vue'
 
-    export default {
-        mixins: [PaginationMixin],
-        methods: {
-            loadPage(page) {
-                this.$emit('loadPage', page)
-            }
+export default {
+    mixins: [PaginationMixin],
+    methods: {
+        loadPage(page) {
+            this.$emit('loadPage', page)
         }
     }
+}
+
 </script>
-
 <style lang="scss" scoped>
-    .active {
-        background-color: #3d4e60;
-        border-right: none;
-    }
+.active {
+    background-color: #3d4e60;
+    border-right: none;
+}
 
-    .pagination {
-        li {
-            cursor: pointer;
-        }
+.pagination {
+    li {
+        cursor: pointer;
     }
+}
+
 </style>

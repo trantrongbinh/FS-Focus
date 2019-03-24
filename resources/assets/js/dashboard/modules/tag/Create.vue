@@ -9,11 +9,11 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import TagForm from './Form'
+import TagForm from './Form'
 
-    export default {
-        components: {TagForm},
-    }
+export default {
+    components: { TagForm },
+}
+
 </script>

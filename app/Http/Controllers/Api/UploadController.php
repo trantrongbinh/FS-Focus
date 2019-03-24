@@ -85,7 +85,7 @@ class UploadController extends ApiController
 
             if ($strategy == 'comment') {
                 $path = $strategy . '/' . $request->get('table_type') . '/' . $request->get('element_id');
-            } elseif ($strategy == 'discussion') {
+            } else {
                 $path = $strategy . '/' . date('Y') . '/' . date('m') . '/' . date('d');
             }
 

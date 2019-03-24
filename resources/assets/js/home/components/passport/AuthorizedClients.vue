@@ -1,11 +1,12 @@
 <style scoped>
-    .action-link {
-        cursor: pointer;
-    }
+.action-link {
+    cursor: pointer;
+}
 
-    .m-b-none {
-        margin-bottom: 0;
-    }
+.m-b-none {
+    margin-bottom: 0;
+}
+
 </style>
 <template>
     <div>
@@ -18,34 +19,34 @@
                     <!-- Authorized Tokens -->
                     <table class="table table-borderless m-b-none">
                         <thead>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Scopes
-                        </th>
-                        <th>
-                        </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Scopes
+                            </th>
+                            <th>
+                            </th>
                         </thead>
                         <tbody>
-                        <tr v-for="token in tokens">
-                            <!-- Client Name -->
-                            <td style="vertical-align: middle;">
-                                {{ token.client.name }}
-                            </td>
-                            <!-- Scopes -->
-                            <td style="vertical-align: middle;">
+                            <tr v-for="token in tokens">
+                                <!-- Client Name -->
+                                <td style="vertical-align: middle;">
+                                    {{ token.client.name }}
+                                </td>
+                                <!-- Scopes -->
+                                <td style="vertical-align: middle;">
                                     <span v-if="token.scopes.length> 0">
                                         {{ token.scopes.join(', ') }}
                                     </span>
-                            </td>
-                            <!-- Revoke Button -->
-                            <td style="vertical-align: middle;">
-                                <a class="action-link text-danger" @click="revoke(token)">
-                                    Revoke
-                                </a>
-                            </td>
-                        </tr>
+                                </td>
+                                <!-- Revoke Button -->
+                                <td style="vertical-align: middle;">
+                                    <a class="action-link text-danger" @click="revoke(token)">
+                                        Revoke
+                                    </a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -54,43 +55,44 @@
     </div>
 </template>
 <script>
-    export default {
-        /*
-         * The component's data.
+export default {
+    /*
+     * The component's data.
+     */
+    data() {
+        return {
+            tokens: []
+        };
+    },
+
+    /**
+     * Prepare the component.
+     */
+    mounted() {
+        this.getTokens();
+    },
+
+    methods: {
+        /**
+         * Get all of the authorized tokens for the user.
          */
-        data() {
-            return {
-                tokens: []
-            };
+        getTokens() {
+            this.$http.get('/oauth/tokens')
+                .then(response => {
+                    this.tokens = response.data;
+                });
         },
 
         /**
-         * Prepare the component.
+         * Revoke the given token.
          */
-        mounted() {
-            this.getTokens();
-        },
-
-        methods: {
-            /**
-             * Get all of the authorized tokens for the user.
-             */
-            getTokens() {
-                this.$http.get('/oauth/tokens')
-                    .then(response => {
-                        this.tokens = response.data;
-                    });
-            },
-
-            /**
-             * Revoke the given token.
-             */
-            revoke(token) {
-                this.$http.delete('/oauth/tokens/' + token.id)
-                    .then(response => {
-                        this.getTokens();
-                    });
-            }
+        revoke(token) {
+            this.$http.delete('/oauth/tokens/' + token.id)
+                .then(response => {
+                    this.getTokens();
+                });
         }
     }
+}
+
 </script>

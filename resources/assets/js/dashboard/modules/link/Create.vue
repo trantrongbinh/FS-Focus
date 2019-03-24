@@ -9,11 +9,11 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import LinkForm from './Form'
+import LinkForm from './Form'
 
-    export default {
-        components: {LinkForm},
-    }
+export default {
+    components: { LinkForm },
+}
+
 </script>

@@ -143,13 +143,13 @@ export default {
 
         handleSaveFile(files) {
             const formData = new FormData();
+
             formData.append('image', files[0]);
             formData.append('strategy', this.strategy)
             formData.append('element_id', this.elementId)
             formData.append('table_type', this.tableType)
 
             this.editor.enable(false);
-
             this.$http.post('file/upload', formData)
                 .then(response => {
                     this.editor.enable(true);

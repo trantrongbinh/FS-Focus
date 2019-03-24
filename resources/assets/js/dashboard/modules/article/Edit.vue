@@ -10,22 +10,22 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import ArticleForm from './Form'
+import ArticleForm from './Form'
 
-    export default {
-        components: {ArticleForm},
-        data() {
-            return {
-                article: undefined
-            }
-        },
-        created() {
-            this.$http.get('article/' + this.$route.params.id + '/edit?include=category,tags')
-                .then((response) => {
-                    this.article = response.data.data
-                })
-        },
-    }
+export default {
+    components: { ArticleForm },
+    data() {
+        return {
+            article: undefined
+        }
+    },
+    created() {
+        this.$http.get('article/' + this.$route.params.id + '/edit?include=category,tags')
+            .then((response) => {
+                this.article = response.data.data
+            })
+    },
+}
+
 </script>

@@ -10,11 +10,11 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import DiscussionForm from './Form'
+import DiscussionForm from './Form'
 
-    export default {
-        components: {DiscussionForm}
-    }
+export default {
+    components: { DiscussionForm }
+}
+
 </script>

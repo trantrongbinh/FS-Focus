@@ -51,11 +51,9 @@ mix.autoload({
 mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/home.js', 'public/js')
     .js('resources/assets/js/dest/author.js', 'public/js')
-    .js('resources/assets/js/dest/java-highlight-custom.js', 'public/js')
-    .js('resources/assets/js/dest/quill-custom.js', 'public/js/quill.js')
     .sass('resources/assets/scss/app.scss', 'public/css')
     .sass('resources/assets/scss/home.scss', 'public/css')
     .sass('resources/assets/scss/dest/author.scss', 'public/css')
-    .sass('resources/assets/scss/dest/quill-custom.scss', 'public/css')
+    .sass('resources/assets/scss/dest/create-article.scss', 'public/css')
     .copyDirectory('resources/assets/images', 'public/images')
     .version();

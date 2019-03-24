@@ -5,7 +5,7 @@ export function stack_error(response) {
         let data = response.data.errors
         let content = '';
 
-        Object.keys(data).map(function (key, index) {
+        Object.keys(data).map(function(key, index) {
             let value = data[key];
 
             content += '<span style="color: #e74c3c">' + value[0] + '</span><br>';

@@ -24,61 +24,61 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import {stack_error} from 'config/helper'
-    import {default as SimpleMDE} from 'simplemde/dist/simplemde.min.js'
+import { stack_error } from 'config/helper'
+import { default as SimpleMDE } from 'simplemde/dist/simplemde.min.js'
 
-    export default {
-        data() {
-            return {
-                comment: {},
-                simplemde: {}
-            }
-        },
-        mounted() {
-            let t = this.$t
+export default {
+    data() {
+        return {
+            comment: {},
+            simplemde: {}
+        }
+    },
+    mounted() {
+        let t = this.$t
 
-            this.simplemde = new SimpleMDE({
-                element: document.getElementById("editor"),
-                placeholder: t('form.content_placeholder', {type: t('form.comment')}),
-                autoDownloadFontAwesome: true
+        this.simplemde = new SimpleMDE({
+            element: document.getElementById("editor"),
+            placeholder: t('form.content_placeholder', { type: t('form.comment') }),
+            autoDownloadFontAwesome: true
+        })
+
+        this.$http.get('comment/' + this.$route.params.id + '/edit')
+            .then((response) => {
+                this.comment = response.data.data
+                this.simplemde.value(this.comment.content_raw)
             })
+    },
+    methods: {
+        edit() {
+            this.comment.content = this.simplemde.value()
 
-            this.$http.get('comment/' + this.$route.params.id + '/edit')
+            if (this.comment.content == '') {
+                toastr.error('The content is required!')
+                return
+            }
+
+            this.$http.put('comment/' + this.$route.params.id, this.comment)
                 .then((response) => {
-                    this.comment = response.data.data
-                    this.simplemde.value(this.comment.content_raw)
-                })
-        },
-        methods: {
-            edit() {
-                this.comment.content = this.simplemde.value()
+                    toastr.success('You updated the comment success!')
 
-                if (this.comment.content == '') {
-                    toastr.error('The content is required!')
-                    return
-                }
-
-                this.$http.put('comment/' + this.$route.params.id, this.comment)
-                    .then((response) => {
-                        toastr.success('You updated the comment success!')
-
-                        this.$router.push({name: 'dashboard.comment'})
-                    }).catch(({response}) => {
+                    this.$router.push({ name: 'dashboard.comment' })
+                }).catch(({ response }) => {
                     stack_error(response)
                 })
-            }
         }
     }
+}
+
 </script>
-
 <style lang="scss">
-    .editor-toolbar.fullscreen {
-        z-index: 1000 !important;
-    }
+.editor-toolbar.fullscreen {
+    z-index: 1000 !important;
+}
 
-    .CodeMirror-fullscreen {
-        z-index: 1000 !important;
-    }
+.CodeMirror-fullscreen {
+    z-index: 1000 !important;
+}
+
 </style>

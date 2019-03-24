@@ -9,11 +9,11 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import UserForm from './Form'
+import UserForm from './Form'
 
-    export default {
-        components: {UserForm},
-    }
+export default {
+    components: { UserForm },
+}
+
 </script>

@@ -7,13 +7,13 @@
         </div>
     </nav>
 </template>
-
 <script>
-    import {mapActions} from 'vuex';
+import { mapActions } from 'vuex';
 
-    export default {
-        methods: mapActions([
-            'toggle'
-        ])
-    }
+export default {
+    methods: mapActions([
+        'toggle'
+    ])
+}
+
 </script>

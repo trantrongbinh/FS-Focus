@@ -10,11 +10,11 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import ArticleForm from './Form'
+import ArticleForm from './Form'
 
-    export default {
-        components: {ArticleForm},
-    }
+export default {
+    components: { ArticleForm },
+}
+
 </script>

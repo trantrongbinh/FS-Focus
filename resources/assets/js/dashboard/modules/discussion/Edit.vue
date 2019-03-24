@@ -10,27 +10,27 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import DiscussionForm from './Form'
+import DiscussionForm from './Form'
 
-    export default {
-        components: {DiscussionForm},
-        data() {
-            return {
-                discussion: undefined,
-            }
-        },
-        mounted() {
-            this.loadDiscussion()
-        },
-        methods: {
-            loadDiscussion() {
-                this.$http.get('discussion/' + this.$route.params.id + '/edit?include=tags')
-                    .then((response) => {
-                        this.discussion = response.data.data
-                    })
-            },
+export default {
+    components: { DiscussionForm },
+    data() {
+        return {
+            discussion: undefined,
         }
+    },
+    mounted() {
+        this.loadDiscussion()
+    },
+    methods: {
+        loadDiscussion() {
+            this.$http.get('discussion/' + this.$route.params.id + '/edit?include=tags')
+                .then((response) => {
+                    this.discussion = response.data.data
+                })
+        },
     }
+}
+
 </script>

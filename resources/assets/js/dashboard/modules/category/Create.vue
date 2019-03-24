@@ -10,11 +10,11 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import CategoryForm from './Form'
+import CategoryForm from './Form'
 
-    export default {
-        components: {CategoryForm},
-    }
+export default {
+    components: { CategoryForm },
+}
+
 </script>

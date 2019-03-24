@@ -1,48 +1,49 @@
 <template>
     <div class="create-wrapper">
-        <div class="text-center">
-            <a class="nav-link btn btn-primary btn-sm" href="#" data-toggle="modal" data-target="#draftModal"></i><b>Drafts (0)</b></a>
-            <div class="modal fade" id="draftModal" style="color: #000">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content">
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Your drafts (0)</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <form class="col-sm-12" @submit.prevent="onSubmit">
+            <div class="clear"></div>
+            <div id="editor-container">
+                <a class="btn btn-outline-info btn-sm float-right border__none" href="#" data-toggle="modal" data-target="#draftModal"></i><b>Drafts (0)</b></a>
+                <div class="modal fade" id="draftModal" style="color: #000">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Your drafts (0)</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">You do not have any articles.</div>
                         </div>
-                        <!-- Modal body -->
-                        <div class="modal-body">You do not have any articles.</div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="clear"></div>
-        <div id="editor-container">
-            <div id="editor-wrapper" >
-                <div id="title-container">
-                    <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="TITLE YOUR POST" rows="1" id="title" name="title"></textarea>
-                </div>
-                <div class="clear"></div>
-                <div class="row">
-                    <div class="col-sm-5">
-                        <multiselect v-model="selected" :options="options"></multiselect>
+                <div id="editor-wrapper">
+                    <div id="title-container">
+                        <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="TITLE YOUR POST" rows="1" id="title" name="title" v-model="article.title"></textarea>
                     </div>
-                    <div class="col-sm-7">
-                        <multiselect v-model="tags" :options="allTag" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="code" :multiple="true" :taggable="true" :max="4">
-                        </multiselect>
+                    <div class="clear"></div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <multiselect v-model="selected" :options="options" label="name" :placeholder="$t('form.select_category')" track-by="name">
+                            </multiselect>
+                        </div>
+                        <div class="col-sm-7">
+                            <multiselect v-model="tags" :options="allTag" :multiple="true" :searchable="true" :hide-selected="true" :close-on-select="false" :clear-on-select="false" :max="4" :placeholder="$t('form.select_tag')" label="tag" track-by="tag">
+                            </multiselect>
+                        </div>
                     </div>
+                    <div id="content_wrapper" ref="editor" v-html="value"></div>
                 </div>
-                <div ref="editor" v-html="value"></div>
+                <hr>
+                <div class="action-save text-right">
+                    <span class="far fa-check-circle"> Đã cập nhật</span>
+                    <span class="far fa-save"> Đang lưu ...</span>
+                </div>
+                <div class="content__save text-center">
+                    <button type="submit" class="btn btn-info btn-sm">{{ $t('form.create') }}</button>
+                </div>
             </div>
-            <hr>
-            <div class="action-save text-right">
-                <span class="far fa-check-circle"> Đã cập nhật</span>
-                <span class="far fa-save"> Đang lưu ...</span>
-            </div>
-            <div class="content__save text-center">
-                <button type="submit" class="btn btn-info btn-sm">Đăng bài</button>
-            </div>
-        </div>
+        </form>
     </div>
 </template>
 <script>
@@ -52,10 +53,12 @@ import Quill from 'quill';
 window.Quill = Quill;
 import ImageResize from 'quill-image-resize-module';
 import Emoji from 'quill-emoji/dist/quill-emoji';
-
+import { stack_error } from 'config/helper'
 import Multiselect from 'vue-multiselect'
+import ArticleMixin from './ArticleMixin'
 
 export default {
+    mixins: [ArticleMixin],
     components: {
         Multiselect
     },
@@ -69,24 +72,21 @@ export default {
             default () {
                 return ''
             }
+        },
+        article: {
+            type: Object,
+            default () {
+                return {
+                    page_image: ''
+                }
+            }
         }
     },
 
     data() {
         return {
             editor: null,
-            contents: '',
-            selected: '',
-            tags: '',
-            options: ['Select option', 'options', 'selected', 'mulitple', 'label', 'searchable', 'clearOnSelect', 'hideSelected', 'maxHeight', 'allowEmpty', 'showLabels', 'onChange', 'touched'],
-            allTag: [
-                { name: 'Vue.js', code: 'vu' },
-                { name: 'Javascript', code: 'js' },
-                { name: 'PHP', code: 'php' },
-                { name: 'Node JS', code: 'nodejs' },
-                { name: 'HTML', code: 'html' },
-                { name: 'Open Source', code: 'os' }
-            ]
+            contents: ''
         };
     },
 
@@ -95,15 +95,17 @@ export default {
 
         const toolbarOptions = {
             container: [
-                ['bold', 'italic', 'underline', 'strike'],
+                [{ 'header': [false, 6, 5, 4, 3, 2, 1] }],
+                ['bold', 'italic', 'underline'],
                 ['blockquote', 'code-block'],
+                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                [{ 'script': 'sub' }, { 'script': 'super' }],
+                [{ 'indent': '-1' }, { 'indent': '+1' }],
+                [{ 'direction': 'rtl' }],
                 [{ 'color': [] }, { 'background': [] }],
-                [{ 'script': 'super' }, { 'script': 'sub' }],
-                [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
-                [ 'direction', { 'align': [] }],
-                [ 'link', 'image', 'video', 'formula' ],
-                ['clean'],
-                ['emoji'],
+                [{ 'align': [] }],
+                ['link', 'image', 'video', 'formula'],
+                ['emoji']
             ],
             handlers: {
                 'emoji': function() {},
@@ -128,17 +130,119 @@ export default {
         this.editor.root.innerHTML = this.oldContent;
         // We will add the update event here
         this.editor.on('text-change', () => this.update());
+        // Fix toolbar at top
+        window.onscroll = () => this.addClassFixed();
     },
 
     methods: {
         update() {
+            let src_regex = /<img.*?src="(.*?)"/;
+
             if (!(this.editor.getText().trim().length === 0 && this.editor.container.firstChild.innerHTML.includes("img") === false && this.editor.container.firstChild.innerHTML.includes('class="ql-emojiblot"') === false)) {
                 this.contents = this.editor.root.innerHTML;
-            } else {
-                this.contents = '';
+                let src_image = src_regex.exec(this.editor.container.firstChild.innerHTML);
+                this.article.page_image = (src_image !== null) ? src_image[1] : '';
             };
+        },
 
-            this.$emit('contentUpdated', this.contents);
+        onSubmit() {
+            if (!this.tags || !this.selected) {
+                toastr.error('Category and Tag must select one or more.')
+                return;
+            }
+
+            let tagIDs = []
+            let url = 'article' + (this.article.id ? '/' + this.article.id : '')
+            let method = this.article.id ? 'patch' : 'post'
+
+            for (var i = 0; i < this.tags.length; i++) {
+                tagIDs[i] = this.tags[i].id
+            }
+
+            this.article.content = this.contents
+            this.article.category_id = this.selected.id
+            this.article.tags = JSON.stringify(tagIDs)
+
+            this.$http[method](url, this.article)
+                .then((response) => {
+                    toastr.success('You ' + this.mode + 'd the article success!')
+
+                    this.$router.push({ name: 'dashboard.article' })
+                }).catch(({ response }) => {
+                    stack_error(response)
+                })
+        },
+
+        uploadImages() {
+            let fileInput = document.querySelector('input.ql-image[type=file]');
+
+            if (fileInput == null) {
+                fileInput = document.createElement('input');
+                fileInput.setAttribute('type', 'file');
+                fileInput.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/bmp, image/x-icon');
+                fileInput.classList.add('ql-image');
+                fileInput.addEventListener('change', () => {
+                    const files = fileInput.files;
+
+                    if (!files || !files.length) {
+                        console.log('No files selected');
+                        return;
+                    }
+
+                    this.handleSaveFile(files);
+                });
+            }
+            fileInput.click();
+        },
+
+        handleImageDrop(evt) {
+            evt.preventDefault();
+            if (evt.dataTransfer && evt.dataTransfer.files && evt.dataTransfer.files.length) {
+                [].forEach.call(evt.dataTransfer.files, file => {
+                    if (!file.type.match(/^image\/(gif|jpe?g|a?png|svg|webp|bmp|vnd\.microsoft\.icon)/i)) {
+                        return;
+                    }
+
+                    this.handleSaveFile(evt.dataTransfer.files);
+                });
+            }
+        },
+
+        handleSaveFile(files) {
+            const formData = new FormData();
+
+            formData.append('image', files[0]);
+            formData.append('strategy', 'article')
+
+            this.editor.enable(false);
+            this.$http.post('file/upload', formData)
+                .then(response => {
+                    this.editor.enable(true);
+                    this.insertImage(response.data.url);
+                })
+                .catch(error => {
+                    console.log('quill image upload failed');
+                    console.log(error);
+                    this.editor.enable(true);
+                });
+        },
+
+        insertImage(dataUrl) {
+            const index = (this.editor.getSelection() || {}).index || this.editor.getLength();
+            this.editor.insertEmbed(index, 'image', dataUrl, 'user');
+        },
+
+        addClassFixed() {
+            let toolbar = document.getElementsByClassName('ql-toolbar')[0];
+            let content_wrapper = document.getElementById('content_wrapper');
+            let editor_sticky = parseInt(content_wrapper.offsetTop);
+
+            if (window.pageYOffset > editor_sticky) {
+                toolbar.classList.add('sticky-editor');
+
+            } else {
+                toolbar.classList.remove("sticky-editor");
+            }
         }
     }
 }

@@ -57,4 +57,5 @@ export default {
 .votes {
     text-align: center;
 }
+
 </style>

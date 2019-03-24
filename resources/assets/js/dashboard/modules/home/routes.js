@@ -1,6 +1,6 @@
 export default [{
     path: '/',
-    redirect: {name: 'dashboard.home'},
+    redirect: { name: 'dashboard.home' },
 }, {
     name: 'dashboard.home',
     path: 'home',

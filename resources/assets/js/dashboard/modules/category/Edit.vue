@@ -10,27 +10,27 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import CategoryForm from './Form'
+import CategoryForm from './Form'
 
-    export default {
-        components: {CategoryForm},
-        data() {
-            return {
-                category: undefined
-            }
-        },
-        created() {
-            this.loadCategory()
-        },
-        methods: {
-            loadCategory() {
-                this.$http.get('category/' + this.$route.params.id + '/edit')
-                    .then((response) => {
-                        this.category = response.data.data
-                    })
-            },
+export default {
+    components: { CategoryForm },
+    data() {
+        return {
+            category: undefined
         }
+    },
+    created() {
+        this.loadCategory()
+    },
+    methods: {
+        loadCategory() {
+            this.$http.get('category/' + this.$route.params.id + '/edit')
+                .then((response) => {
+                    this.category = response.data.data
+                })
+        },
     }
+}
+
 </script>

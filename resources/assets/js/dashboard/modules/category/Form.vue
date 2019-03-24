@@ -16,8 +16,7 @@
             <div class="form-group row">
                 <label for="editor" class="col-sm-3 col-form-label">{{ $t('form.description') }}</label>
                 <div class="col-sm-9">
-                    <textarea id="editor" name="description" :placeholder="$t('form.category_description')"
-                              v-model="category.description" class="form-control"></textarea>
+                    <textarea id="editor" name="description" :placeholder="$t('form.category_description')" v-model="category.description" class="form-control"></textarea>
                 </div>
             </div>
             <div class="form-group row">
@@ -29,38 +28,38 @@
         </form>
     </div>
 </template>
-
 <script>
-    import {stack_error} from 'config/helper'
+import { stack_error } from 'config/helper'
 
-    export default {
-        props: {
-            category: {
-                type: Object,
-                default() {
-                    return {}
-                }
-            }
-        },
-        computed: {
-            mode() {
-                return this.category.id ? 'update' : 'create'
-            },
-        },
-        methods: {
-            onSubmit() {
-                let url = 'category' + (this.category.id ? '/' + this.category.id : '')
-                let method = this.category.id ? 'patch' : 'post'
-
-                this.$http[method](url, this.category)
-                    .then((response) => {
-                        toastr.success('You ' + this.mode + 'd the category success!')
-
-                        this.$router.push({name: 'dashboard.category'})
-                    }).catch(({response}) => {
-                    stack_error(response)
-                })
+export default {
+    props: {
+        category: {
+            type: Object,
+            default () {
+                return {}
             }
         }
+    },
+    computed: {
+        mode() {
+            return this.category.id ? 'update' : 'create'
+        },
+    },
+    methods: {
+        onSubmit() {
+            let url = 'category' + (this.category.id ? '/' + this.category.id : '')
+            let method = this.category.id ? 'patch' : 'post'
+
+            this.$http[method](url, this.category)
+                .then((response) => {
+                    toastr.success('You ' + this.mode + 'd the category success!')
+
+                    this.$router.push({ name: 'dashboard.category' })
+                }).catch(({ response }) => {
+                    stack_error(response)
+                })
+        }
     }
+}
+
 </script>

@@ -9,27 +9,27 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import LinkForm from './Form'
+import LinkForm from './Form'
 
-    export default {
-        components: {LinkForm},
-        data() {
-            return {
-                link: undefined
-            }
-        },
-        created() {
-            this.loadLink()
-        },
-        methods: {
-            loadLink() {
-                this.$http.get('link/' + this.$route.params.id + '/edit')
-                    .then((response) => {
-                        this.link = response.data.data
-                    })
-            },
+export default {
+    components: { LinkForm },
+    data() {
+        return {
+            link: undefined
         }
+    },
+    created() {
+        this.loadLink()
+    },
+    methods: {
+        loadLink() {
+            this.$http.get('link/' + this.$route.params.id + '/edit')
+                .then((response) => {
+                    this.link = response.data.data
+                })
+        },
     }
+}
+
 </script>

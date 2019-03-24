@@ -104,48 +104,48 @@
         </div>
     </div>
 </template>
-
 <script>
-    import Chart from 'home/components/Chartjs.vue'
+import Chart from 'home/components/Chartjs.vue'
 
-    export default {
-        components: {
-            Chart
-        },
-        data() {
-            return {
-                statistics: {}
-            }
-        },
-        mounted() {
-            this.$http.get('statistics')
-                .then((response) => {
-                    this.statistics = response.data
-                })
+export default {
+    components: {
+        Chart
+    },
+    data() {
+        return {
+            statistics: {}
         }
+    },
+    mounted() {
+        this.$http.get('statistics')
+            .then((response) => {
+                this.statistics = response.data
+            })
     }
+}
+
 </script>
-
 <style lang="scss" scoped>
-    h1 {
-        font-size: 30px;
-        font-weight: normal;
-    }
+h1 {
+    font-size: 30px;
+    font-weight: normal;
+}
 
-    h5 {
-        font-size: 14px;
-    }
+h5 {
+    font-size: 14px;
+}
 
-    h1 i {
-        font-size: 35px;
-        margin-right: 12px;
-    }
+h1 i {
+    font-size: 35px;
+    margin-right: 12px;
+}
 
-    .label {
-        padding: .3em .6em;
-    }
+.label {
+    padding: .3em .6em;
+}
 
-    .no-margins {
-        margin: 0 !important;
-    }
+.no-margins {
+    margin: 0 !important;
+}
+
 </style>

@@ -13,16 +13,16 @@
         </div>
     </div>
 </template>
-
 <script>
-    export default {
-        props: {
-            title: {
-                type: String,
-                default() {
-                    return null
-                }
+export default {
+    props: {
+        title: {
+            type: String,
+            default () {
+                return null
             }
         }
     }
+}
+
 </script>

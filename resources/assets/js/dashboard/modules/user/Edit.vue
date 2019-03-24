@@ -9,27 +9,27 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import UserForm from './Form'
+import UserForm from './Form'
 
-    export default {
-        components: {UserForm},
-        data() {
-            return {
-                user: undefined
-            }
-        },
-        created() {
-            this.loadUser()
-        },
-        methods: {
-            loadUser() {
-                this.$http.get('user/' + this.$route.params.id + '/edit')
-                    .then((response) => {
-                        this.user = response.data.data
-                    })
-            },
+export default {
+    components: { UserForm },
+    data() {
+        return {
+            user: undefined
         }
+    },
+    created() {
+        this.loadUser()
+    },
+    methods: {
+        loadUser() {
+            this.$http.get('user/' + this.$route.params.id + '/edit')
+                .then((response) => {
+                    this.user = response.data.data
+                })
+        },
     }
+}
+
 </script>

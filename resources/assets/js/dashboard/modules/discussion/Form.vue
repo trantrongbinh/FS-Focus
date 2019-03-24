@@ -10,9 +10,7 @@
             <div class="form-group row">
                 <label class="col-sm-1 col-form-label">{{ $t('form.tag') }}</label>
                 <div class="col-sm-11">
-                    <multiselect v-model="tags" :options="allTag" :multiple="true" :searchable="true"
-                                 :hide-selected="true" :close-on-select="false" :clear-on-select="false" :limit="5"
-                                 :placeholder="$t('form.select_tag')" label="tag" track-by="tag">
+                    <multiselect v-model="tags" :options="allTag" :multiple="true" :searchable="true" :hide-selected="true" :close-on-select="false" :clear-on-select="false" :limit="5" :placeholder="$t('form.select_tag')" label="tag" track-by="tag">
                     </multiselect>
                 </div>
             </div>
@@ -45,85 +43,85 @@
         </form>
     </div>
 </template>
-
 <script>
-    import {stack_error} from 'config/helper'
-    import {default as SimpleMDE} from 'simplemde/dist/simplemde.min'
-    import Multiselect from 'vue-multiselect'
+import { stack_error } from 'config/helper'
+import { default as SimpleMDE } from 'simplemde/dist/simplemde.min'
+import Multiselect from 'vue-multiselect'
 
-    export default {
-        components: {Multiselect},
-        props: {
-            discussion: {
-                type: Object,
-                default() {
-                    return {}
-                }
-            }
-        },
-        data() {
-            return {
-                simplemde: {},
-                tags: null,
-                allTag: []
-            }
-        },
-        computed: {
-            mode() {
-                return this.discussion.id ? 'update' : 'create'
-            },
-        },
-        created() {
-            this.loadTags()
-        },
-        watch: {
-            discussion() {
-                this.tags = this.discussion.tags.data
-                this.simplemde.value(this.discussion.content_raw)
-            },
-        },
-        mounted() {
-            let t = this.$t
-
-            this.simplemde = new SimpleMDE({
-                element: document.getElementById("editor"),
-                placeholder: t('form.content_placeholder', {type: t('form.discussion')}),
-                autoDownloadFontAwesome: true
-            })
-        },
-        methods: {
-            loadTags() {
-                this.$http.get('tags')
-                    .then((response) => {
-                        this.allTag = response.data.data
-                    })
-            },
-            onSubmit() {
-                if (this.tags.length == 0) {
-                    toastr.error('Tag must select one or more.')
-                    return;
-                }
-
-                let tagIDs = []
-                let url = 'discussion' + (this.discussion.id ? '/' + this.discussion.id : '')
-                let method = this.discussion.id ? 'patch' : 'post'
-
-                for (var i = 0; i < this.tags.length; i++) {
-                    tagIDs[i] = this.tags[i].id
-                }
-
-                this.discussion.tags = JSON.stringify(tagIDs)
-                this.discussion.content = this.simplemde.value()
-
-                this.$http[method](url, this.discussion)
-                    .then((response) => {
-                        toastr.success('You ' + this.mode + 'd the discussion success!')
-
-                        this.$router.push({name: 'dashboard.discussion'})
-                    }).catch(({response}) => {
-                    stack_error(response)
-                })
+export default {
+    components: { Multiselect },
+    props: {
+        discussion: {
+            type: Object,
+            default () {
+                return {}
             }
         }
+    },
+    data() {
+        return {
+            simplemde: {},
+            tags: null,
+            allTag: []
+        }
+    },
+    computed: {
+        mode() {
+            return this.discussion.id ? 'update' : 'create'
+        },
+    },
+    created() {
+        this.loadTags()
+    },
+    watch: {
+        discussion() {
+            this.tags = this.discussion.tags.data
+            this.simplemde.value(this.discussion.content_raw)
+        },
+    },
+    mounted() {
+        let t = this.$t
+
+        this.simplemde = new SimpleMDE({
+            element: document.getElementById("editor"),
+            placeholder: t('form.content_placeholder', { type: t('form.discussion') }),
+            autoDownloadFontAwesome: true
+        })
+    },
+    methods: {
+        loadTags() {
+            this.$http.get('tags')
+                .then((response) => {
+                    this.allTag = response.data.data
+                })
+        },
+        onSubmit() {
+            if (this.tags.length == 0) {
+                toastr.error('Tag must select one or more.')
+                return;
+            }
+
+            let tagIDs = []
+            let url = 'discussion' + (this.discussion.id ? '/' + this.discussion.id : '')
+            let method = this.discussion.id ? 'patch' : 'post'
+
+            for (var i = 0; i < this.tags.length; i++) {
+                tagIDs[i] = this.tags[i].id
+            }
+
+            this.discussion.tags = JSON.stringify(tagIDs)
+            this.discussion.content = this.simplemde.value()
+
+            this.$http[method](url, this.discussion)
+                .then((response) => {
+                    toastr.success('You ' + this.mode + 'd the discussion success!')
+
+                    this.$router.push({ name: 'dashboard.discussion' })
+                }).catch(({ response }) => {
+                    stack_error(response)
+                })
+        }
     }
+}
+
 </script>

@@ -1,1 +1,1 @@
-export const toggle = ({commit}) => commit('toggle')
+export const toggle = ({ commit }) => commit('toggle')

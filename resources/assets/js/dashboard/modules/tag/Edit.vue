@@ -9,27 +9,27 @@
         </template>
     </vue-form>
 </template>
-
 <script>
-    import TagForm from './Form'
+import TagForm from './Form'
 
-    export default {
-        components: {TagForm},
-        data() {
-            return {
-                tag: undefined
-            }
-        },
-        created() {
-            this.loadTag()
-        },
-        methods: {
-            loadTag() {
-                this.$http.get('tag/' + this.$route.params.id + '/edit')
-                    .then((response) => {
-                        this.tag = response.data.data
-                    })
-            },
+export default {
+    components: { TagForm },
+    data() {
+        return {
+            tag: undefined
         }
+    },
+    created() {
+        this.loadTag()
+    },
+    methods: {
+        loadTag() {
+            this.$http.get('tag/' + this.$route.params.id + '/edit')
+                .then((response) => {
+                    this.tag = response.data.data
+                })
+        },
     }
+}
+
 </script>
