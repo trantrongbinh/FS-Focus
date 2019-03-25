@@ -117,7 +117,7 @@
                                                 By <a href="/user/{{ $article->user->name }}">{{ $article->user->name }}</a>
                                             </div>
                                             <div class="float-right card__action-interactive">
-                                                <a href="javascript:;" class="link-black interactive-view"><i class="far fa-eye"></i> 11</a>
+                                                <a href="javascript:;" class="link-black interactive-view"><i class="far fa-eye"></i> {{ $article->getViews() }}</a>
                                                 <a href="#" class="link-black interactive-comment"><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</a>
                                                 <a href="#" class="link-black interactive-bookmark"><i class="far fa-bookmark"></i> 2</a>
                                                 <span>

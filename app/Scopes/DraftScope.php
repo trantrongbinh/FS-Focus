@@ -10,6 +10,7 @@ class DraftScope implements Scope
 {
     /**
      * Apply the scope to a given Eloquent query builder.
+     * Get post is not draft
      *
      * @param  \Illuminate\Database\Eloquent\Builder $builder
      * @param  \Illuminate\Database\Eloquent\Model $model
@@ -17,6 +18,6 @@ class DraftScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('is_draft', 0);
+        $builder->where('is_original', 1);
     }
 }

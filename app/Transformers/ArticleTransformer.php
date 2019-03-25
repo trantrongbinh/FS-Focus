@@ -24,7 +24,6 @@ class ArticleTransformer extends TransformerAbstract
             'page_image'        => $article->page_image,
             'meta_description'  => $article->meta_description,
             'is_original'       => $article->is_original,
-            'is_draft'          => $article->is_draft,
             'visitors'          => $article->view_count,
             'published_at'      => $article->published_at->diffForHumans(),
             'published_time'    => $article->published_at->toDateTimeString(),

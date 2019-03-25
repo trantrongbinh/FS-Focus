@@ -278,7 +278,7 @@ h1:hover a {
 
 .card__action-interactive {
     margin-top: 10px;
-    
+
     >a {
         padding-right: 20px;
     }
@@ -445,7 +445,10 @@ h1:hover a {
 
     }
 
-    .title, .date, .comments, .views {
+    .title,
+    .date,
+    .comments,
+    .views {
         font-weight: 400;
         color: #999;
         text-transform: capitalize;
@@ -600,20 +603,17 @@ i[class*="icon-"] {
 }
 
 .widget.latest-posts {
-    a {
+    .title--post {
         display: block;
         color: #555;
         text-decoration: none;
-    }
-
-    a:hover {
-        color: #000;
+        &:hover {
+            color: #000;
+        }
     }
 
     .image {
-        min-width: 60px;
-        max-width: 60px;
-        height: 60px;
+        width: 40px;
         overflow: hidden;
         margin-right: 20px;
     }
@@ -624,34 +624,42 @@ i[class*="icon-"] {
 
     strong {
         letter-spacing: 1px;
-        font-size: 0.95em;
+        font-size: 0.96em;
         display: block;
         line-height: 1.3em;
     }
 
+    .author {
+        font-size: 13px;
+        font-weight: 400;
+        color: #3498db;
+        &:hover {
+            color: #2FB5FA;
+        }
+    }
+
     .views,
-    .comments {
+    .comments,
+    .time {
         font-size: 0.8em;
         font-weight: 400;
-        color: #bbb;
+        color: #999;
         margin-top: 10px;
+
+        i {
+            margin-right: 5px;
+        }
+
+        &:after {
+            content: '.';
+            display: inline-block;
+            margin: 0 7px;
+            font-size: 1em;
+            color: #999;
+        }
     }
 
-    .views i,
-    .comments i {
-        margin-right: 5px;
-    }
-
-    .views::after,
-    .comments::after {
-        content: '|';
-        display: inline-block;
-        margin: 0 7px;
-        font-size: 0.9em;
-        color: #ccc;
-    }
-
-    .comments::after {
+    .time::after {
         display: none;
     }
 }
@@ -869,10 +877,16 @@ i[class*="icon-"] {
     }
 }
 
-.img-sm,
-.user-block.user-block-sm img,
-.img-md,
+.img-md {
+    width: 40px !important;
+}
+
 .img-lg {
+    width: 60px !important;
+}
+
+.img-sm,
+.user-block.user-block-sm img {
     float: left;
     width: 30px !important;
 }

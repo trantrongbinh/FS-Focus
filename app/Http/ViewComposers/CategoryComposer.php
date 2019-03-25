@@ -16,7 +16,7 @@ class CategoryComposer
     public function compose(View $view)
     {
         $public = Category::withCount('articles')->whereNull('user_id')->OrderBy('articles_count', 'desc')->get();
-        
+
         if (\Auth::check()) {
             $yourCategory = Category::withCount('articles')->where('user_id', \Auth::id())->OrderBy('articles_count', 'desc')->get();
             $other = Category::withCount('articles')->whereNotNull('user_id')->where('user_id', '!=', \Auth::id())->OrderBy('articles_count', 'desc')->get();

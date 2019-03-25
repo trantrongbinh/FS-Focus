@@ -72,7 +72,6 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        dd($request);
         $data = array_merge($request->all(), [
             'user_id' => \Auth::id(),
             'last_user_id' => \Auth::id(),
@@ -80,8 +79,6 @@ class ArticleController extends Controller
         ]);
 
         //$time_now =  \Carbon\Carbon::now();
-
-        $data['is_draft'] = isset($data['is_draft']);
         $data['is_original'] = isset($data['is_original']);
         $data['type'] = isset($data['type']);
         $data['content'] = $data['content'];

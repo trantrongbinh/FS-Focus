@@ -63,7 +63,7 @@
                                 <div class="item d-flex align-items-center">
                                     <div class="image">
                                         @if ($team->avatar)
-                                            <img class="img-fluid img-sm" src="{{ asset($team->avatar) }} }}" alt="Your team avatar">
+                                            <img class="img-fluid img-sm" src="{{ asset($team->avatar) }}" alt="Your team avatar">
                                         @else
                                             <img class="img-fluid img-sm" src="{{ asset('/images/team-default.png') }}" alt="Your team avatar">
                                         @endif

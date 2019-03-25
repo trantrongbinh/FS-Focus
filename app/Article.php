@@ -42,7 +42,6 @@ class Article extends Model
         'page_image',
         'content',
         'meta_description',
-        'is_draft',
         'is_original',
         'published_at',
     ];

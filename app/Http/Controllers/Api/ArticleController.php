@@ -38,15 +38,12 @@ class ArticleController extends ApiController
     {
         $data = array_merge($request->all(), [
             'user_id' => \Auth::id(),
-            'last_user_id' => \Auth::id()
+            'last_user_id' => \Auth::id(),
+            'is_original' => true,
+            'published_at' => now()->timestamp,
         ]);
 
-        $data['is_draft'] = isset($data['is_draft']);
-        $data['is_original'] = isset($data['is_original']);
-        $data['content'] = $data['content'];
-
         $this->article->store($data);
-
         $this->article->syncTag(json_decode($request->get('tags')));
 
         return $this->response->withNoContent();

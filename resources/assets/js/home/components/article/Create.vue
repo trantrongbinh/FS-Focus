@@ -1,6 +1,6 @@
 <template>
     <div class="create-wrapper">
-        <form class="col-sm-12" @submit.prevent="onSubmit">
+        <form @submit.prevent="onSubmit">
             <div class="clear"></div>
             <div id="editor-container">
                 <a class="btn btn-outline-info btn-sm float-right border__none" href="#" data-toggle="modal" data-target="#draftModal"></i><b>Drafts (0)</b></a>
@@ -90,6 +90,12 @@ export default {
         };
     },
 
+    computed: {
+        mode() {
+            return this.article.id ? 'update' : 'create'
+        },
+    },
+
     mounted() {
         Quill.register('modules/imageResize', ImageResize);
 
@@ -134,6 +140,16 @@ export default {
         window.onscroll = () => this.addClassFixed();
     },
 
+    watch: {
+        'article.title': function() {
+            this.saveDraft()
+        },
+
+        contents: function() {
+            this.saveDraft()
+        }
+    },
+
     methods: {
         update() {
             let src_regex = /<img.*?src="(.*?)"/;
@@ -166,11 +182,35 @@ export default {
             this.$http[method](url, this.article)
                 .then((response) => {
                     toastr.success('You ' + this.mode + 'd the article success!')
-
-                    this.$router.push({ name: 'dashboard.article' })
+                    window.location.href = '/'
                 }).catch(({ response }) => {
                     stack_error(response)
                 })
+        },
+
+        saveDraft() {
+            if (this.tags) {
+                let tagIDs = []
+
+                for (var i = 0; i < this.tags.length; i++) {
+                    tagIDs[i] = this.tags[i].id
+                }
+
+                this.article.tags = JSON.stringify(tagIDs)
+            }
+
+            if (this.selected) {
+                this.article.category_id = this.selected.id
+            }
+
+            this.article.content = this.contents
+
+            // this.$http['post']('article', this.article)
+            //     .then((response) => {
+                    
+            //     }).catch(({ response }) => {
+            //         stack_error(response)
+            //     })
         },
 
         uploadImages() {

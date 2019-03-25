@@ -15,7 +15,8 @@ class HotPostComposer
      */
     public function compose(View $view)
     {
-        $view->with('hotPosts', Article::select('slug', 'title', 'page_image', 'rate', 'view_count')
+        $view->with('hotPosts', Article::select('slug', 'title')
+            ->with('user')
             ->withCount('comments')
             ->orderByViewsCount()
             ->take(5)
