@@ -17,6 +17,8 @@ Route::group([
         'destroy' => 'api.article.destroy',
     ], 'except' => ['create', 'show']]);
 
+    Route::post('article/draft', 'ArticleController@saveDraft');
+
     Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
     Route::get('/categories', 'CategoryController@getList');
     Route::post('/category/{id}/status', 'CategoryController@status');

@@ -11,7 +11,7 @@
                 <a class="title--post" href="{{ url($post->slug) }}">
                     <strong class="">{{ str_limit($post->title, config('blog.str_limit.title_post')) }}</strong>
                 </a>
-                <a href="/user/{{ $post->user->name }}" class="author">{{ $post->user->name }}</a>
+                <span class="author">by <a href="/user/{{ $post->user->name }}">{{ $post->user->name }}</a></span>
                 <div class="d-flex align-items-center">
                     <div class="views"><i class="far fa-eye"></i> {{ $post->getViews() }}</div>
                     <div class="comments"><i class="far fa-comment-alt"></i> {{ $post->comments_count }}</div>

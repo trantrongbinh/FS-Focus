@@ -630,11 +630,15 @@ i[class*="icon-"] {
     }
 
     .author {
+        color: #999;
         font-size: 13px;
         font-weight: 400;
-        color: #3498db;
-        &:hover {
-            color: #2FB5FA;
+
+        a {
+            color: #3498db;
+            &:hover {
+                color: #2FB5FA;
+            }
         }
     }
 

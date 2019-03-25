@@ -36,8 +36,8 @@
                 </div>
                 <hr>
                 <div class="action-save text-right">
-                    <span class="far fa-check-circle"> Đã cập nhật</span>
-                    <span class="far fa-save"> Đang lưu ...</span>
+                    <span class="far fa-check-circle" v-if="!saved"> Đã cập nhật</span>
+                    <span class="far fa-save" v-else> Đang lưu ...</span>
                 </div>
                 <div class="content__save text-center">
                     <button type="submit" class="btn btn-info btn-sm">{{ $t('form.create') }}</button>
@@ -86,7 +86,8 @@ export default {
     data() {
         return {
             editor: null,
-            contents: ''
+            contents: '',
+            saved: false
         };
     },
 
@@ -189,6 +190,12 @@ export default {
         },
 
         saveDraft() {
+            let url = 'article' + (this.article.id ? '/' + this.article.id : '/draft')
+            let method = this.article.id ? 'patch' : 'post'
+
+            console.log(url);
+            console.log(method);
+
             if (this.tags) {
                 let tagIDs = []
 
@@ -204,13 +211,16 @@ export default {
             }
 
             this.article.content = this.contents
+            this.saved = true;
 
-            // this.$http['post']('article', this.article)
-            //     .then((response) => {
-                    
-            //     }).catch(({ response }) => {
-            //         stack_error(response)
-            //     })
+            this.$http[method](url, this.article)
+                .then((response) => {
+                    console.log(response.data);
+                    this.article.id = response.data.id;
+                    this.saved = false;
+                }).catch(({ response }) => {
+                    stack_error(response)
+                })
         },
 
         uploadImages() {

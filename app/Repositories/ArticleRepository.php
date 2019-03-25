@@ -299,5 +299,4 @@ class ArticleRepository
 
         return $articles;
     }
-
 }

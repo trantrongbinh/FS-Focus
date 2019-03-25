@@ -50,6 +50,28 @@ class ArticleController extends ApiController
     }
 
     /**
+     * Save draft post
+     *
+     * @param  \App\Http\Requests\Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function saveDraft(Request $request)
+    {
+        $data = array_merge($request->all(), [
+            'user_id' => \Auth::id(),
+            'last_user_id' => \Auth::id(),
+        ]);
+        $draftArticle = $this->article->store($data);
+
+        if (!empty($request->get('tags'))) {
+            $this->article->syncTag(json_decode($request->get('tags')));
+        }
+
+        return $this->response->json($draftArticle);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
