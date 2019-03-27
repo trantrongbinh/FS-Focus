@@ -82,7 +82,7 @@ class ArticleController extends ApiController
             $this->article->syncTag(json_decode($request->get('tags')));
         }
 
-        return $this->response->json($draftArticle);
+        return $this->response->item($draftArticle);
     }
 
     /**
@@ -117,7 +117,7 @@ class ArticleController extends ApiController
             $this->article->syncTag(json_decode($request->get('tags')));
         }
 
-        return $this->response->json($draftArticle);
+        return $this->response->item($draftArticle);
     }
 
     /**

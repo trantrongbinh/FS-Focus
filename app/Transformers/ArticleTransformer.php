@@ -20,7 +20,7 @@ class ArticleTransformer extends TransformerAbstract
             'title'             => $article->title,
             'user'              => $article->user,
             'slug'              => $article->slug,
-            'content'           => $article->content['raw'],
+            'content'           => $article->content['html'],
             'page_image'        => $article->page_image,
             'meta_description'  => $article->meta_description,
             'is_original'       => $article->is_original,

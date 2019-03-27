@@ -157,13 +157,6 @@ export default {
         this.editor.root.innerHTML = this.oldContent;
         // We will add the update event here
         this.editor.on('text-change', () => this.update());
-        // Blur and focus in editor
-        // this.editor.on('selection-change', function(range, oldRange, source) {
-        //   if (range === null && oldRange !== null) {
-        //     alert('blur');
-        // } else if (range !== null && oldRange === null)
-        //   alert('focus');
-        // });
         // Fix toolbar at top
         window.onscroll = () => this.addClassFixed();
 
@@ -206,21 +199,6 @@ export default {
             };
         },
 
-        // after entering some text in the input field
-        // the text will be shown after 1 second
-        // keyMonitor: function() {
-        //     // clear timeout variable
-        //     clearTimeout(this.timeout);
-
-        //     var self = this;
-        //     this.timeout = setTimeout(function() {
-        //         // enter this block of code after 1 second
-        //         // handle stuff, call search API etc.
-        //         console.log(self.article);
-        //         // self.outputValue = self.article;
-        //     }, 5000);
-        // },
-
         onSubmit() {
             if (!this.tags || !this.selected) {
                 toastr.error('Category and Tag must select one or more.')
@@ -248,6 +226,10 @@ export default {
                 })
         },
 
+        getKeyByValue(object, childKey, value) {
+          return Object.keys(object).find(key => object[key][childKey] === value);
+        },
+
         saveDraft: function() {
             let url = 'article/draft' + (this.article.id ? '/' + this.article.id : '')
             let method = this.article.id ? 'patch' : 'post'
@@ -272,15 +254,20 @@ export default {
 
                 this.$http[method](url, this.article)
                     .then((response) => {
-                        this.article.id = response.data.id;
+                        this.article.id = response.data.data.id;
 
-                        if (method === 'post') this.countDrafts += 1;
-                        // this.drafts.push(...)
-                        console.log(JSON.parse(response.data));
+                        if (method === 'post') {
+                            this.countDrafts += 1;
+                            this.drafts.unshift(response.data.data)
+                        } else {
+                            let keyCurrentDraft = this.getKeyByValue(this.drafts, 'id', response.data.data.id)
+                            this.drafts.splice(keyCurrentDraft, 1, response.data.data)
+                        }
+
                         var self = this;
                         setTimeout(function() {
                             self.saved = false;
-                        }, 3000);
+                        }, 2000);
                     }).catch(({ response }) => {
                         console.log(response)
                     })
