@@ -18,6 +18,9 @@ Route::group([
     ], 'except' => ['create', 'show']]);
 
     Route::post('article/draft', 'ArticleController@saveDraft');
+    Route::patch('article/draft/{id}', 'ArticleController@updateDraft');
+    Route::get('article/{userId}/drafts', 'ArticleController@getDraft');
+
 
     Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
     Route::get('/categories', 'CategoryController@getList');

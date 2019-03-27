@@ -133,14 +133,14 @@
                                 <div role="tabpanel" class="tab-pane fade show active" id="live">
                                     <div class="row">
                                         <aside class="col-lg-12">
-                                            @include('modules.left')
+
                                         </aside>
                                     </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="trend">
                                     <div class="row">
                                         <aside class="col-lg-12">
-                                            @include('modules.right')
+
                                         </aside>
                                     </div>
                                 </div>

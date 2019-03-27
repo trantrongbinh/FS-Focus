@@ -28,6 +28,20 @@ class ArticleController extends ApiController
     }
 
     /**
+     * Get draft post.
+     *
+     * @param  int $userId
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getDraft($userId)
+    {
+        $article = $this->article->getDraftByUserID($userId);
+
+        return $this->response->collection($article);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\ArticleRequest $request
@@ -52,7 +66,7 @@ class ArticleController extends ApiController
     /**
      * Save draft post
      *
-     * @param  \App\Http\Requests\Request $request
+     * @param  \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -84,6 +98,29 @@ class ArticleController extends ApiController
     }
 
     /**
+     * Update draft post
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateDraft(Request $request, $id)
+    {
+        $data = array_merge($request->all(), [
+            'last_user_id' => \Auth::id()
+        ]);
+
+        $draftArticle = $this->article->update($id, $data);
+
+        if (!empty($request->get('tags'))) {
+            $this->article->syncTag(json_decode($request->get('tags')));
+        }
+
+        return $this->response->json($draftArticle);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\ArticleRequest $request
@@ -91,17 +128,17 @@ class ArticleController extends ApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(ArticleRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = array_merge($request->all(), [
             'last_user_id' => \Auth::id()
         ]);
 
-        $data['content'] = $data['content'];
-
         $this->article->update($id, $data);
 
-        $this->article->syncTag(json_decode($request->get('tags')));
+        if (!empty($request->get('tags'))) {
+            $this->article->syncTag(json_decode($request->get('tags')));
+        }
 
         return $this->response->withNoContent();
     }

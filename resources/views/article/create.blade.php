@@ -11,7 +11,7 @@
             <div class="clear"></div>
             <div class="form-group row">
                 <div class="col-sm-12">
-                    <article-create></article-create>
+                    <article-create user-id="{{ Auth::id() }}"></article-create>
                 </div>
             </div>
         </div>
@@ -20,5 +20,4 @@
 @endsection
 
 @section('scripts')
-
 @endsection

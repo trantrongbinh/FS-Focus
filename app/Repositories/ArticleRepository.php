@@ -60,6 +60,17 @@ class ArticleRepository
     }
 
     /**
+     * Get draft article.
+     *
+     * @param  int $userId
+     * @return mixed
+     */
+    public function getDraftByUserID($id, $sort = 'desc', $sortColumn = 'created_at')
+    {
+        return $this->model->withoutGlobalScope(DraftScope::class)->where('is_original', 0)->orderBy($sortColumn, $sort)->get();
+    }
+
+    /**
      * Get the article record without draft scope.
      *
      * @param  int $id
