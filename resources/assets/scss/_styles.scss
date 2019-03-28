@@ -96,6 +96,34 @@ h1:hover a {
 }
 
 /**
+ * item
+ */
+.views,
+.comments,
+.time {
+    font-size: 0.8em;
+    font-weight: 400;
+    color: #999;
+    margin-top: 10px;
+
+    i {
+        margin-right: 5px;
+    }
+
+    &:after {
+        content: '.';
+        display: inline-block;
+        margin: 0 7px;
+        font-size: 1em;
+        color: #999;
+    }
+}
+
+.time::after {
+    display: none;
+}
+
+/**
  * Article
  */
 .card {
@@ -168,6 +196,8 @@ h1:hover a {
 
 /* card article */
 .card__article {
+    margin-top: 5px;
+
     a {
         text-decoration: none;
         color: #444;
@@ -640,31 +670,6 @@ i[class*="icon-"] {
                 color: #2FB5FA;
             }
         }
-    }
-
-    .views,
-    .comments,
-    .time {
-        font-size: 0.8em;
-        font-weight: 400;
-        color: #999;
-        margin-top: 10px;
-
-        i {
-            margin-right: 5px;
-        }
-
-        &:after {
-            content: '.';
-            display: inline-block;
-            margin: 0 7px;
-            font-size: 1em;
-            color: #999;
-        }
-    }
-
-    .time::after {
-        display: none;
     }
 }
 

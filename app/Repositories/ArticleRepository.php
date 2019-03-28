@@ -67,7 +67,11 @@ class ArticleRepository
      */
     public function getDraftByUserID($id, $sort = 'desc', $sortColumn = 'created_at')
     {
-        return $this->model->withoutGlobalScope(DraftScope::class)->where('is_original', 0)->orderBy($sortColumn, $sort)->get();
+        return $this->model->withoutGlobalScope(DraftScope::class)
+                    ->where('user_id', \Auth::id())
+                    ->where('is_original', 0)
+                    ->orderBy($sortColumn, $sort)
+                    ->get();
     }
 
     /**

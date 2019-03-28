@@ -9,7 +9,7 @@
                         <div class="modal-content">
                             <!-- Modal Header -->
                             <div class="modal-header">
-                                <h4 class="modal-title">Your drafts ({{ countDrafts }})</h4>
+                                <h6 class="modal-title">Your drafts ({{ countDrafts }})</h6>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <!-- Modal body -->
@@ -18,10 +18,20 @@
                                     You do not have any articles.
                                 </div>
                                 <div v-for="(draft, index) in drafts" v-else>
-                                    <h2 class="h3">{{ draft.title }}</h2>
-                                    <div>{{ draft.content }}</div>
-                                    <div>
-                                        {{ draft.created_at }}
+                                    <div class="row d-flex align-items-stretch featured-posts post-list">
+                                        <div class="post col-lg-12">
+                                            <a href="javascript:void(0)" @click="editDraft(draft)" data-dismiss="modal">
+                                                <h3 class="h4">{{ draft.title }}</h3>
+                                            </a>
+                                            <div class="markdown" v-html="limitContent(draft.content)"></div>
+                                            <div class="font-size_16">
+                                                <span class="time"><i class="far fa-clock"></i> {{ draft.created_at }}</span>
+                                                <div class="float-right action--btn">
+                                                    <a href="javascript:void(0)" @click="editDraft(draft)" data-dismiss="modal" class="btn btn-outline-info btn-sm border__none"><i class="fas fa-pencil-alt"></i> Edit</a>
+                                                    <a href="#" class="btn btn-outline-danger btn-sm border__none"><i class="fas fa-trash-alt"></i> Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +94,7 @@ export default {
                 return ''
             }
         },
-        article: {
+        articleOriginal: {
             type: Object,
             default () {
                 return {
@@ -107,17 +117,14 @@ export default {
             saved: false,
             timeout: null,
             countDrafts: 0,
-            drafts: []
+            drafts: [],
+            article: []
         };
     },
 
-    computed: {
-        mode() {
-            return this.article.id ? 'update' : 'create'
-        },
-    },
-
     mounted() {
+        this.article = this.articleOriginal;
+
         Quill.register('modules/imageResize', ImageResize);
 
         const toolbarOptions = {
@@ -188,6 +195,12 @@ export default {
         }
     },
 
+    computed: {
+        mode() {
+            return this.article.id ? 'update' : 'create'
+        },
+    },
+
     methods: {
         update() {
             let src_regex = /<img.*?src="(.*?)"/;
@@ -226,8 +239,16 @@ export default {
                 })
         },
 
+        limitContent(value) {
+            if (value != null) {
+                value = value.length > 100 ? value.substring(0, 100) + '...' : value;
+            }
+
+            return value;
+        },
+
         getKeyByValue(object, childKey, value) {
-          return Object.keys(object).find(key => object[key][childKey] === value);
+            return Object.keys(object).find(key => object[key][childKey] === value);
         },
 
         saveDraft: function() {
@@ -272,6 +293,11 @@ export default {
                         console.log(response)
                     })
             };
+        },
+
+        editDraft(draft) {
+            this.article = draft;
+            this.editor.root.innerHTML = draft.content;
         },
 
         uploadImages() {
@@ -349,3 +375,13 @@ export default {
 }
 
 </script>
+<style lang="scss" scoped>
+.post-list {
+    margin: 0 auto !important;
+    padding-bottom: 10px !important;
+}
+
+.action--btn {
+    margin-top: 10px;
+}
+</style>

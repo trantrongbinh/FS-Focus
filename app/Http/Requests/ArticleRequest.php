@@ -25,7 +25,7 @@ class ArticleRequest extends FormRequest
     {
         return [
             'title' => 'required|min:3',
-            'content' => 'required',
+            'content' => 'required'
         ];
     }
 }

@@ -128,10 +128,12 @@ class ArticleController extends ApiController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
         $data = array_merge($request->all(), [
-            'last_user_id' => \Auth::id()
+            'last_user_id' => \Auth::id(),
+            'is_original' => true,
+            'published_at' => now()->timestamp,
         ]);
 
         $this->article->update($id, $data);

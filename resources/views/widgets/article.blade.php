@@ -73,6 +73,7 @@
 
                                 @forelse($articles as $article)
                                 <!-- Post -->
+                                {{-- {{ dd($article) }} --}}
                                 <div class="card radius shadowDepth1">
                                     @if($article->page_image)
                                         <a href="{{ url($article->slug) }}" class="card__image background__cover" style="background-image: url({{ asset($article->page_image) }});">
@@ -112,7 +113,7 @@
                                     </div>
                                     <div class="card__action">
                                         <div class="card__author">
-                                            <img src="{{ asset($article->user->avatar) }}" alt="{{ $article->user->name }}">
+                                            <img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}">
                                             <div class="card__author-content">
                                                 By <a href="/user/{{ $article->user->name }}">{{ $article->user->name }}</a>
                                             </div>
@@ -130,13 +131,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- comment -->
-                                    {{-- @if(Auth::guest())
-                                        <a href="{{ url('login') }}" class="text-center">@lang('You must be logged to add a comment !')</a>
-                                        <comment-home title="Post Comments" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text=""></comment-home>
-                                    @else
-                                        <comment-home title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="" can-comment></comment-home>
-                                    @endif --}}
                                 </div>
                                 <!-- /.post -->
                                 @empty

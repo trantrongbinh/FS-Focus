@@ -3,7 +3,7 @@
         <div class="item d-flex align-items-center">
             <a href="/user/{{ $post->user->name }}">
                 <div class="image">
-                    <img class="img-fluid img-circle img-md" alt="{{ $post->user->name }}" src="{{ asset($post->user->avatar) }}" class="img-fluid">
+                    <img class="img-fluid img-circle img-md" alt="{{ $post->user->name }}" src="{{ $post->user->avatar }}" class="img-fluid">
                     <p></p>
                 </div>
             </a>

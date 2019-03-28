@@ -9,21 +9,7 @@ Route::group([
     Route::resource('user', 'UserController', ['except' => ['create', 'show']]);
     Route::post('/user/{id}/status', 'UserController@status');
 
-    Route::resource('article', 'ArticleController', ['names' => [
-        'index' => 'api.article.index',
-        'store' => 'api.article.store',
-        'edit' => 'api.article.edit',
-        'update' => 'api.article.update',
-        'destroy' => 'api.article.destroy',
-    ], 'except' => ['create', 'show']]);
-
-    Route::post('article/draft', 'ArticleController@saveDraft');
-    Route::patch('article/draft/{id}', 'ArticleController@updateDraft');
-    Route::get('article/{userId}/drafts', 'ArticleController@getDraft');
-
-
     Route::resource('category', 'CategoryController', ['except' => ['create', 'show']]);
-    Route::get('/categories', 'CategoryController@getList');
     Route::post('/category/{id}/status', 'CategoryController@status');
 
     Route::resource('discussion', 'DiscussionController', ['except' => ['create', 'show']]);
@@ -49,20 +35,41 @@ Route::group([
 });
 
 Route::group([
+    'middleware' => ['auth:api'],
     'namespace' => 'Api',
 ], function () {
     // File Upload
-    Route::post('file/upload', 'UploadController@fileUpload')->middleware('auth:api');
+    Route::post('file/upload', 'UploadController@fileUpload');
     
     // Edit Avatar
-    Route::post('crop/avatar', 'UserController@cropAvatar')->middleware('auth:api');
+    Route::post('crop/avatar', 'UserController@cropAvatar');
 
     // Comment
-    Route::get('commentable/{commentableId}/comment', 'CommentController@show')->middleware('api');
-    Route::post('comments', 'CommentController@store')->middleware('auth:api');
-    Route::delete('comments/{id}', 'CommentController@destroy')->middleware('auth:api');
-    Route::post('comments/vote/{type}', 'MeController@postVoteComment')->middleware('auth:api');
-    Route::get('article/{id}/vote', 'ArticleController@showVote')->middleware('auth:api');
-    Route::post('article/vote/{type}', 'MeController@postClapArticle')->middleware('auth:api');
+    Route::get('commentable/{commentableId}/comment', 'CommentController@show');
+    Route::post('comments', 'CommentController@store');
+    Route::delete('comments/{id}', 'CommentController@destroy');
+    Route::post('comments/vote/{type}', 'MeController@postVoteComment');
+    Route::get('article/{id}/vote', 'ArticleController@showVote');
+    Route::post('article/vote/{type}', 'MeController@postClapArticle');
+
+    // Tag
     Route::get('tags', 'TagController@getList');
+
+    // Category
+    Route::get('/categories', 'CategoryController@getList');
+
+    // Action for article
+    Route::resource('article', 'ArticleController', ['names' => [
+        'index' => 'api.article.index',
+        'store' => 'api.article.store',
+        'edit' => 'api.article.edit',
+        'update' => 'api.article.update',
+        'destroy' => 'api.article.destroy',
+    ], 'except' => ['create', 'show']]);
+
+    Route::post('article/draft', 'ArticleController@saveDraft');
+    Route::patch('article/draft/{id}', 'ArticleController@updateDraft');
+    Route::get('article/{userId}/drafts', 'ArticleController@getDraft');
+
+
 });
