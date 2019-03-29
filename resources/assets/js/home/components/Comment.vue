@@ -39,7 +39,7 @@
                             <snow-quill-editor id="content" :table-type="commentableType" strategy="comment" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent"></snow-quill-editor>
                         </div>
                     </div>
-                    <div class="clear2"></div>
+                    <div class="mb__100"></div>
                     <div class="form-group row">
                         <div class="col-sm-12">
                             <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-success">

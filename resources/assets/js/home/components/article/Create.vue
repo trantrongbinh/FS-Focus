@@ -1,7 +1,7 @@
 <template>
     <div class="create-wrapper">
         <form @submit.prevent="onSubmit">
-            <div class="clear"></div>
+            <div class="mb__10"></div>
             <div id="editor-container">
                 <a class="btn btn-outline-info btn-sm float-right border__none" href="#" data-toggle="modal" data-target="#draftModal"></i><b>Drafts ({{ countDrafts }})</b></a>
                 <div class="modal fade" id="draftModal" style="color: #000">
@@ -42,7 +42,7 @@
                     <div id="title-container">
                         <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="TITLE YOUR POST" rows="1" id="title" name="title" v-model="article.title"></textarea>
                     </div>
-                    <div class="clear"></div>
+                    <div class="mb__10"></div>
                     <div class="row">
                         <div class="col-sm-5">
                             <multiselect v-model="selected" :options="options" label="name" :placeholder="$t('form.select_category')" track-by="name">
@@ -166,7 +166,6 @@ export default {
         this.editor.on('text-change', () => this.update());
         // Fix toolbar at top
         window.onscroll = () => this.addClassFixed();
-
         //Get draft post
         var url = 'article/' + this.userId + '/drafts'
         this.$http.get(url).then((response) => {

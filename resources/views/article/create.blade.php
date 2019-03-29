@@ -8,7 +8,7 @@
 <div class="container">
     <main class="article row">
         <div class="col-md-12 create-post">
-            <div class="clear"></div>
+            <div class="mb__10"></div>
             <div class="form-group row">
                 <div class="col-sm-12">
                     <article-create user-id="{{ Auth::id() }}"></article-create>

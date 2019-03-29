@@ -44,7 +44,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="clear"></div>
+                    <div class="mb__10"></div>
                     <div class="tab-content">
                         <div class="active tab-pane" id="activity">
                             <div id="featured-posts">

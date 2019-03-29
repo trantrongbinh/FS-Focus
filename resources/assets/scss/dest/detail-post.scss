@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css?family=Lora|Open+Sans:400,900|Playfair+Display:900");
+
+body {
+    min-width: 320px !important;
+}
+
+.detail--post {
+    p,
+    ul,
+    li {
+        font-family: "Lora", serif;
+        font-size: 20px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Open Sans";
+        font-weight: 900;
+    }
+
+    .topic--post {
+        margin-top: 0px;
+        margin-bottom: 22px;
+        font-weight: 400;
+        --x-height-multiplier: 0.342;
+        --baseline-multiplier: 0.22;
+        font-family: "Open Sans";
+        font-style: normal;
+        font-size: 20px;
+        line-height: 1.22;
+        letter-spacing: -.012em;
+        color: rgba(0,0,0,.54);
+    }
+
+    .center-content__1040px {
+        max-width: 1040px;
+        margin: 0 auto;
+    }
+
+    .center-content__740px {
+        max-width: 740px;
+        margin: 0 auto;
+    }
+
+    .center-content__800px {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .avatar__60px {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: black;
+        border: 2px solid black;
+        vertical-align: middle;
+    }
+
+    .author-name {
+        font-size: 20px;
+
+        &:link,
+        &:visited {
+            font-weight: 700;
+            color: #00ab6b;
+            text-decoration: none;
+        }
+    }
+
+    .truncate-line__1 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        height: 20px;
+    }
+
+    .truncate-line__2 {
+        overflow: hidden;
+        display: -webkit-box;
+        // -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        // height: $font-small-double-line-height;
+    }
+
+    .text-small {
+        font-size: 14px;
+        font-weight: normal;
+        text-decoration: none;
+    }
+
+    .text-small>a {
+        color: gray;
+        text-decoration: none;
+
+        &:hover {
+            color: black;
+            text-decoration: none;
+        }
+    }
+
+
+    .text-small__black>a {
+        color: black;
+        text-decoration: none;
+
+        &:hover {
+            color: black;
+            text-decoration: underline;
+        }
+    }
+
+    .text-light__grey {
+        color: gray;
+    }
+}
+
+.vote {
+    margin-left: -5px;
+    line-height: 20px;
+}
+

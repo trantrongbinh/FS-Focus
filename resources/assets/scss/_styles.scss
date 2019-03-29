@@ -353,6 +353,17 @@ h1:hover a {
     }
 }
 
+.action-toggle {
+    z-index: 2;
+
+    &:before {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        content: "\f141";
+        color: #3498db;
+    }
+}
+
 .share-toggle.share-expanded:before {
     content: "\f00d";
 }
@@ -367,6 +378,7 @@ h1:hover a {
     background-color: #fff;
     transition: all 0.3s ease;
     outline: 0;
+    color: #fff;
 
     box-shadow:
         0 2px 4px rgba(0, 0, 0, 0.12),
@@ -384,17 +396,22 @@ h1:hover a {
     -ms-transform: scale(1.2);
     -o-transform: scale(1.2);
     transform: scale(1.2);
+    color: #fff;
+}
+
+.report {
+    background-color: #eda515;
 }
 
 .facebook {
     background-color: #3b5998;
 }
 
-.twitter {
+.twitter, .edit {
     background-color: #00abe3;
 }
 
-.googleplus {
+.googleplus, .delete {
     background-color: #d3492c;
 }
 
@@ -643,9 +660,9 @@ i[class*="icon-"] {
     }
 
     .image {
-        width: 40px;
+        width: 30px;
         overflow: hidden;
-        margin-right: 20px;
+        margin-right: 15px;
     }
 
     .item {
@@ -665,9 +682,13 @@ i[class*="icon-"] {
         font-weight: 400;
 
         a {
-            color: #3498db;
+            &:link,
+            &:visited {
+                color: #00ab6b;
+                text-decoration: none;
+            }
             &:hover {
-                color: #2FB5FA;
+                color: #2FB5FA !important;
             }
         }
     }
@@ -704,11 +725,17 @@ i[class*="icon-"] {
     }
 
     .image {
+        width: 30px;
+        height: 30px;
         border-radius: 5%;
         -moz-border-radius: 5%;
         -webkit-border-radius: 5%;
         overflow: hidden;
-        margin: -10px 10px 0 0;
+        margin: 0 10px 0 0;
+
+        img {
+            height: 30px;
+        }
     }
 
     .item {
@@ -1389,6 +1416,14 @@ img.emojione {
     .container {
         max-width: 1260px;
     }
+}
+
+.action__social {
+    margin-left: 30px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    clip: rect(auto, auto, auto, auto);
 }
 
 .fixed-link {

@@ -84,7 +84,7 @@
                             <form action="{{ url('team') }}" method="POST">
                                 {{ csrf_field() }}
                                 <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Your Team" rows="1" name="name"></textarea>
-                                <div class="clear"></div>
+                                <div class="mb__10"></div>
                                 <button type="submit" class="btn btn-outline-info btn-sm full-width"><i class="fas fa-check text-dark"></i></button>
                             </form>
                         </div>

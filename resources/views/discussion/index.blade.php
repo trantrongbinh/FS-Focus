@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('styles')
+<link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
     input::placeholder, textarea::placeholder {
         font-size: 16px !important;
@@ -48,7 +50,7 @@
                                 </a>
                                 <div class="row create-post">
                                     <div class="col-md-12 optional {{ $errors->isEmpty() ? 'hide' : ''}}">
-                                        <div class="clear"></div>
+                                        <div class="mb__10"></div>
                                         <strong>Vấn đề của bạn là gi?</strong>
                                         <form class="form" action="{{ url('discussion') }}" method="POST">
                                             {{ csrf_field() }}
@@ -97,7 +99,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="clear"></div>
+                        <div class="mb__10"></div>
                         @forelse($discussions as $discussion)
                         <!-- Post -->
                         <div class="post card">
@@ -105,7 +107,7 @@
                                 <div class="user-block">
                                     <div class="post-footer d-flex align-items-center">
                                         <a href="/user/{{ $discussion->user->name }}" class="author d-flex align-items-center flex-wrap">
-                                            <div class="avatar"><img src="{{ asset($discussion->user->avatar) }}" alt="{{ $discussion->user->name }}" class="img-fluid"></div>
+                                            <div class="avatar"><img src="{{ $discussion->user->avatar }}" alt="{{ $discussion->user->name }}" class="img-fluid"></div>
                                             <div class="title">
                                                 <span>{{ $discussion->user->name }}</span>
                                             </div>
@@ -141,7 +143,9 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <parse content="{{ json_decode($discussion->content)->html }}" end-point="{{ url('discussion', ['id' => $discussion->id]) }}" min-limit="{{ config('blog.str_limit.content_discussion.min') }}" max-limit="{{ config('blog.str_limit.content_discussion.max') }}"></parse>
+                                    <div class="ql-editor">
+                                        <parse content="{{ json_decode($discussion->content)->html }}" end-point="{{ url('discussion', ['id' => $discussion->id]) }}" min-limit="{{ config('blog.str_limit.content_discussion.min') }}" max-limit="{{ config('blog.str_limit.content_discussion.max') }}"></parse>
+                                    </div>
                                 </header>
                             </div>
                             <!-- comment -->
