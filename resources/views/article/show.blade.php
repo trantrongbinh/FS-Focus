@@ -10,6 +10,7 @@
     bottom: 0;
     width: 220px;
 }
+
 .trailing {
     width: inherit;
 }
@@ -20,27 +21,31 @@
     z-index: 2;
     width: inherit;
     background: #FFF;
-    -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.35);
-    -moz-box-shadow: 0 0 1px rgba(0,0,0,0.35);
-    box-shadow: 0 0 1px rgba(0,0,0,0.35);
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.35);
     padding: 0 10px;
 }
+
 .author-subscribe {
     border-bottom: 1px solid #EEE;
     padding-bottom: 15px;
     margin-bottom: 10px;
 }
+
 .heading {
     font-size: 13px;
     line-height: 20px;
     padding: 0 15px 10px;
 }
+
 .author {
     padding: 8px 0 44px 45px;
     margin: 0 15px;
     background: #FFF;
     position: relative;
 }
+
 .author .avatar {
     width: 40px;
     height: 40px;
@@ -50,302 +55,108 @@
     float: left;
     margin-left: -45px;
 }
+
 .author .avatar img {
     max-width: 100%;
     max-height: 100%;
 }
- .author .title {
+
+.author .title {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
 .author .title .display-name {
     font-family: SFD-Bold;
     color: #333;
     font-size: 14px;
     line-height: 18px;
 }
+
 .author .title .nickname {
     font-size: 13px;
     line-height: 16px;
     color: #999;
 }
 
-
-
-
-
-.fixed-plugin li > a,
-.fixed-plugin .badge{
-    transition: all .34s;
-    -webkit-transition: all .34s;
-    -moz-transition: all .34s;
-}
-
-.fixed-plugin{
+.fixed-plugin {
     position: fixed;
-    top: 180px;
+    top: 200px;
     right: 0;
-    width: 64px;
-    background: rgba(0,0,0,.3);
+    width: 50px;
+    background: rgba(0, 0, 0, .3);
     z-index: 1031;
     border-radius: 8px 0 0 8px;
     text-align: center;
 }
-.fixed-plugin .fa-cog{
+
+.fixed-plugin .fa-cog {
     color: #FFFFFF;
     padding: 10px;
     border-radius: 0 0 6px 6px;
     width: auto;
 }
-.fixed-plugin .dropdown-menu{
-    right: 80px;
-    left: auto;
-    width: 290px;
+
+.fixed-plugin .dropdown-menu {
+    right: 80px !important;
+    left: auto !important;
+    width: 200px;
     border-radius: 10px;
     padding: 0 10px;
 }
-.fixed-plugin .dropdown-menu:after, .fixed-plugin .dropdown-menu:before{
-    right: 10px;
-    margin-left: auto;
-    left: auto;
-}
-.fixed-plugin .fa-circle-thin{
-    color: #FFFFFF;
-}
-.fixed-plugin .active .fa-circle-thin{
-    color: #00bbff;
+
+.fixed-plugin .dropdown .dropdown-menu {
+    -webkit-transform: translateY(-15%);
+    -moz-transform: translateY(-15%);
+    -o-transform: translateY(-15%);
+    -ms-transform: translateY(-15%);
+    transform: translateY(-15%);
+    top: -20px !important;
+    opacity: 0;
+    right: 0;
+    transform-origin: 0 0 !important;
 }
 
-.fixed-plugin .dropdown-menu > .active > a,
-.fixed-plugin .dropdown-menu > .active > a:hover,
-.fixed-plugin .dropdown-menu > .active > a:focus{
-    color: #777777;
-    text-align: center;
-}
-
-.fixed-plugin img{
-    border-radius: 0;
-    width: 100%;
-    height: 100px;
-    margin: 0 auto;
-}
-
-.fixed-plugin .dropdown-menu li > a:hover,
-.fixed-plugin .dropdown-menu li > a:focus{
-    box-shadow: none;
-}
-
-.fixed-plugin .badge{
-    border: 3px solid #FFFFFF;
-    border-radius: 50%;
-    cursor: pointer;
-    display: inline-block;
-    height: 23px;
-    margin-right: 5px;
-    position: relative;
-    width: 23px;
-}
-.fixed-plugin .badge.active,
-.fixed-plugin .badge:hover{
-    border-color: #00bbff;
-}
-
-.fixed-plugin .badge-blue{
-    background-color: #00bcd4;
-}
-.fixed-plugin .badge-green{
-    background-color: #4caf50;
-}
-.fixed-plugin .badge-orange{
-    background-color: #ff9800;
-}
-.fixed-plugin .badge-purple{
-    background-color: #9c27b0;
-}
-.fixed-plugin .badge-red{
-    background-color: #f44336;
-}
-
-.fixed-plugin .badge-rose{
-    background-color: #e91e63;
-}
-
-.fixed-plugin .badge-black{
-    background-color: #000;
-}
-
-.fixed-plugin .badge-white{
-    background-color: rgba(200, 200, 200, 0.2);
-}
-
-.fixed-plugin h5{
-    font-size: 14px;
-    margin: 10px;
-}
-.fixed-plugin .dropdown-menu li{
-    display: block;
-    padding: 5px 2px;
-    width: 25%;
-    float: left;
-}
-
-.fixed-plugin li.adjustments-line,
-.fixed-plugin li.header-title,
-.fixed-plugin li.button-container{
-    width: 100%;
-    height: 50px;
-    min-height: inherit;
-}
-
-.fixed-plugin li.button-container{
-    height: auto;
-}
-.fixed-plugin li.button-container div{
-    margin-bottom: 5px;
-}
-
-.fixed-plugin #sharrreTitle{
-    text-align: center;
-    padding: 10px 0;
-    height: 50px;
-}
-
-.fixed-plugin li.header-title{
-    height: 30px;
-    line-height: 25px;
-    font-size: 12px;
-    font-weight: 600;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.fixed-plugin .adjustments-line p{
-    float: left;
-    display: inline-block;
-    margin-bottom: 0;
-    font-size: 1em;
-    color: #3C4858;
-}
-
-.fixed-plugin .adjustments-line a .badge-colors{
-    position: relative;
-    top: -2px;
-}
-
-.fixed-plugin .adjustments-line .togglebutton{
-    float: right;
-}
-
-.fixed-plugin .adjustments-line .togglebutton .toggle{
-    margin-right: 0;
-}
-
-.fixed-plugin .dropdown-menu > li.adjustments-line > a{
-      padding-right: 0;
-      padding-left: 0;
-      border-bottom: 1px solid #ddd;
-      border-radius: 0;
-      margin: 0;
-}
-.fixed-plugin .dropdown-menu > li > a.img-holder{
-      font-size: 16px;
-      text-align: center;
-      border-radius: 10px;
-      background-color: #FFF;
-      border: 3px solid #FFF;
-      padding-left: 0;
-      padding-right: 0;
-      opacity: 1;
-      cursor: pointer;
-      max-height: 100px;
-      overflow: hidden;
-      padding: 0;
-}
-
-.fixed-plugin .dropdown-menu > li > a.switch-trigger:hover,
-.fixed-plugin .dropdown-menu > li > a.switch-trigger:focus{
-    background-color: transparent;
-}
-.fixed-plugin .dropdown-menu > li:hover > a.img-holder,
-.fixed-plugin .dropdown-menu > li:focus > a.img-holder{
-    border-color: rgba(0, 187, 255, 0.53);;
-}
-.fixed-plugin .dropdown-menu > .active > a.img-holder,
-.fixed-plugin .dropdown-menu > .active > a.img-holder{
-    border-color: #00bbff;
-    background-color: #FFFFFF;
-}
-
-.fixed-plugin .dropdown-menu > li > a img{
-    margin-top: auto;
-}
-
-.fixed-plugin .btn-social{
-    width: 50%;
-    display: block;
-    width: 48%;
-    float: left;
-    font-weight: 600;
-}
-.fixed-plugin .btn-social i{
-    margin-right: 5px;
-}
-.fixed-plugin .btn-social:first-child{
-    margin-right: 2%;
-}
-
-.fixed-plugin .dropdown .dropdown-menu{
-     -webkit-transform: translateY(-15%);
-     -moz-transform: translateY(-15%);
-     -o-transform: translateY(-15%);
-     -ms-transform: translateY(-15%);
-     transform: translateY(-15%);
-     top: 27px;
-     opacity: 0;
-
-     transform-origin: 0 0;
-}
-.fixed-plugin .dropdown.open .dropdown-menu{
-     opacity: 1;
-
-     -webkit-transform: translateY(-13%);
-     -moz-transform: translateY(-13%);
-     -o-transform: translateY(-13%);
-     -ms-transform: translateY(-13%);
-     transform: translateY(-13%);
-
-     transform-origin: 0 0;
+.fixed-plugin .dropdown.open .dropdown-menu {
+    opacity: 1;
+    -webkit-transform: translateY(-13%) !important;
+    -moz-transform: translateY(-13%) !important;
+    -o-transform: translateY(-13%) !important;
+    -ms-transform: translateY(-13%) !important;
+    transform: translateY(-13%) !important;
+    transform-origin: 0 0 !important;
 }
 
 .fixed-plugin .dropdown-menu:before,
-.fixed-plugin .dropdown-menu:after{
+.fixed-plugin .dropdown-menu:after {
     content: "";
     display: inline-block;
     position: absolute;
-    top: 78px;
+    top: 70px;
     width: 16px;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
 
 }
-.fixed-plugin .dropdown-menu:before{
+
+.fixed-plugin .dropdown-menu:before {
     border-bottom: 16px solid rgba(0, 0, 0, 0);
-    border-left: 16px solid rgba(0,0,0,0.2);
-    border-top: 16px solid rgba(0,0,0,0);
+    border-left: 16px solid rgba(0, 0, 0, 0.2);
+    border-top: 16px solid rgba(0, 0, 0, 0);
     right: -17px;
 }
 
-.fixed-plugin .dropdown-menu:after{
+.fixed-plugin .dropdown-menu:after {
     border-bottom: 16px solid rgba(0, 0, 0, 0);
     border-left: 16px solid #FFFFFF;
-    border-top: 16px solid rgba(0,0,0,0);
+    border-top: 16px solid rgba(0, 0, 0, 0);
     right: -16px;
 }
 
-.fixed-plugin{
-    top: 120px;
+.fixed-plugin {
+    top: 210px;
 }
 </style>
 @endsection
@@ -359,9 +170,9 @@
                         <li>
                             <vote></vote>
                             {{-- @if(Auth::guest())
-                                <clap article-id="{{ $article->id }}" api="article" vote-count="{{ $article->countUpVoters() }}"></clap>
+                            <clap article-id="{{ $article->id }}" api="article" vote-count="{{ $article->countUpVoters() }}"></clap>
                             @else
-                                <clap article-id="{{ $article->id }}" api="article" vote-count="" can-vote></clap>
+                            <clap article-id="{{ $article->id }}" api="article" vote-count="" can-vote></clap>
                             @endif --}}
                         </li>
                         <li><a href="#"><i class="fas fa-bookmark"></i></a></li>
@@ -433,6 +244,7 @@
                                 @endforeach
                             </span>
                         @endif
+
                         @if(config('blog.social_share.article_share'))
                             <span class="float-right">
                                 <div class="social-share" data-title="{{ $article->title }}" data-description="{{ $article->title }}" {{ config('blog.social_share.sites') ? "data-sites=" . config('blog.social_share.sites') : '' }} {{ config('blog.social_share.mobile_sites') ? "data-mobile-sites=" . config('blog.social_share.mobile_sites') : '' }} initialized>
@@ -440,15 +252,14 @@
                             </span>
                         @endif
                     </div>
-                    <!-- comment -->
-                    @if(Auth::guest())
-                        <comment title="You must be logged to add a comment !" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="">
-                        </comment>
-                    @else
-                        <comment title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="" can-comment>
-                        </comment>
-                    @endif
                 </div>
+                {{-- @if(Auth::guest())
+                <comment title="You must be logged to add a comment !" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="">
+                </comment>
+                @else
+                <comment title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="" can-comment>
+                </comment>
+                @endif --}}
             </div>
             {{-- <div class="float-right author__more">
                 <div class="trailing">
@@ -500,205 +311,82 @@
                     </div>
                 </div>
             </div> --}}
-            
             <div class="fixed-plugin">
-                <div class="dropdown show-dropdown">
+                <div class="dropdown show-dropdown open">
                     <a href="#" data-toggle="dropdown">
                         <i class="fa fa-cog fa-2x"> </i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header-title"> Sidebar Filters</li>
-                        <li class="adjustments-line">
-                            <a href="javascript:void(0)" class="switch-trigger active-color">
-                                <div class="badge-colors text-center">
-                                    <span class="badge filter badge-purple" data-color="purple"></span>
-                                    <span class="badge filter badge-blue" data-color="blue"></span>
-                                    <span class="badge filter badge-green" data-color="green"></span>
-                                    <span class="badge filter badge-orange" data-color="orange"></span>
-                                    <span class="badge filter badge-red" data-color="red"></span>
-                                    <span class="badge filter badge-rose active" data-color="rose"></span>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </li>
-                        <li class="header-title">Sidebar Background</li>
-                        <li class="adjustments-line">
-                            <a href="javascript:void(0)" class="switch-trigger background-color">
-                                <div class="text-center">
-                                    <span class="badge filter badge-white" data-color="white"></span>
-                                    <span class="badge filter badge-black active" data-color="black"></span>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </li>
-                        <li class="adjustments-line">
-                            <a href="javascript:void(0)" class="switch-trigger">
-                                <p>Sidebar Mini</p>
-                                <div class="togglebutton switch-sidebar-mini">
-                                    <label>
-                                        <input type="checkbox" unchecked="">
-                                    </label>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </li>
-                        <li class="adjustments-line">
-                            <a href="javascript:void(0)" class="switch-trigger">
-                                <p>Sidebar Image</p>
-                                <div class="togglebutton switch-sidebar-image">
-                                    <label>
-                                        <input type="checkbox" checked="">
-                                    </label>
-                                </div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </li>
-                        <li class="header-title">Images</li>
-                        <li class="active">
-                            <a class="img-holder switch-trigger" href="javascript:void(0)">
-                                <img src="../assets/img/sidebar-1.jpg" alt="" />
-                            </a>
-                        </li>
-                        <li>
-                            <a class="img-holder switch-trigger" href="javascript:void(0)">
-                                <img src="../assets/img/sidebar-2.jpg" alt="" />
-                            </a>
-                        </li>
-                        <li>
-                            <a class="img-holder switch-trigger" href="javascript:void(0)">
-                                <img src="../assets/img/sidebar-3.jpg" alt="" />
-                            </a>
-                        </li>
-                        <li>
-                            <a class="img-holder switch-trigger" href="javascript:void(0)">
-                                <img src="../assets/img/sidebar-4.jpg" alt="" />
-                            </a>
-                        </li>
-                        <li class="button-container">
-                            <div class="">
-                                <a href="http://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-rose btn-block">Buy Now</a>
-                            </div>
-                            <div class="">
-                                <a href="http://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-info btn-block">Get Free Demo</a>
-                            </div>
-                        </li>
-                        <li class="header-title">Thank you for 95 shares!</li>
-                        <li class="button-container">
-                            <button id="twitter" class="btn btn-social btn-twitter btn-round"><i class="fa fa-twitter"></i> &middot; 45</button>
-                            <button id="facebook" class="btn btn-social btn-facebook btn-round"><i class="fa fa-facebook-square"> &middot;</i>50</button>
-                        </li>
+                        <li class="header-title" style="min-height: 200px;"> Sidebar Filters</li>
                     </ul>
                 </div>
             </div>
         </main>
     </div>
+</div>
+<div class="cmt">
+    <div class="comments">
+        <div class="comment-wrap">
+            <div class="photo">
+                <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg')"></div>
+                <div class="vote-cmt">
+                    <vote></vote>
+                </div>
+            </div>
+            <div class="comment-block">
+                <div class="author-comment" style="padding-bottom: 20px; margin-top: -15px">
+                    <a class="display-name" href="/nguoi-dung/Huskywannafly" style="color: #03a87c;text-decoration: none;font-size: 16px;line-height: 1.4; cursor: pointer; text-rendering: auto;">
+                        Huskywannafly
+                    </a>
+                    <a class="btn btn-outline-info btn-sm" title="Theo dõi Huskywannafly" style="color: #4da9ea; padding: 0 2px 0 2px; margin-left: 20px;">Theo dõi</a> 
+                    <div class="comment-date" style="color: #999; font-size: 0.75rem;">Aug 24, 2014 @ 2:35 PM</div>
+                </div>
+                <div>
+                    <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam reprehenderit quasi
+                        sapiente modi tempora at perspiciatis mollitia, dolores voluptate. Cumque, corrupti?</p>
+                </div>
+                <div class="bottom-comment">
+                    <div class="comment-interactive">
+                        
+                    </div>
+                    <ul class="comment-actions">
+                        <li class="complain">Complain</li>
+                        <li class="reply">Reply</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="comment-wrap">
+            <div class="photo">
+                <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div>
+                <div class="vote-cmt">
+                    <vote></vote>
+                </div>
+            </div>
+            <div class="comment-block">
+                <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
+                <div class="bottom-comment">
+                    <div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
+                    <ul class="comment-actions">
+                        <li class="complain">Complain</li>
+                        <li class="reply">Reply</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="comment-wrap">
+            <div class="photo">
+                <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg')"></div>
+            </div>
+            <div class="comment-block">
+                <form action="">
+                    <textarea name="" id="" cols="30" rows="3" placeholder="Add comment..."></textarea>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="pb__100"></div>
 </div>
 @endsection
-
 @section('scripts')
-<script>
-    $(document).ready(function(){
-    // $sidebar = $('.sidebar');
-    // $sidebar_img_container = $sidebar.find('.sidebar-background');
-
-    // $full_page = $('.full-page');
-
-    // $sidebar_responsive = $('body > .navbar-collapse');
-
-    // window_width = $(window).width();
-
-    // fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-    // if( window_width > 767 && fixed_plugin_open == 'Dashboard' ){
-    //     if($('.fixed-plugin .dropdown').hasClass('show-dropdown')){
-             $('.fixed-plugin .dropdown').addClass('open');
-    //     }
-
-    // }
-    $('.fixed-plugin .dropdown').addClass('open');
-
-    $('.fixed-plugin a').click(function(event){
-      // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-        // if($(this).hasClass('switch-trigger')){
-        //     if(event.stopPropagation){
-        //         event.stopPropagation();
-        //     }
-        //     else if(window.event){
-        //        window.event.cancelBubble = true;
-        //     }
-        // }
-    });
-
-    // $('.fixed-plugin .active-color span').click(function(){
-    //     $full_page_background = $('.full-page-background');
-
-    //     $(this).siblings().removeClass('active');
-    //     $(this).addClass('active');
-
-    //     var new_color = $(this).data('color');
-
-    //     if($sidebar.length != 0){
-    //         $sidebar.attr('data-active-color',new_color);
-    //     }
-
-    //     if($full_page.length != 0){
-    //         $full_page.attr('filter-color',new_color);
-    //     }
-
-    //     if($sidebar_responsive.length != 0){
-    //         $sidebar_responsive.attr('data-color',new_color);
-    //     }
-    // });
-
-    // $('.fixed-plugin .background-color span').click(function(){
-    //     $(this).siblings().removeClass('active');
-    //     $(this).addClass('active');
-
-    //     var new_color = $(this).data('color');
-
-    //     if($sidebar.length != 0){
-    //         $sidebar.attr('data-background-color',new_color);
-    //     }
-    // });
-
-    // $('.fixed-plugin .img-holder').click(function(){
-    //     $full_page_background = $('.full-page-background');
-
-    //     $(this).parent('li').siblings().removeClass('active');
-    //     $(this).parent('li').addClass('active');
-
-
-    //     var new_image = $(this).find("img").attr('src');
-
-    //     if( $sidebar_img_container.length !=0 && $('.switch-sidebar-image input:checked').length != 0 ){
-    //         $sidebar_img_container.fadeOut('fast', function(){
-    //            $sidebar_img_container.css('background-image','url("' + new_image + '")');
-    //            $sidebar_img_container.fadeIn('fast');
-    //         });
-    //     }
-
-    //     if($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0 ) {
-    //         var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-    //         $full_page_background.fadeOut('fast', function(){
-    //            $full_page_background.css('background-image','url("' + new_image_full_page + '")');
-    //            $full_page_background.fadeIn('fast');
-    //         });
-    //     }
-
-    //     if( $('.switch-sidebar-image input:checked').length == 0 ){
-    //         var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-    //         var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-    //         $sidebar_img_container.css('background-image','url("' + new_image + '")');
-    //         $full_page_background.css('background-image','url("' + new_image_full_page + '")');
-    //     }
-
-    //     if($sidebar_responsive.length != 0){
-    //         $sidebar_responsive.css('background-image','url("' + new_image + '")');
-    //     }
-    // });
-})
-</script>
 @endsection

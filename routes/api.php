@@ -35,28 +35,27 @@ Route::group([
 });
 
 Route::group([
-    'middleware' => ['auth:api'],
     'namespace' => 'Api',
 ], function () {
     // File Upload
-    Route::post('file/upload', 'UploadController@fileUpload');
+    Route::post('file/upload', 'UploadController@fileUpload')->middleware('auth:api');
     
     // Edit Avatar
-    Route::post('crop/avatar', 'UserController@cropAvatar');
+    Route::post('crop/avatar', 'UserController@cropAvatar')->middleware('auth:api');
 
     // Comment
-    Route::get('commentable/{commentableId}/comment', 'CommentController@show');
-    Route::post('comments', 'CommentController@store');
-    Route::delete('comments/{id}', 'CommentController@destroy');
-    Route::post('comments/vote/{type}', 'MeController@postVoteComment');
-    Route::get('article/{id}/vote', 'ArticleController@showVote');
-    Route::post('article/vote/{type}', 'MeController@postClapArticle');
+    Route::get('commentable/{commentableId}/comment', 'CommentController@show')->middleware('api');
+    Route::post('comments', 'CommentController@store')->middleware('auth:api');
+    Route::delete('comments/{id}', 'CommentController@destroy')->middleware('auth:api');
+    Route::post('comments/vote/{type}', 'MeController@postVoteComment')->middleware('auth:api');
+    Route::get('article/{id}/vote', 'ArticleController@showVote')->middleware('auth:api');
+    Route::post('article/vote/{type}', 'MeController@postClapArticle')->middleware('auth:api');
 
     // Tag
-    Route::get('tags', 'TagController@getList');
+    Route::get('tags', 'TagController@getList')->middleware('api');
 
     // Category
-    Route::get('/categories', 'CategoryController@getList');
+    Route::get('/categories', 'CategoryController@getList')->middleware('api');
 
     // Action for article
     Route::resource('article', 'ArticleController', ['names' => [
@@ -65,11 +64,9 @@ Route::group([
         'edit' => 'api.article.edit',
         'update' => 'api.article.update',
         'destroy' => 'api.article.destroy',
-    ], 'except' => ['create', 'show']]);
+    ], 'except' => ['create', 'show']])->middleware('auth:api');
 
-    Route::post('article/draft', 'ArticleController@saveDraft');
-    Route::patch('article/draft/{id}', 'ArticleController@updateDraft');
-    Route::get('article/{userId}/drafts', 'ArticleController@getDraft');
-
-
+    Route::post('article/draft', 'ArticleController@saveDraft')->middleware('auth:api');
+    Route::patch('article/draft/{id}', 'ArticleController@updateDraft')->middleware('auth:api');
+    Route::get('article/{userId}/drafts', 'ArticleController@getDraft')->middleware('auth:api');
 });
