@@ -101,7 +101,7 @@
 .fixed-plugin .dropdown-menu {
     right: 80px !important;
     left: auto !important;
-    width: 200px;
+    width: 280px;
     border-radius: 10px;
     padding: 0 10px;
 }
@@ -157,6 +157,29 @@
 
 .fixed-plugin {
     top: 210px;
+}
+
+.ql-toolbar.ql-snow {
+    padding: 2.5% 0%;
+    border: none !important;
+}
+
+.ql-container.ql-snow {
+    padding: 0 2% 25px;
+    border: none !important;
+}
+
+.ql-editor {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0 0 20px;
+    font-style: normal;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+}
+
+.ql-editor.ql-blank::before {
+    font-size: 16px !important;
 }
 </style>
 @endsection
@@ -324,69 +347,7 @@
         </main>
     </div>
 </div>
-<div class="cmt">
-    <div class="comments">
-        <div class="comment-wrap">
-            <div class="photo">
-                <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg')"></div>
-                <div class="vote-cmt">
-                    <vote></vote>
-                </div>
-            </div>
-            <div class="comment-block">
-                <div class="author-comment" style="padding-bottom: 20px; margin-top: -15px">
-                    <a class="display-name" href="/nguoi-dung/Huskywannafly" style="color: #03a87c;text-decoration: none;font-size: 16px;line-height: 1.4; cursor: pointer; text-rendering: auto;">
-                        Huskywannafly
-                    </a>
-                    <a class="btn btn-outline-info btn-sm" title="Theo dõi Huskywannafly" style="color: #4da9ea; padding: 0 2px 0 2px; margin-left: 20px;">Theo dõi</a> 
-                    <div class="comment-date" style="color: #999; font-size: 0.75rem;">Aug 24, 2014 @ 2:35 PM</div>
-                </div>
-                <div>
-                    <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam reprehenderit quasi
-                        sapiente modi tempora at perspiciatis mollitia, dolores voluptate. Cumque, corrupti?</p>
-                </div>
-                <div class="bottom-comment">
-                    <div class="comment-interactive">
-                        
-                    </div>
-                    <ul class="comment-actions">
-                        <li class="complain">Complain</li>
-                        <li class="reply">Reply</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="comment-wrap">
-            <div class="photo">
-                <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/felipenogs/128.jpg')"></div>
-                <div class="vote-cmt">
-                    <vote></vote>
-                </div>
-            </div>
-            <div class="comment-block">
-                <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p>
-                <div class="bottom-comment">
-                    <div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
-                    <ul class="comment-actions">
-                        <li class="complain">Complain</li>
-                        <li class="reply">Reply</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="comment-wrap">
-            <div class="photo">
-                <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg')"></div>
-            </div>
-            <div class="comment-block">
-                <form action="">
-                    <textarea name="" id="" cols="30" rows="3" placeholder="Add comment..."></textarea>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="pb__100"></div>
-</div>
+<comment title="Bình luận" username="{{ Auth::user()->name }}" user-avatar="{{ Auth::user()->avatar }}" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text="" can-comment></comment>
 @endsection
 @section('scripts')
 @endsection

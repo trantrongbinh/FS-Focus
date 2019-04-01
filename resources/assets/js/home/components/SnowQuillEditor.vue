@@ -90,6 +90,7 @@ export default {
 
     watch: {
         status: function() {
+            console.log(this.status);
             this.editor.setContents([]);
             let elem = document.querySelector('.ql-tooltip').nextSibling.style.display = 'none';
         }

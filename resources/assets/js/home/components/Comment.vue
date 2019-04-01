@@ -1,55 +1,61 @@
 <template>
-    <div class="container">
-        <div class="row comment">
-            <div class="col-md-12">
-                <h5>{{ title }}</h5>
+    <div class="cmt">
+        <div class="comments">
+        	<h5 class="cmt-title">{{ title }}</h5>
+            <div class="comment-wrap" v-for="(comment, index) in comments" v-if="comments.length > 0">
+                <div class="photo">
+                    <div class="avatar" :style="{ backgroundImage: 'url(' + comment.avatar + ')' }"></div>
+                    <div class="vote-cmt">
+                        <vote></vote>
+                    </div>
+                </div>
+                <div class="comment-block">
+                    <div class="author-comment">
+                        <a class="display-name" :href="'/user/' + comment.username">
+                            {{ comment.username }}
+                        </a>
+                        <a class="btn btn-outline-info btn-sm btn-follow" title="Theo dõi Huskywannafly">Theo dõi</a>
+                        <div class="comment-date">{{ comment.created_at }}</div>
+                    </div>
+                    <div class="ql-editor markdown comment-text" :class="comment.is_down_voted ? 'downvoted' : ''" v-html="comment.content_html">
+                    </div>
+                    <div class="bottom-comment">
+                        <div class="comment-interactive">
+                        </div>
+                        <ul class="comment-actions">
+                            <li class="complain" v-if="username == comment.username">
+                            	<a href="javascript:;" @click="commentDelete(index, comment.id)">
+                            		<i class="fas fa-trash-alt"> Xóa</i>
+                            	</a>
+                            </li>
+                            <li class="reply">
+                            	<a href="javascript:;" @click="reply(comment.username)">
+                            		<i class="fas fa-share"> Trả lời</i>
+                            	</a>
+                        	</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div :class="contentWrapperClass">
-                <div :class="nullClass" v-if="comments.length == 0">
-                    {{ nullText }}
+            <div class="text-center font-size_14 mb__20" v-if="commentNumber > 2">
+            	<a v-if="!isHidden" href="javascript:void(0)" @click="loadMore(next_page_url)">Load More ...</a>
+            </div>
+            <div class="comment-wrap">
+                <div class="photo">
+                    <a :href="'/user/' + username" class="avatar" :style="{ backgroundImage: 'url(' + userAvatar + ')' }"></a>
                 </div>
-                <div class="media" v-for="(comment, index) in comments" v-else>
-                    <div class="media-body box-body">
-                        <div class="heading">
-                            <a class="media-left" :href="'/user/' + comment.username">
-                                <img :src="comment.avatar" class="img-fluid img-circle avatar">
-                                {{ comment.username }}
-                            </a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-clock"></i>
-                            {{ comment.created_at }}
-                            <span class="float-right operate" style="font-size: 12px;">
-                                <vote-button v-if="username != comment.username" :item="comment"></vote-button>
-                                <a href="javascript:;" @click="commentDelete(index, comment.id)" v-if="username == comment.username"><i class="fas fa-trash-alt"></i>
-                                </a> &nbsp|&nbsp&nbsp<a href="javascript:;" @click="reply(comment.username)"><i class="fas fa-share"></i></a>
-                            </span>
-                        </div><br>
-                        <div class="comment-body markdown" :class="comment.is_down_voted ? 'downvoted' : ''" v-html="comment.content_html"></div>
-                    </div>
+                <div class="comment-block">
+                    <form @submit.prevent="comment" v-if="canComment">
+                    	<snow-quill-editor id="content" :table-type="commentableType" strategy="comment" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent"></snow-quill-editor>
+                        <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-outline-info btn-sm float-right">
+                            {{ $t('form.submit_comment') }}
+                        </button>
+                    </form>
                 </div>
-                <div class="text-center" v-if="commentNumber > 2" style="padding: 10px; font-size: 12px; margin-top: 10px;">
-                    <a v-if="!isHidden" href="javascript:void(0)" @click="loadMore(next_page_url)">Load More ...</a>
-                </div>
-                <form class="form mt-4" style="margin-top: 30px;" @submit.prevent="comment" v-if="canComment">
-                    <div class="form-group row">
-                        <!--  <label class="col-sm-2 col-form-label own-avatar">
-                            <a :href="'/user/' + username">
-                                <img width="60" class="rounded-circle" :src="userAvatar"/>
-                            </a>
-                        </label> -->
-                        <div class="col-sm-12">
-                            <snow-quill-editor id="content" :table-type="commentableType" strategy="comment" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent"></snow-quill-editor>
-                        </div>
-                    </div>
-                    <div class="mb__100"></div>
-                    <div class="form-group row">
-                        <div class="col-sm-12">
-                            <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-success">
-                                {{ $t('form.submit_comment') }}
-                            </button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
+        <div class="mb__100"></div>
+        <div class="pb__150"></div>
     </div>
 </template>
 <script>
@@ -62,12 +68,6 @@ import SnowQuillEditor from 'home/components/SnowQuillEditor'
 export default {
     components: { VoteButton, SnowQuillEditor },
     props: {
-        contentWrapperClass: {
-            type: String,
-            default () {
-                return 'col-md-12'
-            }
-        },
         title: {
             type: String,
             default () {
@@ -232,5 +232,129 @@ export default {
         },
     }
 }
-
 </script>
+
+<style lang="scss" scoped>
+.cmt {
+    padding: 10px;
+    background-color: #fafafa;
+    -webkit-font-smoothing: antialiased;
+
+    .comments {
+        margin: 2.5rem auto 0;
+        max-width: 60.75rem;
+        padding: 0 1.25rem;
+
+        .cmt-title {
+        	margin-left: 60px;
+    		padding-bottom: 35px;
+        }
+
+        .comment-wrap {
+            margin-bottom: 1.25rem;
+            display: table;
+            width: 100%;
+            min-height: 5.3125rem;
+
+            .photo {
+                padding-top: 0.625rem;
+                display: table-cell;
+                width: 4rem;
+
+                .avatar {
+                    height: 3rem;
+                    width: 3rem;
+                    border-radius: 50%;
+                    background-size: contain;
+                }
+
+            }
+
+            .comment-block {
+                background: #fff;
+                padding: 1.7rem;
+                border: 1px solid rgba(0, 0, 0, .09);
+                display: table-cell;
+                vertical-align: top;
+                border-radius: 0.1875rem;
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+                color: #000;
+
+                .comment-text {
+                    font-size: 18px;
+                    margin-bottom: 1.25rem;
+                }
+
+                .bottom-comment {
+                    color: #999;
+                    font-size: 0.875rem;
+                }
+
+                .comment-interactive {
+                    float: left;
+                }
+
+                .comment-actions {
+                    float: right;
+
+                    li {
+                        display: inline;
+                        margin: -2px;
+                        cursor: pointer;
+                    }
+
+                    li.complain {
+                        padding-right: 0.75rem;
+                        border-right: 1px solid #e1e5eb;
+                    }
+
+                    li.reply {
+                        padding-left: 0.75rem;
+                        padding-right: 0.125rem;
+                    }
+
+                    li:hover {
+                        color: #0095ff;
+                    }
+                }
+
+                .author-comment {
+					padding-bottom: 20px;
+					margin-top: -15px;
+
+					.display-name {
+						color: #03a87c;
+						text-decoration: none;
+						font-size: 16px;
+						line-height: 1.4;
+						cursor: pointer;
+						text-rendering: auto;
+					}
+
+					.btn-follow {
+						color: #4da9ea;
+						padding: 0 5px 0 5px;
+						margin-left: 20px;
+						border-radius: 5px !important;
+
+						&:hover {
+							color: #fff;
+						}
+					}
+
+					.comment-date {
+						color: #999;
+						font-size: 0.75rem;
+					}
+                }
+            }
+        }
+    }
+
+    .vote-cmt {
+        margin-left: 16px;
+        font-size: 16px;
+    }
+}
+
+</style>
