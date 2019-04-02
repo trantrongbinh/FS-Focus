@@ -28,7 +28,7 @@
                             		<i class="fas fa-trash-alt"> Xóa</i>
                             	</a>
                             </li>
-                            <li class="reply">
+                            <li class="reply" v-else>
                             	<a href="javascript:;" @click="reply(comment.username)">
                             		<i class="fas fa-share"> Trả lời</i>
                             	</a>
@@ -46,11 +46,12 @@
                 </div>
                 <div class="comment-block">
                     <form @submit.prevent="comment" v-if="canComment">
-                    	<snow-quill-editor id="content" :table-type="commentableType" strategy="comment" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent"></snow-quill-editor>
+                    	<snow-quill-editor id="content" :table-type="commentableType" strategy="comment" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent" :reply.sync="author"></snow-quill-editor>
                         <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-outline-info btn-sm float-right">
                             {{ $t('form.submit_comment') }}
                         </button>
                     </form>
+                    <textarea cols="30" rows="3" :placeholder="title" v-else></textarea>
                 </div>
             </div>
         </div>
@@ -131,6 +132,7 @@ export default {
             isSubmiting: false,
             next_page_url: '',
             isHidden: false,
+            author: '',
         }
     },
 
@@ -141,9 +143,7 @@ export default {
                 commentable_type: this.commentableType
             }
         }).then((response) => {
-            console.log(response);
             response.data.data.forEach((data) => {
-                console.log(data.content_html);
                 data.content_html = this.parse(data.content_html)
 
                 return data
@@ -204,13 +204,12 @@ export default {
                         stack_error(response)
                     })
             } else {
-                console.log('nhap content baby!!!')
+                console.log('Please enter content!!!')
             }
         },
 
         reply(name) {
-            $('#content').focus()
-            this.content = '@' + name + ' '
+            this.author = name
         },
 
         commentDelete(index, id) {
@@ -239,6 +238,22 @@ export default {
     padding: 10px;
     background-color: #fafafa;
     -webkit-font-smoothing: antialiased;
+
+    textarea {
+        outline: none;
+        border: none;
+        display: block;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        font-family: "PT Sans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+        font-size: 1rem;
+        color: #000;
+    }
+
+    textarea::-webkit-input-placeholder {
+        color: #999;
+    }
 
     .comments {
         margin: 2.5rem auto 0;
@@ -279,6 +294,12 @@ export default {
                 border-radius: 0.1875rem;
                 box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
                 color: #000;
+                max-width: 870px;
+
+                textarea {
+                    width: 100%;
+                    resize: none;
+                }
 
                 .comment-text {
                     font-size: 18px;
@@ -305,7 +326,6 @@ export default {
 
                     li.complain {
                         padding-right: 0.75rem;
-                        border-right: 1px solid #e1e5eb;
                     }
 
                     li.reply {

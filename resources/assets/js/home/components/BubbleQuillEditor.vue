@@ -47,7 +47,13 @@ export default {
             default () {
                 return ''
             }
-        }
+        },
+        reply: {
+            type: String,
+            default () {
+                return ''
+            }
+        },
     },
 
     data() {
@@ -102,6 +108,19 @@ export default {
     watch: {
         status: function() {
             this.editor.setContents([{ insert: '\n' }]);
+        },
+
+        reply: function() {
+            if (this.reply.length > 0) {
+                this.editor.insertText(0, '@' + this.reply, {
+                    'link': '/user/' + this.reply,
+                    'color': '#00b5ad'
+                });
+
+                this.editor.insertText(this.reply.length + 1, '\n', { 'color': '#000' }, true);
+            }
+
+            this.$emit('update:reply', '')
         }
     },
 

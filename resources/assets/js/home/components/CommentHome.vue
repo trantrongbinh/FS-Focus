@@ -25,14 +25,14 @@
                 <span class="float-right operate">
                     <a href="javascript:void(0)" class="float-right btn-tool" data-toggle="dropdown" v-if="username == comment.username"><i class="fas fa-ellipsis-h"></i></a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="javascript:;" @click="reply(comment.username)">Reply</a>
+                        <a class="dropdown-item" href="javascript:;" @click="edit(index, comment.id)">Edit</a>
                         <a class="dropdown-item" href="javascript:;" @click="commentDelete(index, comment.id)">Delete</a>
                     </div>
                 </span>
                 <!-- /.username -->
                 <div class="comment-body markdown" :class="comment.is_down_voted ? 'downvoted' : ''" v-html="comment.content_html"></div>
                 <!-- /.comment-text -->
-                <div class="float-right">
+                <div class="float-right" v-if="username !== comment.username">
                     <a href="javascript:;" @click="reply(comment.username)"><i class="fas fa-share"> Reply</i></a>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <img class="img-fluid img-circle img-sm" :src="userAvatar" alt="Alt Text">
                 </a>
                 <div class="img-push">
-                    <bubble-quill-editor id="content" :table-type="commentableType" :element-id="commentableId" strategy="comment" :status="isSubmiting" @contentUpdated="getContent"></bubble-quill-editor>
+                    <bubble-quill-editor id="content" :table-type="commentableType" :element-id="commentableId" strategy="comment" :status="isSubmiting" @contentUpdated="getContent" :reply.sync="author"></bubble-quill-editor>
                     <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-primary btn-sm send">Send</button>
                 </div>
             </form>
@@ -134,6 +134,7 @@ export default {
             isSubmiting: false,
             next_page_url: '',
             isHidden: false,
+            author: '',
         }
     },
 
@@ -208,8 +209,7 @@ export default {
         },
 
         reply(name) {
-            $('#content').focus()
-            this.content = '@' + name + ' '
+            this.author = name
         },
 
         commentDelete(index, id) {
