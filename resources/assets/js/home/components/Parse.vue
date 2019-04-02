@@ -47,12 +47,6 @@ export default {
         this.html = this.parse(this.content, this.minLimit)
     },
 
-    watch: {
-        minLimit: function() {
-            this.html = this.parse(this.content, this.minLimit)
-        }
-    },
-
     methods: {
         parse(content, limit) {
             if (limit != 0 && content.length > limit) {
@@ -68,7 +62,7 @@ export default {
             if (lengthContent > this.maxLimit) {
                 window.location = this.endPoint;
             } else {
-                this.minLimit = 0;
+                this.html = this.parse(this.content, 0)
             }
         }
     },

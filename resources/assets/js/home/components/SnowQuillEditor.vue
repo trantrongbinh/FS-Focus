@@ -39,6 +39,12 @@ export default {
                 return 'comment'
             }
         },
+        reply: {
+            type: String,
+            default () {
+                return ''
+            }
+        },
     },
 
     data() {
@@ -90,9 +96,22 @@ export default {
 
     watch: {
         status: function() {
-            console.log(this.status);
             this.editor.setContents([]);
-            let elem = document.querySelector('.ql-tooltip').nextSibling.style.display = 'none';
+            let elem = document.querySelector('.ql-tooltip').nextSibling;
+            if (elem !== null) elem.style.display = 'none';
+        },
+
+        reply: function() {
+            if (this.reply.length > 0) {
+                this.editor.insertText(0, '@' + this.reply, {
+                    'link': '/user/' + this.reply,
+                    'color': '#00b5ad'
+                });
+
+                this.editor.insertText(this.reply.length + 1, '\n', { 'color': '#000' }, true);
+            }
+
+            this.$emit('update:reply', '')
         }
     },
 
