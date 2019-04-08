@@ -95,18 +95,12 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        $article = $this->article->getById($id);
-
-        $this->authorize('update', $article);
-
-        $selectTags = $this->article->listTagsIdsForArticle($article);
-
-        return view('article.edit', compact('article', 'selectTags'));
+        return view('article.edit', compact('slug'));
     }
 
     /**

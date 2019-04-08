@@ -329,6 +329,8 @@ h1:hover a {
     transform: translateZ(0);
     transform: translateX(0px);
     transition: transform 0.35s ease;
+    margin-right: 5px;
+    text-align: right;
 
     .share-icon span {
         color: #fff !important;

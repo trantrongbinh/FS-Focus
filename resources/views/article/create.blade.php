@@ -11,7 +11,7 @@
             <div class="mb__10"></div>
             <div class="form-group row">
                 <div class="col-sm-12">
-                    <article-create user-id="{{ Auth::id() }}"></article-create>
+                    <article-create></article-create>
                 </div>
             </div>
         </div>

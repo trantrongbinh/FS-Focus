@@ -66,6 +66,9 @@ Route::group([
         'destroy' => 'api.article.destroy',
     ], 'except' => ['create', 'show']])->middleware('auth:api');
 
+    // Edit for page user
+    Route::get('article/{slug}/edit-post', 'ArticleController@editPost')->middleware('auth:api');
+
     Route::post('article/draft', 'ArticleController@saveDraft')->middleware('auth:api');
     Route::patch('article/draft/{id}', 'ArticleController@updateDraft')->middleware('auth:api');
     Route::get('article/{userId}/drafts', 'ArticleController@getDraft')->middleware('auth:api');

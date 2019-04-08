@@ -63,7 +63,7 @@ Route::get('link', 'LinkController@index');
 
 // Category
 Route::group(['prefix' => 'category'], function () {
-    Route::post('create', 'CategoryController@store');
+    // Route::post('create', 'CategoryController@store');
     Route::get('{category}', 'CategoryController@show');
     Route::get('/', 'CategoryController@index');
 });
@@ -76,7 +76,6 @@ Route::group(['prefix' => 'tag'], function () {
 
 /* Dashboard Index */
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], function () {
-
     Route::get('{path?}', 'HomeController@dashboard')->where('path', '[\/\w\.-]*');
 
 });
@@ -84,10 +83,12 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'admin']], funct
 // Article
 Route::get('/', 'ArticleController@index')->name('home');
 Route::get('{slug}', 'ArticleController@show');
-Route::get('article/new', 'ArticleController@create');
-Route::post('article/new', 'ArticleController@store');
-Route::get('article/{id}/edit', 'ArticleController@edit');
-Route::put('article/{id}/edit', 'ArticleController@update');
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('article/new', 'ArticleController@create');
+    Route::post('article/new', 'ArticleController@store');
+    Route::get('article/{slug}/edit', 'ArticleController@edit');
+    Route::put('article/{id}/edit', 'ArticleController@update');
+});
 //User Join Team
 Route::post('user/join-team/{slug}', 'TeamController@userJoinTeam')->name('join.team');

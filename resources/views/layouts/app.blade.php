@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="{{ asset(mix('css/themes/' . config('blog.color_theme') . '.css')) }}">
         <!-- Scripts -->
         <script>
+            window.User = {!! Auth::user() !!}
             window.Language = '{{ config('app.locale') }}';
 
             window.Laravel = <?php echo json_encode([

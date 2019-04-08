@@ -98,6 +98,18 @@ class ArticleController extends ApiController
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  string $slug
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function editPost($slug)
+    {
+        return $this->response->item($this->article->getBySlug($slug));
+    }
+
+    /**
      * Update draft post
      *
      * @param  \Illuminate\Http\Request $request

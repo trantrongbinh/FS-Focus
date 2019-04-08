@@ -73,7 +73,6 @@
 
                                 @forelse($articles as $article)
                                 <!-- Post -->
-                                {{-- {{ dd($article) }} --}}
                                 <div class="card radius shadowDepth1">
                                     @if($article->page_image)
                                         <a href="{{ url($article->slug) }}" class="card__image background__cover" style="background-image: url({{ asset($article->page_image) }});">

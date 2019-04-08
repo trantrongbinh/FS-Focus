@@ -61,7 +61,8 @@
                     <span class="far fa-save" v-else> Đang lưu ...</span>
                 </div>
                 <div class="content__save text-center">
-                    <button type="submit" class="btn btn-info btn-sm">{{ $t('form.create') }}</button>
+                    <button type="submit" class="btn btn-info btn-sm" v-if="!edit">{{ $t('form.create') }}</button>
+                    <button type="submit" class="btn btn-info btn-sm" v-else>{{ $t('Edit') }}</button>
                 </div>
             </div>
         </form>
@@ -80,19 +81,15 @@ import ArticleMixin from './ArticleMixin'
 
 export default {
     mixins: [ArticleMixin],
+
     components: {
         Multiselect
     },
+
     props: {
         value: {
             type: String,
             default: ''
-        },
-        oldContent: {
-            type: String,
-            default () {
-                return ''
-            }
         },
         articleOriginal: {
             type: Object,
@@ -100,12 +97,6 @@ export default {
                 return {
                     page_image: ''
                 }
-            }
-        },
-        userId: {
-            type: String,
-            default () {
-                return 0
             }
         }
     },
@@ -118,8 +109,49 @@ export default {
             timeout: null,
             countDrafts: 0,
             drafts: [],
-            article: []
+            article: [],
+            edit: false 
         };
+    },
+
+    computed: {
+        mode() {
+            return this.article.id ? 'update' : 'create'
+        },
+    },
+
+    watch: {
+        articleOriginal() {
+            if (this.articleOriginal.id) {
+                this.edit = true;
+                this.article = this.articleOriginal;
+                this.selected = this.article.category.data
+                this.tags = this.article.tags.data
+                this.editor.root.innerHTML = this.article.content
+            }
+        },
+
+        'article.title': function() {
+            if (!this.edit) {
+                clearTimeout(this.timeout);
+
+                var self = this;
+                this.timeout = setTimeout(function() {
+                    self.saveDraft()
+                }, 5000);
+            }
+        },
+
+        contents: function() {
+            if (!this.edit) {
+                clearTimeout(this.timeout);
+
+                var self = this;
+                this.timeout = setTimeout(function() {
+                    self.saveDraft()
+                }, 5000);
+            }
+        }
     },
 
     mounted() {
@@ -161,43 +193,17 @@ export default {
         });
 
         this.editor.root.spellcheck = false;
-        this.editor.root.innerHTML = this.oldContent;
+        this.editor.root.innerHTML = this.value;
         // We will add the update event here
         this.editor.on('text-change', () => this.update());
         // Fix toolbar at top
         window.onscroll = () => this.addClassFixed();
         //Get draft post
-        var url = 'article/' + this.userId + '/drafts'
+        var url = 'article/' + window.User.id + '/drafts'
         this.$http.get(url).then((response) => {
             this.countDrafts = Object.keys(response.data.data).length;
             this.drafts = response.data.data
         })
-    },
-
-    watch: {
-        'article.title': function() {
-            clearTimeout(this.timeout);
-
-            var self = this;
-            this.timeout = setTimeout(function() {
-                self.saveDraft()
-            }, 5000);
-        },
-
-        contents: function() {
-            clearTimeout(this.timeout);
-
-            var self = this;
-            this.timeout = setTimeout(function() {
-                self.saveDraft()
-            }, 5000);
-        }
-    },
-
-    computed: {
-        mode() {
-            return this.article.id ? 'update' : 'create'
-        },
     },
 
     methods: {
@@ -232,7 +238,13 @@ export default {
             this.$http[method](url, this.article)
                 .then((response) => {
                     toastr.success('You ' + this.mode + 'd the article success!')
-                    window.location.href = '/'
+
+                    if (this.edit) {
+                        this.edit = false;
+                        window.location.href = '/' + this.article.slug
+                    } else {
+                        window.location.href = '/'
+                    }
                 }).catch(({ response }) => {
                     stack_error(response)
                 })
