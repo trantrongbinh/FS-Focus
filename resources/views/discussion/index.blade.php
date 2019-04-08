@@ -116,14 +116,14 @@
                                                     <i class="far fa-clock"></i> {{ $discussion->created_at->diffForHumans() }}
                                                 </div>
                                                 <div class="">
-                                                    <a href="{{ url('discussion', ['id' => $discussion->id]) }}"><i class="far fa-comment-alt"> {{ $discussion->comments_count }}</i> {{ lang('Replies') }}
+                                                    <a href="{{ url('discussion', ['slug' => $discussion->slug]) }}"><i class="far fa-comment-alt"> {{ $discussion->comments_count }}</i> {{ lang('Replies') }}
                                                     </a>
                                                 </div>
                                             </div>
-                                            @if(Auth::check() && Auth::user()->id == $discussion->user->id)
+                                            @if(Auth::check() && Auth::user()->id == $discussion->user_id)
                                                 <a href="javascript:;" class="float-right  btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="{{ url("discussion/{$discussion->id}/edit") }}">Edit</a>
+                                                    <a class="dropdown-item" href="{{ url("discussion/{$discussion->slug}/edit") }}">Edit</a>
                                                     <a class="dropdown-item" href="#">Delete</a>
                                                 </div>
                                             @else
@@ -131,7 +131,7 @@
                                             @endif
                                         </div>
                                         <header class="post-header">
-                                            <a href="{{ url('discussion', ['id' => $discussion->id]) }}">
+                                            <a href="{{ url('discussion', ['slug' => $discussion->slug]) }}">
                                                 <h3 class="h4 ">{{ $discussion->title }}</h3>
                                             </a>
                                             <div class="meta">

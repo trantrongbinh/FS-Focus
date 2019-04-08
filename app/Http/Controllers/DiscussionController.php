@@ -75,13 +75,12 @@ class DiscussionController extends Controller
     /**
      * Display the specified resource with related.
      *
-     * @param  int $id
+     * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $discussion = $this->discussion->getById($id);
-
+        $discussion = $this->discussion->getBySlug($slug);
         $related = $this->discussion->getRelatedDiscussions($discussion);
         
         $discussion->addViewWithExpiryDate(Carbon::now()->addMinute());
@@ -92,20 +91,18 @@ class DiscussionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        $discussion = $this->discussion->getById($id);
+        $discussion = $this->discussion->getBySlug($slug);
 
         $this->authorize('update', $discussion);
 
-        $tags = $this->tag->all();
-
         $selectTags = $this->discussion->listTagsIdsForDiscussion($discussion);
 
-        return view('discussion.edit', compact('discussion', 'tags', 'selectTags'));
+        return view('discussion.edit', compact('discussion', 'selectTags'));
     }
 
     /**
@@ -124,8 +121,6 @@ class DiscussionController extends Controller
         $data = array_merge($request->all(), [
             'last_user_id' => \Auth::id()
         ]);
-
-        $data['content'] = $data['content'];
 
         $this->discussion->update($id, $data);
 

@@ -106,7 +106,11 @@ class ArticleController extends ApiController
      */
     public function editPost($slug)
     {
-        return $this->response->item($this->article->getBySlug($slug));
+        $article = $this->article->getBySlug($slug);
+
+        $this->authorize('update', $article);
+
+        return $this->response->item($article);
     }
 
     /**

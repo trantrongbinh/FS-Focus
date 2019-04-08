@@ -70,6 +70,21 @@ class DiscussionRepository
     }
 
     /**
+     * Get the article by discussion's slug.
+     *
+     * @param $slug
+     * @return object
+     */
+    public function getBySlug($slug)
+    {
+        $this->model = $this->checkAuthScope();
+
+        $discussion = $this->model->where('slug', $slug)->withCount('comments')->firstOrFail();
+
+        return $discussion;
+    }
+
+    /**
      * Store a new discussion.
      * @param  array $data
      * @return Model

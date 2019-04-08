@@ -45,7 +45,6 @@ class ArticleController extends Controller
     {
         $article = $this->article->getBySlug($slug);
         $related = [];
-        
         $related['relatedCategory'] = ($article->category_id != NULL) ? $this->article->getRelatedPostsByCategory($article) : null;
         $related['relatedAuthor'] = $this->article->getRelatedPostsByAuthor($article);
 
@@ -78,7 +77,6 @@ class ArticleController extends Controller
             'published_at' => date('Y-m-d H:i:s'),
         ]);
 
-        //$time_now =  \Carbon\Carbon::now();
         $data['is_original'] = isset($data['is_original']);
         $data['type'] = isset($data['type']);
         $data['content'] = $data['content'];
@@ -126,5 +124,4 @@ class ArticleController extends Controller
 
         return redirect()->to("{$this->article->getSlug()}");
     }
-
 }

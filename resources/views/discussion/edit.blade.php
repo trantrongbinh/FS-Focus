@@ -1,5 +1,26 @@
 @extends('layouts.app')
 
+@section('styles')
+    <style>
+        .create-discussion {
+            padding-bottom: 100px;
+        }
+        .dicussion {
+            margin-top: 40px;
+        }
+        .ql-container.ql-bubble {
+            font-size: 18px;
+        }
+
+        #title {
+            resize: none;
+            font-size: 24px !important;
+            min-height: 46px !important;
+            font-weight: 700 !important;
+        }
+    </style>
+@endsection
+
 @section('content')
     <div class="container">
         <main class="dicussion row create-discussion">
@@ -10,7 +31,7 @@
                     <div class="form-group row">
                         <label for="title" class="col-sm-2 col-form-label">{{ lang('Discuss Title') }} <span class="text-red">*</span></label>
                         <div class="col-sm-10">
-                            <textarea class="textarea form-control{{ $errors->has('title') ? ' is-invalid' : '' }} box__input textarea--autoHeight" rows="1" id="title" name="title"  placeholder="Title your post">{{ $discussion->title }}</textarea>
+                            <textarea class="textarea form-control{{ $errors->has('title') ? ' is-invalid' : '' }} box__input textarea--autoHeight border__none" rows="1" id="title" name="title"  placeholder="Title your post">{{ $discussion->title }}</textarea>
                             @if ($errors->has('title'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('title') }}</strong>
@@ -57,18 +78,11 @@
             </div>
         </main>
     </div>
+    <div class="pb__100"></div>
 @endsection
 
 @section('scripts')
     <script type="text/javascript">
         $('.select').select2();
     </script>
-@endsection
-
-@section('styles')
-    <style>
-        .dicussion {
-            margin-top: 40px;
-        }
-    </style>
 @endsection

@@ -43,7 +43,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer([
             'modules.left',
             'article.create',
-            'discussion.index'
+            'discussion.index',
+            'discussion.edit'
         ], TagComposer::class);
 
         view()->composer('modules.hot-post', HotPostComposer::class);

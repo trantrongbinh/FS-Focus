@@ -225,8 +225,8 @@
                                 </div>
                                 <div class="card__share">
                                     <div class="card__social">
-                                        @if(Auth::check() && Auth::user()->id == $discussion->user->id)
-                                            <a class="share-icon edit" href="{{ url("discussion/{$discussion->id}/edit") }}"><span class="fas fa-pencil-alt"></span></a>
+                                        @if(Auth::check() && Auth::user()->id == $discussion->user_id)
+                                            <a class="share-icon edit" href="{{ url("discussion/{$discussion->slug}/edit") }}"><span class="fas fa-pencil-alt"></span></a>
                                         @endif
                                             <a class="share-icon delete" href="#"><span class="fas fa-trash-alt"></span></a>
                                             <a class="share-icon report" href="#"><span class="fas fa-flag"></span></a>

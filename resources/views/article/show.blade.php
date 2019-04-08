@@ -244,7 +244,9 @@
                                 </div>
                                 <div class="card__share">
                                     <div class="card__social">
-                                        <a class="share-icon edit" href="{{ url("article/{$article->slug}/edit") }}"><span class="fas fa-pencil-alt"></span></a>
+                                        @if(Auth::check() && Auth::user()->id == $article->user_id)
+                                            <a class="share-icon edit" href="{{ url("article/{$article->slug}/edit") }}"><span class="fas fa-pencil-alt"></span></a>
+                                        @endif
                                         <a class="share-icon delete" href="#"><span class="fas fa-trash-alt"></span></a>
                                         <a class="share-icon report" href="#"><span class="fas fa-flag"></span></a>
                                     </div>
