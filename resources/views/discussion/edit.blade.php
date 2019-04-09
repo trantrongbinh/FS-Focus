@@ -25,7 +25,7 @@
     <div class="container">
         <main class="dicussion row create-discussion">
             <div class="col-md-9 offset-md-1">
-                <form class="form" action="{{ url('discussion', ['id' => $discussion->id]) }}" method="POST">
+                <form class="form" action="{{ url('discussion', ['slug' => $discussion->slug]) }}" method="POST">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
                     <div class="form-group row">

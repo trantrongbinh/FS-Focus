@@ -70,6 +70,16 @@ class DiscussionRepository
     }
 
     /**
+     * Get the slug.
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->model->getUniqueSlug();
+    }
+
+    /**
      * Get the article by discussion's slug.
      *
      * @param $slug
@@ -103,17 +113,15 @@ class DiscussionRepository
     }
 
     /**
-     * Update a record by id.
+     * Update a record.
      *
-     * @param  int $id
+     * @param  collection $discussion
      * @param  array $data
      * @return boolean
      */
-    public function update(int $id, array $data)
+    public function update($discussion, array $data)
     {
         $this->model = $this->checkAuthScope();
-
-        $discussion = $this->model->findOrFail($id);
 
         if (is_array($data['tags'])) {
             $this->syncTag($discussion, $data['tags']);
@@ -188,6 +196,12 @@ class DiscussionRepository
         return $this->getById($id)->delete();
     }
 
+    /**
+     * Get related record.
+     *
+     * @param  collection $discussion
+     * @return collection
+     */
     public function getRelatedDiscussions($discussion)
     {
         $discussions = $this->model->whereHas('tags', function ($q) use ($discussion) {

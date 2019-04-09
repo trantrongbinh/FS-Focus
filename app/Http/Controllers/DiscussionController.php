@@ -112,9 +112,9 @@ class DiscussionController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DiscussionRequest $request, $id)
+    public function update(DiscussionRequest $request, $slug)
     {
-        $discussion = $this->discussion->getById($id);
+        $discussion = $this->discussion->getBySlug($slug);
 
         $this->authorize('update', $discussion);
 
@@ -122,8 +122,8 @@ class DiscussionController extends Controller
             'last_user_id' => \Auth::id()
         ]);
 
-        $this->discussion->update($id, $data);
+        $this->discussion->update($discussion, $data);
 
-        return redirect()->to("discussion/{$id}");
+        return redirect()->to("discussion");
     }
 }
