@@ -302,3 +302,4 @@
         </div>
     </div>
 </div>
+<div id="doughnutChart" class="chart"></div>

@@ -50,7 +50,7 @@
             background: #ffffff;
             position: relative;
             margin: 10px auto 30px auto;
-            width: 290px;
+            width: 400px;
         }
 
         /* User image */
