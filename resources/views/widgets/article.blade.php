@@ -70,70 +70,90 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 @forelse($articles as $article)
-                                <!-- Post -->
-                                <div class="card radius shadowDepth1">
-                                    @if($article->page_image)
-                                        <a href="{{ url($article->slug) }}" class="card__image background__cover" style="background-image: url({{ asset($article->page_image) }});">
-                                        </a>
-                                    @endif
-                                    
-                                    <div class="card__content card__padding">
-                                        <div class="card__share">
-                                            <div class="card__social">
-                                                <a class="share-icon facebook" href="#"><span class="fab fa-facebook-square"></span></a>
-                                                <a class="share-icon twitter" href="#"><span class="fab fa-twitter"></span></a>
-                                                <a class="share-icon googleplus" href="#"><span class="fab fa-google-plus"></span></a>
+                                    <!-- Post -->
+                                    <div class="card radius shadowDepth1">
+                                        @if($article->page_image)
+                                            <a href="{{ url($article->slug) }}" class="card__image background__cover" style="background-image: url({{ asset($article->page_image) }});">
+                                            </a>
+                                        @endif
+                                        <div class="card__content card__padding">
+                                            <div class="card__share">
+                                                <div class="card__social">
+                                                    <a class="share-icon facebook" href="#"><span class="fab fa-facebook-square"></span></a>
+                                                    <a class="share-icon twitter" href="#"><span class="fab fa-twitter"></span></a>
+                                                    <a class="share-icon googleplus" href="#"><span class="fab fa-google-plus"></span></a>
+                                                </div>
+                                                <a id="share" class="share-toggle share-icon" href="#"></a>
                                             </div>
-                                            <a id="share" class="share-toggle share-icon" href="#"></a>
+                                            <vote></vote>
+                                            <div class="card__post">
+                                                <div class="card__meta">
+                                                    <a href="{{ url('category', ['name' => $article->category->name]) }}" class="topic"> {{ $article->category->name }}</a>
+                                                    <time><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</time>
+                                                    <span class="readingTime">5 min read</span>
+                                                </div>
+                                                <article class="card__article">
+                                                    <h3 class="h4"><a href="{{ url($article->slug) }}">{{ $article->title }}</a></h3>
+                                                    <p class="card__desc">{{ str_limit($article->meta_description, '200') }}</p>
+                                                </article>
+                                                @if(count($article->tags))
+                                                    <ul class="tags">
+                                                        @foreach($article->tags as $tag)
+                                                            <li><a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">{{ $tag->tag }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </div>
                                         </div>
-                                        <vote></vote>
-                                        <div class="card__post">
-                                            <div class="card__meta">
-                                                <a href="{{ url('category', ['name' => $article->category->name]) }}" class="topic"> {{ $article->category->name }}</a>
-                                                <time><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</time>
-                                                <span class="readingTime">5 min read</span>
-                                            </div>
-                                            <article class="card__article">
-                                                <h3 class="h4"><a href="{{ url($article->slug) }}">{{ $article->title }}</a></h3>
-                                                <p class="card__desc">{{ str_limit($article->meta_description, '200') }}</p>
-                                            </article>
-
-                                            @if(count($article->tags))
-                                                <ul class="tags">
-                                                    @foreach($article->tags as $tag)
-                                                        <li><a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">{{ $tag->tag }}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            @endif
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="card__action">
-                                        <div class="card__author">
-                                            <img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}">
-                                            <div class="card__author-content">
-                                                By <a href="/user/{{ $article->user->name }}">{{ $article->user->name }}</a>
-                                            </div>
-                                            <div class="float-right card__action-interactive">
-                                                <a href="javascript:;" class="link-black interactive-view"><i class="far fa-eye"></i> {{ $article->getViews() }}</a>
-                                                <a href="#" class="link-black interactive-comment"><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</a>
-                                                <a href="#" class="link-black interactive-bookmark"><i class="far fa-bookmark"></i> 2</a>
-                                                <span>
-                                                    <a href="javascript:;" class="btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="{{ url("article/{$article->id}/edit") }}">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
+                                        <div class="card__action">
+                                            <div class="card__author">
+                                                <figure class="profile--author" style="display: inline;">
+                                                    <img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}">
+                                                    <div class="card__author-content">
+                                                        By <a href="/user/{{ $article->user->name }}">{{ $article->user->name }}</a>
                                                     </div>
-                                                </span>
+                                                    <figcaption class="profile--info hidden">
+                                                        <div class="author-profile--popup">
+                                                            <img class="avatar" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTF_erFD1SeUnxEpvFjzBCCDxLvf-wlh9ZuPMqi02qGnyyBtPWdE-3KoH3s" alt="Ash" />
+                                                            <a title="Theo dõi Huskywannafly" class="btn btn-outline-info btn-sm btn--follow" >Theo dõi</a>
+                                                            <div class="username">Will Smith</div>
+                                                            <div class="bio">Senior UI Designer</div>
+                                                            <div class="description">
+                                                                I use to design websites and applications for the web.
+                                                            </div>
+                                                            <ul class="data">
+                                                                <li>
+                                                                    <span>127</span><p>(Posts)</p>
+                                                                </li>
+                                                                <li>
+                                                                    <span> 2</span><p>(Followers)</p>
+                                                                </li>
+                                                                <li>
+                                                                    <span> 311</span><p>(Following)</p>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </figcaption>
+                                                    <div class="float-right card__action-interactive">
+                                                        <a href="javascript:;" class="link-black interactive-view"><i class="far fa-eye"></i> {{ $article->getViews() }}</a>
+                                                        <a href="#" class="link-black interactive-comment"><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</a>
+                                                        <a href="#" class="link-black interactive-bookmark"><i class="far fa-bookmark"></i> 2</a>
+                                                        <span>
+                                                            <a href="javascript:;" class="btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item" href="{{ url("article/{$article->id}/edit") }}">Edit</a>
+                                                                <a class="dropdown-item" href="#">Delete</a>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                </figure>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- /.post -->
+                                    <!-- /.post -->
                                 @empty
-                                <h3 class="text-center">{{ lang('Nothing') }}</h3>
+                                    <h3 class="text-center">{{ lang('Nothing') }}</h3>
                                 @endforelse
                             </div>
                             <!-- Pagination -->

@@ -17,7 +17,6 @@
             <header>
                 <h3 class="h6">Hot Posts</h3>
             </header>
-            
             @include('modules.hot-post')
         </div>
         <!-- Widget [Categories Widget]-->
