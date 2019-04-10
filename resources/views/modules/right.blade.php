@@ -8,11 +8,11 @@
             </header>
             <div class="blog-posts">
                 @foreach($users as $user)
-                    <figure class="profile--author">
+                    <figure class="profile--author profile--author__left">
                         <a href="/user/{{ $user->name }}" class="profile--ava">
                             <div class="item d-flex align-items-center">
                                 <div class="image">
-                                    <img class="img-fluid img-circle img-sm" src="https://znews-photo.zadn.vn/w860/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg" alt="User Image">
+                                    <img class="img-fluid img-circle img-sm" src="{{ $user->avatar }}" alt="User Image">
                                 </div>
                                 <div class="title">
                                     <strong>{{ str_limit($user->name, config('blog.str_limit.name')) }}</strong>
@@ -24,7 +24,7 @@
                         </a>
                         <figcaption class="profile--info hidden">
                             <div class="author-profile--popup">
-                                <img class="avatar" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTF_erFD1SeUnxEpvFjzBCCDxLvf-wlh9ZuPMqi02qGnyyBtPWdE-3KoH3s" alt="Ash" />
+                                <img class="avatar" src="{{ $user->avatar }}" alt="Ash" />
                                  <a title="Theo dõi Huskywannafly" class="btn btn-outline-info btn-sm btn--follow" >Theo dõi</a>
                                 <div class="username">Will Smith</div>
                                 <div class="bio">Senior UI Designer</div>
@@ -56,12 +56,12 @@
             </header>
             <div class="blog-posts">
                 @foreach ($teams['otherTeam'] as $team)
-                    <figure class="profile--author">
+                    <figure class="profile--author profile--author__left">
                         <a href="{{ url('team') }}" class="profile--ava">
                             <div class="item d-flex align-items-center">
                                 <div class="image">
                                     @if ($team->avatar)
-                                        <img class="img-fluid img-sm" src="{{ asset($team->avatar) }}" alt="Team avatar">
+                                        <img class="img-fluid img-sm" src="{{ $team->avatar }}" alt="Team avatar">
                                     @else
                                         <img class="img-fluid img-sm" src="{{ asset('/images/team-default.png') }}" alt="Team avatar">
                                     @endif

@@ -730,27 +730,26 @@ i[class*="icon-"] {
 }
 
 .widget.author {
-    .profile--author:nth-child(1) {
-        img {
-            border: 2px solid #21f108;
+    .profile--author {
+        &:nth-child(1) {
+            img {
+                border: 2px solid #21f108;
+            }
         }
-    }
-
-    .profile--author:nth-child(2) {
-        img {
-            border: 2px solid #ef00ff;
+        &:nth-child(2) {
+            img {
+                border: 2px solid #ef00ff;
+            }
         }
-    }
-
-    .profile--author:nth-child(3) {
-        img {
-            border: 2px solid cyan;
+        &:nth-child(3) {
+            img {
+                border: 2px solid cyan;
+            }
         }
-    }
-
-    .profile--author:nth-child(4) {
-        img {
-            border: 2px solid #f5440f;
+        &:nth-child(4) {
+            img {
+                border: 2px solid #f5440f;
+            }
         }
     }
 }

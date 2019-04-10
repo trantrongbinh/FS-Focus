@@ -4,7 +4,7 @@
             <div class="panel panel-default panel-card">
                 <div class="panel-heading"></div>
                 <div class="panel-figure">
-                    <img class="img-fluid rounded-circle" src="{{ asset($author->avatar) }}" />
+                    <img class="img-fluid rounded-circle" src="{{ $author->avatar }}" />
                 </div>
                 <div class="panel-body text-center">
                     <h5 class="panel-header h6" title="{{ $author->name }}">
@@ -22,7 +22,7 @@
                         <i class="fas fa-pencil-alt" aria-hidden="true"></i> {{ $author->articles_count }}
                     </span>
                 </div>
-                {{-- <div class="panel-thumbnails">
+                <div class="panel-thumbnails">
                     <a class="btn btn-info btn-twitter btn-sm" href="">
                         <i class="fab fa-twitter"></i>
                     </a>
@@ -36,7 +36,7 @@
                     <a class="btn btn-warning btn-sm" rel="publisher" href="">
                         <i class="fab fa-stack-overflow"></i>
                     </a>
-                </div> --}}
+                </div>
                 <div class="text-center">
                     <button class="btn btn-success btn-sm btn-follow" role="button"><i class="fa fa-plus font-size_10"></i> Follow</button>
                 </div>

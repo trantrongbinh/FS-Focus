@@ -13,15 +13,6 @@
                     <div class="brand-text brand-small"><img src="{{ asset('/images/logo-icon.png') }}" alt="Logo" class="img-fluid">
                     </div>
                 </a>
-                {{-- <a href="#">
-                    <form action="" class="form-lang" method="post">
-                        <select name="locale">
-                            <option value="en">English</option>
-                            <option value="vi">Viet Nam</option>
-                        </select>
-                        {{ csrf_field() }}
-                    </form>
-                </a> --}}
             </div>
         </div>
         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
@@ -67,14 +58,14 @@
                 <li class="nav-item dropdown">
                     <a id="profile" class="nav-link logout" data-target="#" href="#" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" data-toggle="tooltip" title="{{ Auth::user()->nickname ?: Auth::user()->name }}"  style="height: 30px; width: 30px;">
+                        <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" style="height: 30px; width: 30px; background: #fff;">
                     </a>
                     <ul aria-labelledby="profile" class="dropdown-menu profile">
                         <li>
                             <a rel="nofollow" href="{{ url('user', ['name' => Auth::user()->name]) }}"
                                class="dropdown-item d-flex">
                                 <div class="msg-profile avatar">
-                                    <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" style="height: 50px; width: 50px;">
+                                    <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle">
                                 </div>
                                 <div class="msg-body">
                                     <h3 class="h5">{{ Auth::user()->name }}</h3><span>{{ Auth::user()->email }}</span>

@@ -108,15 +108,15 @@
                                         </div>
                                         <div class="card__action">
                                             <div class="card__author">
-                                                <figure class="profile--author" style="display: inline;">
+                                                <figure class="profile--author profile--author__left" style="display: inline;">
                                                     <img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}">
                                                     <div class="card__author-content">
                                                         By <a href="/user/{{ $article->user->name }}">{{ $article->user->name }}</a>
                                                     </div>
-                                                    <figcaption class="profile--info hidden">
+                                                    <figcaption class="profile--info hidden" style="margin-top: -10px;">
                                                         <div class="author-profile--popup">
                                                             <img class="avatar" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTF_erFD1SeUnxEpvFjzBCCDxLvf-wlh9ZuPMqi02qGnyyBtPWdE-3KoH3s" alt="Ash" />
-                                                            <a title="Theo dõi Huskywannafly" class="btn btn-outline-info btn-sm btn--follow" >Theo dõi</a>
+                                                            <br><a title="Theo dõi Huskywannafly" class="btn btn-outline-info btn-sm btn--follow" >Theo dõi</a>
                                                             <div class="username">Will Smith</div>
                                                             <div class="bio">Senior UI Designer</div>
                                                             <div class="description">
@@ -135,19 +135,19 @@
                                                             </ul>
                                                         </div>
                                                     </figcaption>
-                                                    <div class="float-right card__action-interactive">
-                                                        <a href="javascript:;" class="link-black interactive-view"><i class="far fa-eye"></i> {{ $article->getViews() }}</a>
-                                                        <a href="#" class="link-black interactive-comment"><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</a>
-                                                        <a href="#" class="link-black interactive-bookmark"><i class="far fa-bookmark"></i> 2</a>
-                                                        <span>
-                                                            <a href="javascript:;" class="btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                                                            <div class="dropdown-menu">
-                                                                <a class="dropdown-item" href="{{ url("article/{$article->id}/edit") }}">Edit</a>
-                                                                <a class="dropdown-item" href="#">Delete</a>
-                                                            </div>
-                                                        </span>
-                                                    </div>
                                                 </figure>
+                                                <div class="float-right card__action-interactive">
+                                                    <a href="javascript:;" class="link-black interactive-view"><i class="far fa-eye"></i> {{ $article->getViews() }}</a>
+                                                    <a href="#" class="link-black interactive-comment"><i class="far fa-comment-alt"></i> {{ $article->comments_count }}</a>
+                                                    <a href="#" class="link-black interactive-bookmark"><i class="far fa-bookmark"></i> 2</a>
+                                                    <span>
+                                                        <a href="javascript:;" class="btn-tool" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="{{ url("article/{$article->id}/edit") }}">Edit</a>
+                                                            <a class="dropdown-item" href="#">Delete</a>
+                                                        </div>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

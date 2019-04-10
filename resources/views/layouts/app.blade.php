@@ -29,7 +29,7 @@
 
             }
 
-            .profile--author figcaption {
+            .profile--author__left figcaption {
                 z-index: 3000;
                 position: absolute;
                 width: 300px;
@@ -39,26 +39,26 @@
                 display: inline-block;
                 margin-right: 4%;
                 border-radius: 5px;
-                right: 165px;
+                right: 102%;
                 top: -20px;
             }
 
-            /*.profile--author figcaption {
-                    z-index: 3000;
-                    position: absolute;
-                    width: 220px;
-                    height: 230px;
-                    background-color: #333333;
-                    color: #fff;
-                    padding: 25px;
-                    display: inline-block;
-                    margin-right: 4%;
-                    border-radius: 5px;
-                    left: -20px;
-                    top: -250px;
-                }*/
+            .profile--author__top figcaption {
+                z-index: 3000;
+                position: absolute;
+                width: 220px;
+                height: 230px;
+                background-color: #333333;
+                color: #fff;
+                padding: 25px;
+                display: inline-block;
+                margin-right: 4%;
+                border-radius: 5px;
+                left: -20px;
+                top: -250px;
+            }
 
-            .profile--author figcaption:after {
+            .profile--author__left figcaption:after {
                 content: '';
                 position: absolute;
                 left: 100%;
@@ -71,17 +71,17 @@
 
             }
 
-            /*.profile--author figcaption:after {
-                    border-width: 10px 10px 0 10px;
-                    border-color: #333333 transparent transparent transparent;
-                    content: '';
-                    position: absolute;
-                    right: 45%;
-                    top: 100%;
-                    width: 0;
-                    height: 0;
-                    border-style: solid;
-                }*/
+            .profile--author__top figcaption:after {
+                border-width: 10px 10px 0 10px;
+                border-color: #333333 transparent transparent transparent;
+                content: '';
+                position: absolute;
+                right: 45%;
+                top: 100%;
+                width: 0;
+                height: 0;
+                border-style: solid;
+            }
 
             .author-profile--popup {
                 margin: auto;
