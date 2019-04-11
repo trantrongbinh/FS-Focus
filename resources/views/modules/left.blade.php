@@ -58,11 +58,13 @@
             <header>
                 <h3 class="h6">Tags</h3>
             </header>
-            <ul class="list-inline">
-                @foreach ($tags as $tag)
-                    <li class="list-inline-item"><a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">{{ $tag->tag }}</a></li>
-                @endforeach
-            </ul>
+            <div class="tag--v1">
+                <ul>
+                    @foreach ($tags as $tag)
+                        <li><a href="{{ url('tag', ['tag' => $tag->tag]) }}">{{ $tag->tag }}<span>20</span></a></li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     </div>
 </div>

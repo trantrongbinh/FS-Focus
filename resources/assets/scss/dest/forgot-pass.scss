@@ -1,0 +1,99 @@
+body {
+    background: #e9ecef;
+}
+
+.reset_password_form {
+    background: #fff;
+    width: 600px;
+    border: 1px solid #ddd;
+    padding: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 3px 6px #dedede;
+    transition: box-shadow 0.1s ease;
+
+    &:hover {
+        box-shadow: 0px 6px 12px #dedede;
+    }
+
+    .message {
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .message_success {
+        color: #4FB973;
+    }
+
+    .form_title {
+        color: #065FB8;
+        text-align: center;
+        margin-bottom: 10px;
+
+        a {
+            margin-bottom: 50px;
+        }
+
+        h3 {
+            font-size: 16px !important;
+        }
+    }
+
+    .form-group {
+        margin-bottom: 50px;
+        text-align: center;
+        margin-bottom: 30px;
+
+        label {
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: normal;
+            color: #464646;
+        }
+
+        input {
+            width: 280px;
+            margin: auto;
+            border-radius: 0;
+            box-shadow: none;
+        }
+    }
+
+    button.form_btn {
+        display: block;
+        margin: auto;
+        margin-bottom: 10px;
+        border: 1px solid #bbb;
+        border-radius: 0;
+        width: 200px;
+        font-weight: normal;
+        background-color: #065FB8;
+        color: #fff;
+        font-size: 14px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: #fff;
+            color: #065FB8;
+            box-shadow: 0 3px 6px #dedede;
+        }
+    }
+
+    .back_link {
+        text-align: center;
+
+        a {
+            text-decoration: none;
+            color: #95989A;
+            font-size: 12px;
+
+            i {
+                color: #065FB8;
+                padding: 5px;
+            }
+        }
+    }
+}

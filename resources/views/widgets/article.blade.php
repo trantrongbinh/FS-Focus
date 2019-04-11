@@ -98,11 +98,13 @@
                                                     <p class="card__desc">{{ str_limit($article->meta_description, '200') }}</p>
                                                 </article>
                                                 @if(count($article->tags))
-                                                    <ul class="tags">
-                                                        @foreach($article->tags as $tag)
-                                                            <li><a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">{{ $tag->tag }}</a></li>
-                                                        @endforeach
-                                                    </ul>
+                                                    <div class="tag--v2">
+                                                        <ul>
+                                                            @foreach($article->tags as $tag)
+                                                                <li><a href="{{ url('tag', ['tag' => $tag->tag]) }}">{{ $tag->tag }}</a><span>20</span></li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
                                                 @endif
                                             </div>
                                         </div>

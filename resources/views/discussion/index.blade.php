@@ -136,10 +136,12 @@
                                             </a>
                                             <div class="meta">
                                                 @if(count($discussion->tags))
-                                                    <div class="post-tags">
-                                                        @foreach($discussion->tags as $tag)
-                                                        <a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">{{ $tag->tag }}</a>
-                                                        @endforeach
+                                                    <div class="tag--v2">
+                                                        <ul>
+                                                            @foreach($discussion->tags as $tag)
+                                                                <li><a href="{{ url('tag', ['tag' => $tag->tag]) }}">{{ $tag->tag }}</a><span>20</span></li>
+                                                            @endforeach
+                                                        </ul>
                                                     </div>
                                                 @endif
                                             </div>

@@ -56,5 +56,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/scss/dest/author.scss', 'public/css')
     .sass('resources/assets/scss/dest/create-article.scss', 'public/css')
     .sass('resources/assets/scss/dest/detail-post.scss', 'public/css')
+    .sass('resources/assets/scss/dest/reset-pass.scss', 'public/css')
+    .sass('resources/assets/scss/dest/forgot-pass.scss', 'public/css')
     .copyDirectory('resources/assets/images', 'public/images')
     .version();

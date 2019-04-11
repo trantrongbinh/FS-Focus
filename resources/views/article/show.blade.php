@@ -266,10 +266,14 @@
                         <div class="mb__20"></div>
                         <div class="display__inline">
                             @if(count($article->tags))
-                                <span class="post-tags">
-                                    @foreach($article->tags as $tag)
-                                    <a href="{{ url('tag', ['tag' => $tag->tag]) }}" class="tag">{{ $tag->tag }}</a>
-                                    @endforeach
+                                <span>
+                                    <div class="tag--v2">
+                                        <ul>
+                                            @foreach($article->tags as $tag)
+                                                <li><a href="{{ url('tag', ['tag' => $tag->tag]) }}">{{ $tag->tag }}</a><span>20</span></li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </span>
                             @endif
 
@@ -343,8 +347,101 @@
                     </div>
                 </div>
             </main>
+            <div class="related--list">
+                <h4 class="h5">Bài viết  liên quan</h4>
+                <ul class="flexgrid">
+                    <li>
+                        <figure>
+                            <a class="background__cover" href="" style="background-image: url(https://cdn-images-1.medium.com/max/800/1*x-0E0Ueg1avtu8un3KyGIA.png);"></a>
+                        </figure>
+                        <header>
+                            <a href="http://localhost:8080/category/Ms.%20Abigail%20Jacobi" class="topic--post__related"> Ms. Abigail Jacobi</a>
+                            <a href="">
+                                <h3>The Evolution of James Bond Cars From Dr. No to Spectre</h3>
+                            </a>
+                            <div class="info--post">
+                               <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP8AAAD/CAIAAACxapedAAAABnRSTlMAAAAAAABupgeRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC2klEQVR4nO3UQQ0CQRBFQZYgBGkjbaSNlDUAJJz68KoU/HRe+jprPyDpOT0AxqifLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXT9Zoe8Mt7r+kJH5y1pyd85WJ/8fvpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpus7a0xtght9Pl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+um59kwu/3+ks+QAAAABJRU5ErkJggg==" alt="..." class="img-fluid rounded-circle" style="height: 40px; width: 40px;">
+                                <div class="info--detail">
+                                   <a href="/user/trantrongbinh" class="name-author">
+                                        trantrongbinh
+                                    </a>
+                                    <div class="info-time">
+                                        <a href="#">
+                                        2 days ago
+                                        </a> 
+                                        <span style="color: #999">·</span> 
+                                        <a href="#">
+                                            8 min read
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="bookmark--icon"><i class="far fa-bookmark"></i></a>
+                        </header>
+                    </li>
+                    <li>
+                        <figure>
+                            <a class="background__cover" href="" style="background-image: url(http://localhost:8080/uploads/article/2019/04/08/sD1uPN3BBQPsSfrBbeQ4YcHS7mncX165uJfk4Wg0.png);"></a>
+                        </figure>
+                        <header>
+                            <a href="http://localhost:8080/category/Ms.%20Abigail%20Jacobi" class="topic--post__related"> Giao duc</a>
+                            <a href="">
+                                <h3>The Evolution of James Bond Cars </h3>
+                            </a>
+                            <div class="info--post">
+                               <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP8AAAD/CAIAAACxapedAAAABnRSTlMAAAAAAABupgeRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC2klEQVR4nO3UQQ0CQRBFQZYgBGkjbaSNlDUAJJz68KoU/HRe+jprPyDpOT0AxqifLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXT9Zoe8Mt7r+kJH5y1pyd85WJ/8fvpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpus7a0xtght9Pl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+um59kwu/3+ks+QAAAABJRU5ErkJggg==" alt="..." class="img-fluid rounded-circle" style="height: 40px; width: 40px;">
+                                <div class="info--detail">
+                                   <a href="/user/trantrongbinh" class="name-author">
+                                        trantrongbinh
+                                    </a>
+                                    <div class="info-time">
+                                        <a href="#">
+                                        2 days ago
+                                        </a> 
+                                        <span style="color: #999">·</span> 
+                                        <a href="#">
+                                            8 min read
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="bookmark--icon"><i class="far fa-bookmark"></i></a>
+                        </header>
+                    </li>
+                    <li>
+                        <figure>
+                            <a class="background__cover" href="" style="background-image: url(https://1.bp.blogspot.com/-vtWhYkX68Qg/XJSiW6UaCOI/AAAAAAAADek/57w39VOVmvIs6eZE2Rr5PT-7-t5OFLyHACLcBGAs/s640/Snap%2B2019-03-22%2Bat%2B15.52.16.png);"></a>
+                        </figure>
+                        <header>
+                            <a href="http://localhost:8080/category/Ms.%20Abigail%20Jacobi" class="topic--post__related"> Tinh yeu va tinh duc</a>
+                            <a href="">
+                                <h3>The Evolution of James Bond Cars From Dr. No to Spectre</h3>
+                            </a>
+                            <div class="info--post">
+                               <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP8AAAD/CAIAAACxapedAAAABnRSTlMAAAAAAABupgeRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC2klEQVR4nO3UQQ0CQRBFQZYgBGkjbaSNlDUAJJz68KoU/HRe+jprPyDpOT0AxqifLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXTpX661E+X+ulSP13qp0v9dKmfLvXT9Zoe8Mt7r+kJH5y1pyd85WJ/8fvpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpus7a0xtght9Pl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+um59kwu/3+ks+QAAAABJRU5ErkJggg==" alt="..." class="img-fluid rounded-circle" style="height: 40px; width: 40px;">
+                                <div class="info--detail">
+                                   <a href="/user/trantrongbinh" class="name-author">
+                                        trantrongbinh
+                                    </a>
+                                    <div class="info-time">
+                                        <a href="#">
+                                        2 days ago
+                                        </a> 
+                                        <span style="color: #999">·</span> 
+                                        <a href="#">
+                                            8 min read
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="bookmark--icon"><i class="far fa-bookmark"></i></a>
+                        </header>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
+
     @if(Auth::guest())
         <comment title="You must be logged to add a comment !" commentable-type="articles" commentable-id="{{ $article->id }}" comment-number="{{ $article->comments_count }}" null-text=""></comment>
     @else

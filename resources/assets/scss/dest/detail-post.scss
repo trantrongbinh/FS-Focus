@@ -126,3 +126,183 @@ body {
     line-height: 20px;
 }
 
+.related--list {
+    padding: 0 60px;
+
+    h4 {
+        margin: 20px 25px 30px;
+    }
+
+    .flexgrid {
+        margin: auto;
+        padding: 0;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-wrap: wrap;
+
+        figure {
+            width: 100%;
+            height: 140px;
+            margin: 0;
+            line-height: 0;
+        }
+
+        header {
+            margin-top: 10px;
+
+            h3 {
+                margin-bottom: 20px;
+                --x-height-multiplier: 0.342 !important;
+                --baseline-multiplier: 0.22 !important;
+                font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif !important;
+                letter-spacing: -.02em !important;
+                font-weight: 700 !important;
+                font-style: normal !important;
+                letter-spacing: 0 !important;
+                font-size: 21px !important;
+                line-height: 24px !important;
+                -webkit-transform: translateY(-1.88px);
+                transform: translateY(-1.88px);
+                letter-spacing: -.29px !important;
+            }
+
+            .topic--post__related {
+                margin: 5px 0;
+                line-height: 20px;
+                font-size: 16px;
+                color: rgba(0, 0, 0, .54) !important;
+                fill: rgba(0, 0, 0, .54) !important;
+            }
+        }
+
+        li {
+            height: 300px;
+            position: relative;
+            list-style: none;
+            margin: 0;
+            margin-bottom: 50px !important;
+            flex: auto;
+            width: 100%;
+            border: 1px solid #eee;
+            background-color: #fff;
+
+            &:hover {
+                -webkit-box-shadow: 3px 3px 3px #eee;
+                box-shadow: 3px 3px 3px #eee;
+            }
+
+            &>a {
+                position: relative;
+                padding: 2.3rem 2.4rem;
+                width: 100%;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+            }
+        }
+
+        header {
+            position: relative;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+            padding: 0 10px;
+            justify-content: center;
+
+            .info--post {
+                display: flex;
+                position: absolute;
+                top: 100%;
+
+                .info--detail {
+                    margin-top: -5px;
+
+                    .name-author {
+                        text-decoration: none;
+                        font-size: 16px;
+                        color: #555;
+                        margin: 0 10px 0;
+                    }
+
+                    .info-time {
+                        margin: -5px 10px;
+
+                        a {
+                            text-decoration: none;
+                            color: rgba(0,0,0,.54)!important;
+                        }
+                    }
+                }
+            }
+
+            .bookmark--icon {
+                color: #696969;
+                position: absolute;
+                left: 90%;
+                top: 100%;
+                font-size: 24px;
+            }
+        }
+    }
+
+    @media (min-width:1180px) {
+        .flexgrid {
+            margin: 0 !important;
+
+            li {
+                height: 300px !important;
+            }
+        }
+    }
+
+    @media (min-width:768px) {
+        .flexgrid {
+            margin: 0 -14%;
+
+            li {
+                height: 330px;
+                margin: 0 5px;
+                width: 20%;
+            }
+        }
+    }
+
+    @media (max-width:599px) {
+        .minicard {
+            padding: 10px;
+
+            li header:before {
+                top: -11px;
+                left: 50%;
+                margin-left: -12px;
+                border-bottom: 12px solid #fff;
+                border-left: 12px solid transparent;
+                border-right: 12px solid transparent;
+            }
+        }
+    }
+
+    @media (min-width:900px) {
+        .flexgrid {
+            margin: 0 -60px;
+
+            li {
+                margin-right: 2%;
+                margin-left: 2%;
+                width: 29%;
+            }
+        }
+    }
+
+    @media (min-width: 900px) and (max-width: 990px) {
+        .flexgrid {
+            margin: 0 -160px !important;
+            li {
+                height: 330px;
+            }
+        }
+    }
+}
