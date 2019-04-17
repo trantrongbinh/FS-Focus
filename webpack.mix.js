@@ -58,5 +58,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/scss/dest/detail-post.scss', 'public/css')
     .sass('resources/assets/scss/dest/reset-pass.scss', 'public/css')
     .sass('resources/assets/scss/dest/forgot-pass.scss', 'public/css')
+    .copy('resources/assets/js/vendor/drawDoughnutChart.js', 'public/js')
     .copyDirectory('resources/assets/images', 'public/images')
     .version();

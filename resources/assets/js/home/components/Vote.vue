@@ -52,10 +52,6 @@ export default {
 .vote {
     float: left;
     margin-top: 5px;
-}
-
-.votes {
     text-align: center;
 }
-
 </style>
