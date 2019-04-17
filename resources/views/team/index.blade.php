@@ -9,7 +9,8 @@
 
 /* Profile__detail Section */
 .profile__detail {
-    padding: 5rem 0;
+    padding-top: 5rem;
+    padding-bottom: 4rem;
 }
 
 .profile__detail::after {
@@ -20,7 +21,7 @@
 
 .profile__detail-image {
     float: left;
-    width: 20%;
+    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +33,7 @@
 
 .profile__detail-info {
     float: right;
-    width: 80%;
+    width: 70%;
 }
 
 .profile__detail-user-name {
@@ -41,21 +42,12 @@
     font-weight: 300;
 }
 
-.profile__detail-edit-btn {
+.profile__nickname {
     margin-bottom: 15px;
-    font-size: 1rem;
+    color: #666;
+    font-size: 1.5rem;
     line-height: 1.8;
-    border: 0.1rem solid #dbdbdb;
-    border-radius: 0.3rem;
-    padding: 0 1.4rem;
     margin-left: 2rem;
-}
-
-.profile__detail-settings-btn {
-    margin-bottom: 15px;
-    font-size: 2rem;
-    margin-left: 1rem;
-    text-orientation: none;
 }
 
 .profile__detail-stats {
@@ -221,18 +213,17 @@
                     <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
                 </div>
                 <div class="profile__detail-info">
-                    <div class="author--info" style="width: 70%; float: left; margin-top: 20px;">
+                    <div class="author--info" style="width: 60%; float: left; margin-top: 20px;">
                         <div class="profile__detail-user-settings">
                             <h1 class="profile__detail-user-name">janedoe_</h1>
-                            <button class="btn profile__detail-edit-btn">Edit Profile</button>
-                            <a class="btn profile__detail-settings-btn" href="#" aria-label="profile__detail settings"><i class="fas fa-cog" aria-hidden="true"></i></a>
+                            <span class="profile__nickname">( trantrongbinh )</span>
                         </div>
                         <div class="profile__detail-stats">
                             <ul>
                                 <li><span class="profile__detail-stat-count">164</span> posts</li>
                                 <li><span class="profile__detail-stat-count">188</span> followers</li>
                                 <li><span class="profile__detail-stat-count">206</span> following</li>
-                            </ul>
+                            </ul>   
                         </div>
                         <div class="profile__detail-bio">
                             <p><span class="profile__detail-real-name">Jane Doe</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit Lorem ipsum dolor sit, amet consectetur adipisicing elit Lorem ipsum dolor sit, amet consectetur adipisicing elit</p>
@@ -247,9 +238,52 @@
         </div>
         <!-- End of container -->
     </header>
-    <main>
-        <div class="container">
-            <div class="card-header p-2">
+    <div style="position: relative; display: inline-block;">
+        <div style="width: 23%; float: left;" class="is-topPosition">
+            <div style="margin-left: 20%; padding: 0 20px;" >
+                <div class="text-center" style="padding-top: 20px;">
+                    <button class="form-control">Follow</button>
+                </div>
+                <div class="panel-thumbnails text-center" style="padding-top: 20px;">
+                    <a href="" class="btn btn-info btn-twitter btn-sm"><i class="fab fa-twitter"></i></a>
+                    <a rel="publisher" href="" class="btn btn-danger btn-sm"><i class="fab fa-github"></i></a>
+                    <a rel="publisher" href="" class="btn btn-info btn-sm"><i class="fab fa-facebook-square"></i></a>
+                    <a rel="publisher" href="" class="btn btn-warning btn-sm"><i class="fab fa-stack-overflow"></i></a>
+                </div><br>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://facebook.com" target="_blank"><i class="fas fa-globe"></i>&nbsp&nbsp FS-Focus.com</a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank"><i class="fas fa-map-marker-alt"></i>&nbsp&nbsp Hai Duong</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com" target="_blank"><i class="far fa-envelope"></i>&nbsp&nbsp tranbinhbak@gmail.com</a>
+                    </li>
+                </ul>
+                <!-- <div class="text-center" style="padding-top: 10px;">
+                    <button class="form-control">Edit</button>
+                </div> -->
+                <hr>
+                <div class="panel-thumbnails">
+                    <h6>Organizations</h6>
+                    <div class="">
+                        <a href="" >
+                            <img src="https://lorempixel.com/640/480/?10139" alt="Team avatar" class="img-fluid" style="width: 40px; height: 40px; border-radius: 3px;">
+                        </a>&nbsp&nbsp
+                        <a href="" >
+                            <img src="https://avatars2.githubusercontent.com/u/37802322?s=70&v=4" alt="Team avatar" class="img-fluid" style="width: 40px; height: 40px; border-radius: 3px;">
+                        </a>&nbsp&nbsp
+                        <a href="" >
+                            <img src="https://avatars3.githubusercontent.com/u/37947030?s=70&v=4" alt="Team avatar" class="img-fluid" style="width: 40px; height: 40px; border-radius: 3px;">
+                        </a>&nbsp&nbsp
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="container" style="width: 77%; float: right; padding: 0 70px">
+            <div class="card-header p-2" style="border-bottom: none !important; background-color: #fff !important;">
                 <ul class="nav nav-pills row justify-content-center align-self-center">
                     <li class="nav-item"><a href="#recent-articles" data-toggle="tab" class="nav-link active">Recent Articles</a></li>
                     <li class="nav-item"><a href="#recent-discussions" data-toggle="tab" class="nav-link">Recent Discussions</a></li>
@@ -1121,7 +1155,7 @@
                 </div>
             </div>
         </div>
-    </main>
+    </div>
     <div class="pb__100"></div>
 </div>
 @endsection
