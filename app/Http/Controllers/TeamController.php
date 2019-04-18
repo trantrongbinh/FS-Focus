@@ -26,6 +26,18 @@ class TeamController extends Controller
     }
 
     /**
+     * Show all team
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function allTeam()
+    {
+        $teams = $this->team->page(8);
+        
+        return view('team.all', compact('teams'));
+    }
+
+    /**
      * Store a new team.
      *
      * @param  TeamRequest $request

@@ -52,7 +52,7 @@
         <div class="widget teams">
             <header>
                 <h3 class="h6">Top Teams</h3>
-                <span class="top-v1 badge-info navbar-badge" style="z-index: 100;"><a href="#">All</a></span>
+                <span class="top-v1 badge-info navbar-badge" style="z-index: 100;"><a href="/all-team">All</a></span>
             </header>
             <div class="blog-posts">
                 @foreach ($teams['otherTeam'] as $team)

@@ -223,7 +223,7 @@
                                 <li><span class="profile__detail-stat-count">164</span> posts</li>
                                 <li><span class="profile__detail-stat-count">188</span> followers</li>
                                 <li><span class="profile__detail-stat-count">206</span> following</li>
-                            </ul>   
+                            </ul>
                         </div>
                         <div class="profile__detail-bio">
                             <p><span class="profile__detail-real-name">Jane Doe</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit Lorem ipsum dolor sit, amet consectetur adipisicing elit Lorem ipsum dolor sit, amet consectetur adipisicing elit</p>
@@ -240,7 +240,7 @@
     </header>
     <div style="position: relative; display: inline-block;">
         <div style="width: 23%; float: left;" class="is-topPosition">
-            <div style="margin-left: 20%; padding: 0 20px;" >
+            <div style="margin-left: 20%; padding: 0 20px;">
                 <div class="text-center" style="padding-top: 20px;">
                     <button class="form-control">Follow</button>
                 </div>
@@ -261,28 +261,27 @@
                         <a href="https://github.com" target="_blank"><i class="far fa-envelope"></i>&nbsp&nbsp tranbinhbak@gmail.com</a>
                     </li>
                 </ul>
-                <!-- <div class="text-center" style="padding-top: 10px;">
+                <div class="text-center" style="padding-top: 10px;">
                     <button class="form-control">Edit</button>
-                </div> -->
+                </div>
                 <hr>
                 <div class="panel-thumbnails">
                     <h6>Organizations</h6>
                     <div class="">
-                        <a href="" >
+                        <a href="">
                             <img src="https://lorempixel.com/640/480/?10139" alt="Team avatar" class="img-fluid" style="width: 40px; height: 40px; border-radius: 3px;">
                         </a>&nbsp&nbsp
-                        <a href="" >
+                        <a href="">
                             <img src="https://avatars2.githubusercontent.com/u/37802322?s=70&v=4" alt="Team avatar" class="img-fluid" style="width: 40px; height: 40px; border-radius: 3px;">
                         </a>&nbsp&nbsp
-                        <a href="" >
+                        <a href="">
                             <img src="https://avatars3.githubusercontent.com/u/37947030?s=70&v=4" alt="Team avatar" class="img-fluid" style="width: 40px; height: 40px; border-radius: 3px;">
                         </a>&nbsp&nbsp
                     </div>
-                   
                 </div>
             </div>
         </div>
-        <div class="container" style="width: 77%; float: right; padding: 0 70px">
+        <div class="container" style="width: 77%; float: right; padding: 0 150px 0 40px;">
             <div class="card-header p-2" style="border-bottom: none !important; background-color: #fff !important;">
                 <ul class="nav nav-pills row justify-content-center align-self-center">
                     <li class="nav-item"><a href="#recent-articles" data-toggle="tab" class="nav-link active">Recent Articles</a></li>
@@ -1080,26 +1079,134 @@
                         </div>
                     </div>
                     <div id="recent-discussions" class="tab-pane posts-listing">
-                        <div class="row d-flex align-items-stretch featured-posts post-list">
-                            <div class="text col-lg-12">
-                                <div class="text-inner d-flex align-items-center">
-                                    <div class="content">
-                                        <header class="post-header"><a href="http://localhost:8000/an-overview-of-key-breakthroughs-in-blockchain-technology-and-why-nakamoto-consensus-is-such-a-big-deal-l3mbr">
-                                                <h3 class="h4">An overview of key breakthroughs in blockchain technology — and why Nakamoto Consensus is such a big deal</h3>
-                                            </a></header>
-                                        <div class="category"><a href="http://localhost:8000/tag/enim" class="text-blue">
-                                                #enim &nbsp;
-                                            </a> <a href="http://localhost:8000/tag/autem" class="text-blue">
-                                                #autem &nbsp;
+                        <div class="post card">
+                            <div class="card-body">
+                                <div class="user-block">
+                                    <div class="post-footer d-flex align-items-center"><a href="/user/trantrongbinh" class="author d-flex align-items-center flex-wrap">
+                                            <div class="avatar"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP8AAAD/CAIAAACxapedAAAABnRSTlMAAAAAAABupgeRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC50lEQVR4nO3UQQ3DQBAEwXMQHERDM0RDCIH4kdfK6ioEo1Vrj72uBUmf6QEwRv10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ+uY3rA++x1TU94dK9zesKb+P10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10HXtd0xtght9Pl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9dx/SAR3td0xMe3eucnvCDi/3L76dL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny710/UF7ncJW3dRjfoAAAAASUVORK5CYII=" alt="trantrongbinh" class="img-fluid"></div>
+                                            <div class="title"><span>trantrongbinh</span></div>
+                                        </a>
+                                        <div class="date"><i class="far fa-clock"></i> 2 weeks ago
+                                        </div>
+                                        <div><a href="http://localhost:8080/discussion/json-decode-expects-parameter-1-to-be-string-array-given-ttb-qx2fy"><i class="far fa-comment-alt"> 2</i> Replies
                                             </a></div>
-                                        <p>Distributed systems can be difficult to understand, mainly because the knowledge surrounding them is distributed. But don’t worry, I’m well aware of the irony. While teaching myself distributed comput...</p>
-                                        <footer class="post-footer d-flex align-items-center" style="font-size: 0.8em;">
-                                            <div class="comments"><i aria-hidden="true" class="fa fa-user data-margin"></i>TRANTRONGBINH</div>
-                                            <div class="date"><i class="far fa-clock"></i> 2 days ago
-                                            </div>
-                                            <div class="comments meta-last"><i class="fas fa-eye"></i> 2</div>
-                                        </footer>
+                                    </div> <a href="javascript:;" class="float-right btn-tool">×</a>
+                                </div>
+                                <header class="post-header"><a href="http://localhost:8080/discussion/json-decode-expects-parameter-1-to-be-string-array-given-ttb-qx2fy">
+                                        <h3 class="h4 ">json_decode() expects parameter 1 to be string, array given TTB?</h3>
+                                    </a>
+                                    <div class="meta">
+                                        <div class="tag--v2">
+                                            <ul>
+                                                <li><a href="http://localhost:8080/tag/incidunt">incidunt</a><span>20</span></li>
+                                                <li><a href="http://localhost:8080/tag/doloremque">doloremque</a><span>20</span></li>
+                                            </ul>
+                                        </div>
                                     </div>
+                                    <div class="ql-editor">
+                                        <div>
+                                            <div class="markdown">
+                                                <p>what cause error in the my code? </p>
+                                                <pre class="ql-syntax" spellcheck="false">$query = <span class="hljs-keyword">$this</span>-&gt;db-&gt;query(<span class="hljs-string">"SELECT * FROM tour_foreign ORDER BY id desc"</span>);
+                                $data = <span class="hljs-keyword">array</span>();
+                                <span class="hljs-keyword">foreach</span> ($query-&gt;result() <span class="hljs-keyword">as</span> $row)
+                                    $data[] = <span class="hljs-keyword">array</span>(<span class="hljs-string">'guide'</span> =&gt; $row-&gt;guide);
+
+                                    <span class="hljs-keyword">echo</span> json_decode($data); <span class="hljs-comment">//Line 167</span>
+                                        </pre>
+                                                <p>error:</p>
+                                                <pre class="ql-syntax" spellcheck="false">erro: json_decode() expects parameter 1 to be string,<span class="hljs-built_in"> array </span>given: Line Number: 167
+                                                </pre>
+                                                <p><strong>UPDATE:</strong></p>
+                                                <p>if use of&nbsp;<code style="background-color: rgb(239, 240, 241);">json_encode</code>, not&nbsp;<code style="background-color: rgb(239, 240, 241);">json_decode</code>&nbsp;my output is this:</p>
+                                                <pre class="ql-syntax" spellcheck="false">[{"guide":["<span class="hljs-symbol">\u</span>0633<span class="hljs-symbol">\u</span>06cc<span class="hljs-symbol">\u</span>062f <span class="hljs-symbol">\u</span>0633<span class="hljs-symbol">\u</span>0639<span class="hljs-symbol">\u</span>06cc<span class="hljs-symbol">\u</span>062f <span class="hljs-symbol">\u</span>062f<span class="hljs-symbol">\u</span>0627<span class="hljs-symbol">\u</span>062f<span class="hljs-symbol">\u</span>0627<span class="hljs-symbol">\u</span>0634<span class="hljs-symbol">\u</span>0632<span class="hljs-symbol">\u</span>0627<span class="hljs-symbol">\u</span>062f<span class="hljs-symbol">\u</span>0647"]},{"guide":["<span class="hljs-symbol">\u</span>0633<span class="hljs-symbol">\u</span>06c‌​c<span class="hljs-symbol">\u</span>062f <span class="hljs-symbol">\u</span>0633<span class="hljs-symbol">\u</span>0639<span class="hljs-symbol">\u</span>06cc<span class="hljs-symbol">\u</span>062f <span class="hljs-symbol">\u</span>062f<span class="hljs-symbol">\u</span>0627<span class="hljs-symbol">\u</span>062f<span class="hljs-symbol">\u</span>0627<span class="hljs-symbol">\u</span>0634<span class="hljs-symbol">\u</span>0632<span class="hljs-symbol">\u</span>0627<span class="hljs-symbol">\u</span>062f<span class="hljs-symbol">\u</span>0647"]},{"guide":null}]
+                                                </pre>
+                                                <p>they are persian word.</p>
+                                                <p class="ql-align-center"><br></p>
+                                                <p class="ql-align-center"><img src="http://localhost:8080/uploads/discussion/2019/03/29/JiwKXvRiWQY39RpnnTCIbRLmUgi5IPPrNgvMNwdD.png" width="749" style="display: block; margin: auto;"> </p>
+                                            </div>
+                                            <!---->
+                                        </div>
+                                    </div>
+                                </header>
+                            </div> <a href="http://localhost:8080/login" class="text-center" style="padding-bottom: 20px;">You must be logged to add a comment !</a>
+                            <div data-v-92ae789a="" class="card-footer card-comments">
+                                <div data-v-92ae789a="" class="col-md-12">
+                                    <div data-v-92ae789a="" class="card-comment">
+                                        <div data-v-92ae789a="" class="post-footer d-flex align-items-center"><a data-v-92ae789a="" href="/user/trantrongbinh" class="author d-flex align-items-center flex-wrap">
+                                                <div data-v-92ae789a="" class="img-avatar"><img data-v-92ae789a="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP8AAAD/CAIAAACxapedAAAABnRSTlMAAAAAAABupgeRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC50lEQVR4nO3UQQ3DQBAEwXMQHERDM0RDCIH4kdfK6ioEo1Vrj72uBUmf6QEwRv10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ+uY3rA++x1TU94dK9zesKb+P10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10HXtd0xtght9Pl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9dx/SAR3td0xMe3eucnvCDi/3L76dL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny710/UF7ncJW3dRjfoAAAAASUVORK5CYII=" alt="avatar" class="img-fluid img-circle img-sm"></div>
+                                                <div data-v-92ae789a="" class="title"><span data-v-92ae789a="">trantrongbinh</span></div>
+                                            </a>
+                                            <div data-v-92ae789a="" class="date"><i data-v-92ae789a="" class="far fa-clock"></i> 2 weeks ago</div>
+                                        </div>
+                                        <div data-v-92ae789a="" class="vote-cmt">
+                                            <div data-v-37607ae5="" data-v-92ae789a="" class="vote">
+                                                <div data-v-37607ae5="" class="up"><i data-v-37607ae5="" aria-hidden="true" class="fa fa-caret-up fa-2x" style="color: rgb(170, 170, 170);"></i></div>
+                                                <div data-v-37607ae5="" class="votes">0</div>
+                                                <div data-v-37607ae5="" class="down"><i data-v-37607ae5="" aria-hidden="true" class="fa fa-caret-down fa-2x" style="color: rgb(170, 170, 170);"></i></div>
+                                            </div>
+                                        </div> <span data-v-92ae789a="" class="float-right operate">
+                                            <!---->
+                                            <div data-v-92ae789a="" class="dropdown-menu"><a data-v-92ae789a="" href="javascript:;" class="dropdown-item">Edit</a> <a data-v-92ae789a="" href="javascript:;" class="dropdown-item">Delete</a></div>
+                                        </span>
+                                        <div data-v-92ae789a="" class="comment-body markdown">
+                                            <p>Good question!</p>
+                                        </div>
+                                        <div data-v-92ae789a="" class="float-right"><a data-v-92ae789a="" href="javascript:;"><i data-v-92ae789a="" class="fas fa-share"> Reply</i></a></div>
+                                    </div>
+                                    <div data-v-92ae789a="" class="card-comment">
+                                        <div data-v-92ae789a="" class="post-footer d-flex align-items-center"><a data-v-92ae789a="" href="/user/trantrongbinh" class="author d-flex align-items-center flex-wrap">
+                                                <div data-v-92ae789a="" class="img-avatar"><img data-v-92ae789a="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAP8AAAD/CAIAAACxapedAAAABnRSTlMAAAAAAABupgeRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC50lEQVR4nO3UQQ3DQBAEwXMQHERDM0RDCIH4kdfK6ioEo1Vrj72uBUmf6QEwRv10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ+uY3rA++x1TU94dK9zesKb+P10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10qZ8u9dOlfrrUT5f66VI/XeqnS/10HXtd0xtght9Pl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9dx/SAR3td0xMe3eucnvCDi/3L76dL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny7106V+utRPl/rpUj9d6qdL/XSpny710/UF7ncJW3dRjfoAAAAASUVORK5CYII=" alt="avatar" class="img-fluid img-circle img-sm"></div>
+                                                <div data-v-92ae789a="" class="title"><span data-v-92ae789a="">trantrongbinh</span></div>
+                                            </a>
+                                            <div data-v-92ae789a="" class="date"><i data-v-92ae789a="" class="far fa-clock"></i> 1 week ago</div>
+                                        </div>
+                                        <div data-v-92ae789a="" class="vote-cmt">
+                                            <div data-v-37607ae5="" data-v-92ae789a="" class="vote">
+                                                <div data-v-37607ae5="" class="up"><i data-v-37607ae5="" aria-hidden="true" class="fa fa-caret-up fa-2x" style="color: rgb(170, 170, 170);"></i></div>
+                                                <div data-v-37607ae5="" class="votes">0</div>
+                                                <div data-v-37607ae5="" class="down"><i data-v-37607ae5="" aria-hidden="true" class="fa fa-caret-down fa-2x" style="color: rgb(170, 170, 170);"></i></div>
+                                            </div>
+                                        </div> <span data-v-92ae789a="" class="float-right operate">
+                                            <!---->
+                                            <div data-v-92ae789a="" class="dropdown-menu"><a data-v-92ae789a="" href="javascript:;" class="dropdown-item">Edit</a> <a data-v-92ae789a="" href="javascript:;" class="dropdown-item">Delete</a></div>
+                                        </span>
+                                        <div data-v-92ae789a="" class="comment-body markdown">
+                                            <p></p>
+                                            <pre class="ql-syntax" spellcheck="false"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+                                            &nbsp; &nbsp; <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"create-wrapper"</span>&gt;</span>
+                                            &nbsp; &nbsp; &nbsp; &nbsp; <span class="hljs-tag">&lt;<span class="hljs-name">article-create</span> <span class="hljs-attr">:article-original</span>=<span class="hljs-string">"article"</span>&gt;&lt;/<span class="hljs-name">article-create</span>&gt;</span>
+                                            &nbsp; &nbsp; <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                                            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+                                            <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><p></p>
+                                            <p><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+                                            &nbsp; &nbsp; <span class="hljs-attr">props</span>: {
+                                            &nbsp; &nbsp; &nbsp; &nbsp; <span class="hljs-attr">slug</span>: {
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="hljs-attr">type</span>: <span class="hljs-built_in">String</span>,
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="hljs-attr">default</span>: <span class="hljs-string">''</span>
+                                            &nbsp; &nbsp; &nbsp; &nbsp; }
+                                            &nbsp; &nbsp; },</p>
+                                            <p>&nbsp; &nbsp; data() {
+                                            &nbsp; &nbsp; &nbsp; &nbsp; <span class="hljs-keyword">return</span> {
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="hljs-attr">article</span>: <span class="hljs-literal">undefined</span>
+                                            &nbsp; &nbsp; &nbsp; &nbsp; }
+                                            &nbsp; &nbsp; },</p>
+                                            <p>&nbsp; &nbsp; created() {
+                                            &nbsp; &nbsp; &nbsp; &nbsp; <span class="hljs-keyword">this</span>.$http.get(<span class="hljs-string">'article/'</span> + <span class="hljs-keyword">this</span>.slug + <span class="hljs-string">'/edit-post?include=category,tags'</span>)
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="hljs-keyword">this</span>.article = response.data.data
+                                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; })
+                                            &nbsp; &nbsp; }
+                                            }</p>
+                                            <p><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+                                            </p></pre>
+                                            <p><br></p>
+                                            <p></p>
+                                        </div>
+                                        <div data-v-92ae789a="" class="float-right"><a data-v-92ae789a="" href="javascript:;"><i data-v-92ae789a="" class="fas fa-share"> Reply</i></a></div>
+                                    </div>
+                                    <!---->
+                                    <!---->
                                 </div>
                             </div>
                         </div>

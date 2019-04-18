@@ -26,6 +26,7 @@ Route::resource('discussion', 'DiscussionController', ['except' => 'destroy']);
 
 // Team
 Route::resource('team', 'TeamController', ['except' => 'destroy']);
+Route::get('all-team', 'TeamController@allTeam');
 
 // User
 Route::group(['prefix' => 'user'], function () {
