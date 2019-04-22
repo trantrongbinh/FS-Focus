@@ -224,6 +224,42 @@ $tag_background_color_1: #fff;
 $tag_background_color_2: #3498db;
 $tag_border_color_1: transparent #3498db transparent transparent;
 
+.tag--v0 {
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            display: inline-block;
+            margin: 0 .3em .3em 0;
+            padding: 0;
+            a {
+                display: inline-block;
+                max-width: 200px;
+                height: 28px;
+                line-height: 28px;
+                padding: 0 1em;
+                background-color: $tag_background_color_1;
+                border: 1px solid #aaa;
+                border-radius: 3px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                color: $tag_color_1;
+                font-size: 13px;
+                text-decoration: none;
+                -webkit-transition: .2s;
+                transition: .2s;
+                &:hover {
+                    background-color: $tag_background_color_2;
+                    border: 1px solid #3498db;
+                    color: $tag_color_2;
+                }
+            }
+        }
+    }
+}
+
 .tag--v1 {
     ul {
         margin: 0;
@@ -236,7 +272,7 @@ $tag_border_color_1: transparent #3498db transparent transparent;
             a {
                 position: relative;
                 display: inline-block;
-                max-width: 100px;
+                max-width: 150px;
                 height: 28px;
                 line-height: 28px;
                 padding: 0 2.5em 0 1em;
@@ -295,7 +331,7 @@ $tag_border_color_1: transparent #3498db transparent transparent;
             a {
                 position: relative;
                 display: inline-block;
-                max-width: 100px;
+                max-width: 150px;
                 height: 28px;
                 line-height: 28px;
                 padding: 0 1em;

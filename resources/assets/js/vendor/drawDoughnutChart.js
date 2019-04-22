@@ -11,8 +11,8 @@
 ;(function($, undefined) {
     $.fn.drawDoughnutChart = function(data, options) {
         var $this = this,
-            W = 230,
-            H = 230,
+            W = 250,
+            H = 250,
             centerX = W / 2,
             centerY = H / 2,
             cos = Math.cos,
