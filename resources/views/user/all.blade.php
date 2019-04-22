@@ -2,71 +2,153 @@
 @section('styles')
 <link rel="stylesheet" href="{{ asset(mix('css/author.css')) }}">
 <style>
-    figure.snip1192 {
-  font-family: 'Raleway', Arial, sans-serif;
-  position: relative;
-  overflow: hidden;
-  margin: 10px;
-  min-width: 220px;
-  max-width: 310px;
-  width: 100%;
-  text-align: left;
-  box-shadow: none !important;
-}
-figure.snip1192 * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-figure.snip1192 img {
-  max-width: 100%;
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  margin-bottom: 15px;
-  display: inline-block;
-  z-index: 1;
-  position: relative;
-}
-figure.snip1192 blockquote {
-  margin: 0;
-  color: #fff;
-  display: block;
-  border-radius: 8px;
-  position: relative;
-  background-color: #505050;
-  padding: 30px 50px 65px 50px;
-  font-size: 0.8em;
-  font-weight: 500;
-  margin: 0 0 -50px;
-  line-height: 1.6em;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+.frame {
+    border-radius: 10px;
+    min-width: 270px;
+    max-width: 300px;
+    width: 100%;
+    height: 260px;
+    color: #786450;
+    margin: 25px;
+    /*background: #f8f8f8;*/
 }
 
-figure.snip1192 blockquote:before {
-  top: 35px;
-  left: 20px;
+.center {
+    width: 100%;
+    overflow: hidden;
+    height: 290px;
+    border-bottom: 1px solid #dedede;
 }
-figure.snip1192 blockquote:after {
-  content: "\201D";
-  right: 20px;
-  bottom: 35px;
+
+.profile--author {
+    float: left;
+    width: 170px;
+    text-align: center;
 }
-figure.snip1192 .author {
-  margin: 0;
-  text-transform: uppercase;
-  text-align: center;
-  color: #ffffff;
+
+.profile--author .image {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin: 38px auto 0 auto;
 }
-figure.snip1192 .author h5 {
-    color: #505050;
-  opacity: 0.8;
-  margin: 0;
-  font-weight: 800;
+
+.profile--author .image .circle-1,
+.profile--author .image .circle-2 {
+    position: absolute;
+    box-sizing: border-box;
+    width: 76px;
+    height: 76px;
+    top: -3px;
+    left: -3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #786450 #786450 #786450 transparent;
+    border-radius: 50%;
+    transition: all 1.5s ease-in-out;
 }
-figure.snip1192 .author h5 span {
-  font-weight: 400;
-  text-transform: none;
-  display: block;
+
+.profile--author .image .circle-2 {
+    width: 82px;
+    height: 82px;
+    top: -6px;
+    left: -6px;
+    border-color: #786450 transparent #786450 #786450;
+}
+
+.profile--author .image img {
+    display: block;
+    border-radius: 50%;
+    background: #f5e8df;
+}
+
+.profile--author .image:hover {
+    cursor: pointer;
+}
+
+.profile--author .image:hover .circle-1,
+.profile--author .image:hover .image .circle-2,
+.profile--author .image .image:hover .circle-2 {
+    transform: rotate(360deg);
+}
+
+.profile--author .image:hover .circle-2 {
+    transform: rotate(-360deg);
+}
+
+.profile--author .name {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.profile--author .job {
+    font-size: 11px;
+    line-height: 15px;
+}
+
+.profile--author .actions {
+    margin-top: 33px;
+}
+
+.profile--author .actions .btn {
+    display: block;
+    width: 120px;
+    margin: 0 auto 10px auto;
+    background: none;
+    border: 1px solid #786450;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+    color: #786450;
+}
+
+.profile--author .actions .btn:hover {
+    background: #786450;
+    color: #fff;
+}
+
+.stats {
+    position: relative;
+    float: left;
+    padding-top: 40px;
+    /*background: #f8f8f8;
+    border-radius: 5px;*/
+}
+
+/*.stats:after {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: -50px;
+    width: 50px;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 0px;
+    border-color: transparent #f5f5f5 transparent transparent;
+}*/
+
+.stats .box {
+    box-sizing: border-box;
+    width: 120px;
+    height: 70px;
+    text-align: center;
+    transition: all 0.4s ease-in-out;
+}
+
+.stats span {
+    display: block;
+}
+
+.stats .value {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.stats .parameter {
+    font-size: 11px;
 }
 
 </style>
@@ -77,85 +159,105 @@ figure.snip1192 .author h5 span {
         <div class="col-md-6 offset-md-3">
             <div class="widget search search-authors">
                 <form method="GET" id="form-search-author" action="" class="search-author">
-                    <div class="form-group">
-                        <input type="search" id="name" placeholder="What are you looking for?" class="form-control" data-action="grow" autocomplete="off" name="q" required>
-                        <button id="submit" type="submit" class="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
+                    <div class="form-group"><input type="search" id="name" placeholder="What are you looking for?" class="form-control" data-action="grow" autocomplete="off" name="q" required><button id="submit" type="submit" class="submit"><i class="fas fa-search"></i></button></div>
                 </form>
             </div>
         </div>
-        <div class="col-md-12 list-authors" id="authors" style="display: flex;justify-content: center;align-items: center;flex-flow: wrap;margin: auto;height: 100%;">
-            <!-- @include('user.particals.authors') -->
-            <figure class="snip1192">
-                <blockquote>Calvin: Sometimes when I'm talking with others, my words can't keep up with my thoughts.</blockquote>
-                <div class="author">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample1.jpg" alt="sq-sample1" />
-                    <h5>Pelican Steve <span> LittleSnippets</span></h5>
+        <div class="col-md-12 list-authors" id="authors" style="display: flex; justify-content: center; align-items: center; flex-flow: wrap; margin: auto; height: 100%;">
+            <div class="frame">
+                <div class="center">
+                    <div class="profile--author">
+                        <div class="image">
+                            <div class="circle-1"></div>
+                            <div class="circle-2"></div><img src="http://100dayscss.com/codepen/jessica-potter.jpg" width="70" height="70" alt="Jessica Potter">
+                        </div>
+                        <div class="name"><a href="#">Jessica Potter</a></div>
+                        <div class="job">Visual Artist</div>
+                        <div class="actions"><button class="btn">Follow</button></div>
+                    </div>
+                    <div class="stats">
+                        <div class="box"><span class="value">523</span><span class="parameter">Posts</span></div>
+                        <div class="box"><span class="value">1387</span><span class="parameter">Likes</span></div>
+                        <div class="box"><span class="value">146</span><span class="parameter">Follower</span></div>
+                    </div>
                 </div>
-            </figure>
-            <figure class="snip1192">
-                <blockquote>Calvin: Sometimes when I'm talking with others, my words can't keep up with my thoughts.</blockquote>
-                <div class="author">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample1.jpg" alt="sq-sample1" />
-                    <h5>Pelican Steve <span> LittleSnippets</span></h5>
+            </div>
+            <div class="frame">
+                <div class="center">
+                    <div class="profile--author">
+                        <div class="image">
+                            <div class="circle-1"></div>
+                            <div class="circle-2"></div><img src="https://s3.amazonaws.com/uifaces/faces/twitter/chadengle/128.jpg" width="70" height="70" alt="Jessica Potter">
+                        </div>
+                        <div class="name">Jessica Potter</div>
+                        <div class="job">Visual Artist</div>
+                        <div class="actions"><button class="btn">Follow</button></div>
+                    </div>
+                    <div class="stats">
+                        <div class="box"><span class="value">523</span><span class="parameter">Posts</span></div>
+                        <div class="box"><span class="value">1387</span><span class="parameter">Likes</span></div>
+                        <div class="box"><span class="value">146</span><span class="parameter">Follower</span></div>
+                    </div>
                 </div>
-            </figure>
-            <figure class="snip1192">
-                <blockquote>Calvin: Sometimes when I'm talking with others, my words can't keep up with my thoughts.</blockquote>
-                <div class="author">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample1.jpg" alt="sq-sample1" />
-                    <h5>Pelican Steve <span> LittleSnippets</span></h5>
+            </div>
+            <div class="frame">
+                <div class="center">
+                    <div class="profile--author">
+                        <div class="image">
+                            <div class="circle-1"></div>
+                            <div class="circle-2"></div><img src="https://s3.amazonaws.com/uifaces/faces/twitter/ilya_pestov/128.jpg" width="70" height="70" alt="Jessica Potter">
+                        </div>
+                        <div class="name">Jessica Potter</div>
+                        <div class="job">Visual Artist</div>
+                        <div class="actions"><button class="btn">Follow</button></div>
+                    </div>
+                    <div class="stats">
+                        <div class="box"><span class="value">523</span><span class="parameter">Posts</span></div>
+                        <div class="box"><span class="value">1387</span><span class="parameter">Likes</span></div>
+                        <div class="box"><span class="value">146</span><span class="parameter">Follower</span></div>
+                    </div>
                 </div>
-            </figure>
-            <figure class="snip1192">
-                <blockquote>Calvin: Sometimes when I'm talking with others, my words can't keep up with my thoughts.</blockquote>
-                <div class="author">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample1.jpg" alt="sq-sample1" />
-                    <h5>Pelican Steve <span> LittleSnippets</span></h5>
+            </div>
+            <div class="frame">
+                <div class="center">
+                    <div class="profile--author">
+                        <div class="image">
+                            <div class="circle-1"></div>
+                            <div class="circle-2"></div><img src="https://s3.amazonaws.com/uifaces/faces/twitter/isaacfifth/128.jpg" width="70" height="70" alt="Jessica Potter">
+                        </div>
+                        <div class="name">Jessica Potter</div>
+                        <div class="job">Visual Artist</div>
+                        <div class="actions"><button class="btn">Follow</button></div>
+                    </div>
+                    <div class="stats">
+                        <div class="box"><span class="value">523</span><span class="parameter">Posts</span></div>
+                        <div class="box"><span class="value">1387</span><span class="parameter">Likes</span></div>
+                        <div class="box"><span class="value">146</span><span class="parameter">Follower</span></div>
+                    </div>
                 </div>
-            </figure>
-            <figure class="snip1192">
-                <blockquote>Calvin: Sometimes when I'm talking with others, my words can't keep up with my thoughts.</blockquote>
-                <div class="author">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample1.jpg" alt="sq-sample1" />
-                    <h5>Pelican Steve <span> LittleSnippets</span></h5>
+            </div>
+            <div class="frame">
+                <div class="center">
+                    <div class="profile--author">
+                        <div class="image">
+                            <div class="circle-1"></div>
+                            <div class="circle-2"></div><img src="https://s3.amazonaws.com/uifaces/faces/twitter/dudestein/128.jpg" width="70" height="70" alt="Jessica Potter">
+                        </div>
+                        <div class="name">Jessica Potter</div>
+                        <div class="job">Visual Artist</div>
+                        <div class="actions"><button class="btn">Follow</button></div>
+                    </div>
+                    <div class="stats">
+                        <div class="box"><span class="value">523</span><span class="parameter">Posts</span></div>
+                        <div class="box"><span class="value">1387</span><span class="parameter">Likes</span></div>
+                        <div class="box"><span class="value">146</span><span class="parameter">Follower</span></div>
+                    </div>
                 </div>
-            </figure>
-            <figure class="snip1192">
-                <blockquote>Calvin: Sometimes when I'm talking with others, my words can't keep up with my thoughts.</blockquote>
-                <div class="author">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample1.jpg" alt="sq-sample1" />
-                    <h5>Pelican Steve <span> LittleSnippets</span></h5>
-                </div>
-            </figure>
-            <figure class="snip1192">
-                <blockquote>Calvin: Sometimes when I'm talking with others, my words can't keep up with my thoughts.</blockquote>
-                <div class="author">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample1.jpg" alt="sq-sample1" />
-                    <h5>Pelican Steve <span> LittleSnippets</span></h5>
-                </div>
-            </figure>
-            <figure class="snip1192 hover">
-                <blockquote>Thank you. before I begin, I'd like everyone to notice that my report is in a professional, clear plastic binder...</blockquote>
-                <div class="author">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample24.jpg" alt="sq-sample24" />
-                    <h5>Max Conversion<span> LittleSnippets</span></h5>
-                </div>
-            </figure>
-            <figure class="snip1192">
-                <blockquote>My behaviour is addictive functioning in a disease process of toxic co-dependency.</blockquote>
-                <div class="author">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample29.jpg" alt="sq-sample29" />
-                    <h5>Eleanor Faint<span> LittleSnippets</span></h5>
-                </div>
-            </figure>
+            </div>
         </div>
-    </div>
-    <br class="mb-5">
+    </div><br class="mb-5">
 </div>
 @endsection
 @section('scripts')
-<script src="{{ asset(mix('js/author.js')) }}"></script>
+    <script src="{{ asset(mix('js/author.js')) }}"></script>
 @endsection
