@@ -1,5 +1,5 @@
 <div id="right" class="is-bottomPosition">
-    <div class="right">
+    <div class="right" style="min-width: 195px !important;">
         <!-- Widget [Authors Widget]-->
         <div class="widget author">
             <header>
@@ -10,13 +10,15 @@
                 @foreach($users as $user)
                     <figure class="profile--author profile--author__left">
                         <a href="/user/{{ $user->name }}" class="profile--ava">
-                            <div class="item d-flex align-items-center">
-                                <div class="image">
-                                    <img class="img-fluid img-circle img-sm" src="{{ $user->avatar }}" alt="User Image">
+                            <div class="item d-flex">
+                                 <div class="image__author">
+                                    <div class="circle__image--1"></div>
+                                    <div class="circle__image--2"></div>
+                                    <img src="{{ $user->avatar }}" width="70" height="70" alt="{{ $user->name }}">
                                 </div>
                                 <div class="title">
                                     <strong>{{ str_limit($user->name, config('blog.str_limit.name')) }}</strong>
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex">
                                         <div class="views last--icon"><i class="fas fa-pencil-alt"></i> {{ $user->articles_count }} bài viết</div>
                                     </div>
                                 </div>
@@ -25,7 +27,7 @@
                         <figcaption class="profile--info hidden">
                             <div class="author-profile--popup">
                                 <img class="avatar" src="{{ $user->avatar }}" alt="Ash" />
-                                 <a title="Theo dõi Huskywannafly" class="btn btn-outline-info btn-sm btn--follow" >Theo dõi</a>
+                                <a title="Theo dõi Huskywannafly" class="btn btn-outline-info btn-sm btn--follow" >Theo dõi</a>
                                 <div class="username">Will Smith</div>
                                 <div class="bio">Senior UI Designer</div>
                                 <div class="description">
@@ -58,17 +60,17 @@
                 @foreach ($teams['otherTeam'] as $team)
                     <figure class="profile--author profile--author__left">
                         <a href="{{ url('team') }}" class="profile--ava">
-                            <div class="item d-flex align-items-center">
+                            <div class="item d-flex">
                                 <div class="image">
                                     @if ($team->avatar)
-                                        <img class="img-fluid img-sm" src="{{ $team->avatar }}" alt="Team avatar">
+                                        <img class="img-fluid" src="{{ $team->avatar }}" alt="Team avatar">
                                     @else
-                                        <img class="img-fluid img-sm" src="{{ asset('/images/team-default.png') }}" alt="Team avatar">
+                                        <img class="img-fluid" src="{{ asset('/images/team-default.png') }}" alt="Team avatar">
                                     @endif
                                 </div>
                                 <div class="title">
                                     <strong>{{ str_limit($team->name, config('blog.str_limit.name')) }}</strong>
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex">
                                         <div class="views"><i class="fas fa-user-friends"></i> {{ $team->users_count }}</div>
                                         <div class="comments last--icon"><i class="fas fa-pencil-alt"></i> {{ $team->getTotalArticles($team->id) }}</div>
                                     </div>
@@ -107,7 +109,7 @@
                         </div>
                         @foreach ($teams['yourTeam'] as $team)
                             <a href="/team/{{ $team->slug }}">
-                                <div class="item d-flex align-items-center">
+                                <div class="item d-flex">
                                     <div class="image">
                                         @if ($team->avatar)
                                             <img class="img-fluid img-sm" src="{{ asset($team->avatar) }}" alt="Your team avatar">
@@ -116,7 +118,7 @@
                                         @endif
                                     </div>
                                     <div class="title"><strong>{{ str_limit($team->name, config('blog.str_limit.name')) }}</strong>
-                                        <div class="d-flex align-items-center">
+                                        <div class="d-flex">
                                             <div class="views" data-toggle="tooltip" data-placement="bottom" title="Members"><i class="fas fa-user-friends"></i> {{ $team->users_count }}</div>
                                             <div class="comments" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $team->articles_count }}</div>
                                         </div>
@@ -143,8 +145,6 @@
                 @endif
             </div>
         </div>
-        <!-- Link -->
-        <div class="widget fanpage" style="height: 200px;"></div>
         <!-- Link -->
         <div class="widget links">
             <header>
