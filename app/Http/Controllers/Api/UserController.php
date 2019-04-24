@@ -129,4 +129,16 @@ class UserController extends ApiController
 
         return $this->response->withNoContent();
     }
+
+    /**
+     * Show the notifications for auth user
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function notifications()
+    {
+        $notifications = \Auth::user()->notifications;
+
+        return $this->response->json($notifications);
+    }
 }

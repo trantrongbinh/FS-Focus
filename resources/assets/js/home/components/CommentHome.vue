@@ -18,10 +18,6 @@
                 <div class="vote-cmt">
                     <vote></vote>
                 </div>
-               <!--  <span class="float-right btn-tool font-size_12" v-if="username != comment.username">
-                    <vote-button :item="comment"></vote-button> &nbsp|&nbsp&nbsp
-                    <a href="javascript:;" @click="reply(comment.username)"><i class="fas fa-share"></i></a>
-                </span> -->
                 <span class="float-right operate">
                     <a href="javascript:void(0)" class="float-right btn-tool" data-toggle="dropdown" v-if="username == comment.username"><i class="fas fa-ellipsis-h"></i></a>
                     <div class="dropdown-menu">

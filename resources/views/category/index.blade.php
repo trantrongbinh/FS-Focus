@@ -80,7 +80,7 @@ div.card div.card-title a.toggle-info {
     padding: 0;
     position: absolute;
     right: 15px;
-    top: 55px;
+    bottom: 0;
     width: 32px;
 }
 
@@ -119,9 +119,9 @@ div.card div.card-title h2 small {
             @forelse($categories as $category)
                 <div class="card">
                     @if ($category->image_url)
-                        <div style="height: 200px; width: 300px; background-image: url('{{ $category->image_url }}'); background-position: 50% 50% !important; background-position: center!important; background-origin: border-box!important; background-size: cover!important;"></div>
+                        <div style="height: 200px; width: 297px; background-image: url('{{ $category->image_url }}'); background-position: 50% 50% !important; background-position: center!important; background-origin: border-box!important; background-size: cover!important;"></div>
                     @else
-                        <div style="height: 200px; width: 300px; background-image: url('https://www.yazkazan.net/dosyalar/egitim/2016/11/8d3421b9116559225f35be64bc4e6876.jpg'); background-position: 50% 50% !important; background-position: center!important; background-origin: border-box!important; background-size: cover!important;"></div>
+                        <div style="height: 200px; width: 297px; background-image: url('https://www.yazkazan.net/dosyalar/egitim/2016/11/8d3421b9116559225f35be64bc4e6876.jpg'); background-position: 50% 50% !important; background-position: center!important; background-origin: border-box!important; background-size: cover!important;"></div>
                     @endif
                     <div class="card-title">
                         <a href="#" class="toggle-info btn btn--check">

@@ -24,4 +24,5 @@
             @endforelse
         </div>
     </div>
+    <div class="pb__100"></div>
 @endsection

@@ -37,6 +37,9 @@ Route::group([
 Route::group([
     'namespace' => 'Api',
 ], function () {
+    // Notification
+    Route::get('user/notification', 'UserController@notifications')->middleware('auth:api');
+
     // File Upload
     Route::post('file/upload', 'UploadController@fileUpload')->middleware('auth:api');
     

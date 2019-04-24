@@ -21,6 +21,7 @@
                     <div class="card-body">
                         <ul class="notification">
                             @foreach(Auth::user()->notifications as $notification)
+                                {{ var_dump($notification->type) }}
                                 @include('notifications.'. snake_case(class_basename($notification->type), '-'))
                             @endforeach
                         </ul>

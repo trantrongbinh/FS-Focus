@@ -120,7 +120,6 @@
   content: '\f129';
 }
 
-
 /* list icons */
 .list-icons-demo li {
   margin-bottom: 20px;
