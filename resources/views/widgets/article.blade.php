@@ -91,6 +91,7 @@
                                                 <div class="card__meta">
                                                     <a href="{{ url('category', ['name' => $article->category->name]) }}" class="topic"> {{ $article->category->name }}</a>
                                                     <time><i class="far fa-clock"></i> {{ $article->published_at->diffForHumans() }}</time>
+                                                    <span class="dot">&middot;</span>
                                                     <span class="readingTime">5 min read</span>
                                                 </div>
                                                 <article class="card__article">

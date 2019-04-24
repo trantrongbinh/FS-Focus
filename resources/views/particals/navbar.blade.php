@@ -47,27 +47,109 @@
                 </li>
             @else
                 <!-- Notifications-->
-                <li class="nav-item notification">
-                    <a id="notifications" class="nav-link" rel="nofollow" href="{{ url('user/notification') }}">
+                <li class="nav-item notification dropdown">
+                    {{-- <a id="notifications" class="nav-link" rel="nofollow" href="{{ url('user/notification') }}"> --}}
+                    <a id="notifications" class="nav-link logout" data-target="#" href="#" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-bell"></i>
                         <span class="new" @if (Auth::user()->unreadNotifications->count() > 0) style='display: block' @endif >
                             <span class="noti-numb-bg"></span><span class="badge text-danger"><i class="fas fa-circle"></i></span>
                         </span>
                     </a>
+                    <ul aria-labelledby="notifications" class="dropdown-menu notifications">
+                        <li style="width: 100%; padding: 0.5rem 1rem; display: inline-flex !important; border-bottom: 0.01rem solid #eee;">
+                            <div class="heading-left" style="width: 70%; text-align: left;">
+                                <h6 class="heading-title" style="    color: #555;margin: 0;line-height: 20px;font-size: 14px;">Notifications</h6>
+                            </div>
+                            <div class="heading-right" style="width: 30%; text-align: right; color: #4aaee7; font-weight: 700;font-size: 11px;">
+                                <a class="notification-link" href="#">Mark As Read</a>
+                            </div>
+                        </li>
+                        <li>
+                            <ul class="notification--list" style="padding: 0.5rem 1rem;margin: 0 0 0.5rem;">
+                                <li class="notification-item" style="display: flex;">
+                                    <div class="img-left" style="width: 15%;">
+                                        <img alt="User Photo" src="https://randomuser.me/api/portraits/thumb/women/65.jpg" class="user-photo" style="display: inline-block;vertical-align: middle;height: 40px;width: 40px;margin: 0 0.5rem 0 0;border-radius: 50%;max-width: 100%;">
+                                    </div> 
+                                    <div class="user-content" style="width: 85%;">
+                                        <p class="user-info" style="margin: 0.15rem 5px 0px;">
+                                            <span class="name" style="font-weight: 700; font-size: 14px; color: #000">trantrongbinh</span> commented Discussions <a href="#"> json_decode() expects parameter 1 to be string, array given TTB?</a>
+                                        </p> 
+                                        <p class="time">1 hour ago</p>
+                                    </div>
+                                </li>
+                                <li class="notification-item" style="display: flex;">
+                                    <div class="img-left" style="width: 15%;">
+                                        <img alt="User Photo" src="https://randomuser.me/api/portraits/thumb/women/65.jpg" class="user-photo" style="display: inline-block;vertical-align: middle;height: 40px;width: 40px;margin: 0 0.5rem 0 0;border-radius: 50%;max-width: 100%;">
+                                    </div> 
+                                    <div class="user-content" style="width: 85%;">
+                                        <p class="user-info" style="margin: 0.15rem 5px 0px;">
+                                            <span class="name" style="font-weight: 700; font-size: 14px; color: #000">trantrongbinh</span> commented Discussions <a href="#"> json_decode() expects parameter 1 to be string, array given TTB?</a>
+                                        </p> 
+                                        <p class="time">1 hour ago</p>
+                                    </div>
+                                </li>
+                                <li class="notification-item" style="display: flex;">
+                                    <div class="img-left" style="width: 15%;">
+                                        <img alt="User Photo" src="https://randomuser.me/api/portraits/thumb/women/65.jpg" class="user-photo" style="display: inline-block;vertical-align: middle;height: 40px;width: 40px;margin: 0 0.5rem 0 0;border-radius: 50%;max-width: 100%;">
+                                    </div> 
+                                    <div class="user-content" style="width: 85%;">
+                                        <p class="user-info" style="margin: 0.15rem 5px 0px;">
+                                            <span class="name" style="font-weight: 700; font-size: 14px; color: #000">trantrongbinh</span> commented Discussions <a href="#"> json_decode() expects parameter 1 to be string, array given TTB?</a>
+                                        </p> 
+                                        <p class="time">1 hour ago</p>
+                                    </div>
+                                </li>
+                                <li class="notification-item" style="display: flex;">
+                                    <div class="img-left" style="width: 15%;">
+                                        <img alt="User Photo" src="https://randomuser.me/api/portraits/thumb/women/65.jpg" class="user-photo" style="display: inline-block;vertical-align: middle;height: 40px;width: 40px;margin: 0 0.5rem 0 0;border-radius: 50%;max-width: 100%;">
+                                    </div> 
+                                    <div class="user-content" style="width: 85%;">
+                                        <p class="user-info" style="margin: 0.15rem 5px 0px;">
+                                            <span class="name" style="font-weight: 700; font-size: 14px; color: #000">trantrongbinh</span> commented Discussions <a href="#"> json_decode() expects parameter 1 to be string, array given TTB?</a>
+                                        </p> 
+                                        <p class="time">1 hour ago</p>
+                                    </div>
+                                </li>
+                                <li class="notification-item" style="display: flex;">
+                                    <div class="img-left" style="width: 15%;">
+                                        <img alt="User Photo" src="https://randomuser.me/api/portraits/thumb/women/65.jpg" class="user-photo" style="display: inline-block;vertical-align: middle;height: 40px;width: 40px;margin: 0 0.5rem 0 0;border-radius: 50%;max-width: 100%;">
+                                    </div> 
+                                    <div class="user-content" style="width: 85%;">
+                                        <p class="user-info" style="margin: 0.15rem 5px 0px;">
+                                            <span class="name" style="font-weight: 700; font-size: 14px; color: #000">trantrongbinh</span> commented Discussions <a href="#"> json_decode() expects parameter 1 to be string, array given TTB?</a>
+                                        </p> 
+                                        <p class="time">1 hour ago</p>
+                                    </div>
+                                </li>
+                                <li class="notification-item" style="display: flex;">
+                                    <div class="img-left" style="width: 15%;">
+                                        <img alt="User Photo" src="https://randomuser.me/api/portraits/thumb/women/65.jpg" class="user-photo" style="display: inline-block;vertical-align: middle;height: 40px;width: 40px;margin: 0 0.5rem 0 0;border-radius: 50%;max-width: 100%;">
+                                    </div> 
+                                    <div class="user-content" style="width: 85%;">
+                                        <p class="user-info" style="margin: 0.15rem 5px 0px;">
+                                            <span class="name" style="font-weight: 700; font-size: 14px; color: #000">trantrongbinh</span> commented Discussions <a href="#"> json_decode() expects parameter 1 to be string, array given TTB?</a>
+                                        </p> 
+                                        <p class="time">1 hour ago</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
+                <!-- Profile-->
                 <li class="nav-item dropdown">
-                    <a id="profile" class="nav-link logout" data-target="#" href="#" data-toggle="dropdown"
+                    <a id="profile" class="nav-link" data-target="#" href="#" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" style="height: 30px; width: 30px; background: #fff;">
                     </a>
                     <ul aria-labelledby="profile" class="dropdown-menu profile">
                         <li>
-                            <a rel="nofollow" href="{{ url('user', ['name' => Auth::user()->name]) }}"
-                               class="dropdown-item d-flex">
-                                <div class="msg-profile avatar">
-                                    <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle">
+                            <a href="{{ url('user', ['name' => Auth::user()->name]) }}" class="dropdown-item d-flex">
+                                <div class="avatar">
+                                    <img src="{{ Auth::user()->avatar }}" alt="..." class="img-fluid rounded-circle" style="width: 50px;">
                                 </div>
-                                <div class="msg-body">
+                                <div class="profile__name">
                                     <h3 class="h5">{{ Auth::user()->name }}</h3><span>{{ Auth::user()->email }}</span>
                                 </div>
                             </a>
@@ -77,27 +159,20 @@
                             <li><a href="{{ url('dashboard') }}"><i class="fas fa-tachometer-alt"></i>{{ lang('Dashboard') }}</a></li>
                         @endif
                         <li>
-                            <a rel="nofollow" href="{{ url('user', ['name' => Auth::user()->name]) }}"
+                            <a href="{{ url('user', ['name' => Auth::user()->name]) }}"
                                class="dropdown-item">
-                                <div class="notification">
-                                    <div class="notification-content"><i class="fa fa-user"></i>My Profile</div>
-                                </div>
+                                <i class="fa fa-user"></i>My Profile
                             </a>
                         </li>
                         <li>
-                            <a rel="nofollow" href="{{ url('setting') }}" class="dropdown-item">
-                                <div class="notification">
-                                    <div class="notification-content"><i class="fa fa-cog"></i>{{ lang('Settings') }}
-                                    </div>
-                                </div>
+                            <a href="{{ url('setting') }}" class="dropdown-item">
+                               <i class="fa fa-cog"></i>{{ lang('Settings') }}
                             </a>
                             <hr>
                         </li>
                         <li>
-                            <a rel="nofollow" href="{{ url('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <div class="notification">
-                                    <div class="notification-content"><i class="fa fa-power-off"></i>Logout</div>
-                                </div>
+                            <a href="{{ url('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fa fa-power-off"></i>Logout
                             </a>
                             <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}

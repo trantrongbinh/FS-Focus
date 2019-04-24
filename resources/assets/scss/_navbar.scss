@@ -240,10 +240,6 @@ nav.navbar {
         animation: heart-beats 1s infinite;
     }
 
-    .nav-item>a.logout i {
-        margin-left: 10px;
-    }
-
     .nav-item>a.login {
         font-weight: 700;
     }
@@ -293,68 +289,43 @@ nav.navbar {
         border-radius: 0;
         border: none;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1), -2px 0 2px rgba(0, 0, 0, 0.1);
+        border: 1px solid #DDD;
+    }
 
-        a {
-            background: #fff;
-            padding: 10px 20px;
-            font-size: 0.8em;
-            color: #777;
-            width: 100%;
+    .dropdown-menu.notifications {
+        right: -95px !important;
+        min-width: 350px !important;
+        border-radius: 3px;
+
+        &:after {
+            border-width: 0 10px 10px 10px;
+            border-color: transparent transparent #fff transparent;
+            content: '';
+            position: absolute;
+            right: 30.5%;
+            bottom: 100%;
+            width: 0;
+            height: 0;
+            border-style: solid;
         }
 
-        a:hover {
-            background: #f5f5f5;
-        }
+        .notification--list {
+            overflow: auto;
+            max-height: 350px;
 
-        a i {
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            background: #2196F3;
-            text-align: center;
-            color: #fff;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
+            li {
+                margin: 0 -15px;
+                padding: 10px 10px 0 10px;
 
-        a i.bg-red {
-            background: #F44336;
-        }
+                &:hover {
+                    background: #f5f5f5;
+                }
+            }
 
-        a i.bg-skyblue {
-            background: #2196F3;
-        }
-
-        a i.bg-blue {
-            background: #78459a;
-        }
-
-        a small {
-            margin-left: 40px;
-        }
-
-        span {
-            position: static;
-            font-size: 0.9em;
-            color: #999;
-        }
-
-        strong {
-            font-weight: 700;
-        }
-
-        .msg-profile {
-            width: 50px;
-            height: 50px;
-        }
-
-        h3 {
-            font-weight: 500;
-        }
-
-        h3.msg-nav-h3 {
-            font-weight: 300;
-            font-size: 17px;
+            a {
+                font-weight: 700;
+                color: #5892ef;
+            }
         }
     }
 
@@ -376,11 +347,38 @@ nav.navbar {
             border-color: transparent transparent #fff transparent;
             content: '';
             position: absolute;
-            right: 21%;
+            right: 20.3%;
             bottom: 100%;
             width: 0;
             height: 0;
             border-style: solid;
+        }
+
+        a {
+            background: #fff;
+            padding: 10px 20px;
+            font-size: 0.8em;
+            color: #777;
+            width: 100%;
+        }
+
+        a i {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            background: #2196F3;
+            text-align: center;
+            color: #fff;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        a:hover {
+            background: #f5f5f5;
+        }
+
+        .profile__name {
+            margin-left: 15px;
         }
     }
 

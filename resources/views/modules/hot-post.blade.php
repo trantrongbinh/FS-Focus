@@ -16,7 +16,9 @@
                 </span>
                 <div class="d-flex align-items-center">
                     <div class="views"><i class="far fa-eye"></i> {{ $post->getViews() }}</div>
+                    <span class="dot">&middot;</span>
                     <div class="comments"><i class="far fa-comment-alt"></i> {{ $post->comments_count }}</div>
+                    <span class="dot">&middot;</span>
                     <div class="time last--icon"><i class="far fa-clock"></i> {{ $post->published_at->diffForHumans() }}</div>
                 </div>
             </div>

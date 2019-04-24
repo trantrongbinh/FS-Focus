@@ -210,15 +210,15 @@
                                     <a href="#">
                                         {{ $discussion->created_at->diffForHumans() }}
                                     </a>
-                                    <span>&middot;</span>
+                                    <span class="dot">&middot;</span>
                                     <a href="#">
                                         8 min read
                                     </a>
-                                    <span>&middot;</span>
+                                    <span class="dot">&middot;</span>
                                     <a href="">
                                         <i class="far fa-eye"></i> {{ $discussion->getViews() }}
                                     </a>
-                                    <span>&middot;</span>
+                                    <span class="dot">&middot;</span>
                                     <a href="">
                                         <i class="far fa-comment-alt"></i> {{ $discussion->comments_count }}
                                     </a>

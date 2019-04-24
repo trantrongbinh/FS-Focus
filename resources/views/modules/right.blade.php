@@ -72,6 +72,7 @@
                                     <strong>{{ str_limit($team->name, config('blog.str_limit.name')) }}</strong>
                                     <div class="d-flex">
                                         <div class="views"><i class="fas fa-user-friends"></i> {{ $team->users_count }}</div>
+                                        <span class="dot">&middot;</span>
                                         <div class="comments last--icon"><i class="fas fa-pencil-alt"></i> {{ $team->getTotalArticles($team->id) }}</div>
                                     </div>
                                 </div>
@@ -120,6 +121,7 @@
                                     <div class="title"><strong>{{ str_limit($team->name, config('blog.str_limit.name')) }}</strong>
                                         <div class="d-flex">
                                             <div class="views" data-toggle="tooltip" data-placement="bottom" title="Members"><i class="fas fa-user-friends"></i> {{ $team->users_count }}</div>
+                                            <span class="dot">&middot;</span>
                                             <div class="comments" data-toggle="tooltip" data-placement="bottom" title="Posts"><i class="fas fa-pencil-alt"></i> {{ $team->articles_count }}</div>
                                         </div>
                                     </div>

@@ -3,7 +3,6 @@
 @section('content')
     @component('particals.jumbotron')
         <h3>{{ lang('Tags') }}</h3>
-
         <h6>{{ lang('Tags Meta') }}</h6>
     @endcomponent
 

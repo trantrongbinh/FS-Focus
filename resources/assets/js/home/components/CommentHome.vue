@@ -314,7 +314,7 @@ export default {
     }
 
     .title {
-        font-size: 13px !important;
+        font-size: 14px !important;
     }
 
     .comment-number {

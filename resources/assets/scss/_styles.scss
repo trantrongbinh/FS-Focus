@@ -104,18 +104,9 @@ h1:hover a {
     font-size: 0.8em;
     font-weight: 400;
     color: #999;
-    margin-top: 10px;
 
     i {
         margin-right: 5px;
-    }
-
-    &:after {
-        content: '.';
-        display: inline-block;
-        margin: 0 7px;
-        font-size: 1em;
-        color: #999;
     }
 }
 
@@ -170,19 +161,11 @@ h1:hover a {
         // text-transform: uppercase;
         color: rgba(0, 0, 0, .54);
         fill: rgba(0, 0, 0, .54);
+        padding-right: 20px;
 
         &:hover {
             color: #2980b9;
         }
-    }
-
-    .topic::after,
-    time::after {
-        content: '-';
-        display: inline-block;
-        margin: 0 7px;
-        font-size: 0.9em;
-        color: #bbb;
     }
 
     time,
@@ -547,16 +530,6 @@ $tag_border_color_1: transparent #3498db transparent transparent;
 .post-meta {
     margin: 10px 0;
     font-size: 0.8em;
-
-    .date {
-        text-transform: uppercase;
-        font-weight: 400;
-    }
-
-    .date::after {
-        display: none;
-    }
-
 }
 
 .post {
@@ -589,19 +562,11 @@ $tag_border_color_1: transparent #3498db transparent transparent;
         }
     }
 
-    .date {
-        letter-spacing: 0.05em;
-        font-weight: 400;
-        text-transform: uppercase;
-        color: #aaa;
-    }
-
     .avatar {
         height: 40px;
         overflow: hidden;
         border-radius: 50%;
         margin-right: 10px;
-        margin-top: -7px;
     }
 
     .meta-last::after {
@@ -610,17 +575,15 @@ $tag_border_color_1: transparent #3498db transparent transparent;
 
     .title {
         font-weight: 700 !important;
-        font-size: 14px;
+        padding-right: 10px;
+        font-size: 16px;
         cursor: pointer;
         color: #34495e;
-
     }
 
-    .title,
-    .date,
-    .comments,
-    .views {
+    .date, .readingTime {
         font-weight: 400;
+        font-size: 12px;
         color: #999;
         text-transform: capitalize;
 
@@ -628,15 +591,8 @@ $tag_border_color_1: transparent #3498db transparent transparent;
             margin-right: 5px;
             font-size: 1.1em;
         }
-
-        &:after {
-            content: '-';
-            display: inline-block;
-            margin: 0 7px;
-            font-size: 0.9em;
-            color: #ccc;
-        }
     }
+
 }
 
 .post-header {
@@ -827,6 +783,7 @@ i[class*="icon-"] {
         font-size: 0.95em;
         display: block;
         line-height: 1em;
+        margin-bottom: 10px;
     }
 }
 
@@ -1006,6 +963,7 @@ i[class*="icon-"] {
 .user-block.user-block-sm img {
     float: left;
     width: 30px !important;
+    height: 30px !important;
 }
 
 .img-sm+.img-push,
@@ -1467,10 +1425,6 @@ img.emojione {
 
 .select2-search__field {
     width: 100% !important;
-}
-
-.msg-body {
-    margin-left: 30px;
 }
 
 .box__write {

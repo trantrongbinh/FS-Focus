@@ -115,6 +115,7 @@
                                                 <div class="date">
                                                     <i class="far fa-clock"></i> {{ $discussion->created_at->diffForHumans() }}
                                                 </div>
+                                                <span class="dot">&middot;</span>
                                                 <div class="">
                                                     <a href="{{ url('discussion', ['slug' => $discussion->slug]) }}"><i class="far fa-comment-alt"> {{ $discussion->comments_count }}</i> {{ lang('Replies') }}
                                                     </a>

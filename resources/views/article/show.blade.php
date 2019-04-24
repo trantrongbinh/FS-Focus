@@ -152,15 +152,15 @@
                                     <a href="#">
                                         {{ $article->published_at->diffForHumans() }}
                                     </a>
-                                    <span>&middot;</span>
+                                    <span class="dot">&middot;</span>
                                     <a href="#">
                                         8 min read
                                     </a>
-                                    <span>&middot;</span>
+                                    <span class="dot">&middot;</span>
                                     <a href="">
                                         <i class="far fa-eye"></i> {{ $article->getViews() }}
                                     </a>
-                                    <span>&middot;</span>
+                                    <span class="dot">&middot;</span>
                                     <a href="">
                                         <i class="far fa-comment-alt"></i> {{ $article->comments_count }}
                                     </a>
