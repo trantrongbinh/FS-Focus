@@ -4,7 +4,7 @@ namespace App;
 
 use App\Scopes\StatusScope;
 use Laravel\Passport\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
+use App\Traits\NotificationHandling;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -17,7 +17,7 @@ use Overtrue\LaravelFollow\Traits\CanBookmark;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasApiTokens, SoftDeletes;
+    use NotificationHandling, HasApiTokens, SoftDeletes;
     use CanFollow, CanBookmark, CanLike, CanFavorite, CanSubscribe, CanVote;
 
     /**

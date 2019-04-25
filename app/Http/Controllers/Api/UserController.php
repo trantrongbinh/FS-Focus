@@ -137,7 +137,7 @@ class UserController extends ApiController
      */
     public function notifications()
     {
-        $notifications = \Auth::user()->notifications;
+        $notifications = \Auth::user()->getNotifications()->take(config('blog.number_limit.notification'))->get();
 
         return $this->response->json($notifications);
     }

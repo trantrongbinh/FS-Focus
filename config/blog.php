@@ -81,4 +81,8 @@ return [
         ],
         'title_post' => 45,
     ],
+
+    'number_limit' => [
+        'notification' => 7,
+    ],
 ];
