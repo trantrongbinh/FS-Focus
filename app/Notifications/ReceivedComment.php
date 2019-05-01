@@ -5,8 +5,11 @@ namespace App\Notifications;
 use App\Comment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
+use App\Notifications\CustomDbChannel;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+
+use Carbon\Carbon;
 
 class ReceivedComment extends Notification implements ShouldQueue
 {
@@ -32,7 +35,7 @@ class ReceivedComment extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['database', 'mail'];
+        return [CustomDbChannel::class, 'mail'];
     }
 
     /**
@@ -74,8 +77,30 @@ class ReceivedComment extends Notification implements ShouldQueue
      * @param  mixed $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    
+    // public function toArray($notifiable)
+    // {
+    //     return $this->comment->toArray();
+    // }
+
+    public function toDatabase($notifiable)
     {
-        return $this->comment->toArray();
+        $comment = $this->comment->toArray();
+        $data = [
+            'id' => $comment['id'],
+            'user_id' => $comment['user_id'],
+            'commentable_id' => $comment['commentable_id'],
+            'commentable_type' => $comment['commentable_type'],
+            'content' => $comment['content'],
+            'created_at' => $comment['created_at'],
+            'updated_at' => $comment['updated_at'],
+            'commentable' => [
+                'team_id' => $comment['commentable']['team_id'],
+                'slug' => $comment['commentable']['slug'],
+                'title' => $comment['commentable']['title']
+            ],
+        ];
+
+        return $data;
     }
 }

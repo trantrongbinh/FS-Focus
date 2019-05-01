@@ -47,7 +47,7 @@
                 </li>
             @else
                 <!-- Notifications-->
-                <notification unread-notification="{{ Auth::user()->unreadNotifications->count() }}"></notification>
+                <notification unread-notification="{{ Auth::user()->unreadNotificationsCustom->count() }}"></notification>
                 <!-- Profile-->
                 <li class="nav-item dropdown">
                     <a id="profile" class="nav-link" data-target="#" href="#" data-toggle="dropdown"

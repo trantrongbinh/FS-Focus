@@ -19,13 +19,17 @@
                 <ul class="notification--list" style="padding: 0.5rem 1rem;margin: 0 0 0.5rem;">
                     <li class="notification-item" style="display: flex;" v-for="(notification, index) in notifications">
                         <div class="img-left" style="width: 15%;">
-                            <img alt="User Photo" :src="notification.avatar_user" class="user-photo" style="display: inline-block;vertical-align: middle;height: 40px;width: 40px;margin: 0 0.5rem 0 0;border-radius: 50%;max-width: 100%;">
+                            <img alt="User Photo" :src="notification.avatar" class="user-photo" style="display: inline-block;vertical-align: middle;height: 40px;width: 40px;margin: 0 0.5rem 0 0;border-radius: 50%;max-width: 100%;">
                         </div> 
                         <div class="user-content" style="width: 85%;">
                             <p class="user-info" style="margin: 0.15rem 5px 0px;">
-                                <span class="name" style="font-weight: 700; font-size: 14px; color: #000">{{ notification.name_user }}</span> {{ notification.notification_action + ' ' + notification.type_post }}<a href="#"> {{ notification.title_post }}</a>
+                                <span class="name" style="font-weight: 700; font-size: 14px; color: #000">
+                                    {{ notification.name }}
+                                </span>
+                                {{ getTypeNotification(notification.type) + ' ' + notification.data.commentable_type }}
+                                <a :href="'/' + notification.data.commentable.slug"> {{ notification.data.commentable.title }}</a>
                             </p> 
-                            <p class="time">1 hour ago</p>
+                            <p class="time">{{ notification.created_at }}</p>
                         </div>
                     </li>
                 </ul>
@@ -55,19 +59,18 @@ export default {
         getNotification() {
             var url = 'user/notification'
             this.$http.get(url).then((response) => {
-                response.data.forEach((data) => {
-                    data.notification_action = this.getTypeNotification(data.type)
-                    data.avatar_user = data.data.commentable.user.avatar
-                    data.name_user = data.data.commentable.user.name
-                    data.time = data.data.created_at
-                    data.title_post = data.data.commentable.title
-                    data.type_post = data.data.commentable_type
+                // response.data.forEach((data) => {
+                //     data.notification_action = this.getTypeNotification(data.type)
+                //     data.avatar_user = data.data.commentable.user.avatar
+                //     data.name_user = data.data.commentable.user.name
+                //     data.time = data.data.created_at
+                //     data.title_post = data.data.commentable.title
+                //     data.type_post = data.data.commentable_type
 
-                    return data
-                })
+                //     return data
+                // })
 
                 this.notifications = response.data
-                console.log(this.notifications);
             })
         },
 

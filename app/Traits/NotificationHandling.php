@@ -16,8 +16,20 @@ trait NotificationHandling
      */
     public function getNotifications()
     {
-        $a = $this->morphMany(new DatabaseNotification, 'notifiable')->join('users', 'users.id', '=', 'notifications.notifiable_id')->orderBy('notifications.created_at', 'desc');
+        return $this->morphMany(new DatabaseNotification, 'notifiable')
+                    ->join('users', 'users.id', '=', 'notifications.agent_id')
+                    ->select('notifications.*', 'users.id', 'users.name',  'users.avatar')
+                    ->where('agent_id', '!=', \Auth::id())
+                    ->orderBy('notifications.created_at', 'desc');
+    }
 
-        return $a;
+    /**
+     * Get the entity's unread notifications from outside, not yourself.
+     *
+     * @return \Illuminate\Database\Query\Builder
+     */
+    public function unreadNotificationsCustom()
+    {
+        return $this->notifications()->where('agent_id', '!=', \Auth::id())->whereNull('read_at');
     }
 }
