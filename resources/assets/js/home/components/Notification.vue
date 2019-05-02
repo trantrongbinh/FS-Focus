@@ -65,16 +65,8 @@ export default {
 
         markRead() {
             this.isMarking = true;
-        },
-
-        getTypeNotification(type) {
-            let class_basename = type.split(/[\\/]/).pop()
-            let action = class_basename.match(/[A-Z][a-z]+/g).pop()
-
-            return action
         }
     }
 }
-
 </script>
 <style lang="scss" scoped></style>

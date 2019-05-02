@@ -1,12 +1,12 @@
 <template>
     <div class="cmt">
         <div class="comments">
-        	<h5 class="cmt-title">{{ title }}</h5>
+            <h5 class="cmt-title">{{ title }}</h5>
             <div class="comment-wrap" v-for="(comment, index) in comments" v-if="comments.length > 0">
                 <div class="photo">
                     <div class="avatar" :style="{ backgroundImage: 'url(' + comment.avatar + ')' }"></div>
                     <div class="vote-cmt">
-                        <vote></vote>
+                        <vote :object-id="comment.id.toString()" api="comments" :vote="JSON.stringify(comment)"></vote>
                     </div>
                 </div>
                 <div class="comment-block">
@@ -24,21 +24,21 @@
                         </div>
                         <ul class="comment-actions">
                             <li class="complain" v-if="username == comment.username">
-                            	<a href="javascript:;" @click="commentDelete(index, comment.id)">
-                            		<i class="fas fa-trash-alt"> Xóa</i>
-                            	</a>
+                                <a href="javascript:;" @click="commentDelete(index, comment.id)">
+                                    <i class="fas fa-trash-alt"> Xóa</i>
+                                </a>
                             </li>
                             <li class="reply" v-else>
-                            	<a href="javascript:;" @click="reply(comment.username)">
-                            		<i class="fas fa-share"> Trả lời</i>
-                            	</a>
-                        	</li>
+                                <a href="javascript:;" @click="reply(comment.username)">
+                                    <i class="fas fa-share"> Trả lời</i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="text-center font-size_14 mb__20" v-if="commentNumber > 2">
-            	<a v-if="!isHidden" href="javascript:void(0)" @click="loadMore(next_page_url)">Load More ...</a>
+                <a v-if="!isHidden" href="javascript:void(0)" @click="loadMore(next_page_url)">Load More ...</a>
             </div>
             <div class="comment-wrap">
                 <div class="photo">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="comment-block">
                     <form @submit.prevent="comment" v-if="canComment">
-                    	<snow-quill-editor id="content" :table-type="commentableType" strategy="comment" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent" :reply.sync="author"></snow-quill-editor>
+                        <snow-quill-editor id="content" :table-type="commentableType" strategy="comment" :element-id="commentableId" :status="isSubmiting" @contentUpdated="getContent" :reply.sync="author"></snow-quill-editor>
                         <button type="submit" :disabled="isSubmiting ? true : false" class="btn btn-outline-info btn-sm float-right">
                             {{ $t('form.submit_comment') }}
                         </button>
@@ -231,8 +231,8 @@ export default {
         },
     }
 }
-</script>
 
+</script>
 <style lang="scss" scoped>
 .cmt {
     padding: 10px;
@@ -261,8 +261,8 @@ export default {
         padding: 0 1.25rem;
 
         .cmt-title {
-        	margin-left: 60px;
-    		padding-bottom: 35px;
+            margin-left: 60px;
+            padding-bottom: 35px;
         }
 
         .comment-wrap {
@@ -339,33 +339,33 @@ export default {
                 }
 
                 .author-comment {
-					padding-bottom: 20px;
-					margin-top: -15px;
+                    padding-bottom: 20px;
+                    margin-top: -15px;
 
-					.display-name {
-						color: #03a87c;
-						text-decoration: none;
-						font-size: 16px;
-						line-height: 1.4;
-						cursor: pointer;
-						text-rendering: auto;
-					}
+                    .display-name {
+                        color: #03a87c;
+                        text-decoration: none;
+                        font-size: 16px;
+                        line-height: 1.4;
+                        cursor: pointer;
+                        text-rendering: auto;
+                    }
 
-					.btn-follow {
-						color: #4da9ea;
-						padding: 0 5px 0 5px;
-						margin-left: 20px;
-						border-radius: 5px !important;
+                    .btn-follow {
+                        color: #4da9ea;
+                        padding: 0 5px 0 5px;
+                        margin-left: 20px;
+                        border-radius: 5px !important;
 
-						&:hover {
-							color: #fff;
-						}
-					}
+                        &:hover {
+                            color: #fff;
+                        }
+                    }
 
-					.comment-date {
-						color: #999;
-						font-size: 0.75rem;
-					}
+                    .comment-date {
+                        color: #999;
+                        font-size: 0.75rem;
+                    }
                 }
             }
         }

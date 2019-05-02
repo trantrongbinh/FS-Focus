@@ -46,13 +46,13 @@ class ArticleController extends Controller
         $article = $this->article->getBySlug($slug);
 
         $related = [
-            'vote' =>  (object) [
+            'vote' => [
                 'is_voted' => auth()->id() ? $article->isVotedBy(auth()->id()) : false,
                 'is_up_voted' => auth()->id() ? auth()->user()->hasUpVoted($article) : false,
                 'is_down_voted' => auth()->id() ? auth()->user()->hasDownVoted($article) : false,
                 'vote_count' =>  $article->countUpVoters(),
             ],
-            'bookmark' =>  (object) [
+            'bookmark' => [
                 'is_bookmarked' => auth()->id() ? $article->isBookmarkedBy(auth()->id()) : false,
                 'is_hasBookmarked' => auth()->id() ? auth()->user()->hasBookmarked($article) : false,
             ],

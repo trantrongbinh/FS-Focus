@@ -6,10 +6,11 @@ use App\User;
 use App\Comment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
+use App\Notifications\CustomDbChannel;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class GotVote extends Notification implements ShouldQueue
+class VoteComment extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -37,7 +38,7 @@ class GotVote extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return [CustomDbChannel::class];
     }
 
     /**

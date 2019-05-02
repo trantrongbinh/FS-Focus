@@ -70,3 +70,23 @@ if (!function_exists('lang')) {
         return trans('blog.' . $text, $parameters);
     }
 }
+
+if (!function_exists('getVote')) {
+    /**
+     * Get resource vote off a post.
+     *
+     * @param collection $post
+     * @return array
+     */
+    function getVote($post)
+    {
+        $vote = [
+            'is_voted' => auth()->id() ? $post->isVotedBy(auth()->id()) : false,
+            'is_up_voted' => auth()->id() ? auth()->user()->hasUpVoted($post) : false,
+            'is_down_voted' => auth()->id() ? auth()->user()->hasDownVoted($post) : false,
+            'vote_count' =>  $post->countUpVoters(),
+        ];
+
+        return $vote;
+    }
+}

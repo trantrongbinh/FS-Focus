@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Comment;
 use App\Tools\Mention;
-use App\Notifications\GotVote;
+use App\Notifications\VoteComment;
 use App\Notifications\MentionedUser;
 
 class CommentRepository
@@ -134,7 +134,7 @@ class CommentRepository
         }
 
         if ($type == 'up') {
-            $target->user->notify(new GotVote($type . '_vote', $user, $target));
+            $target->user->notify(new VoteComment($type . '_vote', $user, $target));
         }
 
         $user->{$type . 'Vote'}($target);

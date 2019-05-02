@@ -7,11 +7,17 @@
         font-style: italic !important;
         color: rgba(0,0,0,0.6) !important;
     }
+
     .form-control.is-invalid {
         background-image: none !important;
     }
+
     #content-dis .ql-container.ql-bubble {
         font-size: 16px;
+    }
+
+    .msg-body {
+        padding-left: 20px; 
     }
 </style>
 @endsection
