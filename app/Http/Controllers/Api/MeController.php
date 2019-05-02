@@ -47,7 +47,7 @@ class MeController extends ApiController
      *
      * @return mixed
      */
-    public function postClapArticle(Request $request, $type)
+    public function postVoteArticle(Request $request, $type)
     {
         $this->validate($request, [
             'id' => 'required|exists:articles,id',
@@ -56,6 +56,24 @@ class MeController extends ApiController
         ($type == 'up')
             ? $this->article->toggleVote($request->id)
             : $this->article->toggleVote($request->id, false);
+
+        return $this->response->withNoContent();
+    }
+
+    /**
+     * post bookmark the post by user.
+     *
+     * @param Request $request
+     *
+     * @return mixed
+     */
+    public function bookmarkArticle(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required|exists:articles,id',
+        ]);
+
+        $this->article->toggleBookmark($request->id, $request['is_hasBookmarked']);
 
         return $this->response->withNoContent();
     }

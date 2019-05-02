@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Article;
 use App\View;
 use App\Notifications\VoteArticle;
+use App\Notifications\BookmarkArticle;
 use App\Scopes\DraftScope;
 use Carbon\Carbon;
 
@@ -129,8 +130,8 @@ class ArticleRepository
     /**
      * Get the vote of article by article's id.
      *
-     * @param $slug
-     * @return object
+     * @param int $id
+     * @return array
      */
     public function getVoteById($id)
     {
@@ -234,6 +235,32 @@ class ArticleRepository
     }
 
     /**
+     * Toogle Bookmark by user.
+     *
+     * @param  int $id
+     * @param  boolean $isBookmarked
+     *
+     * @return boolean
+     */
+    public function toggleBookmark($id, $isBookmarked = true)
+    {
+        $user = auth()->user();
+        $article = $this->getById($id);
+
+        if ($article == null) {
+            return false;
+        }
+
+        $user->toggleBookmark($article);
+
+        if (!$isBookmarked) {
+            $article->user->notify(new BookmarkArticle('Bookmark', $user, $article));
+        }
+
+        return true;
+    }
+
+    /**
      * Up vote or down vote item.
      *
      * @param  \App\User $user
@@ -277,41 +304,25 @@ class ArticleRepository
     }
 
     /**
-     * Get related post by category.
+     * Get related post.
      *
      * @param  object $article
      *
      * @return collection
      */
-    public function getRelatedPostsByCategory($article)
+    public function getRelatedPosts($article)
     {
         $articles = $article->where('id', '!=' , $article->id)
-            ->where('category_id', $article->category_id)
-            ->where('user_id', '!=', $article->user_id)
             ->with('user')
             ->orderBy('published_at', 'desc')
-            ->take(3)
-            ->get(['id', 'user_id', 'slug', 'page_image', 'published_at', 'title', 'content']); 
+            ->take(3);
 
-        return $articles;
-    }
+            if ($article->category_id != NULL) {
+                $articles->where('category_id', $article->category_id);
+            } else {
+                $articles->where('user_id', $article->user_id);
+            }
 
-    /**
-     * Get related post by author.
-     *
-     * @param $article
-     *
-     * @return collection
-     */
-    public function getRelatedPostsByAuthor($article)
-    {   
-        $articles = $article->where('id', '!=' , $article->id)
-            ->where('user_id', $article->user_id)
-            ->with('user')
-            ->orderBy('published_at', 'desc')
-            ->take(3)
-            ->get(); 
-
-        return $articles;
+        return $articles->get(['id', 'user_id', 'slug', 'page_image', 'published_at', 'title', 'category_id']);
     }
 }

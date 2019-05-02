@@ -176,7 +176,7 @@ class ArticleController extends ApiController
     }
 
     /**
-     * Display the specified resource.
+     * Display the Vote resource.
      *
      * @param  int $id
      *
@@ -187,5 +187,19 @@ class ArticleController extends ApiController
         $vote = $this->article->getVoteById($id, $request);
 
         return $this->response->json($vote);
+    }
+
+    /**
+     * Display the Bookmark resource.
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getBookmark(Request $request, $id)
+    {
+        $bookmark = $this->article->getBookmarkById($id, $request);
+
+        return $this->response->json($bookmark);
     }
 }

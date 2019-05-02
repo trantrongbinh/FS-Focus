@@ -1,43 +1,31 @@
-<div class="row">
-    @forelse($related as $article)
-    <div class="post col-md-4">
-        @if ($article->page_image)
-        <div class="post-thumbnail">
+@forelse($related as $article)
+    <li>
+        <figure>
+            <a class="background__cover" href="{{ url($article->slug) }}" style="background-image: url({{ $article->page_image }});"></a>
+        </figure>
+        <header>
+            @if($article->category_id)
+                <a href="{{ url('category', ['name' => $article->category->name]) }}" class="topic--post"> {{ $article->category->name }}</a>
+            @endif
             <a href="{{ url($article->slug) }}">
-                <img src="{{ asset($article->page_image) }} }}" alt="..." class="img-fluid">
+                <h3>{{ str_limit($article->title, '45') }}</h3>
             </a>
-        </div>
-        @endif
-        <div class="post-details">
-            <div class="post-meta d-flex justify-content-between">
-                <div class="date meta-last">
-                    <strong>{{ $article->published_at->toFormattedDateString() }}</strong>
+            <div class="info--post">
+               <img src="{{ $article->user->avatar }}" alt="{{ $article->user->name }}" class="img-fluid rounded-circle" style="height: 40px; width: 40px;">
+                <div class="info--detail">
+                   <a href="/user/{{ $article->user->name }}" class="name-author">
+                        {{ $article->user->name }}
+                    </a>
+                    <div class="info-time">
+                        <a href="javascript:;">{{ $article->published_at->diffForHumans() }}</a> 
+                        <span style="color: #999">·</span> 
+                        <a href="javascript:;">8 min read</a>
+                    </div>
                 </div>
             </div>
-            <a href="{{ url($article->slug) }}">
-                <h3 class="h4">{{ str_limit($article->title, '45') }}</h3>
-            </a>
-            <p class="text-muted">
-                <parse content="{{ str_limit($article->content['raw'], '150') }}"></parse>
-            </p>
-            <footer class="post-footer d-flex align-items-center">
-                <a href="/user/{{ $article->user->name }}" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar">
-                        <img src="{{ asset($article->user->avatar) }}" alt="tran trong binh" class="img-fluid">
-                    </div>
-                    <div class="title">
-                        <span>{{ $article->user->name or 'No Name' }}</span>
-                    </div>
-                </a>
-                <div class="comments">
-                    <i class="far fa-comment-alt"></i> {{ $article->comments->count() }}
-                </div>
-                <div class="comments meta-last">
-                    <i class="far fa-eye"></i>{{ $article->getViews() }}
-                </div>
-            </footer>
-        </div>
-    </div>
-    @empty
-    @endforelse
-</div>
+            <a href="#" class="bookmark--icon"><i class="far fa-bookmark"></i></a>
+        </header>
+    </li>
+@empty
+    <h6>Not thing</h6>
+@endforelse

@@ -1,6 +1,6 @@
 <template>
     <li class="nav-item notification dropdown">
-        <a id="notifications" class="nav-link logout" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" @click="getNotification">
+        <a id="notifications" class="nav-link logout" href="javascript:;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" @click="getNotification">
             <i class="fa fa-bell"></i>
             <span class="new" v-if="unreadNotification > 0 && isMarking == false">
                 <span class="noti-numb-bg"></span><span class="badge text-danger"><i class="fas fa-circle"></i></span>
@@ -26,8 +26,8 @@
                                 <span class="name" style="font-weight: 700; font-size: 14px; color: #000">
                                     {{ notification.name }}
                                 </span>
-                                {{ getTypeNotification(notification.type) + ' ' + notification.data.commentable_type }}
-                                <a :href="'/' + notification.data.commentable.slug"> {{ notification.data.commentable.title }}</a>
+                                {{ notification.data.action + ' ' + notification.data.table_type }}
+                                <a :href="'/' + notification.data.table_data.slug"> {{ notification.data.table_data.title }}</a>
                             </p> 
                             <p class="time">{{ notification.created_at }}</p>
                         </div>
@@ -59,17 +59,6 @@ export default {
         getNotification() {
             var url = 'user/notification'
             this.$http.get(url).then((response) => {
-                // response.data.forEach((data) => {
-                //     data.notification_action = this.getTypeNotification(data.type)
-                //     data.avatar_user = data.data.commentable.user.avatar
-                //     data.name_user = data.data.commentable.user.name
-                //     data.time = data.data.created_at
-                //     data.title_post = data.data.commentable.title
-                //     data.type_post = data.data.commentable_type
-
-                //     return data
-                // })
-
                 this.notifications = response.data
             })
         },
@@ -88,6 +77,4 @@ export default {
 }
 
 </script>
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

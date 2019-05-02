@@ -44,9 +44,20 @@ class ArticleController extends Controller
     public function show($slug)
     {
         $article = $this->article->getBySlug($slug);
-        $related = [];
-        $related['relatedCategory'] = ($article->category_id != NULL) ? $this->article->getRelatedPostsByCategory($article) : null;
-        $related['relatedAuthor'] = $this->article->getRelatedPostsByAuthor($article);
+
+        $related = [
+            'vote' =>  (object) [
+                'is_voted' => auth()->id() ? $article->isVotedBy(auth()->id()) : false,
+                'is_up_voted' => auth()->id() ? auth()->user()->hasUpVoted($article) : false,
+                'is_down_voted' => auth()->id() ? auth()->user()->hasDownVoted($article) : false,
+                'vote_count' =>  $article->countUpVoters(),
+            ],
+            'bookmark' =>  (object) [
+                'is_bookmarked' => auth()->id() ? $article->isBookmarkedBy(auth()->id()) : false,
+                'is_hasBookmarked' => auth()->id() ? auth()->user()->hasBookmarked($article) : false,
+            ],
+            'related_post' => $this->article->getRelatedPosts($article),
+        ];
 
         $article->addViewWithExpiryDate(Carbon::now()->addMinute());
         

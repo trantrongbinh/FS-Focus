@@ -51,8 +51,10 @@ Route::group([
     Route::post('comments', 'CommentController@store')->middleware('auth:api');
     Route::delete('comments/{id}', 'CommentController@destroy')->middleware('auth:api');
     Route::post('comments/vote/{type}', 'MeController@postVoteComment')->middleware('auth:api');
-    Route::get('article/{id}/vote', 'ArticleController@showVote')->middleware('auth:api');
-    Route::post('article/vote/{type}', 'MeController@postClapArticle')->middleware('auth:api');
+
+    // Article
+    Route::post('article/vote/{type}', 'MeController@postVoteArticle')->middleware('auth:api');
+    Route::post('article/bookmark', 'MeController@bookmarkArticle')->middleware('auth:api');
 
     // Tag
     Route::get('tags', 'TagController@getList')->middleware('api');

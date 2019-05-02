@@ -42,6 +42,7 @@ Vue.component('clap', require('home/components/Clap.vue'));
 Vue.component('snow-editor', require('home/components/SnowQuillEditor.vue'));
 Vue.component('bubble-editor', require('home/components/BubbleQuillEditor.vue'));
 Vue.component('vote', require('home/components/Vote.vue'));
+Vue.component('bookmark', require('home/components/Bookmark.vue'));
 Vue.component('notification', require('home/components/Notification.vue'));
 
 Vue.component('article-create', require('home/components/article/Create.vue'));

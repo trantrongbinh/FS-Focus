@@ -10,11 +10,11 @@ use App\Notifications\CustomDbChannel;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class VoteArticle extends Notification implements ShouldQueue
+class BookmarkArticle extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    protected $vote_type;
+    protected $bookmark;
     protected $user;
     protected $article;
 
@@ -23,9 +23,9 @@ class VoteArticle extends Notification implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($vote_type, User $user, Article $article)
+    public function __construct($bookmark, User $user, Article $article)
     {
-        $this->vote_type = $vote_type;
+        $this->bookmark = $bookmark;
         $this->user = $user;
         $this->article = $article;
     }
@@ -66,7 +66,7 @@ class VoteArticle extends Notification implements ShouldQueue
         $data = [
             'agent_id' => $this->user->id,
             'table_type' => 'article',
-            'action' => $this->vote_type,
+            'action' => $this->bookmark,
             'table_data' => [
                 'team_id' => $this->article->team_id,
                 'slug' => $this->article->slug,

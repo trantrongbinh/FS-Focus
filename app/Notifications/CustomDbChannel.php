@@ -14,7 +14,7 @@ class CustomDbChannel
         return $notifiable->routeNotificationFor('database')->create([
             'id' => $notification->id,
             //customize here
-            'agent_id' => $data['user_id'], //<-- comes from toDatabase() Method below
+            'agent_id' => $data['agent_id'], //<-- comes from toDatabase() Method below
             'type' => get_class($notification),
             'data' => $data,
             'read_at' => null,

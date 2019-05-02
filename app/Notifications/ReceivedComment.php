@@ -77,27 +77,16 @@ class ReceivedComment extends Notification implements ShouldQueue
      * @param  mixed $notifiable
      * @return array
      */
-    
-    // public function toArray($notifiable)
-    // {
-    //     return $this->comment->toArray();
-    // }
-
     public function toDatabase($notifiable)
     {
-        $comment = $this->comment->toArray();
         $data = [
-            'id' => $comment['id'],
-            'user_id' => $comment['user_id'],
-            'commentable_id' => $comment['commentable_id'],
-            'commentable_type' => $comment['commentable_type'],
-            'content' => $comment['content'],
-            'created_at' => $comment['created_at'],
-            'updated_at' => $comment['updated_at'],
-            'commentable' => [
-                'team_id' => $comment['commentable']['team_id'],
-                'slug' => $comment['commentable']['slug'],
-                'title' => $comment['commentable']['title']
+            'agent_id' => $this->comment->user_id,
+            'table_type' => 'article',
+            'action' => 'Comment',
+            'table_data' => [
+                'team_id' => $this->comment->commentable->team_id,
+                'slug' => $this->comment->commentable->slug,
+                'title' => $this->comment->commentable->title,
             ],
         ];
 
