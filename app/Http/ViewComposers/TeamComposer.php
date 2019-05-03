@@ -16,7 +16,7 @@ class TeamComposer
     public function compose(View $view)
     {
         if (\Auth::check()) {
-            $yourTeam = Team::select('id', 'name', 'slug', 'avatar')
+            $yourTeam = Team::select('id', 'name', 'slug', 'avatar', 'path', 'description')
                 ->whereHas('users', function($q) {
                     $q->where('users.id', \Auth::id())->where('role', 1);
                 })
@@ -24,7 +24,7 @@ class TeamComposer
                 ->get();
 
 
-            $otherTeam = Team::select('id', 'name', 'slug', 'avatar')
+            $otherTeam = Team::select('id', 'name', 'slug', 'avatar', 'path', 'description')
                 ->whereHas('users', function($q) {
                     $q->where('users.id', '!=', \Auth::id());
                 })
@@ -33,7 +33,7 @@ class TeamComposer
                 ->get();
         } else {
             $yourTeam = null;
-            $otherTeam = Team::select('id', 'name', 'slug', 'avatar')
+            $otherTeam = Team::select('id', 'name', 'slug', 'avatar', 'path', 'description')
             ->withCount('users')
             ->take(4)
             ->get();

@@ -1611,15 +1611,6 @@ a.claps_button:hover {
 }
 
 /* Show popup when hover author */
-$popup_color_1: #fff;
-$popup_color_2: #658585;
-$popup_color_3: #e76043;
-$popup_color_4: #4d4e4e;
-$popup_color_5: #4da9ea;
-$popup_background_color_1: #333333;
-$popup_border_color_1: transparent transparent transparent #333333;
-$popup_border_color_2: #333333 transparent transparent transparent;
-
 .profile--author {
     position: relative;
 }
@@ -1630,7 +1621,8 @@ $popup_border_color_2: #333333 transparent transparent transparent;
         width: 300px;
         height: 156px;
         border: 1px solid #5f5e5e;
-        color: $popup_color_1;
+        background: #fff;
+        color: #fff;
         display: inline-block;
         margin-right: 4%;
         border-radius: 5px;
@@ -1645,7 +1637,7 @@ $popup_border_color_2: #333333 transparent transparent transparent;
             height: 0;
             border-style: solid;
             border-width: 10px 0 10px 10px;
-            border-color: $popup_border_color_1;
+            border-color: transparent transparent transparent #333333;
         }
     }
 }
@@ -1655,8 +1647,9 @@ $popup_border_color_2: #333333 transparent transparent transparent;
         position: absolute;
         width: 220px;
         height: 230px;
-        background-color: $popup_background_color_1;
-        color: $popup_color_1;
+        background-color: #333333;
+        background: #fff;
+        color: #fff;
         padding: 25px;
         display: inline-block;
         margin-right: 4%;
@@ -1665,7 +1658,7 @@ $popup_border_color_2: #333333 transparent transparent transparent;
         top: -250px;
         &:after {
             border-width: 10px 10px 0 10px;
-            border-color: $popup_border_color_2;
+            border-color: #333333 transparent transparent transparent;
             content: '';
             position: absolute;
             right: 45%;
@@ -1676,72 +1669,96 @@ $popup_border_color_2: #333333 transparent transparent transparent;
         }
     }
 }
+
 .author-profile--popup {
     margin: auto;
     width: 100%;
     background: #fdfdfd;
     border-radius: .3em;
-    .username {
-        margin: auto;
-        margin-top: -100px;
-        margin-left: 5.80em;
-        color: $popup_color_2;
-        font-size: 1.53em;
-        font-weight: bold;
+    
+    .profile--info__left {
+        width: 30%;
+        position: absolute;
+        left: 0;
+
+        img.avatar {
+            margin-left: 12px;
+            margin-top: 5px;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+        }
+
+        img.avatar--team {
+            border-radius: 5px !important;
+        }
     }
-    .bio {
-        margin: auto;
-        margin-top: -5px;
-        margin-left: 10.43em;
-        color: $popup_color_3;
-        font-size: .87em;
-    }
-    >.description {
+
+    .profile--info__right {
+        right: 0;
+        position: absolute;
+        width: 70%;
+        margin-top: 10px;
         text-align: center;
-        margin: auto;
-        margin-left: 100px;
-        width: 14em;
-        color: $popup_color_4;
-        font-size: .87em;
+
+        .username {
+            margin: auto;
+            font-size: 16px;
+            font-weight: bold;
+            a {
+                color: #000;
+            }
+        }
+
+        .bio {
+            margin: auto;
+            color: #e76043;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .description {
+            text-align: center;
+            margin: auto;
+            color: #6f6d6d;
+            font-size: 13px;
+        }
     }
-    >img.avatar {
-        margin-left: 12px;
-        margin-top: 5px;
-        height: 70px;
-        width: 70px;
-        border-radius: 18em;
-    }
+    
     ul.data {
-        margin: 10px auto;
-        height: 46px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 45px;
         background: #4eb6b6;
         text-align: center;
         border-radius: 0 0 .3em .3em;
-    }
-    li {
-        padding: 2px 19px;
-        width: 37.5%;
-        display: table-cell;
-        text-align: center;
-    }
-    span {
-        color: $popup_color_1;
-        white-space: nowrap;
-        font-size: 1.1em;
-        font-weight: bold;
-    }
-    p {
-        margin-top: -10px;
+        li {
+            padding: 2px 30px;
+            display: table-cell;
+            text-align: center;
+            span {
+                color: #fff;
+                white-space: nowrap;
+                font-size: 16px;
+                font-weight: bold;
+            }
+            p {
+                margin-top: -10px;
+                font-size: 12px;
+            }
+        }
     }
 }
+
 .btn--follow {
     margin-top: 5px;
     padding: 0;
-    border-radius: 5px !important;
+    border-radius: 3px !important;
     width: 70px;
     margin-left: 13px;
-    color: $popup_color_5 !important;
+    color: #4da9ea !important;
     &:hover {
-        color: $popup_color_1 !important;
+        color: #fff !important;
     }
 }

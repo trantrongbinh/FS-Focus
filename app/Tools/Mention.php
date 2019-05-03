@@ -7,11 +7,8 @@ use App\User;
 class Mention
 {
     public $content;
-
     public $content_parsed;
-
     public $users = [];
-
     public $usernames;
 
     /**
@@ -21,17 +18,10 @@ class Mention
      */
     public function getMentionedUsername()
     {
-        preg_match_all("/(\S*)\@([^\r\n\s]*)/i", $this->content, $atlist_tmp);
+        preg_match_all('/href="\/user\/(?:([-\w]+)\/?)/', $this->content, $atlist_tmp_link); // get name from link
+        $usernames = array_unique($atlist_tmp_link[1]);
 
-        $usernames = [];
-
-        foreach ($atlist_tmp[2] as $k => $v) {
-            if ($atlist_tmp[1][$k] || strlen($v) > 25) {
-                continue;
-            }
-            $usernames[] = $v;
-        }
-        return array_unique($usernames);
+        return $usernames;
     }
 
     /**
@@ -42,11 +32,13 @@ class Mention
         $this->content_parsed = $this->content;
 
         foreach ($this->users as $user) {
-            $search = '@' . $user->name;
+            preg_match_all('|href="\/user\/' . $user->name . '"[^>]*>(.*?)(?=\</a)|si', $this->content, $atlist_tmp_text); //get name from text has @ off tag a
+            $searches = $atlist_tmp_text[1];
+            $place = '@' . $user->name;
 
-            $place = '[' . $search . '](' . url('user', $user->name) . ')';
-
-            $this->content_parsed = str_replace($search, $place, $this->content_parsed);
+            foreach ($searches as $search) {
+                $this->content_parsed = str_replace($search, $place, $this->content_parsed);
+            }
         }
     }
 
@@ -59,11 +51,9 @@ class Mention
     public function parse($content)
     {
         $this->content = $content;
-
         $this->usernames = $this->getMentionedUsername();
 
         count($this->usernames) > 0 && $this->users = User::whereIn('name', $this->usernames)->get();
-
         $this->replace();
 
         return $this->content_parsed;

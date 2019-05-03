@@ -16,7 +16,7 @@ class UserComposer
      */
     public function compose(View $view)
     {
-        $view->with('users', User::select('id', 'name', 'avatar', 'email')
+        $view->with('users', User::select('id', 'name', 'avatar', 'email', 'website', 'description')
             ->withCount('articles')
             ->whereStatus(true)
             ->where('id', '!=', Auth::id())

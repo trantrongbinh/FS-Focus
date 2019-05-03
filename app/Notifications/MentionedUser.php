@@ -2,9 +2,11 @@
 
 namespace App\Notifications;
 
+use App\User;
 use App\Comment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
+use App\Notifications\CustomDbChannel;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
@@ -13,6 +15,7 @@ class MentionedUser extends Notification implements ShouldQueue
     use Queueable;
 
     protected $comment;
+    protected $user;
 
     /**
      * Create a new notification instance.
@@ -21,9 +24,10 @@ class MentionedUser extends Notification implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(Comment $comment)
+    public function __construct(Comment $comment, User $user)
     {
         $this->comment = $comment;
+        $this->user = $user;
     }
 
     /**
@@ -34,7 +38,7 @@ class MentionedUser extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['database', 'mail'];
+        return [CustomDbChannel::class, 'mail'];
     }
 
     /**
@@ -75,8 +79,19 @@ class MentionedUser extends Notification implements ShouldQueue
      * @param  mixed $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toDatabase($notifiable)
     {
-        return $this->comment->toArray();
+        $data = [
+            'agent_id' => $this->comment->user_id,
+            'table_type' => 'comment',
+            'action' => 'Reply',
+            'table_data' => [
+                'team_id' => $this->comment->commentable->team_id,
+                'slug' => $this->comment->commentable->slug,
+                'title' => $this->comment->commentable->title,
+            ],
+        ];
+
+        return $data;
     }
 }

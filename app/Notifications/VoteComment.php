@@ -61,13 +61,19 @@ class VoteComment extends Notification implements ShouldQueue
      * @param  mixed $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toDatabase($notifiable)
     {
-        return array(
-            'comment_id' => $this->comment->id,
-            'issuer_id' => $this->user->id,
-            'commentable_id' => $this->comment->commentable_id,
-            'vote_type' => $this->vote_type
-        );
+        $data = [
+            'agent_id' => $this->user->id,
+            'table_type' => 'comment',
+            'action' => $this->vote_type,
+            'table_data' => [
+                'team_id' => $this->comment->commentable->team_id,
+                'slug' => $this->comment->commentable->slug,
+                'title' => $this->comment->commentable->title,
+            ],
+        ];
+
+        return $data;
     }
 }

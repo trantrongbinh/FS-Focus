@@ -53,7 +53,7 @@ class CommentRepository
         $comment = $this->save($this->model, $input);
 
         foreach ($mention->users as $user) {
-            $user->notify(new MentionedUser($comment));
+            $user->notify(new MentionedUser($comment, $user));
         }
 
         return $comment;
@@ -69,7 +69,6 @@ class CommentRepository
     public function save($model, $input)
     {
         $model->fill($input);
-
         $model->save();
 
         return $model;
@@ -93,6 +92,17 @@ class CommentRepository
     }
 
     /**
+     * Get the comment record with article.
+     *
+     * @param  int $id
+     * @return mixed
+     */
+    public function getCommentWithArticleById($id)
+    {
+        return $this->model->with('commentable')->findOrFail($id);
+    }
+
+    /**
      * Toogle up vote and down vote by user.
      *
      * @param  int $id
@@ -104,7 +114,7 @@ class CommentRepository
     {
         $user = auth()->user();
 
-        $comment = $this->getById($id);
+        $comment = $this->getCommentWithArticleById($id);
 
         if ($comment == null) {
             return false;

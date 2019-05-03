@@ -26,22 +26,26 @@
                         </a>
                         <figcaption class="profile--info hidden">
                             <div class="author-profile--popup">
-                                <img class="avatar" src="{{ $user->avatar }}" alt="Ash" />
-                                <a title="Theo dõi Huskywannafly" class="btn btn-outline-info btn-sm btn--follow" >Theo dõi</a>
-                                <div class="username">Will Smith</div>
-                                <div class="bio">Senior UI Designer</div>
-                                <div class="description">
-                                    I use to design websites and applications for the web.
+                                <div class="profile--info__left">
+                                    <img class="avatar" src="{{ $user->avatar }}" alt="Ash" />
+                                    <a title="Theo dõi Huskywannafly" class="btn btn-outline-info btn-sm btn--follow" >Theo dõi</a>
+                                </div>
+                                <div class="profile--info__right">
+                                    <div class="username"><a href="/user/{{ $user->name }}">{{ $user->name }}</a></div>
+                                    <div class="bio">{{ $user->website }}</div>
+                                    <div class="description">
+                                        {{ $user->description }}
+                                    </div>
                                 </div>
                                 <ul class="data">
                                     <li>
-                                        <span>127</span><p>(Posts)</p>
+                                        <span>127</span><p>Posts</p>
                                     </li>
                                     <li>
-                                        <span> 2</span><p>(Followers)</p>
+                                        <span> 2</span><p>Followers</p>
                                     </li>
                                     <li>
-                                        <span> 311</span><p>(Following)</p>
+                                        <span> 311</span><p>Following</p>
                                     </li>
                                 </ul>
                             </div>
@@ -80,22 +84,26 @@
                         </a>
                         <figcaption class="profile--info hidden">
                             <div class="author-profile--popup">
-                                <img class="avatar" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTF_erFD1SeUnxEpvFjzBCCDxLvf-wlh9ZuPMqi02qGnyyBtPWdE-3KoH3s" alt="Ash" />
-                                 <a title="Theo dõi Huskywannafly" class="btn btn-outline-info btn-sm btn--follow" >Theo dõi</a>
-                                <div class="username">Will Smith</div>
-                                <div class="bio">Senior UI Designer</div>
-                                <div class="description">
-                                    I use to design websites and applications for the web.
+                                <div class="profile--info__left">
+                                    <img class="avatar avatar--team" src="{{ $team->avatar }}" alt="Ash" />
+                                    <a title="Theo dõi Huskywannafly" class="btn btn-outline-info btn-sm btn--follow" >Theo dõi</a>
+                                </div>
+                                <div class="profile--info__right">
+                                    <div class="username"><a href="">{{ $team->name }}</a></div>
+                                    <div class="bio">{{ $team->path }}</div>
+                                    <div class="description">
+                                        {{ $team->description }}
+                                    </div>
                                 </div>
                                 <ul class="data">
                                     <li>
-                                        <span>127</span><p>(Posts)</p>
+                                        <span>127</span><p>Posts</p>
                                     </li>
                                     <li>
-                                        <span> 2</span><p>(Followers)</p>
+                                        <span> 2</span><p>Followers</p>
                                     </li>
                                     <li>
-                                        <span> 311</span><p>(Following)</p>
+                                        <span> 311</span><p>Following</p>
                                     </li>
                                 </ul>
                             </div>
