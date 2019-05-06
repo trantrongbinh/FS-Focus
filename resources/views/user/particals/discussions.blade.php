@@ -43,6 +43,3 @@
 @empty
     <h6 class="nothing">{{ lang('Nothing') }}</h6>
 @endforelse
-
-{{-- {{ $discussions->links('pagination.default') }} --}}
-

@@ -44,10 +44,11 @@ Vue.component('bubble-editor', require('home/components/BubbleQuillEditor.vue'))
 Vue.component('vote', require('home/components/Vote.vue'));
 Vue.component('bookmark', require('home/components/Bookmark.vue'));
 Vue.component('notification', require('home/components/Notification.vue'));
-
+// article
 Vue.component('article-create', require('home/components/article/Create.vue'));
 Vue.component('article-edit', require('home/components/article/Edit.vue'));
-
+// user profile
+Vue.component('profile', require('home/components/user/profile.vue'));
 new Vue({
     i18n: i18n,
 }).$mount('#app');
