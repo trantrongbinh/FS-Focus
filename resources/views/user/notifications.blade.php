@@ -15,7 +15,7 @@
                             {{ lang('Mark As Read') }}
                         </a>
                         <form id="mark-as-read" action="{{ url('user/notification') }}" method="POST">
-                            {{ csrf_field() }}
+                            @csrf
                         </form>
                     </div>
                     <div class="card-body">

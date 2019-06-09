@@ -86,7 +86,7 @@
                                 <i class="fa fa-power-off"></i>Logout
                             </a>
                             <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
+                                @csrf
                             </form>
                         </li>
                     </ul>

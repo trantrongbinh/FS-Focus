@@ -6,7 +6,7 @@
             <div class="col-md-6 offset-md-3" style="margin-top: 50px;">
                 <div class="well">
                     <form class="form" role="form" method="POST" action="{{ url('auth/github/register') }}">
-                        {{ csrf_field() }}
+                        @csrf
                         <input type="hidden" name="github_id" value="{{ $oauthData['github_id'] }}">
                         <fieldset>
                             <legend class="text-center">{{ lang('Register') }}</legend>
