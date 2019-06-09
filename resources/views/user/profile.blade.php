@@ -8,8 +8,8 @@
             </div>
             <div class="col-md-7">
                 <form action="{{ url('user/profile', ['id' => $user->id]) }}" method="POST" class="form">
-                    {{ method_field('PUT') }}
-                    {{ csrf_field() }}
+                    @method('PUT')
+                    @csrf
 
                     <fieldset>
                         <div class="form-group row">

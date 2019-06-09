@@ -141,7 +141,7 @@
                         <a href="javascript:;" class="text-info button-toggle-team create-button"><strong><i class="fas fa-users-cog"></i> Create Team</strong></a>
                         <div class="optional-team  {{ $errors->isEmpty() ? 'hide' : ''}}">
                             <form action="{{ url('team') }}" method="POST">
-                                {{ csrf_field() }}
+                                @csrf
                                 <textarea class="textarea form-control box__input textarea--autoHeight" placeholder="Your Team" rows="1" name="name"></textarea>
                                 <div class="mb__10"></div>
                                 <button type="submit" class="btn btn-outline-info btn-sm full-width"><i class="fas fa-check text-dark"></i></button>

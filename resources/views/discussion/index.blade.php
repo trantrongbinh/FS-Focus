@@ -59,7 +59,7 @@
                                                 <div class="mb__10"></div>
                                                 <strong>Vấn đề của bạn là gi?</strong>
                                                 <form class="form" action="{{ url('discussion') }}" method="POST">
-                                                    {{ csrf_field() }}
+                                                    @csrf
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 q-item">
                                                             <span class="text-red">*</span>

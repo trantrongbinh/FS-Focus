@@ -39,7 +39,7 @@
                 <img src="{{ asset('/images/ava.png') }}" alt="User Image">
             </div>
             <form class="lockscreen-credentials" role="form" method="POST" action="{{ url('/password/email') }}">
-                {{ csrf_field() }}
+                @csrf
                 <div class="input-group">
                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{ lang('Input Email') }}" required>
                     <div class="input-group-append">

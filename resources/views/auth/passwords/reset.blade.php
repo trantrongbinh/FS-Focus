@@ -27,7 +27,7 @@
     <div id="app">
         <div class="reset_password_form">
             <form class="form" role="form" method="POST" action="{{ url('/password/reset') }}">
-                {{ csrf_field() }}
+                @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
                 <div class="form_title">
                     <a href="/"><img src="{{ asset('/images/logo-blue.png') }}" alt="Logo"></a>

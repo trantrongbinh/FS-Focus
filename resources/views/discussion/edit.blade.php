@@ -26,8 +26,8 @@
         <main class="dicussion row create-discussion">
             <div class="col-md-9 offset-md-1">
                 <form class="form" action="{{ url('discussion', ['slug' => $discussion->slug]) }}" method="POST">
-                    {{ method_field('PUT') }}
-                    {{ csrf_field() }}
+                    @method('PUT')
+                    @csrf
                     <div class="form-group row">
                         <label for="title" class="col-sm-2 col-form-label">{{ lang('Discuss Title') }} <span class="text-red">*</span></label>
                         <div class="col-sm-10">

@@ -139,7 +139,7 @@
                             <div class="col">
                                 <div class="text-small text-small__black">
                                     <a href="/user/{{ $article->user->name }}" class="author-name">
-                                        {{ $article->user->name or 'No Name' }}
+                                        {{ $article->user->name ?? 'No Name' }}
                                     </a>
                                 </div>
                                 <div class="text-small text-light__grey truncate-line__2">

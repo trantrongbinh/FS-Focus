@@ -1,7 +1,7 @@
 // Public
 @import "public";
 // Emoji
-@import "node_modules/quill-emoji/src/scss/quill-emoji.scss";
+@import "~quill-emoji/dist/quill-emoji.css";
 // Math expression
 @import url("vendor/katex.min.css");
 // Highlight code

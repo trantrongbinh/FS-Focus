@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="{{ asset(mix('css/themes/' . config('blog.color_theme') . '.css')) }}">
     <!-- Scripts -->
     <script>
-        window.Language = '{{ config('
-    app.locale ') }}';
+        window.Language = '{{ config('app.locale ') }}';
 
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -49,7 +48,7 @@
                 <div class="col-md-6">
                     <p class="login-box-msg">Register a new membership</p>
                     <form role="form" method="POST" action="{{ url('/register') }}">
-                        {{ csrf_field() }}
+                        @csrf
                         <div class="form-group has-feedback">
                             <input id="name" type="text"
                                    class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"

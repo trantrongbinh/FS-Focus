@@ -91,13 +91,11 @@
                             <a href="javascript:void(0)"
                                class="btn btn-{{ Auth::user()->isFollowing($user->id) ? 'warning' : 'danger' }} btn-sm"
                                onclick="event.preventDefault();
-                                         document.getElementById('follow-form').submit();">
+                                    document.getElementById('follow-form').submit();">
                                 {{ Auth::user()->isFollowing($user->id) ? lang('Following') : lang('Follow') }}
                             </a>
-
-                            <form id="follow-form" action="{{ url('user/follow', [$user->id]) }}" method="POST"
-                                  style="display: none;">
-                                {{ csrf_field() }}
+                            <form id="follow-form" action="{{ url('user/follow', [$user->id]) }}" method="POST" style="display: none;">
+                                @csrf
                             </form>
                         @endif
                     </div>

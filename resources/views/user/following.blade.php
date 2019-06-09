@@ -36,7 +36,7 @@
                                             </a>
                                             <form id="follow-form" action="{{ url('user/follow', [$following->id]) }}"
                                                   method="POST" style="display: none;">
-                                                {{ csrf_field() }}
+                                                @csrf
                                             </form>
                                         </div>
                                     </div>
