@@ -80,11 +80,13 @@ if (!function_exists('getVote')) {
      */
     function getVote($post)
     {
+        $isUpvote = in_array(\Auth::id(), $post->upvoteUsers->pluck('id')->toArray()) ? true : false;
+        $isDownvote = in_array(\Auth::id(), $post->downvoteUsers->pluck('id')->toArray()) ? true : false;
         $vote = [
-            'is_voted' => auth()->id() ? $post->isVotedBy(auth()->id()) : false,
-            'is_up_voted' => auth()->id() ? auth()->user()->hasUpVoted($post) : false,
-            'is_down_voted' => auth()->id() ? auth()->user()->hasDownVoted($post) : false,
-            'vote_count' =>  $post->countUpVoters(),
+            'is_up_voted' => $isUpvote,
+            'is_down_voted' => $isDownvote,
+            'is_voted' => $isUpvote || $isDownvote,
+            'vote_count' => count($post->upvoteUsers) + count($post->downvoteUsers),
         ];
 
         return $vote;

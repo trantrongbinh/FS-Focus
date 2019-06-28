@@ -192,4 +192,20 @@ class Article extends Model
 
         $this->attributes['content'] = json_encode($data);
     }
+
+    public function upvoteUsers()
+    {
+        dd(category::class);
+        return $this->belongsToMany(User::class, 'followables', 'followable_id', 'user_id')
+            ->where('relation', 'upvote')
+            ->where('followable_type', 'articles');
+    }
+
+    public function downvoteUsers()
+    {
+        return $this->belongsToMany(User::class, 'followables', 'followable_id', 'user_id')
+            ->where('relation', 'downvote')
+            ->where('followable_type', 'articles');
+    }
+
 }

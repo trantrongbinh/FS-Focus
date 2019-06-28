@@ -8,6 +8,11 @@ use App\Notifications\VoteArticle;
 use App\Notifications\BookmarkArticle;
 use App\Scopes\DraftScope;
 use Carbon\Carbon;
+use App\Category;
+use App\Tag;
+use App\User;
+use App\Team;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleRepository
 {
@@ -56,8 +61,7 @@ class ArticleRepository
     public function page($number = 10, $sort = 'desc', $sortColumn = 'created_at')
     {
         $this->model = $this->checkAuthScope();
-
-        return $this->model->with(['user', 'tags'])->withCount('comments')->orderBy($sortColumn, $sort)->paginate($number);
+        return $this->model->with(['user', 'tags', 'upvoteUsers', 'downvoteUsers'])->withCount('comments')->orderBy($sortColumn, $sort)->paginate($number);
     }
 
     /**
