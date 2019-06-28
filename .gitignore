@@ -13,3 +13,5 @@ Homestead.yaml
 npm-debug.log
 /database
 readme.md
+/storage/oauth-private.key
+/storage/oauth-public.key
