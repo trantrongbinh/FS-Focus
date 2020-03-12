@@ -12,3 +12,5 @@ Homestead.yaml
 /public/mix-manifest.json
 npm-debug.log
 readme.md
+/storage/oauth-private.key
+/storage/oauth-public.key

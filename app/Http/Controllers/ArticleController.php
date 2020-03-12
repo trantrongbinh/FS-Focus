@@ -27,8 +27,8 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = $this->article->page(
-            config('blog.article.number'), 
-            config('blog.article.sort'), 
+            config('blog.article.number'),
+            config('blog.article.sort'),
             config('blog.article.sortColumn')
         );
 
@@ -60,7 +60,7 @@ class ArticleController extends Controller
         ];
 
         $article->addViewWithExpiryDate(Carbon::now()->addMinute());
-        
+
         return view('article.show', compact('article', 'related'));
     }
 

@@ -86,6 +86,7 @@
                                                 </div>
                                                 <a id="share" class="share-toggle share-icon" href="#"></a>
                                             </div>
+
                                             <vote object-id="{{ $article->id }}" api="article" vote="{{ json_encode(getVote($article)) }}"></vote>
                                             <div class="card__post">
                                                 <div class="card__meta">
