@@ -24,7 +24,7 @@
         "jquery": "^3.4.1",
         "laravel-mix": "^1.7.2",
         "lodash": "^4.17.5",
-        "marked": "^0.7.0",
+        "marked": "^4.0.10",
         "npm-font-open-sans": "^1.1.0",
         "path-to-regexp": "^1.7.0",
         "popper.js": "^1.14.6",
